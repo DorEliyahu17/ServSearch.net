@@ -1,0 +1,30 @@
+{
+  "name": "mamram_project",
+  "version": "1.0.0",
+  "main": "./bin/www",
+  "scripts": {
+    "nodemon":"nodemon",
+    "start1": "node ./bin/www",
+    "start": "concurrently \"npm run nodemon\"",
+    "lite": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dor Eliyahu",
+  "license": "ISC",
+  "description": "Search web",
+  "dependencies": {
+    "body-parser": "*",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.2",
+    "express": "*",
+    "mongoose": "*",
+    "morgan": "^1.7.0",
+    "nodemon": "*",
+    "serve-favicon": "^2.3.0",
+    "shelljs": "*"
+  },
+  "devDependencies": {
+    "concurrently": "^2.2.0",
+    "lite-server": "^2.2.2"
+  }
+}

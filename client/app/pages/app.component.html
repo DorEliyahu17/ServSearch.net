@@ -1,0 +1,19 @@
+<div class="container-fluid" dir="rtl">
+	<div class="row">
+		<div class="col-lg-5 col-md-5"></div>
+		<div class="col-lg-2 col-md-2 jumbotron" style="text-align: center;">
+			<a href="/"><font size="4">{{title}}</font></a>
+		</div>
+	</div>
+
+	<nav dir="ltr">
+		<!--
+		<a routerLink="/dashboard">Dashboard</a>
+		<a routerLink="/heroes">Heroes</a>
+		-->
+		<a routerLink="/simpleSearch" routerLinkActive="active">Simple Search</a>
+		<a routerLink="/advanceSearch" routerLinkActive="active">Advance Search</a>
+	</nav>
+
+	<router-outlet></router-outlet>
+</div>

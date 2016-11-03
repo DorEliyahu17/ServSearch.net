@@ -1,0 +1,63 @@
+<!-- advance search-->
+<advanceSearch></advanceSearch>
+
+<!-- Display the search resault -->
+<div id="search-resault">
+    <ul>
+        <li>
+            <B><U>תוצאות החיפוש:</U></B>
+        </li>
+        <!-- For loop for the resault-->
+
+        <div *ngFor="let file of files" class="search-result" >
+            <li>
+                <B><U>{{file.name}}</U></B>
+                <table>
+
+                    <tr>
+                        <td>
+                            {{file.type}}
+                        </td>
+                        <td><pre>     </pre></td>
+                        <td>
+                            {{file.modifidedDate}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{file.size}}
+                        </td>
+                        <td><pre>     </pre></td>
+                        <td>
+                            {{file.createdUser}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{file.premissions}}
+                        </td>
+                        <td><pre>     </pre></td>
+                        <td>
+                            {{file.location}}
+                        </td>
+                    </tr>
+                </table>
+            </li>
+        </div>
+    </ul>
+</div>
+
+<!--
+<div *ngIf="file">
+    <h2>{{file.name}} details!</h2>
+    <div>
+        <label>id: </label>{{file.id}}
+    </div>
+    <div>
+        <label>name: </label>
+        <input [(ngModel)]="file.name" placeholder="Enter new name"/>
+    </div>
+    <button (click)="save()">Save</button>
+    <button (click)="goBack()">Back</button>
+</div>
+-->

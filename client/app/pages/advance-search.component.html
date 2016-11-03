@@ -1,0 +1,176 @@
+<div id="advance-search">
+    <!--  <div *ngFor="let file of files | async" (click)="gotoDetail(file)" class="search-result" >
+      {{file.name}}
+    </div>
+    -->
+    <!-- regular search mode -->
+    <div id="regular" class="visible">
+        <div class="row">
+            <div class="col-lg-8">
+                <font size="2">הקובץ לא נמצא? אולי חיפוש מתקדם יעזור:</font>
+                <button class="btn btn-default btn-lg" (click)="visibleAndHidden()">
+
+                    <span> <img src="../../images/database%20search.png"> </span>
+                </button>
+            </div>
+
+            <div class="col-lg-1">
+
+            </div>
+
+            <div class="col-lg-3">
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" placeholder="שם הקובץ...">
+                    <button class="btn btn-default btn-lg" (click)="search()">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- advance search mode -->
+    <div id="advance" class="hidden">
+        <!-- First row of the advance search -->
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-3">
+                <div  id="date-check">
+                    <input type="checkbox" name="date">
+                    <font size="4">בחר תאריך יצירה או טווח תאריכים:</font>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-3">
+                <div>
+                    <div class="input-group input-group-lg">
+							<span class="input-group-addon">
+								<input id="date-radio1" type="radio" name="date1" disabled="disabled">
+							</span>
+                        <input  id="date-text1" type="text" class="form-control" placeholder="תאריך יצירה..." disabled="disabled">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="input-group input-group-lg">
+                                <span class="input-group-addon">
+                                    <input id="name-check" type="checkbox" name="name" (click)="userCheck">
+                                </span>
+                    <input type="text" class="form-control" placeholder="שם הקובץ..." disabled="disabled">
+                </div>
+            </div>
+        </div>
+
+        <!-- Second row -->
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-3">
+                <div>
+                    <font size="4">או:</font>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6"></div>
+
+            <div class="col-lg-3">
+                <div>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon">
+                            <input id="date-radio2" type="radio" name="date2" disabled="disabled">
+                        </span>
+                        <input  id="date-text2" type="text" class="form-control" placeholder="טווח תאריכים..." disabled="disabled">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <input id="user-check" type="checkbox" name="user" (click)="click2Check()">
+                    </span>
+                    <input id="user-input" type="text" class="form-control" placeholder="שם הUser..." disabled="disabled">
+                </div>
+            </div>
+        </div>
+
+        <!-- Third row -->
+        <div class="row">
+            <div class="col-lg-6"></div>
+
+            <div class="col-lg-3">
+                <div id="size-check">
+                    <input type="checkbox" name="date">
+                    <font size="4">גודל הקובץ:</font>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6"></div>
+
+            <div class="col-lg-3">
+                <div>
+                    <div class="input-group input-group-lg">
+						<span class="input-group-addon">
+							<input id="size-radio1" type="radio" name="size1" disabled="disabled">
+						</span>
+                        <input  id="size-text1" type="text" class="form-control" placeholder="גודל הקובץ..." disabled="disabled">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <input id="type-check" type="checkbox" name="type" (click)="clickCheck(type-input)">
+                    </span>
+                    <input id="type-input" type="text" class="form-control" placeholder="סוג הקובץ..." disabled="disabled">
+                </div>
+            </div>
+        </div>
+
+        <!-- Fourth row -->
+        <div class="row">
+            <div class="col-lg-6"></div>
+
+            <div class="col-lg-3">
+                <font size="4">או:</font>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6"></div>
+
+            <div class="col-lg-3">
+                <div>
+                    <div class="input-group input-group-lg">
+							<span class="input-group-addon">
+								<input id="size-radio2" type="radio" name="size2" disabled="disabled">
+							</span>
+                        <input  id="size-text2" type="text" class="form-control" placeholder="טווח גדלים..." disabled="disabled">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                       	<input id="server-check" type="checkbox" name="server" (click)="userCheck">
+					</span>
+                    <select class="form-control" style="width: 250px;" dir="ltr" disabled="disabled">
+                        <option value="C:">C:</option>
+                        <option value="D:">D:</option>
+                        <option value="E:">E:</option>
+                        <option value="F:">F:</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
