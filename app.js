@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use('/', index);
 app.use('/simpleSearch', simpleSearch);
 app.use('/api', files);
-app.use('/result', result);
+app.use('/res', result);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -22,10 +22,11 @@ var FileService = (function () {
     //
     //get all the files in the /api/files
     FileService.prototype.getFile = function (params) {
-        return this.http.get("http://localhost:3000/api/files", params)
-            .toPromise()
-            .then(function (response) { return response.json().data; } /* && console.log(response)*/ /* && console.log(response)*/)
-            .catch(this.handleError);
+        return this.http.get("http://localhost:3000/api/files", {
+            search: params
+        }).map(function (response) {
+            return response.json();
+        }).toPromise();
     };
     /*
         //get all the files in the /api/files

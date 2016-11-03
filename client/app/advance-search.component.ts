@@ -1,5 +1,5 @@
 //import the component declare in order to create a new one
-import { Component/*, OnInit */} from '@angular/core';
+import { Component, Input/*, OnInit */} from '@angular/core';
 import { Router } from '@angular/router';
 
 //import the class "File" from the file "./file"
@@ -23,6 +23,7 @@ import { FileService } from './file.service';
 //the class of this new component
 export class AdvanceSearchComponent/* implements OnInit*/
 {
+	@Input() filename;
 	files =[
 		{
 			name: "File 1",

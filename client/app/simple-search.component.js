@@ -12,12 +12,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var http_1 = require('@angular/http');
+//import the class "File" from the file "./file"
+var file_1 = require('./file');
 //import the service "FileService" from the file "./file.service"
 var file_service_1 = require('./file.service');
 var SimpleSearchComponent = (function () {
     function SimpleSearchComponent(router, fileService) {
         this.router = router;
         this.fileService = fileService;
+        //file: File;
+        this.file = new file_1.File();
     }
     SimpleSearchComponent.prototype.search = function () {
         var _this = this;
@@ -31,16 +35,12 @@ var SimpleSearchComponent = (function () {
         params.set('name', name);
         params.set('type', type);
         params.set('server', server);
-        console.log("params: " + params.toString());
         this.fileService.getFile(params)
-            .then(function (FILE) {
-            return _this.file = FILE;
+            .then(function (data) {
+            console.log(data);
+            var link = ['/res'];
+            _this.router.navigate(link);
         });
-        console.log("File: " + this.file.toString());
-        /*
-            let link = ['/result'];
-            this.router.navigate(link);
-        */
         // fileService.findFile(serach).then((data) =>{
         // console.log(data);
         //}

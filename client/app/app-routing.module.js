@@ -36,7 +36,7 @@ var routes = [
     },
     {
         //Search resault of all variables
-        path: 'result/' + params,
+        path: 'res',
         component: file_detail_component_1.FileDetailComponent
     }
 ];

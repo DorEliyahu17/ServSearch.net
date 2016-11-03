@@ -24,11 +24,12 @@ export class FileService
 	//
 
 	//get all the files in the /api/files
-	getFile(params: URLSearchParams): Promise<File> {
-		return this.http.get("http://localhost:3000/api/files", params)
-			.toPromise()
-			.then(response => response.json().data as File/* && console.log(response)*/)
-			.catch(this.handleError);
+	getFile(params: URLSearchParams): any {
+		return this.http.get("http://localhost:3000/api/files", {
+			search: params
+		}).map((response) => {
+			return response.json()
+		}).toPromise();
 	}
 
 /*

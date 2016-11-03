@@ -31,7 +31,7 @@ const routes: Routes = [
     {
         //Search resault of all variables
 
-        path: 'result/'+params,
+        path: 'res',
         component: FileDetailComponent
     }
     /*

@@ -1,6 +1,6 @@
 //import the component declare in order to create a new one
-import { Component, /*Input,*/ OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 //import the class "Hero" from the file "./hero"
 import { File } from './file';
@@ -19,7 +19,7 @@ import { FileService } from './file.service';
 
 //the class of this new component
 export class FileDetailComponent implements OnInit{
-    /*@Input()*/
+    //@Input()
     file: File;
 
     constructor(private fileService: FileService, private route: ActivatedRoute){}

@@ -68,6 +68,10 @@ var AdvanceSearchComponent /* implements OnInit*/ = (function () {
             inputField.setAttribute("disable", "disable");
         }
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], AdvanceSearchComponent /* implements OnInit*/.prototype, "filename", void 0);
     AdvanceSearchComponent /* implements OnInit*/ = __decorate([
         core_1.Component({
             //his label in the HTML code

@@ -20,8 +20,8 @@ import { FileService } from './file.service';
 
 export class SimpleSearchComponent
 {
-  file: File;
-
+  //file: File;
+file=new File();
   constructor(private router: Router, private fileService: FileService) { }
 
   search():void {
@@ -39,19 +39,14 @@ export class SimpleSearchComponent
     params.set('type', type);
     params.set('server', server);
 
-    console.log("params: "+params.toString());
-
     this.fileService.getFile(params)
-        .then(FILE =>
-            this.file = FILE);
-console.log("File: "+this.file.toString());
+        .then((data) => {
+          console.log(data);
+          let link = ['/res'];
+          this.router.navigate(link);
+        });
 
 
-
-/*
-    let link = ['/result'];
-    this.router.navigate(link);
-*/
     // fileService.findFile(serach).then((data) =>{
     // console.log(data);
     //}
