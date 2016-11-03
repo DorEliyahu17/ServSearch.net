@@ -1,6 +1,6 @@
 //import the component declare in order to create a new one
 import { Injectable }    from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, URLSearchParams, /*QueryEncoder*/} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -11,7 +11,7 @@ import { File } from './file';
 export class FileService
 {
 	//privates
-Files: File[];
+	Files: File[];
 	//private headers = new Headers({'Content-Type': 'application/json'});
 	private filesUrl = 'http://localhost:3000/api/files';  // URL to web api
 
@@ -24,14 +24,23 @@ Files: File[];
 	//
 
 	//get all the files in the /api/files
-	getFiles(searchComp): Promise<File[]> {
-		return this.http.get("http://localhost:3000/api/files",{search:searchComp})
+	getFile(params: URLSearchParams): Promise<File> {
+		return this.http.get("http://localhost:3000/api/files", params)
 			.toPromise()
-			.then(response => response.json().data as File[]/* && console.log(response)*/)
+			.then(response => response.json().data as File/* && console.log(response)*/)
 			.catch(this.handleError);
 	}
 
-	//get specified file from the /api/files
+/*
+	//get all the files in the /api/files
+	getFiles(): Promise<File[]> {
+		return this.http.get("http://localhost:3000/api/files")
+			.toPromise()
+			.then(response => response.json().data as File[]/* && console.log(response)/)
+			.catch(this.handleError);
+	}
+
+//get specified file from the /api/files
 	getFile(name, type, server): Promise<File>{
 		console.log("getFile: name:"+name+" type:"+type+" server:"+server);
 		if((name!=null)&&(type!=null)&&(server!=null)){
@@ -69,8 +78,8 @@ Files: File[];
 					.find(file => (this.getServerFromLocation(file.location)===server)));
 		}
 	}
-
-	//function that split the name of the server from the hole path
+*/
+//function that split the name of the server from the hole path
 	getServerFromLocation(location): string
 	{
 		var arr=[];
@@ -78,7 +87,7 @@ Files: File[];
 		return arr[0];
 	}
 
-	//error handler
+//error handler
 	private handleError(error: any): Promise<any> {
 		console.error('An error occurred', error); // for demo purposes only
 		return Promise.reject(error.message || error);

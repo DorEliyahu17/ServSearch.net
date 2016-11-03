@@ -1,11 +1,14 @@
 //import the routes declare in order to create the routes of the app
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {URLSearchParams, /*QueryEncoder*/} from '@angular/http';
 
 //import the Components
 import { SimpleSearchComponent } from './simple-search.component'
 import { AdvanceSearchComponent } from './advance-search.component'
 import { FileDetailComponent } from './file-detail.component';
+
+let params: URLSearchParams = new URLSearchParams();
 
 const routes: Routes = [
     {
@@ -25,6 +28,13 @@ const routes: Routes = [
         path: 'simpleSearch',
         component: SimpleSearchComponent
     },
+    {
+        //Search resault of all variables
+
+        path: 'result/'+params,
+        component: FileDetailComponent
+    }
+    /*
     {
         //Search resault of all variables
         path: 'resault/:name/:type/:server',
@@ -59,7 +69,7 @@ const routes: Routes = [
         //Search resault only server
         path: 'resault/:server',
         component: FileDetailComponent
-    }
+    }*/
 ];
 
 @NgModule({

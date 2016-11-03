@@ -25,17 +25,17 @@ export class FileDetailComponent implements OnInit{
     constructor(private fileService: FileService, private route: ActivatedRoute){}
 
     ngOnInit(): void {
+        /*
         this.route.params.forEach((params: Params) => {
             let name = +params[':name'];
             let type = +params[':type'];
             let server = +params[':server'];
-
             console.log("constructor: name:"+name+", type="+type+" ,server="+server);
-
             this.fileService.getFile(name, type, server)
                 .then(FILE =>
                     this.file = FILE);
         });
+        */
     }
 
     goBack(): void{

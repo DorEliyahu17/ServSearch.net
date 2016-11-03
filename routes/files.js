@@ -16,8 +16,6 @@ router.get('/', function(req, res, next) {
 
 /* GET files listing. */
 router.get('/files', function(req, res, next) {
-
-
     res.send({
         _id: "580e850c1946e731c4a30cf6",
         name: "noder",

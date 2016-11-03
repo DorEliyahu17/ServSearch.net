@@ -20,17 +20,17 @@ var FileDetailComponent = (function () {
         this.route = route;
     }
     FileDetailComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.route.params.forEach(function (params) {
-            var name = +params[':name'];
-            var type = +params[':type'];
-            var server = +params[':server'];
-            console.log("constructor: name:" + name + ", type=" + type + " ,server=" + server);
-            _this.fileService.getFile(name, type, server)
-                .then(function (FILE) {
-                return _this.file = FILE;
-            });
+        /*
+        this.route.params.forEach((params: Params) => {
+            let name = +params[':name'];
+            let type = +params[':type'];
+            let server = +params[':server'];
+            console.log("constructor: name:"+name+", type="+type+" ,server="+server);
+            this.fileService.getFile(name, type, server)
+                .then(FILE =>
+                    this.file = FILE);
         });
+        */
     };
     FileDetailComponent.prototype.goBack = function () {
         window.history.back();

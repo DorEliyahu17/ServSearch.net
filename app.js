@@ -12,7 +12,7 @@ var mongoose = require('./node_modules/mongoose');
 var index = require('./routes/index');
 var simpleSearch = require('./routes/simple search');
 var files = require('./routes/files');
-var resault = require('./routes/resault');
+var result = require('./routes/result');
 
 var app = express();
 
@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use('/', index);
 app.use('/simpleSearch', simpleSearch);
 app.use('/api', files);
-app.use('/resault', resault);
+app.use('/result', result);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
