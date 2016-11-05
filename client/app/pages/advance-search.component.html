@@ -1,8 +1,4 @@
 <div id="advance-search">
-    <!--  <div *ngFor="let file of files | async" (click)="gotoDetail(file)" class="search-result" >
-      {{file.name}}
-    </div>
-    -->
     <!-- regular search mode -->
     <div id="regular" class="visible">
         <div class="row">
@@ -103,7 +99,9 @@
 
         <!-- Third row -->
         <div class="row">
-            <div class="col-lg-6"></div>
+            <div class="col-lg-6">
+                    <button (click)="goBack()"><h4><B><U>Back</U></B></h4></button>
+            </div>
 
             <div class="col-lg-3">
                 <div id="size-check">

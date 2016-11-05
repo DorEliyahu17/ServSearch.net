@@ -10,21 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 //import the component declare in order to create a new one
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
 var http_1 = require('@angular/http');
 //import the class "File" from the file "./file"
 var file_1 = require('./file');
 //import the service "FileService" from the file "./file.service"
 var file_service_1 = require('./file.service');
 var SimpleSearchComponent = (function () {
-    function SimpleSearchComponent(router, fileService) {
-        this.router = router;
+    function SimpleSearchComponent(fileService) {
         this.fileService = fileService;
         this.isResult = false;
         this.file = new file_1.File();
     }
     SimpleSearchComponent.prototype.search = function () {
         var _this = this;
+        var resultSearch = document.getElementById("result");
+        resultSearch.className = "hidden";
         var name = document.getElementById("FileName").value;
         var type = document.getElementById("FileType").value;
         var server = document.getElementById("FileServer").value;
@@ -118,12 +118,12 @@ var SimpleSearchComponent = (function () {
     };
     SimpleSearchComponent = __decorate([
         core_1.Component({
-            selector: 'simplesearch',
+            selector: 'simple-search',
             templateUrl: 'app/pages/simple-search.component.html',
             styleUrls: ['app/styles/simple-search.component.css'],
             providers: [file_service_1.FileService]
         }), 
-        __metadata('design:paramtypes', [router_1.Router, file_service_1.FileService])
+        __metadata('design:paramtypes', [file_service_1.FileService])
     ], SimpleSearchComponent);
     return SimpleSearchComponent;
 }());

@@ -22,18 +22,18 @@ router.get('/files', function(req, res, next) {
         type: "Directory",
         size: 0,
         location: "C:/Users/Dor/Desktop/stam/",
-        premissions: "rwxr-xr-x",
+        permissions: "rwxr-xr-x",
         createdUser: "Dor",
         group: 197121,
         modifidedDate: "Oct 1 03:15"
     },
         {
             _id: "580e850c1946e731c4a30cf6",
-            name: "stam 2",
+            name: "stam 1",
             type: "doc",
             size: 0,
             location: "D:/Users/Dor/Desktop/stam/",
-            premissions: "rwxr-xr-x",
+            permissions: "rwxr-xr-x",
             createdUser: "Dor",
             group: 197121,
             modifidedDate: "Oct 1 03:15"
@@ -44,7 +44,7 @@ router.get('/files', function(req, res, next) {
             type: "txt",
             size: 0,
             location: "C:/Users/Dor/Desktop/stam/",
-            premissions: "rwxr-xr-x",
+            permissions: "rwxr-xr-x",
             createdUser: "Dor",
             group: 197121,
             modifidedDate: "Oct 1 03:15"

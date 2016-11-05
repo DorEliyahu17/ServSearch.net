@@ -14,15 +14,8 @@ var router_1 = require('@angular/router');
 var http_1 = require('@angular/http');
 //import the Components
 var simple_search_component_1 = require('./simple-search.component');
-var advance_search_component_1 = require('./advance-search.component');
-var file_detail_component_1 = require('./file-detail.component');
 var params = new http_1.URLSearchParams();
 var routes = [
-    {
-        //advance Search
-        path: 'advanceSearch',
-        component: advance_search_component_1.AdvanceSearchComponent
-    },
     {
         //Home Page
         path: '',
@@ -33,12 +26,18 @@ var routes = [
         //Simple Search
         path: 'simpleSearch',
         component: simple_search_component_1.SimpleSearchComponent
+    } /*,
+    {
+        //advance Search
+        path: 'advanceSearch',
+        component: AdvanceSearchComponent
     },
     {
         //Search resault of all variables
+
         path: 'res',
-        component: file_detail_component_1.FileDetailComponent
-    }
+        component: FileDetailComponent
+    }*/
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

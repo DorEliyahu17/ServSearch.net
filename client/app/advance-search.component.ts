@@ -1,6 +1,5 @@
 //import the component declare in order to create a new one
-import { Component/*, Input, OnInit */} from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 //import the class "File" from the file "./file"
 import { File } from './file';
@@ -21,7 +20,7 @@ import { FileService } from './file.service';
 })
 
 //the class of this new component
-export class AdvanceSearchComponent/* implements OnInit*/
+export class AdvanceSearchComponent
 {
 	//@Input() filename;
 	files =[
@@ -54,11 +53,15 @@ export class AdvanceSearchComponent/* implements OnInit*/
 		}
 	];
 
-	constructor(private router: Router/*, private fileService: FileService*/) { }
-	/*ngOnInit(): void {
+	constructor( private fileService: FileService) { }
 
-	}*/
-
+	goBack(): void{
+		//visible and hidden change
+		var regularSearch = document.getElementById("regular");
+		regularSearch.className = "visible";
+		var advanceSearch = document.getElementById("advance");
+		advanceSearch.className = "hidden";
+	}
 
 	search(): void{
 
@@ -98,18 +101,4 @@ export class AdvanceSearchComponent/* implements OnInit*/
 		}
 	}
 */
-
-
-
-	/*
-	 getFiles(): void {
-	 this.FileService.getFiles().then(heroes => this.heroes = heroes);
-	 }
-	 */
-
-	/*
-	 gotoDetail(): void{
-	 //open the file
-	 }
-	 */
 }

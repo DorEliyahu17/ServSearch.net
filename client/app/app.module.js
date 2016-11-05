@@ -8,13 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-//import the modules 
+//import the rxjs extensions
 require('./rxjs-extensions');
+//import the modules
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
-//import the components
+//import the components and services
 var app_component_1 = require('./app.component');
 var simple_search_component_1 = require('./simple-search.component');
 var advance_search_component_1 = require('./advance-search.component');

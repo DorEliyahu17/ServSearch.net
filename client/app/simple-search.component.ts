@@ -1,8 +1,6 @@
 //import the component declare in order to create a new one
 import { Component } from '@angular/core';
-import {Router/*, __router_private__*/} from '@angular/router';
-import {URLSearchParams, /*QueryEncoder*/} from '@angular/http';
-
+import {URLSearchParams} from '@angular/http';
 
 //import the class "File" from the file "./file"
 import { File } from './file';
@@ -12,7 +10,7 @@ import { FileService } from './file.service';
 
 
 @Component({
-    selector: 'simplesearch',
+    selector: 'simple-search',
     templateUrl: 'app/pages/simple-search.component.html',
     styleUrls: ['app/styles/simple-search.component.css'],
     providers: [FileService]
@@ -23,9 +21,11 @@ export class SimpleSearchComponent
     files:File[];
     isResult=false;
     file=new File();
-    constructor(private router: Router, private fileService: FileService) { }
+    constructor(private fileService: FileService) { }
 
     search():void {
+        var resultSearch = document.getElementById("result");
+        resultSearch.className = "hidden";
         var name = (<HTMLInputElement>document.getElementById("FileName")).value;
         var type = (<HTMLInputElement>document.getElementById("FileType")).value;
         var server = (<HTMLInputElement>document.getElementById("FileServer")).value;

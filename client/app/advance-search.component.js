@@ -10,13 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 //import the component declare in order to create a new one
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
 //import the service "FileService" from the file "./file.service"
 var file_service_1 = require('./file.service');
 //create new component
-var AdvanceSearchComponent /* implements OnInit*/ = (function () {
-    function AdvanceSearchComponent /* implements OnInit*/(router /*, private fileService: FileService*/) {
-        this.router = router;
+var AdvanceSearchComponent = (function () {
+    function AdvanceSearchComponent(fileService) {
+        this.fileService = fileService;
         //@Input() filename;
         this.files = [
             {
@@ -48,18 +47,22 @@ var AdvanceSearchComponent /* implements OnInit*/ = (function () {
             }
         ];
     }
-    /*ngOnInit(): void {
-
-    }*/
-    AdvanceSearchComponent /* implements OnInit*/.prototype.search = function () {
+    AdvanceSearchComponent.prototype.goBack = function () {
+        //visible and hidden change
+        var regularSearch = document.getElementById("regular");
+        regularSearch.className = "visible";
+        var advanceSearch = document.getElementById("advance");
+        advanceSearch.className = "hidden";
     };
-    AdvanceSearchComponent /* implements OnInit*/.prototype.visibleAndHidden = function () {
+    AdvanceSearchComponent.prototype.search = function () {
+    };
+    AdvanceSearchComponent.prototype.visibleAndHidden = function () {
         var regularSearch = document.getElementById("regular");
         regularSearch.className = "hidden";
         var advanceSearch = document.getElementById("advance");
         advanceSearch.className = "visible";
     };
-    AdvanceSearchComponent /* implements OnInit*/.prototype.click2Check = function () {
+    AdvanceSearchComponent.prototype.click2Check = function () {
         var inputField = document.getElementById("user-input");
         if (inputField.getAttribute("disable") == "disable") {
             console.log("inside");
@@ -69,7 +72,7 @@ var AdvanceSearchComponent /* implements OnInit*/ = (function () {
             inputField.setAttribute("disable", "disable");
         }
     };
-    AdvanceSearchComponent /* implements OnInit*/ = __decorate([
+    AdvanceSearchComponent = __decorate([
         core_1.Component({
             //his label in the HTML code
             selector: 'advanceSearch',
@@ -79,9 +82,9 @@ var AdvanceSearchComponent /* implements OnInit*/ = (function () {
             styleUrls: ['app/styles/advance-search.component.css'],
             providers: [file_service_1.FileService]
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
-    ], AdvanceSearchComponent /* implements OnInit*/);
-    return AdvanceSearchComponent /* implements OnInit*/;
+        __metadata('design:paramtypes', [file_service_1.FileService])
+    ], AdvanceSearchComponent);
+    return AdvanceSearchComponent;
 }());
-exports.AdvanceSearchComponent /* implements OnInit*/ = AdvanceSearchComponent /* implements OnInit*/;
+exports.AdvanceSearchComponent = AdvanceSearchComponent;
 //# sourceMappingURL=advance-search.component.js.map

@@ -21,41 +21,15 @@ import { FileService } from './file.service';
 export class FileDetailComponent implements /*OnInit*/ OnChanges{
     @Input() files: File[];
 
-    //file: File;
-
     constructor(private fileService: FileService, private route: ActivatedRoute){}
-    /*
-     ngOnInit(): void {
-     this.route.params.forEach((params: Params) => {
-     let name = +params[':name'];
-     let type = +params[':type'];
-     let server = +params[':server'];
-     console.log("constructor: name:"+name+", type="+type+" ,server="+server);
-     this.fileService.getFile(name, type, server)
-     .then(FILE =>
-     this.file = FILE);
-     });
-     }*/
 
-    ngOnChanges(/*changes: {[propKey: string]: SimpleChange}*/) {
-        //console.log(this.files);
-        //@Input() this.files;
-        /*let log: string[] = [];
-        for (let propName in changes) {
-            let changedProp = changes[propName];
-            let from = JSON.stringify(changedProp.previousValue);
-            let to = JSON.stringify(changedProp.currentValue);
-            log.push(`${propName} changed from ${from} to ${to}`);
-        }*/
-    }
+    ngOnChanges() {}
 
     goBack(): void{
-        window.history.back();
+        //visible and hidden change
+        var regularSearch = document.getElementById("regular");
+        regularSearch.className = "hidden";
+        var advanceSearch = document.getElementById("advance");
+        advanceSearch.className = "visible";
     }
-
-    /*
-     save(): void {
-     this.fileService.update(this.hero)
-     .then(this.goBack);
-     }*/
 }

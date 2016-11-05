@@ -15,36 +15,17 @@ var router_1 = require('@angular/router');
 var file_service_1 = require('./file.service');
 //create new component
 var FileDetailComponent = (function () {
-    //file: File;
     function FileDetailComponent(fileService, route) {
         this.fileService = fileService;
         this.route = route;
     }
-    /*
-     ngOnInit(): void {
-     this.route.params.forEach((params: Params) => {
-     let name = +params[':name'];
-     let type = +params[':type'];
-     let server = +params[':server'];
-     console.log("constructor: name:"+name+", type="+type+" ,server="+server);
-     this.fileService.getFile(name, type, server)
-     .then(FILE =>
-     this.file = FILE);
-     });
-     }*/
-    FileDetailComponent.prototype.ngOnChanges = function () {
-        //console.log(this.files);
-        //@Input() this.files;
-        /*let log: string[] = [];
-        for (let propName in changes) {
-            let changedProp = changes[propName];
-            let from = JSON.stringify(changedProp.previousValue);
-            let to = JSON.stringify(changedProp.currentValue);
-            log.push(`${propName} changed from ${from} to ${to}`);
-        }*/
-    };
+    FileDetailComponent.prototype.ngOnChanges = function () { };
     FileDetailComponent.prototype.goBack = function () {
-        window.history.back();
+        //visible and hidden change
+        var regularSearch = document.getElementById("regular");
+        regularSearch.className = "hidden";
+        var advanceSearch = document.getElementById("advance");
+        advanceSearch.className = "visible";
     };
     __decorate([
         core_1.Input(), 
