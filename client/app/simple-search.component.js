@@ -20,7 +20,7 @@ var SimpleSearchComponent = (function () {
     function SimpleSearchComponent(router, fileService) {
         this.router = router;
         this.fileService = fileService;
-        //file: File;
+        this.isResult = false;
         this.file = new file_1.File();
     }
     SimpleSearchComponent.prototype.search = function () {
@@ -30,17 +30,45 @@ var SimpleSearchComponent = (function () {
         var server = document.getElementById("FileServer").value;
         // WORK FILE SERVICE
         // GETS THE PARAMAS
-        // Parameters obj-
+        //Parameters obj
         var params = new http_1.URLSearchParams();
         params.set('name', name);
         params.set('type', type);
         params.set('server', server);
-        this.fileService.getFile(params)
+        //get the files arr from the service
+        this.fileService.getFiles(params)
             .then(function (data) {
+            for (var i = 0; i < data.length; i++) {
+                if (((name != "") && (data[i].name == name)) ||
+                    ((type != "") && (data[i].type.toLowerCase() == type.toLowerCase())) ||
+                    ((server != "")) && (_this.fileService.getServerFromLocation(data[i].location).toLowerCase() == server.toLowerCase())) {
+                    console.log("OK");
+                }
+                else {
+                    data.splice(i, 1);
+                    i--;
+                }
+            }
             console.log(data);
-            var link = ['/res'];
-            _this.router.navigate(link);
+            if (data.length > 0) {
+                _this.files = data;
+                //visible and hidden change
+                /*var regularSearch = document.getElementById("simple");
+                 regularSearch.className = "hidden";*/
+                var resultSearch = document.getElementById("result");
+                resultSearch.className = "visible";
+            }
+            else {
+                alert("לא נמצאה אף תוצאה, תנסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.");
+            }
         });
+        /*
+         //visible and hidden change
+         var regularSearch = document.getElementById("regular");
+         regularSearch.className = "hidden";
+         var advanceSearch = document.getElementById("advance");
+         advanceSearch.className = "visible";
+         */
         // fileService.findFile(serach).then((data) =>{
         // console.log(data);
         //}

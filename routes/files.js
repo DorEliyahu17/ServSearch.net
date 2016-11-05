@@ -16,9 +16,9 @@ router.get('/', function(req, res, next) {
 
 /* GET files listing. */
 router.get('/files', function(req, res, next) {
-    res.send({
+    res.send([{
         _id: "580e850c1946e731c4a30cf6",
-        name: "noder",
+        name: "stam 1",
         type: "Directory",
         size: 0,
         location: "C:/Users/Dor/Desktop/stam/",
@@ -26,7 +26,29 @@ router.get('/files', function(req, res, next) {
         createdUser: "Dor",
         group: 197121,
         modifidedDate: "Oct 1 03:15"
-    });
+    },
+        {
+            _id: "580e850c1946e731c4a30cf6",
+            name: "stam 2",
+            type: "doc",
+            size: 0,
+            location: "D:/Users/Dor/Desktop/stam/",
+            premissions: "rwxr-xr-x",
+            createdUser: "Dor",
+            group: 197121,
+            modifidedDate: "Oct 1 03:15"
+        },
+        {
+            _id: "580e850c1946e731c4a30cf6",
+            name: "stam 3",
+            type: "txt",
+            size: 0,
+            location: "C:/Users/Dor/Desktop/stam/",
+            premissions: "rwxr-xr-x",
+            createdUser: "Dor",
+            group: 197121,
+            modifidedDate: "Oct 1 03:15"
+        }]);
     /*
      {
      "_id" : ObjectId("580e850c1946e731c4a30cf3"),

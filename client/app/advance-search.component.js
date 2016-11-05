@@ -17,6 +17,7 @@ var file_service_1 = require('./file.service');
 var AdvanceSearchComponent /* implements OnInit*/ = (function () {
     function AdvanceSearchComponent /* implements OnInit*/(router /*, private fileService: FileService*/) {
         this.router = router;
+        //@Input() filename;
         this.files = [
             {
                 name: "File 1",
@@ -68,10 +69,6 @@ var AdvanceSearchComponent /* implements OnInit*/ = (function () {
             inputField.setAttribute("disable", "disable");
         }
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], AdvanceSearchComponent /* implements OnInit*/.prototype, "filename", void 0);
     AdvanceSearchComponent /* implements OnInit*/ = __decorate([
         core_1.Component({
             //his label in the HTML code
