@@ -43,7 +43,7 @@ export class SimpleSearchComponent
         this.fileService.getFiles(params)
             .then((data:File[]) => {
                 for (var i=0;i<data.length;i++) {
-                    if (((name != "") && (data[i].name == name)) ||
+                    if (((name != "") && (data[i].name.indexOf(name)!=-1)) ||
                         ((type != "") && (data[i].type.toLowerCase() == type.toLowerCase())) ||
                         ((server != "")) && (this.fileService.getServerFromLocation(data[i].location).toLowerCase() == server.toLowerCase()))
                     {

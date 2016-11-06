@@ -39,7 +39,7 @@ var SimpleSearchComponent = (function () {
         this.fileService.getFiles(params)
             .then(function (data) {
             for (var i = 0; i < data.length; i++) {
-                if (((name != "") && (data[i].name == name)) ||
+                if (((name != "") && (data[i].name.indexOf(name) != -1)) ||
                     ((type != "") && (data[i].type.toLowerCase() == type.toLowerCase())) ||
                     ((server != "")) && (_this.fileService.getServerFromLocation(data[i].location).toLowerCase() == server.toLowerCase())) {
                     console.log("OK");
