@@ -42,8 +42,9 @@ export class SimpleSearchComponent
         //get the files arr from the service
         this.fileService.getFiles(params)
             .then((data:File[]) => {
+                //console.log(data);
                 for (var i=0;i<data.length;i++) {
-                    if (((name != "") && (data[i].name.indexOf(name)!=-1)) ||
+                    if (((name != "") && (data[i].name.toLowerCase().indexOf(name.toLowerCase())!=-1)) ||
                         ((type != "") && (data[i].type.toLowerCase() == type.toLowerCase())) ||
                         ((server != "")) && (this.fileService.getServerFromLocation(data[i].location).toLowerCase() == server.toLowerCase()))
                     {
@@ -55,7 +56,7 @@ export class SimpleSearchComponent
                         i--;
                     }
                 }
-                console.log(data);
+
                 if(data.length>0)
                 {
                     this.files=data;

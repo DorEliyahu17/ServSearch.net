@@ -1,38 +1,8 @@
 //including shelljs to the project
 var shell = require('./node_modules/shelljs');
+var mongo=require('./MongoDB');
 
-//including mongoose to the project
-var mongoose = require('./node_modules/mongoose');
-
-//connecting to mongodb with mongoose ('mongodb://localhost/[name of the DB]')
-mongoose.connect('mongodb://localhost/Mtest');
-
-//creating a DB variable that will have the DB in the mongodb
-var db = mongoose.connection;
-//if there is an error with the connection print "connection error"
-db.on('error', console.error.bind(console, 'connection error:'));
-//else print "we're connected!"
-db.once('open', function() {
-    console.log("we're connected!");
-});
-
-//creating a DB schema (like a table)
-var FileSchema = new mongoose.Schema({
-    name: String,
-    type: String,
-    size: Number,
-    location: String,
-    premissions: String,
-    createdUser: String,
-    group: Number,
-    modifidedDate: String
-},{collection: "Files"});
-
-//model is a object that gives you easy access to name the collection
-var File = mongoose.model('File',FileSchema);
-//now the FileSchema called File in the DB
-
-
+/*
 function WriteToDB(res, callback)
 {
     //Insert the arr
@@ -46,9 +16,7 @@ function WriteToDB(res, callback)
         }
     });
 
-
-
-    /*
+    /
      //without arr
      var data=new File(res);
      //console.log(data);
@@ -61,10 +29,10 @@ function WriteToDB(res, callback)
      }
      });
      //console.log(data.name + " saved");
-     */
-}
+     /
+}*/
 
-function searchTheHardDrive(searchPath, /*callback*/WriteToDB)
+function searchTheHardDrive(searchPath, /*callback*/writeToDB, disconnect)
 {
 //do the command is in the shell
     shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true}, function (a, resault) {
@@ -124,7 +92,7 @@ function searchTheHardDrive(searchPath, /*callback*/WriteToDB)
                     }
                     else {
                         fileNameAndType = tempName.split(".");
-                        fileAndDirObject =new File(
+                        fileAndDirObject =new mongo.File(
                             {
                                 name: fileNameAndType[0],
                                 type: fileNameAndType[1],
@@ -142,12 +110,10 @@ function searchTheHardDrive(searchPath, /*callback*/WriteToDB)
             }
         }
 
-        WriteToDB(filesAndDirsObjectArr, function(err){
-            //disconnect from the DB
-            mongoose.disconnect();
-            console.log("Disconnected");
-            console.log("Done");
+        writeToDB(filesAndDirsObjectArr, function(err){
+            disconnect();
         });
+
 
         /*
         //insert without arr
@@ -158,6 +124,4 @@ function searchTheHardDrive(searchPath, /*callback*/WriteToDB)
     });
 }
 
-searchTheHardDrive("C:/Users/Dor/Desktop/stam", WriteToDB);
-
-
+searchTheHardDrive("C:/Users/Dor/Desktop/stam", mongo.writeToDB, mongo.disconnect);

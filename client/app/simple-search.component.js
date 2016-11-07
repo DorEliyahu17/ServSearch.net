@@ -38,8 +38,9 @@ var SimpleSearchComponent = (function () {
         //get the files arr from the service
         this.fileService.getFiles(params)
             .then(function (data) {
+            //console.log(data);
             for (var i = 0; i < data.length; i++) {
-                if (((name != "") && (data[i].name.indexOf(name) != -1)) ||
+                if (((name != "") && (data[i].name.toLowerCase().indexOf(name.toLowerCase()) != -1)) ||
                     ((type != "") && (data[i].type.toLowerCase() == type.toLowerCase())) ||
                     ((server != "")) && (_this.fileService.getServerFromLocation(data[i].location).toLowerCase() == server.toLowerCase())) {
                     console.log("OK");
@@ -49,7 +50,6 @@ var SimpleSearchComponent = (function () {
                     i--;
                 }
             }
-            console.log(data);
             if (data.length > 0) {
                 _this.files = data;
                 //visible and hidden change
