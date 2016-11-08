@@ -1,9 +1,9 @@
 {
-  "name": "mamram_project",
+  "name": "servsearch.net",
   "version": "1.0.0",
   "main": "./bin/www",
   "scripts": {
-    "nodemon":"nodemon",
+    "nodemon": "nodemon",
     "start1": "node ./bin/www",
     "start": "concurrently \"npm run nodemon\"",
     "lite": "lite-server",
@@ -26,5 +26,13 @@
   "devDependencies": {
     "concurrently": "^2.2.0",
     "lite-server": "^2.2.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DorEliyahu17/ServSerch.net.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DorEliyahu17/ServSerch.net/issues"
+  },
+  "homepage": "https://github.com/DorEliyahu17/ServSerch.net#readme"
 }
