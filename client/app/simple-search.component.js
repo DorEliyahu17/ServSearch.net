@@ -18,9 +18,15 @@ var file_service_1 = require('./file.service');
 var SimpleSearchComponent = (function () {
     function SimpleSearchComponent(fileService) {
         this.fileService = fileService;
+        this.alerts = [];
         this.isResult = false;
         this.file = new file_1.File();
     }
+    SimpleSearchComponent.prototype.closeAlert = function (i) {
+        this.alerts.splice(i, 1);
+        for (var x = 0; x < this.alerts.length; x++)
+            console.log("msg=" + this.alerts[x]);
+    };
     SimpleSearchComponent.prototype.search = function () {
         var _this = this;
         var resultSearch = document.getElementById("result");
@@ -59,7 +65,13 @@ var SimpleSearchComponent = (function () {
                 resultSearch.className = "visible";
             }
             else {
-                alert("לא נמצאה אף תוצאה, תנסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.");
+                //warning=1
+                //danger=2
+                //success=3
+                if ((name != "") || (type != "") || (server != ""))
+                    _this.alerts.push({ msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 1 });
+                else
+                    _this.alerts.push({ msg: 'לא הוכנס שום ערך.', type: 2 });
             }
         });
         /*

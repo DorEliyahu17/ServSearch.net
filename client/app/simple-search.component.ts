@@ -8,7 +8,6 @@ import { File } from './file';
 //import the service "FileService" from the file "./file.service"
 import { FileService } from './file.service';
 
-
 @Component({
     selector: 'simple-search',
     templateUrl: 'app/pages/simple-search.component.html',
@@ -18,10 +17,15 @@ import { FileService } from './file.service';
 
 export class SimpleSearchComponent
 {
+    public alerts: Array<Object>=[];
     files:File[];
     isResult=false;
     file=new File();
     constructor(private fileService: FileService) { }
+
+    public closeAlert(i:number):void {
+        this.alerts.splice(i, 1);
+    }
 
     search():void {
         var resultSearch = document.getElementById("result");
@@ -68,7 +72,14 @@ export class SimpleSearchComponent
                 }
                 else
                 {
-                    alert("לא נמצאה אף תוצאה, תנסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.");
+                    //warning=1
+                    //danger=2
+                    //success=3
+                    if((name != "") || (type != "") || (server != ""))
+                        this.alerts.push({msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 1});
+                    else
+                        this.alerts.push({msg: 'לא הוכנס שום ערך.', type: 2});
+                     /*this.alerts.push({msg: 'לא נמצאה אף תוצאה, תנסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 3});*/
                 }
             });
 

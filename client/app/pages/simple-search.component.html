@@ -25,8 +25,27 @@
     </div>
 
   </div>
-</div>
 
-<div id="result" class="hidden">
-  <my-file-detail [files]="files"></my-file-detail>
-</div>
+  <div class="row">
+    <div class="col-lg-8"></div>
+    <div class="col-lg-4">
+      <div *ngFor="let alert of alerts;let i = index;">
+        <div *ngIf="alert.type==1">
+          <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert(i)"><span aria-hidden="true">&times;</span></button>
+            {{alert.msg}}
+          </div>
+        </div>
+        <div *ngIf="alert.type==2">
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert(i)"><span aria-hidden="true">&times;</span></button>
+            {{alert.msg}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="result" class="hidden">
+    <my-file-detail [files]="files"></my-file-detail>
+  </div>
