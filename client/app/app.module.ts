@@ -13,6 +13,7 @@ import { SimpleSearchComponent } from './simple-search.component'
 import { AdvanceSearchComponent } from './advance-search.component'
 import { FileDetailComponent } from './file-detail.component';
 import { FileService } from './file.service';
+import { PagerService } from './pager.service'
 
 //import the routes
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +35,8 @@ import { AppRoutingModule } from './app-routing.module';
     FileDetailComponent
   ],
   providers: [
-    FileService
+    FileService,
+    PagerService
   ],
   //bootstrap the main component
   bootstrap: [ AppComponent ]

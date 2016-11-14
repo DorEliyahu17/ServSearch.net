@@ -21,6 +21,7 @@ var simple_search_component_1 = require('./simple-search.component');
 var advance_search_component_1 = require('./advance-search.component');
 var file_detail_component_1 = require('./file-detail.component');
 var file_service_1 = require('./file.service');
+var pager_service_1 = require('./pager.service');
 //import the routes
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
@@ -44,7 +45,8 @@ var AppModule = (function () {
                 file_detail_component_1.FileDetailComponent
             ],
             providers: [
-                file_service_1.FileService
+                file_service_1.FileService,
+                pager_service_1.PagerService
             ],
             //bootstrap the main component
             bootstrap: [app_component_1.AppComponent]

@@ -4,8 +4,8 @@
   "main": "./bin/www",
   "scripts": {
     "nodemon": "nodemon",
-    "start1": "node ./bin/www",
     "start": "concurrently \"npm run nodemon\"",
+    "tsc": "npm run client/start",
     "lite": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

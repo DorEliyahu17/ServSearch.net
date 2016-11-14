@@ -10,16 +10,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 //import the component declare in order to create a new one
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
 //import the service "HeroService" from the file "./hero.service"
-var file_service_1 = require('./file.service');
+var pager_service_1 = require('./pager.service');
 //create new component
 var FileDetailComponent = (function () {
-    function FileDetailComponent(fileService, route) {
-        this.fileService = fileService;
-        this.route = route;
+    function FileDetailComponent(pagerService) {
+        this.pagerService = pagerService;
+        this.indexArr = [];
+        //pager vars
+        // dummy array of items to be paged
+        this.dummyItems = []; //_.range(1, 151);
+        // pager object
+        this.pager = {};
     }
-    FileDetailComponent.prototype.ngOnChanges = function () { };
+    FileDetailComponent.prototype.ngOnChanges = function () {
+        for (var i = 0; i < length; i++) {
+            this.dummyItems[i] = this.files[i];
+            this.indexArr[i] = i + 1;
+        }
+        // initialize to page 1
+        this.setPage(1);
+    };
+    FileDetailComponent.prototype.setPage = function (page) {
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+        // get pager object from service
+        this.pager = this.pagerService.getPager(this.dummyItems.length, page);
+        // get current page of items
+        this.pagedItems = this.dummyItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    };
     FileDetailComponent.prototype.goBack = function () {
         //visible and hidden change
         var regularSearch = document.getElementById("regular");
@@ -31,6 +51,10 @@ var FileDetailComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Array)
     ], FileDetailComponent.prototype, "files", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], FileDetailComponent.prototype, "length", void 0);
     FileDetailComponent = __decorate([
         core_1.Component({
             //his label in the HTML code
@@ -39,7 +63,7 @@ var FileDetailComponent = (function () {
             templateUrl: 'app/pages/file-detail.component.html',
             styleUrls: ['app/styles/file-detail.component.css'],
         }), 
-        __metadata('design:paramtypes', [file_service_1.FileService, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [pager_service_1.PagerService])
     ], FileDetailComponent);
     return FileDetailComponent;
 }());

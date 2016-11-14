@@ -1,12 +1,11 @@
 //import the component declare in order to create a new one
-import { Component, Input, OnInit , OnChanges, SimpleChange } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnChanges } from '@angular/core';
 
 //import the class "Hero" from the file "./hero"
 import { File } from './file';
 
 //import the service "HeroService" from the file "./hero.service"
-import { FileService } from './file.service';
+import { PagerService } from './pager.service'
 
 //create new component
 @Component({
@@ -18,12 +17,40 @@ import { FileService } from './file.service';
 })
 
 //the class of this new component
-export class FileDetailComponent implements /*OnInit*/ OnChanges{
+export class FileDetailComponent implements OnChanges{
     @Input() files: File[];
+    @Input() length:number;
+    indexArr:Array<any>=[];
+    //pager vars
+    // dummy array of items to be paged
+    private dummyItems:Array<any>=[];//_.range(1, 151);
+    // pager object
+    pager: any = {};
+    // paged items
+    pagedItems: any[];
 
-    constructor(private fileService: FileService, private route: ActivatedRoute){}
+    constructor(private pagerService: PagerService){}
 
-    ngOnChanges() {}
+    ngOnChanges() {
+        for(var i=0;i<length;i++) {
+            this.dummyItems[i] = this.files[i];
+            this.indexArr[i] = i+1;
+        }
+        // initialize to page 1
+        this.setPage(1);
+    }
+
+    setPage(page: number) {
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+
+        // get pager object from service
+        this.pager = this.pagerService.getPager(this.dummyItems.length, page);
+
+        // get current page of items
+        this.pagedItems = this.dummyItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    }
 
     goBack(): void{
         //visible and hidden change

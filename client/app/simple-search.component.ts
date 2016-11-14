@@ -19,8 +19,10 @@ export class SimpleSearchComponent
 {
     public alerts: Array<Object>=[];
     files:File[];
-    isResult=false;
+    isResult:boolean =false;
     file=new File();
+    length=0;
+
     constructor(private fileService: FileService) { }
 
     public closeAlert(i:number):void {
@@ -52,7 +54,8 @@ export class SimpleSearchComponent
                         ((type != "") && (data[i].type.toLowerCase() == type.toLowerCase())) ||
                         ((server != "")) && (this.fileService.getServerFromLocation(data[i].location).toLowerCase() == server.toLowerCase()))
                     {
-                        console.log("OK");
+                        if(this.alerts.length>0)
+                            this.alerts.splice(0, this.alerts.length);
                     }
                     else
                     {
@@ -64,9 +67,11 @@ export class SimpleSearchComponent
                 if(data.length>0)
                 {
                     this.files=data;
+                    length=this.files.length;
                     //visible and hidden change
                     /*var regularSearch = document.getElementById("simple");
                      regularSearch.className = "hidden";*/
+                    this.isResult=true;
                     var resultSearch = document.getElementById("result");
                     resultSearch.className = "visible";
                 }
@@ -75,6 +80,8 @@ export class SimpleSearchComponent
                     //warning=1
                     //danger=2
                     //success=3
+                    if(this.alerts.length>0)
+                        this.alerts.splice(0, this.alerts.length);
                     if((name != "") || (type != "") || (server != ""))
                         this.alerts.push({msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 1});
                     else

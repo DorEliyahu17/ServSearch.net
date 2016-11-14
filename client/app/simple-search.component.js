@@ -21,11 +21,10 @@ var SimpleSearchComponent = (function () {
         this.alerts = [];
         this.isResult = false;
         this.file = new file_1.File();
+        this.length = 0;
     }
     SimpleSearchComponent.prototype.closeAlert = function (i) {
         this.alerts.splice(i, 1);
-        for (var x = 0; x < this.alerts.length; x++)
-            console.log("msg=" + this.alerts[x]);
     };
     SimpleSearchComponent.prototype.search = function () {
         var _this = this;
@@ -49,7 +48,8 @@ var SimpleSearchComponent = (function () {
                 if (((name != "") && (data[i].name.toLowerCase().indexOf(name.toLowerCase()) != -1)) ||
                     ((type != "") && (data[i].type.toLowerCase() == type.toLowerCase())) ||
                     ((server != "")) && (_this.fileService.getServerFromLocation(data[i].location).toLowerCase() == server.toLowerCase())) {
-                    console.log("OK");
+                    if (_this.alerts.length > 0)
+                        _this.alerts.splice(0, _this.alerts.length);
                 }
                 else {
                     data.splice(i, 1);
@@ -58,9 +58,11 @@ var SimpleSearchComponent = (function () {
             }
             if (data.length > 0) {
                 _this.files = data;
+                length = _this.files.length;
                 //visible and hidden change
                 /*var regularSearch = document.getElementById("simple");
                  regularSearch.className = "hidden";*/
+                _this.isResult = true;
                 var resultSearch = document.getElementById("result");
                 resultSearch.className = "visible";
             }
@@ -68,6 +70,8 @@ var SimpleSearchComponent = (function () {
                 //warning=1
                 //danger=2
                 //success=3
+                if (_this.alerts.length > 0)
+                    _this.alerts.splice(0, _this.alerts.length);
                 if ((name != "") || (type != "") || (server != ""))
                     _this.alerts.push({ msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 1 });
                 else

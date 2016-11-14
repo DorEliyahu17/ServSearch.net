@@ -45,7 +45,10 @@
       </div>
     </div>
   </div>
+</div>
 
-  <div id="result" class="hidden">
-    <my-file-detail [files]="files"></my-file-detail>
+<div id="result" class="hidden">
+  <div *ngIf="isResult==true">
+    <my-file-detail [files]="files" [length]="length"></my-file-detail>
   </div>
+</div>
