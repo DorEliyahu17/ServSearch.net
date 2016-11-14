@@ -3,8 +3,14 @@ var modelFlag=true;
 //var FileModel;
 var myMongoClient={};
 myMongoClient.Model;
+myMongoClient.res;
 var db;
-/*var FileModel="";*/
+
+myMongoClient.disconnect = function Disconnect(){
+    //disconnect from the DB
+    mongoose.disconnect();
+    console.log("Disconnected");
+};
 
 function ConnectToDB(model, callback){
 //connecting to mongodb with mongoose ('mongodb://localhost/[name of the DB]')
@@ -18,31 +24,33 @@ function ConnectToDB(model, callback){
 //else print "we're connected!"
     db.once('open', function () {
         console.log("we're connected!");
-    });
 
+        if(model) {
 //creating a DB schema (like a table)
-    db.FileSchema = new mongoose.Schema({
-        name: String,
-        type: String,
-        size: Number,
-        location: String,
-        permissions: String,
-        createdUser: String,
-        group: Number,
-        modifidedDate: String
-    }, {collection: "Files"});
+            db.FileSchema = new mongoose.Schema({
+                name: String,
+                type: String,
+                size: Number,
+                location: String,
+                permissions: String,
+                createdUser: String,
+                group: Number,
+                modifidedDate: String
+            }, {collection: "Files"});
 
 //model is a object that gives you easy access to name the collection
-    if(model) {
-        db.File = mongoose.model('File', db.FileSchema);
-        myMongoClient.Model = mongoose.model('File', db.FileSchema);
-        callback();
-    }
+
+            db.File = mongoose.model('File', db.FileSchema);
+            myMongoClient.Model = mongoose.model('File', db.FileSchema);
+            myMongoClient.disconnect();
+        }
+    });
+
+
 //now the FileSchema called File in the DB
 }
-//db.result="";
 
-/*, callback*/
+/* callback*/
 myMongoClient.writeToDB = function WriteToDB(res, callback) {
     ConnectToDB(modelFlag, function(){});
     //Insert the arr
@@ -59,19 +67,16 @@ myMongoClient.writeToDB = function WriteToDB(res, callback) {
 };
 /*callback*/
 myMongoClient.findAll = function FindAll(callback){
-    ConnectToDB(modelFlag, function(){});
-    db.File.find({}, function (err, docs) {
-        // docs is an array in docs var
-        db.res=docs;
-        //Disconnect();
-        callback();
-    });
-};
-
-myMongoClient.disconnect = function Disconnect(){
-    //disconnect from the DB
-    mongoose.disconnect();
-    console.log("Disconnected");
+    ConnectToDB(modelFlag);
+    //if(myMongoClient.Model!=undefined) {
+        db.File.find({}, function (err, docs) {
+            // docs is an array in docs var
+            myMongoClient.res = docs;
+            //Disconnect();
+            callback();
+        });
+    /*}
+    else*/
 };
 
 myMongoClient.deleteAll = function DeleteAll(callback){
@@ -83,17 +88,14 @@ myMongoClient.deleteAll = function DeleteAll(callback){
     });
 };
 
-function FindModel(callback1/*disconnect*/, callback2) {
-    ConnectToDB(modelFlag, callback1);
-    callback2();
+function FindModel(callback) {
+    if(modelFlag) {
+        ConnectToDB(modelFlag, myMongoClient.disconnect);
+        modelFlag = false;
+    }
+    callback();
 }
 
 FindModel(function (){
-    //disconnect from the DB
-    mongoose.disconnect();
-    console.log("Disconnected");
-    modelFlag = false;
-}, function (){
     module.exports = myMongoClient;
-    //console.log("FileModel="+myMongoClient.Model);
 });
