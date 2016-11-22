@@ -1,23 +1,21 @@
 //including shelljs and my MongoDB client to the script
 var shell = require('./node_modules/shelljs');
 var mongo = require('./MongoDB');
-
+//mongo.connectToDB(false, false, null, null);
 //the recursive function
+
+//Timer parameters
+var minutes = 0;
+var seconds = 0;
+var totalSeconds = 0;
+
+/*
 function searchThedir(searchPath, writeToDB, disconnect, count) {
     //do the command is in the shell
     shell.exec('ls -l ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true}, function (err, resault){
         console.log("count="+count);
-    });
-}
-
-
-//the "main" function
-function searchTheEntireHardDrive(searchPath, writeToDB, disconnect)
-{
-    //do the command is in the shell
-    shell.exec('ls -l ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true}, function (err, resault){
         var i,
-            count=1,
+            //count=1,
             j,
             path,
             filesArr,
@@ -47,6 +45,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB, disconnect)
             {
                 if(dirCheck.length==9)
                     path+=tempName+"/";
+                //searchTheEntireHardDrive(path, writeToDB, disconnect);
                 searchThedir(path, writeToDB, disconnect, count++);
             }
             else
@@ -70,15 +69,106 @@ function searchTheEntireHardDrive(searchPath, writeToDB, disconnect)
                 //console.log("file name and dir that pushed: \n"+fileAndDirObject)
             }
         }
-        writeToDB(filesAndDirsObjectArr, disconnect/*, function(searchThedir){
+        console.log("length="+filesAndDirsObjectArr.length);
+        if(filesAndDirsObjectArr!=undefined)
+            writeToDB(filesAndDirsObjectArr, disconnect/*, function(searchThedir){
 
-        }*/);
+         }*);
     });
+}*/
 
+
+//the "main" function
+function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
+{
+    //do the command is in the shell
+    shell.exec('ls -l ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true}, function (err, resault){
+        var i,
+            j,
+            path,
+            filesArr,
+            dirCheck,
+            res,
+            fileNameAndType=[], //File name and type arr
+            fileAndDirObject = {}, //File and directory object
+            filesAndDirsObjectArr = [], //File and directories object arr
+            ArrOfArrays =[],
+            tempName="";
+        res=resault;
+        filesArr=res.split("\n");
+        for(i=1;i<(filesArr.length-1);i++)
+        {
+            //console.log("filesArr["+i+"] = "+filesArr[i]);
+            path=searchPath;
+            dirCheck=filesArr[i].split(" ");
+            tempName=dirCheck[8];
+            for(j=9;j<dirCheck.length;j++)
+            {
+                if(j==(dirCheck.length-1))
+                    tempName+=" "+dirCheck[j];
+                else
+                    tempName+=dirCheck[j]+" ";
+            }
+            if(dirCheck[0].charAt(0)=='d')
+            {
+                if(dirCheck.length==9)
+                    path+=tempName+"/";
+
+                /*fileNameAndType = "";
+                fileAndDirObject = "";
+                tempName = "";
+                //cut the files details and store it in object
+                fileDetails = filesArr[filesIndex].split(" ");
+                for (i = 8; i < fileDetails.length; i++)
+                    tempName += fileDetails[i] + " ";
+                tempName = tempName.slice(0, tempName.length - 1);*/
+
+                //if this is a directory create a model and push it to the arr
+                if (dirCheck[0].charAt(0) == "d") {
+                    fileAndDirObject = new mongo.Model(
+                        {
+                            name: tempName,
+                            type: 'Directory',
+                            size: parseInt(dirCheck[4]),
+                            location: path,
+                            permissions: dirCheck[0].slice(1),
+                            createdUser: dirCheck[2],
+                            group: dirCheck[3],
+                            modifidedDate: dirCheck[5] + " " + dirCheck[6] + " " + dirCheck[7]
+                        });
+                    filesAndDirsObjectArr.push(fileAndDirObject);
+                }
+                searchTheEntireHardDrive(path, ++count, writeToDB, disconnect);
+                //searchThedir(path, writeToDB, disconnect, count++);
+            }
+            else
+            {
+                fileNameAndType = tempName.split(".");
+                //filesAndDirsObjectArr.push(fileAndDirObject);
+                if(fileNameAndType[1]==undefined)
+                    fileNameAndType.push("");
+                fileAndDirObject = new mongo.Model(
+                    {
+                        name: fileNameAndType[0],
+                        type: fileNameAndType[1],
+                        size: parseInt(dirCheck[4]),
+                        location: path,
+                        permissions: dirCheck[0].slice(1),
+                        createdUser: dirCheck[2],
+                        group: dirCheck[3],
+                        modifidedDate: dirCheck[5] + " " + dirCheck[6] + " " + dirCheck[7]
+                    });
+                filesAndDirsObjectArr.push(fileAndDirObject);
+                //console.log("file name and dir that pushed: \n"+fileAndDirObject)
+            }
+        }
+        if(filesAndDirsObjectArr.length!=0)
+            return writeToDB(filesAndDirsObjectArr, disconnect);
+    });
 }
 
 
-
+//old function
 function searchTheHardDrive(searchPath, writeToDB, disconnect)
 {
     console.log("Loading...");
@@ -271,7 +361,34 @@ function searchTheHardDrive(searchPath, writeToDB, disconnect)
     });
 }
 
-searchTheEntireHardDrive("C:/", mongo.writeToDB, mongo.disconnect);
+setInterval(setTime, 1000);
+if(searchTheEntireHardDrive("C:/", 0, mongo.writeToDB, mongo.disconnect))
+{
+    mongo.disconnect();
+    console.log("Timer: "+minutes+":"+seconds);
+}
+
+
+
+function setTime()
+{
+    ++totalSeconds;
+    seconds = pad(totalSeconds%60);
+    minutes = pad(parseInt(totalSeconds/60));
+}
+
+function pad(val)
+{
+    var valString = val + "";
+    if(valString.length < 2)
+    {
+        return "0" + valString;
+    }
+    else
+    {
+        return valString;
+    }
+}
 
 
 //calculate the size of an object

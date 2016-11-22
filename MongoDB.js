@@ -13,7 +13,7 @@ myMongoClient.disconnect = function Disconnect(){
     console.log("Disconnected");
 };
 
-function ConnectToDB(model, insert, insertFiles, callback){
+myMongoClient.connectToDB = function connectToDB(model, insert, insertFiles, callback){
 //connecting to mongodb with mongoose ('mongodb://localhost/[name of the DB]')
    db = mongoose.connect('mongodb://localhost/Mtest');
 
@@ -43,7 +43,7 @@ function ConnectToDB(model, insert, insertFiles, callback){
 
             db.File = mongoose.model('File', db.FileSchema);
             myMongoClient.Model = mongoose.model('File', db.FileSchema);
-            myMongoClient.disconnect();
+            //myMongoClient.disconnect();
         }
         if(insert) {
             //console.log("before callback insert");
@@ -54,43 +54,30 @@ function ConnectToDB(model, insert, insertFiles, callback){
 
 
 //now the FileSchema called File in the DB
-}
+};
 
-/* callback*/
-myMongoClient.writeToDB = function WriteToDB(res1, callback) {
-    insertFlag=true;
-    ConnectToDB(modelFlag, insertFlag, res1, function(res) {
-        db.File.insertMany(res, function (err) {
-            if (err) {
-                console.log(err);
-                return err;
-            }
-            else {
-                console.log("arr saved");
-                insertFlag = false;
-                //Disconnect();
-                callback();
-            }
-        })
-    });
-    //Insert the arr
-    //need changes
-    /*
+/*Promise, not a callback function anymore*/
+myMongoClient.writeToDB = function(res) {
+    insertFlag = true;
     db.File.insertMany(res, function (err) {
         if (err) {
-            return err;
+            console.log(err);
+            return 0;
         }
         else {
             console.log("arr saved");
-            //Disconnect();
-            callback();
+            insertFlag = false;
+            return 1;
         }
-    });*/
+    });
 };
 
+
+
+ /*
 function insertArr(res,i, callback){
     insertFlag=true;
-    ConnectToDB(modelFlag, insertFlag, function(){
+    myMongoClient.connectToDB(modelFlag, insertFlag, function(){
         db.File.insertMany(res, function (err) {
             if (err) {
                 return err;
@@ -103,11 +90,11 @@ function insertArr(res,i, callback){
             }
         });
     });
-}
+}*/
 
 /*callback*/
 myMongoClient.findAll = function FindAll(callback){
-    ConnectToDB(modelFlag,insertFlag);
+    myMongoClient.connectToDB(modelFlag,insertFlag);
         db.File.find({}, function (err, docs) {
             // docs is an array in docs var
             myMongoClient.res = docs;
@@ -117,7 +104,7 @@ myMongoClient.findAll = function FindAll(callback){
 };
 
 myMongoClient.deleteAll = function DeleteAll(callback){
-    ConnectToDB(modelFlag, insertFlag, function(){});
+    myMongoClient.connectToDB(modelFlag, insertFlag, function(){});
     db.File.remove({}, function(err) {
         console.log('collection removed');
         //Disconnect();
@@ -125,14 +112,17 @@ myMongoClient.deleteAll = function DeleteAll(callback){
     });
 };
 
-function FindModel(callback) {
+FindModel=new Promise(function(/*callback*/){
     if(modelFlag) {
-        ConnectToDB(modelFlag, insertFlag, null, myMongoClient.disconnect);
+        myMongoClient.connectToDB(modelFlag, insertFlag, null, myMongoClient.disconnect);
         modelFlag = false;
     }
-    callback();
-}
-
-FindModel(function (){
-    module.exports = myMongoClient;
+    //callback();
 });
+
+FindModel.then(module.exports = myMongoClient);
+/*
+(function (){
+    //myMongoClient.connectToDB(false, false, null, null);
+    module.exports = myMongoClient;
+});*/
