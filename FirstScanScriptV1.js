@@ -203,7 +203,7 @@ function searchTheHardDrive(searchPath, writeToDB, disconnect)
     });
 }
 
-searchTheHardDrive("C:/", mongo.writeToDB, mongo.disconnect);
+searchTheHardDrive("C:/Users/Dor/Desktop/stam", mongo.writeToDB, mongo.disconnect);
 
 //Users/Dor/Desktop/stam
 

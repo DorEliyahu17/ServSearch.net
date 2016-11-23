@@ -64,9 +64,10 @@ export class AdvanceSearchComponent
 	}
 
 	search(): void{
-
+		console.log("yes we can");
 	}
 
+	//visiable
 	visibleAndHidden(): void{
 		var regularSearch = document.getElementById("regular");
 		regularSearch.className = "hidden";
@@ -83,7 +84,7 @@ export class AdvanceSearchComponent
 		}
 		else
 		{
-			inputField.setAttribute("disable","disable");
+			inputField.setAttribute("disabled","enabled");
 		}
 	}
 

@@ -16,9 +16,14 @@ var totalSeconds = 0;
  //the "main" function
 function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
 {
+
+    /*new Promise(function(searchPath, count, writeToDB, disconnect){
+        console.log("O.K");
+    });*/
+
     //do the command is in the shell
     shell.exec('ls -l ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true}, function (err, resault){
-        console.log("After "+minutes+":"+seconds+"this scan was completed");
+        console.log("After "+minutes+":"+seconds+" this scan was completed");
         var i,
             j,
             path,
@@ -93,7 +98,7 @@ function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
         }
         if(filesAndDirsObjectArr.length!=0)
             writeToDB(filesAndDirsObjectArr);
-        console.log("After "+minutes+":"+seconds+"this scan was inserted to the mongo");
+        console.log("After "+minutes+":"+seconds+" this scan was inserted to the mongo");
     });
 }
 

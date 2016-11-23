@@ -55,7 +55,9 @@ var AdvanceSearchComponent = (function () {
         advanceSearch.className = "hidden";
     };
     AdvanceSearchComponent.prototype.search = function () {
+        console.log("yes we can");
     };
+    //visiable
     AdvanceSearchComponent.prototype.visibleAndHidden = function () {
         var regularSearch = document.getElementById("regular");
         regularSearch.className = "hidden";
@@ -69,7 +71,7 @@ var AdvanceSearchComponent = (function () {
             inputField.removeAttribute("disabled");
         }
         else {
-            inputField.setAttribute("disable", "disable");
+            inputField.setAttribute("disabled", "enabled");
         }
     };
     AdvanceSearchComponent = __decorate([

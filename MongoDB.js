@@ -15,7 +15,7 @@ myMongoClient.disconnect = function Disconnect(){
 
 myMongoClient.connectToDB = function connectToDB(model, insert, insertFiles, callback){
 //connecting to mongodb with mongoose ('mongodb://localhost/[name of the DB]')
-   db = mongoose.connect('mongodb://localhost/Mtest');
+    db = mongoose.connect('mongodb://localhost/Mtest');
 
 //creating a DB variable that will have the DB in the mongodb
     db = mongoose.connection;
@@ -74,33 +74,33 @@ myMongoClient.writeToDB = function(res) {
 
 
 
- /*
-function insertArr(res,i, callback){
-    insertFlag=true;
-    myMongoClient.connectToDB(modelFlag, insertFlag, function(){
-        db.File.insertMany(res, function (err) {
-            if (err) {
-                return err;
-            }
-            else {
-                console.log("arr saved");
-                insertFlag=false;
-                callback();
-                console.log("\n");
-            }
-        });
-    });
-}*/
+/*
+ function insertArr(res,i, callback){
+ insertFlag=true;
+ myMongoClient.connectToDB(modelFlag, insertFlag, function(){
+ db.File.insertMany(res, function (err) {
+ if (err) {
+ return err;
+ }
+ else {
+ console.log("arr saved");
+ insertFlag=false;
+ callback();
+ console.log("\n");
+ }
+ });
+ });
+ }*/
 
 /*callback*/
 myMongoClient.findAll = function FindAll(callback){
     myMongoClient.connectToDB(modelFlag,insertFlag);
-        db.File.find({}, function (err, docs) {
-            // docs is an array in docs var
-            myMongoClient.res = docs;
-            //Disconnect();
-            callback();
-        });
+    db.File.find({}, function (err, docs) {
+        // docs is an array in docs var
+        myMongoClient.res = docs;
+        //Disconnect();
+        callback();
+    });
 };
 
 myMongoClient.deleteAll = function DeleteAll(callback){
@@ -122,7 +122,7 @@ FindModel=new Promise(function(/*callback*/){
 
 FindModel.then(module.exports = myMongoClient);
 /*
-(function (){
-    //myMongoClient.connectToDB(false, false, null, null);
-    module.exports = myMongoClient;
-});*/
+ (function (){
+ //myMongoClient.connectToDB(false, false, null, null);
+ module.exports = myMongoClient;
+ });*/
