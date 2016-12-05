@@ -2,26 +2,19 @@
 var express = require('express');
 //var File=require('../client/app/file');
 var router = express.Router();
-var mongo=require('../MongoDB');
+var mongo=require('../MongoDriver');
+
+mongo.findAll();
 
 /* GET files listing. */
 router.get('/', function(req, res, next) {
     res.send("Go to api/files to show all the files in the DB");
-    /* db.tasks.find(function(err, tasks){
-     if(err){
-     res.send(err);
-     }
-     res.json(tasks);
-     });*/
 });
 
 /* GET files listing. */
 router.get('/files', function(req, res, next) {
-    mongo.findAll( function(err){
-        console.log("Disconnected from files");
-        mongo.disconnect();
-        res.send(mongo.res);
-    });
+        res.send(mongo.resultArr);
+
         /*[{
         _id: "580e850c1946e731c4a30cf6",
         name: "stam 1",
