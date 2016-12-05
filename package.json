@@ -4,7 +4,7 @@
   "main": "./bin/www",
   "scripts": {
     "nodemon": "nodemon",
-    "start":"nodemon",
+    "start": "nodemon",
     "start1": "concurrently \"npm run nodemon\"",
     "tsc": "npm run client/start",
     "lite": "lite-server",
@@ -18,9 +18,11 @@
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.2",
     "express": "*",
+    "mongodb": "^2.2.11",
     "mongoose": "*",
     "morgan": "^1.7.0",
     "nodemon": "*",
+    "promise": "^7.1.1",
     "serve-favicon": "^2.3.0",
     "shelljs": "*"
   },
