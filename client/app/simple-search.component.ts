@@ -145,48 +145,4 @@ export class SimpleSearchComponent
          alert("לא הוכנס שום ערך, אנא הכנס/י לפחות ערך אחד");
          }*/
     }
-
-    /*
-     //go to resault of all variables
-     goToResaultAll(name, type, server): void {
-     let link = ['/resault', name, type, server];
-     this.router.navigate(link);
-     }
-
-     //go to resault without name
-     goToResaultNoName(type, server): void {
-     let link = ['/resault', type, server];
-     this.router.navigate(link);
-     }
-
-     //go to resault without type
-     goToResaultNoType(name, server): void {
-     let link = ['/resault', name, server];
-     this.router.navigate(link);
-     }
-
-     //go to resault without server
-     goToResaultNoServer(name, type): void {
-     let link = ['/resault', name, type];
-     this.router.navigate(link);
-     }
-
-     //go to resault only name
-     goToResaultOnlyName(name): void {
-
-     let link = ['/resault', name];
-     this.router.navigate(link);
-     }
-
-     //go to resault only type
-     goToResaultOnlyType(type): void {
-     let link = ['/resault', type];
-     this.router.navigate(link);
-     }
-
-     //go to resault only server
-     goToResaultOnlyServer(server): void {
-     let link = ['/resault', server];
-     this.router.navigate(link);
-     }*/
 }

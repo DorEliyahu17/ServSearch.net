@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var mongo=require('../MongoDriver');
 
-mongo.findAll();
+//mongo.findAll();
 
 /* GET files listing. */
 router.get('/', function(req, res, next) {
@@ -13,7 +13,17 @@ router.get('/', function(req, res, next) {
 
 /* GET files listing. */
 router.get('/files', function(req, res, next) {
-        res.send(mongo.resultArr);
+
+
+    //var name=req.getParameter("name"), type=req.getParameter("type"), server=req.getParameter("server");
+    //req.parameter
+    console.log("name="+req.query.name+", type="+req.query.type+", server="+req.query.server);
+
+
+
+   mongo.findSpec(req.query.name, req.query.type, req.query.server, function(){
+       res.send(mongo.resultArr);
+       });
 
         /*[{
         _id: "580e850c1946e731c4a30cf6",

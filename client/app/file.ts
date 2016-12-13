@@ -6,6 +6,7 @@ export class File {
 	location: string;
 	permissions: string;
 	createdUser: string;
+	group: string;
 	modifiedDate: string;
 
 	constructor(){
@@ -15,6 +16,7 @@ export class File {
 		this.location="";
 		this.permissions="";
 		this.createdUser="";
+		this.group="";
 		this.modifiedDate="";
 	}
 }

@@ -16,6 +16,67 @@ exportMongo.disconnect = function disconnect(db){
 };
 */
 
+function getServerFromLocation(location)
+{
+    var arr=[];
+    arr=location.split(":");
+    return arr[0];
+}
+
+exportMongo.testConnection = function(){
+    mongo.connect(url, function (err, db) {
+        //check if the the function didn't return error
+        assert.equal(null, err);
+        db.close();
+        console.log("Connected successfully to the database");
+    });
+    return 1;
+};
+
+//find specified document in the db
+exportMongo.findSpec = function findSpec(fileName, fileType, server, callback)
+{
+    exportMongo.resultArr;
+    //var resultArray = [];
+
+    console.log("fileName="+fileName+", fileType="+fileType+", server="+server);
+
+    mongo.connect(url, function (err, db) {
+        //check if the the function didn't return error
+        assert.equal(null, err);
+        /*
+        var cursor = db.collection('Files').find({"name": "\""+fileName+"\""}/*, {"type": fileType});
+
+
+        console.log("cursor="+cursor);
+
+        cursor.forEach(function (doc, err) {
+            //check if the the function didn't return error
+            console.log("err="+err);
+            assert.equal(null, err);
+            //if((server!="")&&(server.equal(getServerFromLocation(doc.location))))
+            console.log("doc="+doc);
+            exportMongo.resultArr.push(doc);
+        }, function() {
+            db.close();
+        });
+        */
+
+        db.collection('Files').find({name: fileName}).toArray(function(err, results){
+            assert.equal(null, err);
+            exportMongo.resultArr=results;
+            //exportMongo.resultArr.push(results);
+            console.log("All found");
+            db.close();
+            console.log(exportMongo.resultArr);
+            callback();
+        });
+        ///console.log("resultArray[0]="+resultArray[0]);
+        //exportMongo.resultArr.push(resultArray);
+    });
+};
+
+
 //find all the documents in the db
 exportMongo.findAll = function findAll(){
     var resultArray = [];
@@ -50,7 +111,7 @@ exportMongo.insertOne = function insertOne(document){
 };
 
 //insert arr of documents to the db
-exportMongo.insertArr = function insertArr(documents){
+exportMongo.insertArr = function insertArr(documents, callback){
     mongo.connect(url, function(err, db) {
         //check if the the function didn't return error
         assert.equal(null, err);
@@ -61,6 +122,7 @@ exportMongo.insertArr = function insertArr(documents){
             db.close();
         });
     });
+    callback();
 };
 
 //update one document
