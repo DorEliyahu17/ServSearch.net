@@ -4,9 +4,9 @@
   "main": "./bin/www",
   "scripts": {
     "nodemon": "nodemon",
-    "start": "node FirstScan2.js --max_old_space_size=10240",
+    "start2": "node FirstScan2.js --max_old_space_size=10240",
     "start1": "concurrently \"npm run nodemon\"",
-    "start2": "nodemon",
+    "start": "nodemon",
     "tsc": "npm run client/start",
     "lite": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
