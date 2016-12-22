@@ -185,7 +185,7 @@ function memorySizeOf(obj) {
 setInterval(setTime, 1000);
 //if(mongo.testConnection==1)
 console.log("Scan started please wait.");
-searchTheEntireHardDrive("C:/Users/Dor/Desktop/stam", 0, mongo.insertArr);
+searchTheEntireHardDrive("C:/Users/Dor/Desktop", 0, mongo.insertArr);
 /*else {
  console.log("Open the database and restart the script");
  clearInterval(setTime);
