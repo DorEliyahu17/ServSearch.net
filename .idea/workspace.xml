@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2bf6d08-a4b4-47a3-ad70-c7ac9a3a44e4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FirstScan.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FirstScanScriptV1.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FirstScanScriptV2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MongoDB.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MongoHandler.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FirstScan2.js" afterPath="$PROJECT_DIR$/FirstScan2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MongoDriver.js" afterPath="$PROJECT_DIR$/MongoDriver.js" />
     </list>
     <ignored path="new test server 5.0.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -439,7 +431,7 @@
       <workItem from="1482398237436" duration="42000" />
       <workItem from="1482400230650" duration="5604000" />
       <workItem from="1482414719133" duration="1643000" />
-      <workItem from="1483111109677" duration="3264000" />
+      <workItem from="1483111109677" duration="3303000" />
     </task>
     <task id="LOCAL-00001" summary="First commit im young">
       <created>1478165523454</created>
@@ -616,11 +608,18 @@
       <option name="project" value="LOCAL" />
       <updated>1482411126786</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="30/12/16 changes">
+      <created>1483115860846</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1483115860846</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269077000" />
+    <option name="totallyTimeSpent" value="269116000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -751,7 +750,8 @@
     <MESSAGE value="22/11/16 changes" />
     <MESSAGE value="05/12/16 changes" />
     <MESSAGE value="21/12/16 changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="21/12/16 changes" />
+    <MESSAGE value="30/12/16 changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="30/12/16 changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1063,8 +1063,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        <state relative-caret-position="66">
+          <caret line="3" column="11" lean-forward="false" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
           <folding />
         </state>
       </provider>
