@@ -8,22 +8,15 @@ var minutes = 0;
 var seconds = 0;
 var totalSeconds = 0;
 
-
-/*recursivePromise=new Promise(function(searchPath, count, writeToDB, disconnect){
- console.log("O.K");
- });*/
-
-
 //the "main" function
 function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
 {
 
-    /*new Promise(function(searchPath, count, writeToDB, disconnect){
-     console.log("O.K");
-     });*/
+    var allInsertPromises = [];
 
     //do the command is in the shell
     shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true}, function (err, resault){
+        console.log("Num of files:"+resault.length);
         console.log("After "+minutes+":"+seconds+" this scan was completed");
         console.log("now just wait to the insert.");
         var i,
@@ -36,9 +29,12 @@ function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
             //fileAndDirObject have to has new method
             //fileAndDirObject={}, //File and directory object
             filesAndDirsObjectArr = [], //File and directories object arr
+            //ArrOfArrays=[],
+            arrsIndex=1,
             ArrOfDirs =[],
             tempDirName=[],
             tempName="";
+
         res=resault;
         filesArr=res.split("\n");
         path = searchPath;
@@ -75,8 +71,20 @@ function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
                             group: dirCheck[3],
                             modifiedDate: dirCheck[5] + " " + dirCheck[6] + " " + dirCheck[7]
                         };
-
                         ArrOfDirs.push(fileAndDirObject);
+
+
+
+
+                        if(filesAndDirsObjectArr<297726){
+                            console.log("arr number: "+arrsIndex++);
+                            allInsertPromises.push(writeToDB(filesAndDirsObjectArr));
+
+
+                            filesAndDirsObjectArr = [];
+
+                        }
+
                         filesAndDirsObjectArr.push(fileAndDirObject);
                         //console.log("file name and dir that pushed: \n" + fileAndDirObject.name, fileAndDirObject.type)
                     }
@@ -102,6 +110,16 @@ function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
                         modifiedDate: dirCheck[5] + " " + dirCheck[6] + " " + dirCheck[7]
                     };
 
+
+
+                    if(filesAndDirsObjectArr<297726){
+                        console.log("arr number: "+arrsIndex++);
+                        allInsertPromises.push(writeToDB(filesAndDirsObjectArr));
+
+
+                        filesAndDirsObjectArr = [];
+
+                    }
                     filesAndDirsObjectArr.push(fileAndDirObject);
                     //console.log("file name and dir that pushed: \n" + fileAndDirObject.name, fileAndDirObject.type)
                 }
@@ -115,10 +133,23 @@ function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
                 }
             }
         }
+
+
+
+        /*
+        promise.all(allInsertPromises).then((data)=>{
+
+          console.log("ANI TAMBAL");
+         },(error)=>{
+
+
+        });*/
+
+/*        console.log("filesAndDirsObjectArr.length="+filesAndDirsObjectArr.length);
         if (filesAndDirsObjectArr.length != 0)
             writeToDB(filesAndDirsObjectArr, function () {
                 console.log("After " + minutes + ":" + seconds + " this scan was inserted to the mongo");
-            });
+            });*/
     });
 }
 
