@@ -194,17 +194,21 @@ exportMongo.testConnection = function(){
 
 
 //insert arr of documents to the db
-exportMongo.insertArr = function insertArr(documents/*, callback*/){
+exportMongo.insertArr = function insertArr(documents){
 
     return new Promise(function(resolve, reject) {
-        var OKFlag=false;
-        var count=0;
-        var i;
-        var arr=[];
         mongo.connect(url, function(err, db) {
             //check if the the function didn't return error
             assert.equal(null, err);
             console.log("documents.length="+documents.length);
+            db.collection('Files').insertMany(documents, function(err, result) {
+                //check if the the function didn't return error
+                assert.equal(null, err);
+                console.log('Arr inserted');
+                db.close();
+                resolve();
+            });
+            /*
             while((documents.length-count)>297726) {
                 for (i=0; i < 297726; i++) {
                     arr[i]=documents[(i+count)];
@@ -228,15 +232,9 @@ exportMongo.insertArr = function insertArr(documents/*, callback*/){
                     assert.equal(null, err);
                     console.log('Arr inserted '+(count/297726));
                 });
-            }
-            OKFlag=true;
-            db.close();
+            }*/
         });
-        if(!OKFlag)
-            reject();
-        //delete after finish
-        else
-            resolve();
+            //reject();
     });
 
     /*
