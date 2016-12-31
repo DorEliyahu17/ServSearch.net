@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c2bf6d08-a4b4-47a3-ad70-c7ac9a3a44e4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FirstScan2.js" afterPath="$PROJECT_DIR$/FirstScan2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MongoDriver.js" afterPath="$PROJECT_DIR$/MongoDriver.js" />
     </list>
     <ignored path="new test server 5.0.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,23 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="FirstScan2.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FirstScan2.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FirstScan2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-              <folding>
-                <element signature="e#6486#6619#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="-1936">
+              <caret line="101" column="63" lean-forward="false" selection-start-line="101" selection-start-column="63" selection-end-line="101" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -51,17 +40,17 @@
       <file leaf-file-name="MongoDriver.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MongoDriver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-30">
-              <caret line="197" column="0" lean-forward="false" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
+            <state relative-caret-position="-25">
+              <caret line="221" column="31" lean-forward="false" selection-start-line="221" selection-start-column="31" selection-end-line="221" selection-end-column="31" />
               <folding>
                 <element signature="e#346#446#0" expanded="false" />
                 <element signature="n#!!block;n#getServerFromLocation#0" expanded="false" />
-                <element signature="e#677#5071#0" expanded="false" />
-                <element signature="e#5150#5692#0" expanded="false" />
-                <element signature="e#5779#6172#0" expanded="false" />
-                <element signature="e#6176#6706#0" expanded="false" />
-                <element signature="e#9169#9619#0" expanded="false" />
-                <element signature="e#9696#10128#0" expanded="false" />
+                <element signature="e#717#5111#0" expanded="false" />
+                <element signature="e#5190#5732#0" expanded="false" />
+                <element signature="e#5819#6212#0" expanded="false" />
+                <element signature="e#6218#6748#0" expanded="false" />
+                <element signature="e#9782#10232#0" expanded="false" />
+                <element signature="e#10309#10741#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -138,10 +127,10 @@
         <option value="$PROJECT_DIR$/client/app/simple-search.component.ts" />
         <option value="$PROJECT_DIR$/routes/files.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/MongoDriver.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/FirstScan2.js" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/FirstScan2.js" />
+        <option value="$PROJECT_DIR$/MongoDriver.js" />
       </list>
     </option>
   </component>
@@ -443,7 +432,7 @@
       <workItem from="1482398237436" duration="42000" />
       <workItem from="1482400230650" duration="5604000" />
       <workItem from="1482414719133" duration="1643000" />
-      <workItem from="1483111109677" duration="8033000" />
+      <workItem from="1483111109677" duration="14410000" />
     </task>
     <task id="LOCAL-00001" summary="First commit im young">
       <created>1478165523454</created>
@@ -648,11 +637,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483124724779</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="30/12/16 changes">
+      <created>1483125097133</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1483125097133</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="273846000" />
+    <option name="totallyTimeSpent" value="280223000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1055,23 +1051,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MongoDriver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="197" column="0" lean-forward="false" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
-          <folding>
-            <element signature="e#346#446#0" expanded="false" />
-            <element signature="n#!!block;n#getServerFromLocation#0" expanded="false" />
-            <element signature="e#677#5071#0" expanded="false" />
-            <element signature="e#5150#5692#0" expanded="false" />
-            <element signature="e#5779#6172#0" expanded="false" />
-            <element signature="e#6176#6706#0" expanded="false" />
-            <element signature="e#9169#9619#0" expanded="false" />
-            <element signature="e#9696#10128#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MongoDB.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1096,20 +1075,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FirstScan2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-          <folding>
-            <element signature="e#6486#6619#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MongoDriver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25">
+          <caret line="221" column="31" lean-forward="false" selection-start-line="221" selection-start-column="31" selection-end-line="221" selection-end-column="31" />
+          <folding>
+            <element signature="e#346#446#0" expanded="false" />
+            <element signature="n#!!block;n#getServerFromLocation#0" expanded="false" />
+            <element signature="e#717#5111#0" expanded="false" />
+            <element signature="e#5190#5732#0" expanded="false" />
+            <element signature="e#5819#6212#0" expanded="false" />
+            <element signature="e#6218#6748#0" expanded="false" />
+            <element signature="e#9782#10232#0" expanded="false" />
+            <element signature="e#10309#10741#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstScan2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1936">
+          <caret line="101" column="63" lean-forward="false" selection-start-line="101" selection-start-column="63" selection-end-line="101" selection-end-column="63" />
           <folding />
         </state>
       </provider>

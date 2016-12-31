@@ -17,7 +17,7 @@ function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
 
     //do the command is in the shell
     shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true}, function (err, resault){
-        console.log("Num of files:"+resault.length);
+        //console.log("Num of files:"+resault.length);
         console.log("After "+minutes+":"+seconds+" this scan was completed");
         console.log("now just wait to the insert.");
         var i,
@@ -36,9 +36,16 @@ function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
             tempName="";
 
         res=resault;
+        //console.log("Num of files:"+res.length);
         filesArr=res.split("\n");
+        console.log("Num of files="+(filesArr.length));
         path = searchPath;
-        for(i=0;i<(filesArr.length-1);i++) {
+        for(i=0;i<(filesArr.length);i++) {
+
+
+            //console.log("row number: "+(i+1));
+
+
             if (!((filesArr[i][0] == searchPath[0]) || (filesArr[i][0] == "t") || (filesArr[i] == ""))) {
                 dirCheck = filesArr[i].split(" ");
                 //console.log("filesArr[" + i + "] = " + filesArr[i]);
@@ -81,17 +88,18 @@ function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
                         };
                         ArrOfDirs.push(fileAndDirObject);
 
-                        if(filesAndDirsObjectArr==297726){
+                        if(filesAndDirsObjectArr.length==297726){
                             console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(res.length/297726)+ " was inserted to the mongo\n\n");
                             //console.log("arr number: "+arrsIndex++);
                             allInsertPromises.push(writeToDB(filesAndDirsObjectArr));
 
+                            count=1;
 
                             filesAndDirsObjectArr = [];
 
                         }
 
-                        console.log("object number: "+(count++));
+                        //console.log("object number: "+(count++)+ " push number: "+(count/297726));
 
                         filesAndDirsObjectArr.push(fileAndDirObject);
                         //console.log("file name and dir that pushed: \n" + fileAndDirObject.name, fileAndDirObject.type)
@@ -130,17 +138,18 @@ function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
 
 
 
-                    if(filesAndDirsObjectArr==297726){
+                    if(filesAndDirsObjectArr.length==297726){
                         console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(res.length/297726)+ " was inserted to the mongo\n\n");
                         //console.log("arr number: "+arrsIndex++);
                         allInsertPromises.push(writeToDB(filesAndDirsObjectArr));
 
+                        count=1;
 
                         filesAndDirsObjectArr = [];
 
                     }
 
-                    console.log("object number: "+(count++));
+                    //console.log("object number: "+(count++)+ " push number: "+(count/297726));
 
                     filesAndDirsObjectArr.push(fileAndDirObject);
                     //console.log("file name and dir that pushed: \n" + fileAndDirObject.name, fileAndDirObject.type)
@@ -156,22 +165,24 @@ function searchTheEntireHardDrive(searchPath, count, writeToDB, disconnect)
             }
         }
 
-        if((filesAndDirsObjectArr<=297726)&&(filesAndDirsObjectArr>0)){
+
+        console.log("filesAndDirsObjectArr.length="+filesAndDirsObjectArr.length);
+
+
+        if((filesAndDirsObjectArr.length<=297726)&&(filesAndDirsObjectArr.length>0)){
             console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(res.length/297726)+ " was inserted to the mongo\n\n");
             //console.log("arr number: "+arrsIndex++);
             allInsertPromises.push(writeToDB(filesAndDirsObjectArr));
         }
 
-        console.log("After " + minutes + ":" + seconds + " this scan was inserted to the mongo");
-
-        /*
-         promise.all(allInsertPromises).then((data)=>{
-
-         console.log("ANI TAMBAL");
-         },(error)=>{
+        //console.log("After " + minutes + ":" + seconds + " this scan was inserted to the mongo");
 
 
-         });*/
+        Promise.all(allInsertPromises).then((data)=>{
+            console.log("After " + minutes + ":" + seconds + " this scan was inserted to the mongo");
+        },(error)=>{
+            console.log("After " + minutes + ":" + seconds + " this scan returned error");
+        });
 
         /*        console.log("filesAndDirsObjectArr.length="+filesAndDirsObjectArr.length);
          if (filesAndDirsObjectArr.length != 0)
@@ -244,7 +255,7 @@ function memorySizeOf(obj) {
 setInterval(setTime, 1000);
 //if(mongo.testConnection==1)
 console.log("Scan started please wait.");
-searchTheEntireHardDrive("C:/Users/Dor/Desktop", 1, mongo.insertArr);
+searchTheEntireHardDrive("C:/Users/Dor/Desktop/stam", 1, mongo.insertArr);
 /*else {
  console.log("Open the database and restart the script");
  clearInterval(setTime);

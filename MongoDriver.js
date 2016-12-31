@@ -16,17 +16,12 @@ var url = 'mongodb://localhost:27017/Mtest';
  };
  */
 
+//get the server name from the location field
 function getServerFromLocation(location){
     var arr=[];
     arr=location.split(":");
     return arr[0];
 }
-
-
-
-
-
-
 
 //find specified document in the db
 exportMongo.findSpec = function findSpec(fileName, fileType, server, callback){
@@ -174,6 +169,8 @@ exportMongo.insertOne = function insertOne(document){
 };
 
 
+
+
 /*
 exportMongo.testConnection = function(){
     return new Promise(function(resolve, reject) {
@@ -201,10 +198,13 @@ exportMongo.insertArr = function insertArr(documents/*, callback*/){
 
     return new Promise(function(resolve, reject) {
         var OKFlag=false;
+        var count=0;
+        var i;
+        var arr=[];
         mongo.connect(url, function(err, db) {
             //check if the the function didn't return error
             assert.equal(null, err);
-            console.log("documents.length"+documents.length);
+            console.log("documents.length="+documents.length);
             while((documents.length-count)>297726) {
                 for (i=0; i < 297726; i++) {
                     arr[i]=documents[(i+count)];
@@ -215,7 +215,18 @@ exportMongo.insertArr = function insertArr(documents/*, callback*/){
                     //check if the the function didn't return error
                     assert.equal(null, err);
                     console.log('Arr inserted '+(count/297726));
-                    //db.close();
+                });
+            }
+            if((documents.length-count)>0)
+            {
+                for (i=0; i < (documents.length-count); i++) {
+                    arr[i]=documents[(i+count)];
+                    console.log("arr["+i+"] arr num "+(count/297726))
+                }
+                db.collection('Files').insertMany(arr, function(err, result) {
+                    //check if the the function didn't return error
+                    assert.equal(null, err);
+                    console.log('Arr inserted '+(count/297726));
                 });
             }
             OKFlag=true;
