@@ -10,15 +10,17 @@ var totalSeconds = 0;
 //the "main" function
 function searchTheEntireHardDrive(searchPath, writeToDB)
 {
-
     var allInsertPromises = [];
 
     //delete after it works
-    var arrsIndex=1, countF=0;
+    var arrsIndex=1;
 
 
     //do the command is in the shell
-    shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true, maxBuffer:100000*1024}, function (err, resault){
+    //1024 bytes = 1 KB = 65,436 chars in resault = 1,408 lines = estimated 934 files
+    //1024 bytes * 1000 = 1024000 = 1 MB = 1,048,476 chars in resault = 19,979 lines = estimated 15,536 files
+    shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true, maxBuffer:1000*1024000}, function (err, resault){
+        console.log(resault.length);
         console.log("After "+minutes+":"+seconds+" this scan was completed");
         console.log("now just wait to the insert.");
         var i,
@@ -43,15 +45,13 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
             //if it is a file row
             if (!((filesArr[i][0] == searchPath[0]) || (filesArr[i][0] == "t") || (filesArr[i] == ""))) {
 
+                //date changer
                 /*
                 if(dirCheck[7].indexOf(":")==-1)
                     date=dirCheck[5] + " " + dirCheck[6] + " " + dirCheck[7];
                 else
                     date=dirCheck[5] + " " + dirCheck[6] + " 2016";
                 */
-
-                countF++;
-
 
                 dirCheck = filesArr[i].split(" ");
                 tempName = dirCheck[8];
@@ -77,7 +77,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
                         ArrOfDirs.push(fileAndDirObject);
                         //if the arr is more than 16MB insert it to the DB and clean it
                         if(filesAndDirsObjectArr.length==297726){
-                            console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(res.length/297726)+ " was inserted to the mongo\n\n");
+                            console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(filesArr.length/297726)+ " was inserted to the mongo\n\n");
                             allInsertPromises.push(writeToDB(filesAndDirsObjectArr));
                             count=1;
                             filesAndDirsObjectArr = [];
@@ -100,7 +100,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
                         //modifiedDate: date
                     };
                     if(filesAndDirsObjectArr.length==297726){
-                        console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(res.length/297726)+ " was inserted to the mongo\n\n");
+                        console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(filesArr.length/297726)+ " was inserted to the mongo\n\n");
                         allInsertPromises.push(writeToDB(filesAndDirsObjectArr));
 
                         count=1;
@@ -119,9 +119,6 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
                 }
             }
         }
-
-
-        console.log("true files and dirs: "+countF);
         console.log("filesAndDirsObjectArr.length="+filesAndDirsObjectArr.length);
 
 
@@ -162,43 +159,6 @@ function pad(val)
     }
 }
 
-//calculate the size of an object
-function memorySizeOf(obj) {
-    var bytes = 0;
-    function sizeOf(obj) {
-        if(obj !== null && obj !== undefined) {
-            switch(typeof obj) {
-                case 'number':
-                    bytes += 8;
-                    break;
-                case 'string':
-                    bytes += obj.length * 2;
-                    break;
-                case 'boolean':
-                    bytes += 4;
-                    break;
-                case 'object':
-                    var objClass = Object.prototype.toString.call(obj).slice(8, -1);
-                    if(objClass === 'Object' || objClass === 'Array') {
-                        for(var key in obj) {
-                            if(!obj.hasOwnProperty(key)) continue;
-                            sizeOf(obj[key]);
-                        }
-                    } else bytes += obj.toString().length * 2;
-                    break;
-            }
-        }
-        return bytes;
-    }
-
-    function formatByteSize(bytes) {
-        if(bytes < 1024) return bytes + " bytes";
-        else if(bytes < 1048576) return(bytes / 1024).toFixed(3) + " KB";
-        else if(bytes < 1073741824) return(bytes / 1048576).toFixed(3) + " MB";
-        else return(bytes / 1073741824).toFixed(3) + " GB";
-    }
-    return formatByteSize(sizeOf(obj));
-}
 
 
 setInterval(setTime, 1000);
