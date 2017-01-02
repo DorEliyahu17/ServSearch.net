@@ -9,13 +9,6 @@ var assert = require('assert');
 
 var url = 'mongodb://localhost:27017/Mtest';
 
-/*
- //disconnect from the db
- exportMongo.disconnect = function disconnect(db){
- db.close();
- };
- */
-
 //get the server name from the location field
 function getServerFromLocation(location){
     var arr=[];
@@ -23,6 +16,12 @@ function getServerFromLocation(location){
     return arr[0];
 }
 
+
+
+
+
+
+/*
 //find specified document in the db
 exportMongo.findSpec = function findSpec(fileName, fileType, server, callback){
     //exportMongo.resultArr;
@@ -50,7 +49,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, callback){
          }, function() {
          db.close();
          });
-         */
+         /
         if((fileName!="")&&(fileType!="")&&(server!="")) {
             db.collection('Files').find({name: fileName}, {type: fileType}, {location: server}).toArray(function (err, results) {
                 assert.equal(null, err);
@@ -134,6 +133,102 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, callback){
         //exportMongo.resultArr.push(resultArray);
     });
 };
+*/
+
+//find specified document in the db
+exportMongo.findSpec = function findSpec(fileName, fileType, server){
+    return new Promise(function(resolve, reject) {
+        mongo.connect(url, function(err, db) {
+            assert.equal(null, err);
+            if((fileName!="")&&(fileType!="")&&(server!="")) {
+                db.collection('Files').find({name: fileName}, {type: fileType}, {location: server}).toArray(function (err, results) {
+                    assert.equal(null, err);
+                    exportMongo.resultArr = results;
+                    //exportMongo.resultArr.push(results);
+                    console.log("All found everything");
+                    db.close();
+                    resolve(results);
+                });
+            }
+            if ((fileName!="")&&(fileType!="")&&(server=="")) {
+                db.collection('Files').find({name: fileName}, {type: fileType}).toArray(function (err, results) {
+                    assert.equal(null, err);
+                    exportMongo.resultArr = results;
+                    //exportMongo.resultArr.push(results);
+                    console.log("All found no server");
+                    db.close();
+                    //console.log(exportMongo.resultArr);
+                    resolve(results);
+                });
+            }
+            if((fileName!="")&&(fileType=="")&&(server!="")){
+                db.collection('Files').find({name: fileName}, {location: server}).toArray(function (err, results) {
+                    assert.equal(null, err);
+                    exportMongo.resultArr = results;
+                    //exportMongo.resultArr.push(results);
+                    console.log("All found no type");
+                    db.close();
+                    //console.log(exportMongo.resultArr);
+                    resolve(results);
+                });
+            }
+            if((fileName=="")&&(fileType!="")&&(server!="")){
+                db.collection('Files').find({type: fileType}, {location: server}).toArray(function (err, results) {
+                    assert.equal(null, err);
+                    exportMongo.resultArr = results;
+                    //exportMongo.resultArr.push(results);
+                    console.log("All found no name");
+                    db.close();
+                    //console.log(exportMongo.resultArr);
+                    resolve(results);
+                });
+            }
+            if ((fileName!="")&&(fileType=="")&&(server=="")) {
+                db.collection('Files').find({name: fileName}).toArray(function (err, results) {
+                    assert.equal(null, err);
+                    exportMongo.resultArr = results;
+                    //exportMongo.resultArr.push(results);
+                    console.log("All found only name");
+                    db.close();
+                    //console.log(exportMongo.resultArr);
+                    resolve(results);
+                });
+            }
+            if((fileName=="")&&(fileType!="")&&(server=="")){
+                db.collection('Files').find({type: fileType}).toArray(function (err, results) {
+                    assert.equal(null, err);
+                    exportMongo.resultArr = results;
+                    //exportMongo.resultArr.push(results);
+                    console.log("All found only type");
+                    db.close();
+                    //console.log(exportMongo.resultArr);
+                    resolve(results);
+                });
+            }
+            if((fileName=="")&&(fileType=="")&&(server!="")){
+                //var cursor=db.collection('Files').find({location: server});
+                //cursor.
+                db.collection('Files').find({location: server}).toArray(function (err, results) {
+                    assert.equal(null, err);
+                    exportMongo.resultArr = results;
+                    //exportMongo.resultArr.push(results);
+                    console.log("All found only server");
+                    db.close();
+                    //console.log(exportMongo.resultArr);
+                    resolve(results);
+                });
+            }
+        });
+    });
+};
+
+
+
+
+
+
+
+
 
 
 //find all the documents in the db
@@ -195,7 +290,6 @@ exportMongo.testConnection = function(){
 
 //insert arr of documents to the db
 exportMongo.insertArr = function insertArr(documents){
-
     return new Promise(function(resolve, reject) {
         mongo.connect(url, function(err, db) {
             //check if the the function didn't return error
@@ -209,7 +303,6 @@ exportMongo.insertArr = function insertArr(documents){
                 resolve();
             });
         });
-            //reject();
     });
 };
 

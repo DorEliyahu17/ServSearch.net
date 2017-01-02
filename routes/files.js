@@ -13,10 +13,10 @@ router.get('/files', function(req, res, next) {
 
     console.log("name="+req.query.name+", type="+req.query.type+", server="+req.query.server);
 
-   mongo.findSpec(req.query.name, req.query.type, req.query.server, function(){
-       console.log("inside")
-       res.send(mongo.resultArr);
-       });
+    mongo.findSpec(req.query.name, req.query.type, req.query.server).then(function(result){
+        console.log("inside");
+        res.send(result);
+    });
 
 });
 
