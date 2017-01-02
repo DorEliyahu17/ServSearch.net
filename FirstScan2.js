@@ -18,7 +18,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
 
 
     //do the command is in the shell
-    shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: false}, function (err, resault){
+    shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true, maxBuffer:100000*1024}, function (err, resault){
         console.log("After "+minutes+":"+seconds+" this scan was completed");
         console.log("now just wait to the insert.");
         var i,
@@ -43,10 +43,12 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
             //if it is a file row
             if (!((filesArr[i][0] == searchPath[0]) || (filesArr[i][0] == "t") || (filesArr[i] == ""))) {
 
+                /*
                 if(dirCheck[7].indexOf(":")==-1)
                     date=dirCheck[5] + " " + dirCheck[6] + " " + dirCheck[7];
                 else
                     date=dirCheck[5] + " " + dirCheck[6] + " 2016";
+                */
 
                 countF++;
 
@@ -67,10 +69,10 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
                             type: 'Directory',
                             size: parseInt(dirCheck[4]), //everything will be in bytes and in the code it will be converted to kilo or mega bytes
                             location: path,
-                            permissions: dirCheck[0].slice(1),
+                            //permissions: dirCheck[0].slice(1),
                             createdUser: dirCheck[2],
                             group: dirCheck[3],
-                            modifiedDate: dirCheck[5] + " " + dirCheck[6] + " " + dirCheck[7]
+                            //modifiedDate: date
                         };
                         ArrOfDirs.push(fileAndDirObject);
                         //if the arr is more than 16MB insert it to the DB and clean it
@@ -92,10 +94,10 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
                         type: fileNameAndType[1],
                         size: parseInt(dirCheck[4]), //everything will be in bytes and in the code it will be converted to kilo or mega bytes
                         location: path,
-                        permissions: dirCheck[0].slice(1),
+                        //permissions: dirCheck[0].slice(1),
                         createdUser: dirCheck[2],
                         group: dirCheck[3],
-                        modifiedDate: dirCheck[5] + " " + dirCheck[6] + " " + dirCheck[7]
+                        //modifiedDate: date
                     };
                     if(filesAndDirsObjectArr.length==297726){
                         console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(res.length/297726)+ " was inserted to the mongo\n\n");
@@ -124,14 +126,16 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
 
 
         if((filesAndDirsObjectArr.length<=297726)&&(filesAndDirsObjectArr.length>0)){
-            console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(res.length/297726)+ " was inserted to the mongo\n\n");
+            console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(filesArr.length/297726)+ " was inserted to the mongo\n\n");
             allInsertPromises.push(writeToDB(filesAndDirsObjectArr));
         }
 
         Promise.all(allInsertPromises).then((data)=>{
             console.log("After " + minutes + ":" + seconds + " this scan was inserted to the mongo");
+            clearInterval(setTime);
         },(error)=>{
             console.log("After " + minutes + ":" + seconds + " this scan returned error");
+            clearInterval(setTime);
         });
     });
 
@@ -198,12 +202,19 @@ function memorySizeOf(obj) {
 
 
 setInterval(setTime, 1000);
-//if(mongo.testConnection==1)
+
+/*
+mongo.testConnection().then(function(){
+    console.log("Scan started please wait.");
+    searchTheEntireHardDrive("C:/Users/Dor/Desktop", mongo.insertArr);
+})
+    .catch(function(){
+        console.log("Open the database and restart the script");
+        clearInterval(setTime);
+    });
+*/
+
 console.log("Scan started please wait.");
 searchTheEntireHardDrive("C:/Users/Dor/Desktop", mongo.insertArr);
-/*else {
- console.log("Open the database and restart the script");
- clearInterval(setTime);
- }*/
 
 //Users/Dor/Desktop/stam

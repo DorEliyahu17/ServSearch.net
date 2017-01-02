@@ -4,19 +4,19 @@ export class File {
 	type: string;
 	size: number; //everything will be in bytes and in the code it will be converted to kilo or mega bytes
 	location: string;
-	permissions: string;
+	//permissions: string;
 	createdUser: string;
 	group: string;
-	modifiedDate: string;
+	//modifiedDate: string;
 
 	constructor(){
 		this.name="";
 		this.type="";
 		this.size=0; //everything will be in bytes and in the code it will be converted to kilo or mega bytes
 		this.location="";
-		this.permissions="";
+		//this.permissions="";
 		this.createdUser="";
 		this.group="";
-		this.modifiedDate="";
+		//this.modifiedDate="";
 	}
 }

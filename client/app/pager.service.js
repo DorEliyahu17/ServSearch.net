@@ -15,7 +15,7 @@ var PagerService = (function () {
     }
     PagerService.prototype.getPager = function (totalItems, currentPage, pageSize) {
         if (currentPage === void 0) { currentPage = 1; }
-        if (pageSize === void 0) { pageSize = 2; }
+        if (pageSize === void 0) { pageSize = 1; }
         // calculate total pages
         var totalPages = Math.ceil(totalItems / pageSize);
         var startPage, endPage;
@@ -30,7 +30,7 @@ var PagerService = (function () {
                 startPage = 1;
                 endPage = 10;
             }
-            else if (currentPage + 4 >= totalPages) {
+            else if ((currentPage + 4) >= totalPages) {
                 startPage = totalPages - 9;
                 endPage = totalPages;
             }

@@ -1,14 +1,16 @@
 "use strict";
 //the "file" class
 var File = (function () {
+    //modifiedDate: string;
     function File() {
         this.name = "";
         this.type = "";
         this.size = 0; //everything will be in bytes and in the code it will be converted to kilo or mega bytes
         this.location = "";
-        this.permissions = "";
+        //this.permissions="";
         this.createdUser = "";
-        this.modifiedDate = "";
+        this.group = "";
+        //this.modifiedDate="";
     }
     return File;
 }());
