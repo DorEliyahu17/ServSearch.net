@@ -19,6 +19,7 @@ var SimpleSearchComponent = (function () {
     function SimpleSearchComponent(fileService) {
         this.fileService = fileService;
         this.alerts = [];
+        this.serverNames = [];
         this.isResult = false;
         this.file = new file_1.File();
         this.length = 0;
@@ -26,8 +27,17 @@ var SimpleSearchComponent = (function () {
     SimpleSearchComponent.prototype.closeAlert = function (i) {
         this.alerts.splice(i, 1);
     };
+    SimpleSearchComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var j;
+        this.fileService.getServerNames().then(function (data) {
+            for (j = 0; j < data.length; j++)
+                _this.serverNames[j] = data[j];
+        });
+    };
     SimpleSearchComponent.prototype.search = function () {
         var _this = this;
+        var i;
         var resultSearch = document.getElementById("result");
         resultSearch.className = "hidden";
         var name = document.getElementById("FileName").value;
@@ -39,23 +49,26 @@ var SimpleSearchComponent = (function () {
         var params = new http_1.URLSearchParams();
         params.set('name', name);
         params.set('type', type);
-        params.set('server', server);
+        params.set('server', server.toUpperCase());
         //get the files arr from the service
         this.fileService.getFiles(params)
             .then(function (data) {
-            //console.log(data);
-            for (var i = 0; i < data.length; i++) {
-                if (((name != "") && (data[i].name.toLowerCase().indexOf(name.toLowerCase()) != -1)) ||
-                    ((type != "") && (data[i].type.toLowerCase() == type.toLowerCase())) ||
-                    ((server != "")) && (_this.fileService.getServerFromLocation(data[i].location).toLowerCase() == server.toLowerCase())) {
-                    if (_this.alerts.length > 0)
-                        _this.alerts.splice(0, _this.alerts.length);
-                }
-                else {
-                    data.splice(i, 1);
-                    i--;
-                }
-            }
+            /*for (i=0;i<data.length;i++) {
+             console.log("data.length="+data.length);
+             console.log("data["+i+"]:\ndata[i].name="+data[i].name+"\ndata[i].type="+data[i].type+"\ndata[i].location="+data[i].location);
+             if (((name != "") && (data[i].name.toString().toLowerCase().indexOf(name.toLowerCase())!=-1)) ||
+             ((type != "") && (data[i].type.toString().toLowerCase() == type.toLowerCase())) ||
+             ((server != "")) && (this.fileService.getServerFromLocation(data[i].location.toString()).toLowerCase() == server.toLowerCase()))
+             {
+             if(this.alerts.length>0)
+             this.alerts.splice(0, this.alerts.length);
+             }
+             else
+             {
+             data.splice(i,1);
+             i--;
+             }
+             }*/
             if (data.length > 0) {
                 _this.files = data;
                 length = _this.files.length;
@@ -72,8 +85,13 @@ var SimpleSearchComponent = (function () {
                 //success=3
                 if (_this.alerts.length > 0)
                     _this.alerts.splice(0, _this.alerts.length);
-                if ((name != "") || (type != "") || (server != ""))
-                    _this.alerts.push({ msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 1 });
+                if ((name != "") || (type != "") || (server != "")) {
+                    console.log("server=" + server);
+                    if (server == "")
+                        _this.alerts.push({ msg: 'אנא בחר את השרת שבו תרצה לחפש.', type: 2 });
+                    else
+                        _this.alerts.push({ msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 1 });
+                }
                 else
                     _this.alerts.push({ msg: 'לא הוכנס שום ערך.', type: 2 });
             }

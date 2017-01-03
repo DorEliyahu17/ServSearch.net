@@ -15,17 +15,16 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
     //delete after it works
     var arrsIndex=1;
 
-
     //do the command is in the shell
     //1024 bytes = 1 KB = 65,436 chars in resault = 1,408 lines = estimated 934 files
     //1024 bytes * 1000 = 1024000 = 1 MB = 1,048,476 chars in resault = 19,979 lines = estimated 15,536 files
-    shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true, maxBuffer:1000*1024000}, function (err, resault){
-        console.log(resault.length);
+    shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: false, maxBuffer:1000*1024000}, function (err, resault){
         console.log("After "+minutes+":"+seconds+" this scan was completed");
         console.log("now just wait to the insert.");
         var i,
             j,
             count=1,
+            collection=searchPath[0],
             path,
             date,
             filesArr,
@@ -78,7 +77,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
                         //if the arr is more than 16MB insert it to the DB and clean it
                         if(filesAndDirsObjectArr.length==297726){
                             console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(filesArr.length/297726)+ " was inserted to the mongo\n\n");
-                            allInsertPromises.push(writeToDB(filesAndDirsObjectArr));
+                            allInsertPromises.push(writeToDB(filesAndDirsObjectArr,collection));
                             count=1;
                             filesAndDirsObjectArr = [];
                         }
@@ -88,7 +87,13 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
                 else {
                     fileNameAndType = tempName.split(".");
                     if (fileNameAndType[1] == undefined)
-                        fileNameAndType.push("");
+                        fileNameAndType.push("אין סוג קובץ");
+                    if (fileNameAndType.length>2)
+                    {
+                        for(j=0;j<fileNameAndType.length-1;j++)
+                            fileNameAndType[0]+=fileNameAndType[j];
+                        fileNameAndType[1]=fileNameAndType[(fileNameAndType.length-1)]
+                    }
                     var fileAndDirObject = {
                         name: fileNameAndType[0],
                         type: fileNameAndType[1],
@@ -101,7 +106,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
                     };
                     if(filesAndDirsObjectArr.length==297726){
                         console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(filesArr.length/297726)+ " was inserted to the mongo\n\n");
-                        allInsertPromises.push(writeToDB(filesAndDirsObjectArr));
+                        allInsertPromises.push(writeToDB(filesAndDirsObjectArr,collection));
 
                         count=1;
 
@@ -124,11 +129,11 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
 
         if((filesAndDirsObjectArr.length<=297726)&&(filesAndDirsObjectArr.length>0)){
             console.log("\n\nAfter " + minutes + ":" + seconds +" arr number: "+(arrsIndex++)+" / "+(filesArr.length/297726)+ " was inserted to the mongo\n\n");
-            allInsertPromises.push(writeToDB(filesAndDirsObjectArr));
+            allInsertPromises.push(writeToDB(filesAndDirsObjectArr,collection));
         }
 
         Promise.all(allInsertPromises).then((data)=>{
-            console.log("After " + minutes + ":" + seconds + " this scan was inserted to the mongo");
+            console.log("After " + minutes + ":" + seconds + " this scan was inserted to the mongo to the collection: "+collection);
             clearInterval(setTime);
         },(error)=>{
             console.log("After " + minutes + ":" + seconds + " this scan returned error");
@@ -175,6 +180,6 @@ mongo.testConnection().then(function(){
 */
 
 console.log("Scan started please wait.");
-searchTheEntireHardDrive("C:/Users/Dor/Desktop", mongo.insertArr);
+searchTheEntireHardDrive("E:/", mongo.insertArr);
 
 //Users/Dor/Desktop/stam

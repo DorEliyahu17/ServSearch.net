@@ -19,7 +19,6 @@ var FileService = (function () {
         //private headers = new Headers({'Content-Type': 'application/json'});
         this.filesUrl = 'http://localhost:3000/api/files'; // URL to web api
     }
-    //
     //get all the files in the /api/files
     FileService.prototype.getFiles = function (params) {
         return this.http.get("http://localhost:3000/api/files", { search: params })
@@ -75,6 +74,13 @@ var FileService = (function () {
      }
      }
      */
+    FileService.prototype.getServerNames = function () {
+        return this.http.get("http://localhost:3000/api/collections")
+            .map(function (response) {
+            return response.json();
+        }).toPromise();
+    };
+    ;
     //function that split the name of the server from the hole path
     FileService.prototype.getServerFromLocation = function (location) {
         var arr = [];

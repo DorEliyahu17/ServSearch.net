@@ -19,7 +19,7 @@ export class FileService
 	constructor(private http: Http) {}
 
 
-	//
+
 
 	//get all the files in the /api/files
 	getFiles(params: URLSearchParams): any {
@@ -28,6 +28,9 @@ export class FileService
 				return response.json()
 			}).toPromise();
 	}
+
+
+
 
 	/*
 	 //get all the files in the /api/files
@@ -77,6 +80,15 @@ export class FileService
 	 }
 	 }
 	 */
+
+	getServerNames(): any
+	{
+		return this.http.get("http://localhost:3000/api/collections")
+            .map((response) => {
+				return response.json()
+			}).toPromise();
+	};
+
 //function that split the name of the server from the hole path
 	getServerFromLocation(location): string
 	{

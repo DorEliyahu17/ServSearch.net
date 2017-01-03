@@ -6,12 +6,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('./node_modules/mongoose');
 
 var index = require('./routes/index');
 var simpleSearch = require('./routes/simple search');
-var files = require('./routes/files');
-var result = require('./routes/result');
+var api = require('./routes/api');
 
 var app = express();
 
@@ -24,7 +22,7 @@ app.engine('html', require('ejs').renderFile);
 //mongoose.connect('mongodb://localhost/Mtest');
 
 // uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'client/images/mamram.ico')));
+//app.use(favicon(path.join(__dirname, 'client/images/mamram.ico')));
 
 app.use(logger('dev'));
 // Body Parser MW
@@ -36,8 +34,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 app.use('/', index);
 app.use('/simpleSearch', simpleSearch);
-app.use('/api', files);
-app.use('/res', result);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

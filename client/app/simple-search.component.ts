@@ -1,5 +1,5 @@
 //import the component declare in order to create a new one
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {URLSearchParams} from '@angular/http';
 
 //import the class "File" from the file "./file"
@@ -15,9 +15,10 @@ import { FileService } from './file.service';
     providers: [FileService]
 })
 
-export class SimpleSearchComponent
+export class SimpleSearchComponent implements OnInit
 {
     public alerts: Array<Object>=[];
+    serverNames: Array<any>=[];
     files:File[];
     isResult:boolean =false;
     file=new File();
@@ -29,7 +30,16 @@ export class SimpleSearchComponent
         this.alerts.splice(i, 1);
     }
 
+    ngOnInit():void{
+        var j;
+        this.fileService.getServerNames().then((data: any[]) => {
+            for(j=0;j<data.length;j++)
+            this.serverNames[j] = data[j];
+        });
+    }
+
     search():void {
+        var i;
         var resultSearch = document.getElementById("result");
         resultSearch.className = "hidden";
         var name = (<HTMLInputElement>document.getElementById("FileName")).value;
@@ -43,26 +53,28 @@ export class SimpleSearchComponent
         let params: URLSearchParams = new URLSearchParams();
         params.set('name', name);
         params.set('type', type);
-        params.set('server', server);
+        params.set('server', server.toUpperCase());
 
         //get the files arr from the service
         this.fileService.getFiles(params)
             .then((data:File[]) => {
-                //console.log(data);
-                for (var i=0;i<data.length;i++) {
-                    if (((name != "") && (data[i].name.toLowerCase().indexOf(name.toLowerCase())!=-1)) ||
-                        ((type != "") && (data[i].type.toLowerCase() == type.toLowerCase())) ||
-                        ((server != "")) && (this.fileService.getServerFromLocation(data[i].location).toLowerCase() == server.toLowerCase()))
-                    {
-                        if(this.alerts.length>0)
-                            this.alerts.splice(0, this.alerts.length);
-                    }
-                    else
-                    {
-                        data.splice(i,1);
-                        i--;
-                    }
-                }
+                /*for (i=0;i<data.length;i++) {
+                 console.log("data.length="+data.length);
+                 console.log("data["+i+"]:\ndata[i].name="+data[i].name+"\ndata[i].type="+data[i].type+"\ndata[i].location="+data[i].location);
+                 if (((name != "") && (data[i].name.toString().toLowerCase().indexOf(name.toLowerCase())!=-1)) ||
+                 ((type != "") && (data[i].type.toString().toLowerCase() == type.toLowerCase())) ||
+                 ((server != "")) && (this.fileService.getServerFromLocation(data[i].location.toString()).toLowerCase() == server.toLowerCase()))
+                 {
+                 if(this.alerts.length>0)
+                 this.alerts.splice(0, this.alerts.length);
+                 }
+                 else
+                 {
+                 data.splice(i,1);
+                 i--;
+                 }
+                 }*/
+
 
                 if(data.length>0)
                 {
@@ -82,11 +94,15 @@ export class SimpleSearchComponent
                     //success=3
                     if(this.alerts.length>0)
                         this.alerts.splice(0, this.alerts.length);
-                    if((name != "") || (type != "") || (server != ""))
-                        this.alerts.push({msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 1});
+                    if((name != "") || (type != "") || (server != "")) {
+                        if (server == "")
+                            this.alerts.push({msg: 'אנא בחר את השרת שבו תרצה לחפש.', type: 2});
+                        else
+                            this.alerts.push({msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 1});
+                    }
                     else
                         this.alerts.push({msg: 'לא הוכנס שום ערך.', type: 2});
-                     /*this.alerts.push({msg: 'לא נמצאה אף תוצאה, תנסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 3});*/
+                    /*this.alerts.push({msg: 'לא נמצאה אף תוצאה, תנסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 3});*/
                 }
             });
 
