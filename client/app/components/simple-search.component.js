@@ -12,9 +12,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 //import the class "File" from the file "./file"
-var file_1 = require('./file');
+var file_1 = require('./../file');
 //import the service "FileService" from the file "./file.service"
-var file_service_1 = require('./file.service');
+var file_service_1 = require('./../services/file.service.ts');
 var SimpleSearchComponent = (function () {
     function SimpleSearchComponent(fileService) {
         this.fileService = fileService;
@@ -24,6 +24,16 @@ var SimpleSearchComponent = (function () {
         this.file = new file_1.File();
         this.length = 0;
     }
+    //visible the advance search
+    SimpleSearchComponent.prototype.simpleToAdvance = function () {
+        var simpleSearch = document.getElementById("simple");
+        simpleSearch.className = "hidden";
+    };
+    //visible the simple search
+    SimpleSearchComponent.prototype.advanceToSimple = function () {
+        var simpleSearch = document.getElementById("simple");
+        simpleSearch.className = "visible";
+    };
     SimpleSearchComponent.prototype.closeAlert = function (i) {
         this.alerts.splice(i, 1);
     };
@@ -31,8 +41,7 @@ var SimpleSearchComponent = (function () {
         var _this = this;
         var j;
         this.fileService.getServerNames().then(function (data) {
-            for (j = 0; j < data.length; j++)
-                _this.serverNames[j] = data[j];
+            _this.serverNames = data;
         });
     };
     SimpleSearchComponent.prototype.search = function () {
@@ -43,6 +52,7 @@ var SimpleSearchComponent = (function () {
         var name = document.getElementById("FileName").value;
         var type = document.getElementById("FileType").value;
         var server = document.getElementById("FileServer").value;
+        console.log("server=" + server);
         // WORK FILE SERVICE
         // GETS THE PARAMAS
         //Parameters obj
@@ -72,6 +82,8 @@ var SimpleSearchComponent = (function () {
             if (data.length > 0) {
                 _this.files = data;
                 length = _this.files.length;
+                if (_this.alerts.length > 0)
+                    _this.alerts.splice(0, _this.alerts.length);
                 //visible and hidden change
                 /*var regularSearch = document.getElementById("simple");
                  regularSearch.className = "hidden";*/
@@ -86,7 +98,6 @@ var SimpleSearchComponent = (function () {
                 if (_this.alerts.length > 0)
                     _this.alerts.splice(0, _this.alerts.length);
                 if ((name != "") || (type != "") || (server != "")) {
-                    console.log("server=" + server);
                     if (server == "")
                         _this.alerts.push({ msg: 'אנא בחר את השרת שבו תרצה לחפש.', type: 2 });
                     else
@@ -96,65 +107,12 @@ var SimpleSearchComponent = (function () {
                     _this.alerts.push({ msg: 'לא הוכנס שום ערך.', type: 2 });
             }
         });
-        /*
-         //visible and hidden change
-         var regularSearch = document.getElementById("regular");
-         regularSearch.className = "hidden";
-         var advanceSearch = document.getElementById("advance");
-         advanceSearch.className = "visible";
-         */
-        // fileService.findFile(serach).then((data) =>{
-        // console.log(data);
-        //}
-        /*
-         if((name!="")&&(type!="")&&(server!="")) {
-         //everything were inserted
-         console.log("name: " + name + " type: " + type + " server: " + server);
-         this.goToResaultAll(name, type, server);
-         }
-         else if((name!="")&&(type!="")) {
-         //server not inserted
-         console.log("name: " + name + " type: " + type);
-         this.goToResaultNoServer(name, type);
-         }
-         else if((name!="")&&(server!="")) {
-         //type not inserted
-         console.log("name: " + name + " server: " + server);
-         this.goToResaultNoType(name, server);
-         }
-         else if((type!="")&&(server!="")) {
-         //name not inserted
-         console.log("type: " + type + " server: " + server);
-         this.goToResaultNoName(type, server);
-         }
-         else if(name!="")
-         {
-         //type and server not inserted
-         console.log("name: "+name);
-         this.goToResaultOnlyName(name);
-         //this.fileService.getFiles();
-         }
-         else if(type!=""){
-         //name and server and server not inserted
-         console.log("type: "+type);
-         this.goToResaultOnlyType(type);
-         }
-         else if(server!=""){
-         //name and type and server not inserted
-         console.log("server: "+server);
-         this.goToResaultOnlyServer(server);
-         }
-         else {
-         //nothing was inserted
-         console.log("לא הוכנס ערך");
-         alert("לא הוכנס שום ערך, אנא הכנס/י לפחות ערך אחד");
-         }*/
     };
     SimpleSearchComponent = __decorate([
         core_1.Component({
             selector: 'simple-search',
-            templateUrl: 'app/pages/simple-search.component.html',
-            styleUrls: ['app/styles/simple-search.component.css'],
+            templateUrl: '../pages/simple-search.component.html',
+            styleUrls: ['../styles/simple-search.component.css'],
             providers: [file_service_1.FileService]
         }), 
         __metadata('design:paramtypes', [file_service_1.FileService])
@@ -162,4 +120,57 @@ var SimpleSearchComponent = (function () {
     return SimpleSearchComponent;
 }());
 exports.SimpleSearchComponent = SimpleSearchComponent;
+/*
+ //visible and hidden change
+ var regularSearch = document.getElementById("regular");
+ regularSearch.className = "hidden";
+ var advanceSearch = document.getElementById("advance");
+ advanceSearch.className = "visible";
+ */
+// fileService.findFile(serach).then((data) =>{
+// console.log(data);
+//}
+/*
+ if((name!="")&&(type!="")&&(server!="")) {
+ //everything were inserted
+ console.log("name: " + name + " type: " + type + " server: " + server);
+ this.goToResaultAll(name, type, server);
+ }
+ else if((name!="")&&(type!="")) {
+ //server not inserted
+ console.log("name: " + name + " type: " + type);
+ this.goToResaultNoServer(name, type);
+ }
+ else if((name!="")&&(server!="")) {
+ //type not inserted
+ console.log("name: " + name + " server: " + server);
+ this.goToResaultNoType(name, server);
+ }
+ else if((type!="")&&(server!="")) {
+ //name not inserted
+ console.log("type: " + type + " server: " + server);
+ this.goToResaultNoName(type, server);
+ }
+ else if(name!="")
+ {
+ //type and server not inserted
+ console.log("name: "+name);
+ this.goToResaultOnlyName(name);
+ //this.fileService.getFiles();
+ }
+ else if(type!=""){
+ //name and server and server not inserted
+ console.log("type: "+type);
+ this.goToResaultOnlyType(type);
+ }
+ else if(server!=""){
+ //name and type and server not inserted
+ console.log("server: "+server);
+ this.goToResaultOnlyServer(server);
+ }
+ else {
+ //nothing was inserted
+ console.log("לא הוכנס ערך");
+ alert("לא הוכנס שום ערך, אנא הכנס/י לפחות ערך אחד");
+ }*/ 
 //# sourceMappingURL=simple-search.component.js.map

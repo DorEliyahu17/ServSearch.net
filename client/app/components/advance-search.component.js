@@ -11,54 +11,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //import the component declare in order to create a new one
 var core_1 = require('@angular/core');
 //import the service "FileService" from the file "./file.service"
-var file_service_1 = require('./file.service');
+var file_service_1 = require('./../services/file.service.ts');
 //create new component
 var AdvanceSearchComponent = (function () {
     function AdvanceSearchComponent(fileService) {
         this.fileService = fileService;
-        //@Input() filename;
-        this.files = [
-            {
-                name: "File 1",
-                type: "txt",
-                size: "15654",
-                location: "c:/stam/stam1.1",
-                premissions: "xsakmxas",
-                createdUser: "Dor",
-                modifidedDate: "1.1.16"
-            },
-            {
-                name: "File 2",
-                type: "doc",
-                size: "1218",
-                location: "c:/stam/stam1.2",
-                premissions: "xsascdsfdxkmxas",
-                createdUser: "dcs",
-                modifidedDate: "7.1.16"
-            },
-            {
-                name: "File 3",
-                type: "ts",
-                size: "2138",
-                location: "c:/stam/stam1.3",
-                premissions: "xsakcxzzxczxmxas",
-                createdUser: "sxz",
-                modifidedDate: "1.8.16"
-            }
-        ];
     }
-    AdvanceSearchComponent.prototype.goBack = function () {
+    AdvanceSearchComponent.prototype.search = function () {
+        console.log("advance search - function search activated");
+    };
+    AdvanceSearchComponent.prototype.advanceSearch = function () {
+        this.fileService.simpleToAdvance();
+    };
+    AdvanceSearchComponent.prototype.simpleSearch = function () {
+        this.fileService.advanceToSimple();
+    };
+    //visible the regular search
+    AdvanceSearchComponent.prototype.advanceToRegular = function () {
         //visible and hidden change
         var regularSearch = document.getElementById("regular");
         regularSearch.className = "visible";
         var advanceSearch = document.getElementById("advance");
         advanceSearch.className = "hidden";
     };
-    AdvanceSearchComponent.prototype.search = function () {
-        console.log("yes we can");
-    };
-    //visiable
-    AdvanceSearchComponent.prototype.visibleAndHidden = function () {
+    //visible the advance search
+    AdvanceSearchComponent.prototype.regularToAdvance = function () {
         var regularSearch = document.getElementById("regular");
         regularSearch.className = "hidden";
         var advanceSearch = document.getElementById("advance");
@@ -79,9 +56,9 @@ var AdvanceSearchComponent = (function () {
             //his label in the HTML code
             selector: 'advanceSearch',
             //the code that will be read when the component will be called
-            templateUrl: 'app/pages/advance-search.component.html',
+            templateUrl: '../pages/advance-search.component.html',
             //the style of the code
-            styleUrls: ['app/styles/advance-search.component.css'],
+            styleUrls: ['../styles/advance-search.component.css'],
             providers: [file_service_1.FileService]
         }), 
         __metadata('design:paramtypes', [file_service_1.FileService])

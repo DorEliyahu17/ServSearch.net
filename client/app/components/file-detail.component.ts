@@ -2,24 +2,25 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
 //import the class "Hero" from the file "./hero"
-import { File } from './file';
+import { File } from '../file';
 
 //import the service "HeroService" from the file "./hero.service"
-import { PagerService } from './pager.service'
+import { PagerService } from '../services/pager.service'
 
 //create new component
 @Component({
     //his label in the HTML code
     selector: 'my-file-detail',
     //the code that will be read when the component will be called
-    templateUrl: 'app/pages/file-detail.component.html',
-    styleUrls: ['app/styles/file-detail.component.css'],
+    templateUrl: '../pages/file-detail.component.html',
+    styleUrls: ['../styles/file-detail.component.css'],
 })
 
 //the class of this new component
 export class FileDetailComponent implements OnChanges{
     @Input() files: File[];
-    @Input() length:number;
+    @Input() length: number;
+    @Input() attributeName: string;
     indexArr:Array<any>=[];
     //pager vars
     // dummy array of items to be paged

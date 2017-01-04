@@ -3,7 +3,7 @@ import { Injectable }    from '@angular/core';
 
 @Injectable()
 export class PagerService {
-    getPager(totalItems: number, currentPage: number = 1, pageSize: number = 1) {
+    getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {
         // calculate total pages
         var totalPages = Math.ceil(totalItems / pageSize);
 
@@ -34,8 +34,8 @@ export class PagerService {
 
         // create an array of pages to ng-repeat in the pager control
         var pages:Array<any>=[];//_.range(startPage, endPage + 1);
-        for(let i=0;i<endPage;i++)
-            pages[i]=i+1;
+        for(let i=startPage;i<=endPage;i++)
+            pages[i-startPage]=i;
 
         // return object with all pager properties required by the view
         return {

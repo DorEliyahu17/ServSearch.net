@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //import the component declare in order to create a new one
 var core_1 = require('@angular/core');
 //import the service "HeroService" from the file "./hero.service"
-var pager_service_1 = require('./pager.service');
+var pager_service_1 = require('./../services/pager.service.ts');
 //create new component
 var FileDetailComponent = (function () {
     function FileDetailComponent(pagerService) {
@@ -55,13 +55,17 @@ var FileDetailComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Number)
     ], FileDetailComponent.prototype, "length", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], FileDetailComponent.prototype, "attributeName", void 0);
     FileDetailComponent = __decorate([
         core_1.Component({
             //his label in the HTML code
             selector: 'my-file-detail',
             //the code that will be read when the component will be called
-            templateUrl: 'app/pages/file-detail.component.html',
-            styleUrls: ['app/styles/file-detail.component.css'],
+            templateUrl: '../pages/file-detail.component.html',
+            styleUrls: ['../styles/file-detail.component.css'],
         }), 
         __metadata('design:paramtypes', [pager_service_1.PagerService])
     ], FileDetailComponent);

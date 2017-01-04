@@ -3,15 +3,15 @@ import {Component, OnInit} from '@angular/core';
 import {URLSearchParams} from '@angular/http';
 
 //import the class "File" from the file "./file"
-import { File } from './file';
+import { File } from '../file';
 
 //import the service "FileService" from the file "./file.service"
-import { FileService } from './file.service';
+import { FileService } from '../services/file.service';
 
 @Component({
     selector: 'simple-search',
-    templateUrl: 'app/pages/simple-search.component.html',
-    styleUrls: ['app/styles/simple-search.component.css'],
+    templateUrl: '../pages/simple-search.component.html',
+    styleUrls: ['../styles/simple-search.component.css'],
     providers: [FileService]
 })
 
@@ -26,6 +26,18 @@ export class SimpleSearchComponent implements OnInit
 
     constructor(private fileService: FileService) { }
 
+    //visible the advance search
+    simpleToAdvance(): void{
+        var simpleSearch = document.getElementById("simple");
+        simpleSearch.className = "hidden";
+    }
+
+    //visible the simple search
+    advanceToSimple(): void{
+        var simpleSearch = document.getElementById("simple");
+        simpleSearch.className = "visible";
+    }
+
     public closeAlert(i:number):void {
         this.alerts.splice(i, 1);
     }
@@ -33,8 +45,8 @@ export class SimpleSearchComponent implements OnInit
     ngOnInit():void{
         var j;
         this.fileService.getServerNames().then((data: any[]) => {
-            for(j=0;j<data.length;j++)
-            this.serverNames[j] = data[j];
+            this.serverNames = data;
+
         });
     }
 
@@ -45,6 +57,7 @@ export class SimpleSearchComponent implements OnInit
         var name = (<HTMLInputElement>document.getElementById("FileName")).value;
         var type = (<HTMLInputElement>document.getElementById("FileType")).value;
         var server = (<HTMLInputElement>document.getElementById("FileServer")).value;
+        console.log("server="+server);
 
         // WORK FILE SERVICE
         // GETS THE PARAMAS
@@ -80,6 +93,8 @@ export class SimpleSearchComponent implements OnInit
                 {
                     this.files=data;
                     length=this.files.length;
+                    if(this.alerts.length>0)
+                        this.alerts.splice(0, this.alerts.length);
                     //visible and hidden change
                     /*var regularSearch = document.getElementById("simple");
                      regularSearch.className = "hidden";*/
@@ -102,63 +117,63 @@ export class SimpleSearchComponent implements OnInit
                     }
                     else
                         this.alerts.push({msg: 'לא הוכנס שום ערך.', type: 2});
-                    /*this.alerts.push({msg: 'לא נמצאה אף תוצאה, תנסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 3});*/
                 }
             });
-
-        /*
-         //visible and hidden change
-         var regularSearch = document.getElementById("regular");
-         regularSearch.className = "hidden";
-         var advanceSearch = document.getElementById("advance");
-         advanceSearch.className = "visible";
-         */
-
-        // fileService.findFile(serach).then((data) =>{
-        // console.log(data);
-        //}
-        /*
-         if((name!="")&&(type!="")&&(server!="")) {
-         //everything were inserted
-         console.log("name: " + name + " type: " + type + " server: " + server);
-         this.goToResaultAll(name, type, server);
-         }
-         else if((name!="")&&(type!="")) {
-         //server not inserted
-         console.log("name: " + name + " type: " + type);
-         this.goToResaultNoServer(name, type);
-         }
-         else if((name!="")&&(server!="")) {
-         //type not inserted
-         console.log("name: " + name + " server: " + server);
-         this.goToResaultNoType(name, server);
-         }
-         else if((type!="")&&(server!="")) {
-         //name not inserted
-         console.log("type: " + type + " server: " + server);
-         this.goToResaultNoName(type, server);
-         }
-         else if(name!="")
-         {
-         //type and server not inserted
-         console.log("name: "+name);
-         this.goToResaultOnlyName(name);
-         //this.fileService.getFiles();
-         }
-         else if(type!=""){
-         //name and server and server not inserted
-         console.log("type: "+type);
-         this.goToResaultOnlyType(type);
-         }
-         else if(server!=""){
-         //name and type and server not inserted
-         console.log("server: "+server);
-         this.goToResaultOnlyServer(server);
-         }
-         else {
-         //nothing was inserted
-         console.log("לא הוכנס ערך");
-         alert("לא הוכנס שום ערך, אנא הכנס/י לפחות ערך אחד");
-         }*/
     }
 }
+
+
+/*
+ //visible and hidden change
+ var regularSearch = document.getElementById("regular");
+ regularSearch.className = "hidden";
+ var advanceSearch = document.getElementById("advance");
+ advanceSearch.className = "visible";
+ */
+
+// fileService.findFile(serach).then((data) =>{
+// console.log(data);
+//}
+/*
+ if((name!="")&&(type!="")&&(server!="")) {
+ //everything were inserted
+ console.log("name: " + name + " type: " + type + " server: " + server);
+ this.goToResaultAll(name, type, server);
+ }
+ else if((name!="")&&(type!="")) {
+ //server not inserted
+ console.log("name: " + name + " type: " + type);
+ this.goToResaultNoServer(name, type);
+ }
+ else if((name!="")&&(server!="")) {
+ //type not inserted
+ console.log("name: " + name + " server: " + server);
+ this.goToResaultNoType(name, server);
+ }
+ else if((type!="")&&(server!="")) {
+ //name not inserted
+ console.log("type: " + type + " server: " + server);
+ this.goToResaultNoName(type, server);
+ }
+ else if(name!="")
+ {
+ //type and server not inserted
+ console.log("name: "+name);
+ this.goToResaultOnlyName(name);
+ //this.fileService.getFiles();
+ }
+ else if(type!=""){
+ //name and server and server not inserted
+ console.log("type: "+type);
+ this.goToResaultOnlyType(type);
+ }
+ else if(server!=""){
+ //name and type and server not inserted
+ console.log("server: "+server);
+ this.goToResaultOnlyServer(server);
+ }
+ else {
+ //nothing was inserted
+ console.log("לא הוכנס ערך");
+ alert("לא הוכנס שום ערך, אנא הכנס/י לפחות ערך אחד");
+ }*/

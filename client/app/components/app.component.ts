@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 
 // Add the RxJS Observable operators.
-import './rxjs-operators';
+import '../rxjs-operators';
 
 //create new component
 @Component({

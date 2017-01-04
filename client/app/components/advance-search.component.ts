@@ -2,60 +2,41 @@
 import { Component } from '@angular/core';
 
 //import the class "File" from the file "./file"
-import { File } from './file';
+import { File } from '../file';
 
 //import the service "FileService" from the file "./file.service"
-import { FileService } from './file.service';
-
+import { FileService } from '../services/file.service';
 
 //create new component
 @Component({
 	//his label in the HTML code
 	selector: 'advanceSearch',
 	//the code that will be read when the component will be called
-	templateUrl: 'app/pages/advance-search.component.html',
+	templateUrl: '../pages/advance-search.component.html',
 	//the style of the code
-	styleUrls: ['app/styles/advance-search.component.css'],
+	styleUrls: ['../styles/advance-search.component.css'],
 	providers: [FileService]
 })
 
 //the class of this new component
 export class AdvanceSearchComponent
 {
-	//@Input() filename;
-	files =[
-		{
-			name: "File 1",
-			type: "txt",
-			size: "15654",
-			location: "c:/stam/stam1.1",
-			premissions:"xsakmxas",
-			createdUser: "Dor",
-			modifidedDate: "1.1.16"
-		},
-		{
-			name: "File 2",
-			type: "doc",
-			size: "1218",
-			location: "c:/stam/stam1.2",
-			premissions:"xsascdsfdxkmxas",
-			createdUser: "dcs",
-			modifidedDate: "7.1.16"
-		},
-		{
-			name: "File 3",
-			type: "ts",
-			size: "2138",
-			location: "c:/stam/stam1.3",
-			premissions:"xsakcxzzxczxmxas",
-			createdUser: "sxz",
-			modifidedDate: "1.8.16"
-		}
-	];
-
 	constructor( private fileService: FileService) { }
 
-	goBack(): void{
+	search(): void{
+		console.log("advance search - function search activated");
+	}
+
+	advanceSearch(): void{
+		this.fileService.simpleToAdvance();
+	}
+
+	simpleSearch():void{
+		this.fileService.advanceToSimple()
+	}
+
+	//visible the regular search
+	advanceToRegular(): void{
 		//visible and hidden change
 		var regularSearch = document.getElementById("regular");
 		regularSearch.className = "visible";
@@ -63,17 +44,15 @@ export class AdvanceSearchComponent
 		advanceSearch.className = "hidden";
 	}
 
-	search(): void{
-		console.log("yes we can");
-	}
-
-	//visiable
-	visibleAndHidden(): void{
+	//visible the advance search
+	regularToAdvance(): void{
 		var regularSearch = document.getElementById("regular");
 		regularSearch.className = "hidden";
 		var advanceSearch = document.getElementById("advance");
 		advanceSearch.className = "visible";
 	}
+
+
 
 	click2Check(): void{
 		var inputField=document.getElementById("user-input");

@@ -17,11 +17,8 @@ router.get('/files', function(req, res, next) {
     mongo.findSpec(req.query.name, req.query.type, req.query.server).then(function(result){
         if(result!=undefined)
             res.send(result);
-        else {
+        else
             res.send([]);
-            console.log("result then="+result);
-        }
-
     });
 });
 

@@ -4,11 +4,13 @@
 
         <div class="col-lg-11">
             <small>הקובץ לא נמצא? אולי חיפוש מתקדם יעזור:</small>
-            <button class="btn btn-default btn-sm" (click)="visibleAndHidden()">
+            <button class="btn btn-default btn-sm" (click)="advanceSearch()">
                 <span class="fa fa-search"></span> <span class="fa fa-database"></span>
             </button>
         </div>
 
+        <br>
+        <hr />
     </div>
 
     <!-- advance search mode -->
@@ -97,7 +99,7 @@
             </div>
 
             <div class="col-lg-2">
-                <h5>בחר תאריך יצירה או טווח תאריכים:</h5>
+                <h5>בחר גודל או טווח גדלים:</h5>
             </div>
 
             <div class="row">
@@ -106,12 +108,15 @@
                     <span class="fa fa-search"></span>
                     </button>
 
-                    <button class="btn btn-default" (click)="goBack()">
+                    <button class="btn btn-default" (click)="simpleSearch()">
                         <span class="fa fa-arrow-left"></span>
                     </button>
                 </div>
             </div>
         </div>
+
+
+        <hr />
     </div>
 
 </div>

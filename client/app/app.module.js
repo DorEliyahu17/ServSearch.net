@@ -20,8 +20,8 @@ var app_component_1 = require('./app.component');
 var simple_search_component_1 = require('./simple-search.component');
 var advance_search_component_1 = require('./advance-search.component');
 var file_detail_component_1 = require('./file-detail.component');
-var file_service_1 = require('./file.service');
-var pager_service_1 = require('./pager.service');
+var file_service_1 = require('./services/file.service');
+var pager_service_1 = require('./services/pager.service');
 //import the routes
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {

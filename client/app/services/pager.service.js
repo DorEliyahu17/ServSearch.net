@@ -15,7 +15,7 @@ var PagerService = (function () {
     }
     PagerService.prototype.getPager = function (totalItems, currentPage, pageSize) {
         if (currentPage === void 0) { currentPage = 1; }
-        if (pageSize === void 0) { pageSize = 1; }
+        if (pageSize === void 0) { pageSize = 10; }
         // calculate total pages
         var totalPages = Math.ceil(totalItems / pageSize);
         var startPage, endPage;
@@ -44,8 +44,8 @@ var PagerService = (function () {
         var endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
         // create an array of pages to ng-repeat in the pager control
         var pages = []; //_.range(startPage, endPage + 1);
-        for (var i = 0; i < endPage; i++)
-            pages[i] = i + 1;
+        for (var i = startPage; i <= endPage; i++)
+            pages[i - startPage] = i;
         // return object with all pager properties required by the view
         return {
             totalItems: totalItems,

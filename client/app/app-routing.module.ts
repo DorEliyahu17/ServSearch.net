@@ -4,9 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import {URLSearchParams } from '@angular/http';
 
 //import the Components
-import { SimpleSearchComponent } from './simple-search.component'
-import { AdvanceSearchComponent } from './advance-search.component'
-import { FileDetailComponent } from './file-detail.component';
+import { SimpleSearchComponent } from './components/simple-search.component'
+import { AdvanceSearchComponent } from './components/advance-search.component'
+import { FileDetailComponent } from './components/file-detail.component';
 
 let params: URLSearchParams = new URLSearchParams();
 

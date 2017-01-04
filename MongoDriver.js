@@ -16,9 +16,8 @@ function getServerFromLocation(location){
     return arr[0];
 }
 
-
 exportMongo.findCollectionsNameList = function findCollectionsNameList() {
-    var arr=[{}],i;
+    var arr=[],i;
     return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
             assert.equal(null, err);
@@ -29,14 +28,9 @@ exportMongo.findCollectionsNameList = function findCollectionsNameList() {
                 db.close();
                 resolve(arr);
             });
-
-
-
         });
     });
 };
-
-
 
 /*
 //find specified document in the db
