@@ -12,9 +12,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 //import the class "File" from the file "./file"
-var file_1 = require('./../file');
+var file_1 = require('../file');
 //import the service "FileService" from the file "./file.service"
-var file_service_1 = require('./../services/file.service.ts');
+var file_service_1 = require('../services/file.service');
 var SimpleSearchComponent = (function () {
     function SimpleSearchComponent(fileService) {
         this.fileService = fileService;

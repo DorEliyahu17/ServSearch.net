@@ -12,8 +12,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var simple_search_component_1 = require('../components/simple-search.component.ts');
-var advance_search_component_1 = require('../components/advance-search.component.ts');
+var simple_search_component_1 = require('../components/simple-search.component');
+var advance_search_component_1 = require('../components/advance-search.component');
 var FileService = (function () {
     //private headers = new Headers({'Content-Type': 'application/json'});
     //private filesUrl = 'http://localhost:3000/api/files';  // URL to web api

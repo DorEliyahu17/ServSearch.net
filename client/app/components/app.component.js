@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //import the component declare in order to create a new one
 var core_1 = require('@angular/core');
 // Add the RxJS Observable operators.
-require('./../rxjs-operators');
+require('../rxjs-operators');
 //create new component
 var AppComponent = (function () {
     function AppComponent() {
@@ -22,8 +22,8 @@ var AppComponent = (function () {
             //his label in the HTML code
             selector: 'main',
             //the code that will be read when the component will be called
-            templateUrl: '../pages/app.component.html',
-            styleUrls: ['../styles/app.component.css']
+            templateUrl: 'app/pages/app.component.html',
+            styleUrls: ['app/styles/app.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
