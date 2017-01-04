@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2bf6d08-a4b4-47a3-ad70-c7ac9a3a44e4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/advance-search.component.js" afterPath="$PROJECT_DIR$/client/app/advance-search.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/advance-search.component.js.map" afterPath="$PROJECT_DIR$/client/app/advance-search.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/advance-search.component.ts" afterPath="$PROJECT_DIR$/client/app/advance-search.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/file.service.js" afterPath="$PROJECT_DIR$/client/app/file.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/file.service.js.map" afterPath="$PROJECT_DIR$/client/app/file.service.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/file.service.ts" afterPath="$PROJECT_DIR$/client/app/file.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/pages/advance-search.component.html" afterPath="$PROJECT_DIR$/client/app/pages/advance-search.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/pages/simple-search.component.html" afterPath="$PROJECT_DIR$/client/app/pages/simple-search.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/simple-search.component.js" afterPath="$PROJECT_DIR$/client/app/simple-search.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/simple-search.component.js.map" afterPath="$PROJECT_DIR$/client/app/simple-search.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/simple-search.component.ts" afterPath="$PROJECT_DIR$/client/app/simple-search.component.ts" />
     </list>
     <ignored path="new test server 5.0.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -420,7 +410,7 @@
       <workItem from="1483359093802" duration="19374000" />
       <workItem from="1483423157686" duration="2506000" />
       <workItem from="1483432197305" duration="17262000" />
-      <workItem from="1483537935937" duration="16400000" />
+      <workItem from="1483537935937" duration="16502000" />
     </task>
     <task id="LOCAL-00001" summary="First commit im young">
       <created>1478165523454</created>
@@ -695,11 +685,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483557677692</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="05/01/17 changes">
+      <created>1483569766824</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1483569766824</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347400000" />
+    <option name="totallyTimeSpent" value="347502000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -812,7 +809,8 @@
     <MESSAGE value="02/01/17 changes" />
     <MESSAGE value="03/01/17 changes" />
     <MESSAGE value="04/01/17 changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="04/01/17 changes" />
+    <MESSAGE value="05/01/17 changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="05/01/17 changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
