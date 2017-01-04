@@ -22,38 +22,42 @@
             </div>
         </div>
         <!--First row-->
+        <!--
         <div class="row">
-
-            <div class="col-lg-3"></div>
-
-            <div class="col-lg-2">
                 <!--
-                <div class="input-group">
-                    <input type="text" id="user-input" class="form-control" placeholder="שם הקובץ...">
-                </div>
-                -->
-            </div>
+                    <div class="col-lg-5"></div>
 
-            <div class="col-lg-2">
-                <div class="input-group">
-                    <input type="text" id="server-input" class="form-control" placeholder="שם השרת...">
-                </div>
-            </div>
+                    <div class="col-lg-2">
+                        <div class="input-group">
+                            <select class="form-control" style="width: 200px;" dir="rtl" id="server-input">
+                                <option value="">שם השרת...</option>
+                                <option *ngFor="let serverName of serverNames" value="{{serverName.name}}">{{serverName.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+        <!--
+                    <div class="col-lg-2">
+                        <div class="input-group">
+                            <input type="text" id="server-input" class="form-control" placeholder="שם השרת...">
+                        </div>
+                    </div>
+        --
+                    <div class="col-lg-2">
+                        <div class="input-group">
+                            <input type="text" id="type-input" class="form-control" placeholder="סוג הקובץ...">
+                        </div>
+                    </div>
 
-            <div class="col-lg-2">
-                <div class="input-group">
-                    <input type="text" id="type-input" class="form-control" placeholder="סוג הקובץ...">
-                </div>
-            </div>
+                    <div class="col-lg-2">
+                        <div class="input-group">
+                            <input type="text" id="name-input" class="form-control" placeholder="שם הקובץ...">
+                        </div>
+                    </div>
 
-            <div class="col-lg-2">
-                <div class="input-group">
-                    <input type="text" id="name-input" class="form-control" placeholder="שם הקובץ...">
                 </div>
-            </div>
 
-        </div>
         <br />
+        -->
         <!--Choice: dates-->
         <div class="row">
 

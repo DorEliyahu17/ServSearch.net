@@ -16,7 +16,7 @@ var FileService = (function () {
     //private headers = new Headers({'Content-Type': 'application/json'});
     //private filesUrl = 'http://localhost:3000/api/files';  // URL to web api
     //promise=callback
-    function FileService(http /*, private simpleSearch: SimpleSearchComponent, private advanceSearch: AdvanceSearchComponent*/) {
+    function FileService(http) {
         this.http = http;
     }
     //get all the files in the /api/files
@@ -25,18 +25,6 @@ var FileService = (function () {
             .map(function (response) {
             return response.json();
         }).toPromise();
-    };
-    FileService.prototype.simpleToAdvance = function () {
-        /*
-        this.simpleSearch.simpleToAdvance();
-        this.advanceSearch.regularToAdvance();
-        */
-    };
-    FileService.prototype.advanceToSimple = function () {
-        /*
-        this.simpleSearch.advanceToSimple();
-        this.advanceSearch.advanceToRegular();
-        */
     };
     FileService.prototype.getServerNames = function () {
         return this.http.get("http://localhost:3000/api/collections")
