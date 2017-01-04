@@ -1,8 +1,8 @@
 {
-  "name": "ServSearch.net - client",
+  "name": "ServSearch.net-client",
   "version": "2.0.0",
   "scripts": {
-    "start1": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "start1": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "start": "tsc",
     "lite": "lite-server",
     "postinstall": "typings install",

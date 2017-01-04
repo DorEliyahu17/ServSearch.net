@@ -13,7 +13,7 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var http_1 = require('@angular/http');
 //import the Components
-var simple_search_component_1 = require('./components/simple-search.component');
+var simple_search_component_1 = require('./simple-search.component');
 var params = new http_1.URLSearchParams();
 var routes = [
     {

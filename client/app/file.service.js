@@ -12,16 +12,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var simple_search_component_1 = require('../components/simple-search.component');
-var advance_search_component_1 = require('../components/advance-search.component');
 var FileService = (function () {
     //private headers = new Headers({'Content-Type': 'application/json'});
     //private filesUrl = 'http://localhost:3000/api/files';  // URL to web api
     //promise=callback
-    function FileService(http, simpleSearch, advanceSearch) {
+    function FileService(http /*, private simpleSearch: SimpleSearchComponent, private advanceSearch: AdvanceSearchComponent*/) {
         this.http = http;
-        this.simpleSearch = simpleSearch;
-        this.advanceSearch = advanceSearch;
     }
     //get all the files in the /api/files
     FileService.prototype.getFiles = function (params) {
@@ -31,12 +27,16 @@ var FileService = (function () {
         }).toPromise();
     };
     FileService.prototype.simpleToAdvance = function () {
+        /*
         this.simpleSearch.simpleToAdvance();
         this.advanceSearch.regularToAdvance();
+        */
     };
     FileService.prototype.advanceToSimple = function () {
+        /*
         this.simpleSearch.advanceToSimple();
         this.advanceSearch.advanceToRegular();
+        */
     };
     FileService.prototype.getServerNames = function () {
         return this.http.get("http://localhost:3000/api/collections")
@@ -58,7 +58,7 @@ var FileService = (function () {
     };
     FileService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, simple_search_component_1.SimpleSearchComponent, advance_search_component_1.AdvanceSearchComponent])
+        __metadata('design:paramtypes', [http_1.Http])
     ], FileService);
     return FileService;
 }());

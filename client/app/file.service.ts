@@ -3,12 +3,12 @@ import { Injectable }    from '@angular/core';
 import { Http, URLSearchParams} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
-
-import { SimpleSearchComponent } from '../components/simple-search.component';
-import { AdvanceSearchComponent } from '../components/advance-search.component';
-
+/*
+import { SimpleSearchComponent } from './simple-search.component';
+import { AdvanceSearchComponent } from './advance-search.component';
+*/
 //import the class "File" from the file "./file"
-import { File } from '../file';
+import { File } from './file';
 
 
 
@@ -22,24 +22,28 @@ export class FileService
 	//private filesUrl = 'http://localhost:3000/api/files';  // URL to web api
 
 	//promise=callback
-	constructor(private http: Http, private simpleSearch: SimpleSearchComponent, private advanceSearch: AdvanceSearchComponent) { }
+	constructor(private http: Http/*, private simpleSearch: SimpleSearchComponent, private advanceSearch: AdvanceSearchComponent*/) { }
 
 	//get all the files in the /api/files
 	getFiles(params: URLSearchParams): any {
 		return this.http.get("http://localhost:3000/api/files", {search: params})
-			.map((response) => {
+            .map((response) => {
 				return response.json()
 			}).toPromise();
 	}
 
 	simpleToAdvance(): void {
+		/*
 		this.simpleSearch.simpleToAdvance();
 		this.advanceSearch.regularToAdvance();
+		*/
 	}
 
 	advanceToSimple(): void {
+		/*
 		this.simpleSearch.advanceToSimple();
 		this.advanceSearch.advanceToRegular();
+		*/
 	}
 
 	getServerNames(): any

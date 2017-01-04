@@ -3,15 +3,15 @@ import {Component, OnInit} from '@angular/core';
 import {URLSearchParams} from '@angular/http';
 
 //import the class "File" from the file "./file"
-import { File } from '../file';
+import { File } from './file';
 
 //import the service "FileService" from the file "./file.service"
-import { FileService } from '../services/file.service';
+import { FileService } from './file.service';
 
 @Component({
     selector: 'simple-search',
-    templateUrl: '../pages/simple-search.component.html',
-    styleUrls: ['../styles/simple-search.component.css'],
+    templateUrl: './app/pages/simple-search.component.html',
+    styleUrls: ['./app/styles/simple-search.component.css'],
     providers: [FileService]
 })
 
