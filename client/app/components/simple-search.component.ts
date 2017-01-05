@@ -3,10 +3,10 @@ import {Component, OnInit} from '@angular/core';
 import {URLSearchParams} from '@angular/http';
 
 //import the class "File" from the file "./file"
-import { File } from './file';
+import { File } from '../object modules/file';
 
 //import the service "FileService" from the file "./file.service"
-import { FileService } from './file.service';
+import { FileService } from '../services/file.service';
 
 @Component({
     selector: 'simple-search',

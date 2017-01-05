@@ -87,7 +87,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
                 else {
                     fileNameAndType = tempName.split(".");
                     if (fileNameAndType[1] == undefined)
-                        fileNameAndType.push("אין סוג קובץ");
+                        fileNameAndType.push("אין סוג לקובץ");
                     if (fileNameAndType.length>2)
                     {
                         for(j=0;j<fileNameAndType.length-1;j++)

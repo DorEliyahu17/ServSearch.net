@@ -5,7 +5,7 @@ import { Http, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 //import the class "File" from the file "./file"
-import { File } from './file';
+import { File } from '../object modules/file';
 
 
 

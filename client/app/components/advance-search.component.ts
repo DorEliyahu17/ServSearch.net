@@ -1,12 +1,13 @@
 //import the component declare in order to create a new one
 import {Component, Input} from '@angular/core';
+import { URLSearchParams } from "@angular/http";
 
 //import the class "File" from the file "./file"
-import { File } from './file';
+import { File } from '../object modules/file';
 
 //import the service "FileService" from the file "./file.service"
-import { FileService } from './file.service';
-import {URLSearchParams} from "@angular/http";
+import { FileService } from '../services/file.service';
+
 
 //create new component
 @Component({

@@ -2,9 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2bf6d08-a4b4-47a3-ad70-c7ac9a3a44e4" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/FirstScan2.js" afterPath="$PROJECT_DIR$/FirstScan.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/components/advance-search.component.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/components/simple-search.component.js.map" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/advance-search.component.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/app.module.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/simple-search.component.js.map" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/advance-search.component.js" afterPath="$PROJECT_DIR$/client/app/components/advance-search.component.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/advance-search.component.ts" afterPath="$PROJECT_DIR$/client/app/components/advance-search.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app-routing.module.js" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app-routing.module.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app-routing.module.js.map" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app-routing.module.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app-routing.module.ts" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app-routing.module.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app.component.js" afterPath="$PROJECT_DIR$/client/app/components/app.component.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app.component.js.map" afterPath="$PROJECT_DIR$/client/app/components/app.component.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app.component.ts" afterPath="$PROJECT_DIR$/client/app/components/app.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app.module.js" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app.module.ts" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file-detail.component.js" afterPath="$PROJECT_DIR$/client/app/components/file-detail.component.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file-detail.component.js.map" afterPath="$PROJECT_DIR$/client/app/components/file-detail.component.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file-detail.component.ts" afterPath="$PROJECT_DIR$/client/app/components/file-detail.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.js" afterPath="$PROJECT_DIR$/client/app/object modules/file.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.js.map" afterPath="$PROJECT_DIR$/client/app/object modules/file.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.service.js" afterPath="$PROJECT_DIR$/client/app/services/file.service.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.service.js.map" afterPath="$PROJECT_DIR$/client/app/services/file.service.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.service.ts" afterPath="$PROJECT_DIR$/client/app/services/file.service.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.ts" afterPath="$PROJECT_DIR$/client/app/object modules/file.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/pager.service.js" afterPath="$PROJECT_DIR$/client/app/services/pager.service.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/pager.service.js.map" afterPath="$PROJECT_DIR$/client/app/services/pager.service.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/pager.service.ts" afterPath="$PROJECT_DIR$/client/app/services/pager.service.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-extensions.js" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-extensions.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-extensions.js.map" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-extensions.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-extensions.ts" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-extensions.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-operators.js" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-operators.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-operators.js.map" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-operators.js.map" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-operators.ts" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-operators.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/simple-search.component.js" afterPath="$PROJECT_DIR$/client/app/components/simple-search.component.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/simple-search.component.ts" afterPath="$PROJECT_DIR$/client/app/components/simple-search.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FirstScan.js" afterPath="$PROJECT_DIR$/FirstScan.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/main.js" afterPath="$PROJECT_DIR$/client/app/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/main.js.map" afterPath="$PROJECT_DIR$/client/app/main.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/main.ts" afterPath="$PROJECT_DIR$/client/app/main.ts" />
     </list>
     <ignored path="new test server 5.0.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,7 +64,21 @@
     <favorites_list name="new test server 5.0" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/app/app modules and oprions/app.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="18" column="35" lean-forward="false" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+              <folding>
+                <element signature="e#92#133#0" expanded="true" />
+                <element signature="e#336#396#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -53,8 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bin/hero-detail.component.ts" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/client/app/main.ts" />
         <option value="$PROJECT_DIR$/views/index.html" />
         <option value="$PROJECT_DIR$/client/app/app.routing.ts" />
@@ -69,7 +119,6 @@
         <option value="$PROJECT_DIR$/First Scan Script.js" />
         <option value="$PROJECT_DIR$/FirstScanScript.js" />
         <option value="$PROJECT_DIR$/FirstScanScriptV2.js" />
-        <option value="$PROJECT_DIR$/FirstScan.js" />
         <option value="$PROJECT_DIR$/client/app/styles/file-detail.component.css" />
         <option value="$PROJECT_DIR$/client/app/pages/app.component.html" />
         <option value="$PROJECT_DIR$/client/index.html" />
@@ -89,9 +138,6 @@
         <option value="$PROJECT_DIR$/client/app/pager.service.ts" />
         <option value="$PROJECT_DIR$/client/app/options/app.module.ts" />
         <option value="$PROJECT_DIR$/client/app/services/html.service.ts" />
-        <option value="$PROJECT_DIR$/client/app/components/advance-search.component.ts" />
-        <option value="$PROJECT_DIR$/client/app/services/file.service.ts" />
-        <option value="$PROJECT_DIR$/client/app/components/simple-search.component.ts" />
         <option value="$PROJECT_DIR$/client/app/html.service.ts" />
         <option value="$PROJECT_DIR$/client/app/app.module.ts" />
         <option value="$PROJECT_DIR$/client/package.json" />
@@ -104,6 +150,12 @@
         <option value="$PROJECT_DIR$/client/app/pages/advance-search.component.html" />
         <option value="$PROJECT_DIR$/client/app/advance-search.component.ts" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/client/app/components/advance-search.component.ts" />
+        <option value="$PROJECT_DIR$/client/app/components/simple-search.component.ts" />
+        <option value="$PROJECT_DIR$/client/app/components/file-detail.component.ts" />
+        <option value="$PROJECT_DIR$/client/app/services/file.service.ts" />
+        <option value="$PROJECT_DIR$/client/app/app modules and oprions/app.module.ts" />
+        <option value="$PROJECT_DIR$/FirstScan.js" />
       </list>
     </option>
   </component>
@@ -148,6 +200,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -156,46 +210,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SearvSearch 22.12.16" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ServSearch.net" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SearvSearch 22.12.16" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ServSearch.net" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SearvSearch 22.12.16" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
+              <option name="myItemId" value="‏‏SearvSearch V2.0.0" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -211,19 +231,19 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Dor\Desktop\SearvSearch 22.12.16\client\app" />
-      <recent name="C:\Users\Dor\Desktop\SearvSearch 22.12.16\client" />
-      <recent name="C:\Users\Dor\Desktop\SearvSearch 22.12.16\client\app\components" />
-      <recent name="C:\Users\Dor\Desktop\SearvSearch 22.12.16\client\app\options" />
-      <recent name="C:\Users\Dor\Desktop\SearvSearch 22.12.16\client\app\modules" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Dor\Desktop\Mamram Project 05.11.16" />
       <recent name="C:\Users\Dor\Desktop\Mamram Project 05.11.16\client\app" />
       <recent name="C:\Users\Dor\Desktop\Mamram Project 25.10.16\routes" />
       <recent name="C:\Users\Dor\Desktop\‏‏new test server 5.0 - fixed - 7.10.16\client" />
       <recent name="C:\Users\Dor\Desktop\‏‏new test server 5.0 - fixed - 7.10.16\client\app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dor\Desktop\‏‏SearvSearch V2.0.0\client\app\app modules and oprions" />
+      <recent name="C:\Users\Dor\Desktop\‏‏SearvSearch V2.0.0\client\app\modules" />
+      <recent name="C:\Users\Dor\Desktop\‏‏SearvSearch V2.0.0\client\app\rxjs" />
+      <recent name="C:\Users\Dor\Desktop\‏‏SearvSearch V2.0.0\client\app\services" />
+      <recent name="C:\Users\Dor\Desktop\‏‏SearvSearch V2.0.0\client\app\components" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.FirstScan2.js">
@@ -445,7 +465,9 @@
       <workItem from="1483432197305" duration="17262000" />
       <workItem from="1483537935937" duration="17178000" />
       <workItem from="1483571252683" duration="424000" />
-      <workItem from="1483605386446" duration="329000" />
+      <workItem from="1483605386446" duration="350000" />
+      <workItem from="1483608620749" duration="26000" />
+      <workItem from="1483608961960" duration="949000" />
     </task>
     <task id="LOCAL-00001" summary="First commit im young">
       <created>1478165523454</created>
@@ -741,11 +763,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483571275503</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="05/01/17 changes">
+      <created>1483608582835</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1483608582835</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="348931000" />
+    <option name="totallyTimeSpent" value="349927000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -761,13 +790,14 @@
     <editor active="false" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14119513" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14119513" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5029085" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.49814913" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295583" sideWeight="0.49709147" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.49709147" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -776,7 +806,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38391846" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
@@ -863,7 +892,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="88" />
+      <option name="time" value="89" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -910,7 +939,7 @@
     <entry file="file://$PROJECT_DIR$/MongoHandler.js" />
     <entry file="file://$PROJECT_DIR$/FirstScan.js" />
     <entry file="file://$PROJECT_DIR$/FirstScanScriptV1.js" />
-    <entry file="file://$PROJECT_DIR$/client/app/file.js">
+    <entry file="file://$PROJECT_DIR$/client/app/object modules/file.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -954,7 +983,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/simple-search.component.js">
+    <entry file="file://$PROJECT_DIR$/client/app/components/simple-search.component.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="41" column="37" lean-forward="false" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
@@ -990,31 +1019,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FirstScan.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2156">
-          <caret line="103" column="43" lean-forward="false" selection-start-line="103" selection-start-column="43" selection-end-line="103" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/pager.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="79" lean-forward="false" selection-start-line="5" selection-start-column="79" selection-end-line="5" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/rxjs-operators.ts">
+    <entry file="file://$PROJECT_DIR$/client/app/rxjs/rxjs-operators.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1033,7 +1041,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/app/html.service.ts" />
-    <entry file="file://$PROJECT_DIR$/client/app/app-routing.module.ts">
+    <entry file="file://$PROJECT_DIR$/client/app/app modules and oprions/app-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
@@ -1061,24 +1069,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-189">
-          <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1089,13 +1083,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/file-detail.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="15" column="48" lean-forward="true" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/app/pages/file-detail.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1103,17 +1090,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/file.ts">
+    <entry file="file://$PROJECT_DIR$/client/app/object modules/file.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/file.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1121,20 +1101,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
           <caret line="68" column="71" lean-forward="false" selection-start-line="68" selection-start-column="71" selection-end-line="68" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/simple-search.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="47" column="36" lean-forward="false" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/advance-search.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3045">
-          <caret line="144" column="31" lean-forward="false" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1149,6 +1115,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1156,7 +1123,84 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="26" column="58" lean-forward="false" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/components/simple-search.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/components/file-detail.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/services/file.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding>
+            <element signature="e#60#106#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/services/pager.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="79" lean-forward="false" selection-start-line="5" selection-start-column="79" selection-end-line="5" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/components/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/components/advance-search.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#60#107#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstScan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1950">
+          <caret line="89" column="55" lean-forward="false" selection-start-line="89" selection-start-column="55" selection-end-line="89" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/app modules and oprions/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="35" lean-forward="false" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+          <folding>
+            <element signature="e#92#133#0" expanded="true" />
+            <element signature="e#336#396#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -9,19 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 //import the rxjs extensions
-require('./rxjs-extensions');
-//import the modules
+require('../rxjs/rxjs-extensions');
+//import the object modules
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 //import the components and services
-var app_component_1 = require('./app.component');
-var simple_search_component_1 = require('./simple-search.component');
-var advance_search_component_1 = require('./advance-search.component');
-var file_detail_component_1 = require('./file-detail.component');
-var file_service_1 = require('./file.service');
-var pager_service_1 = require('./pager.service');
+var app_component_1 = require('../components/app.component');
+var simple_search_component_1 = require('../components/simple-search.component');
+var advance_search_component_1 = require('../components/advance-search.component');
+var file_detail_component_1 = require('../components/file-detail.component');
+var file_service_1 = require('../services/file.service');
+var pager_service_1 = require('../services/pager.service');
 //import the routes
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
@@ -29,7 +29,7 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            //import the modules to the project
+            //import the object modules to the project
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,

@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //import the component declare in order to create a new one
 var core_1 = require('@angular/core');
 //import the service "HeroService" from the file "./hero.service"
-var pager_service_1 = require('./pager.service');
+var pager_service_1 = require('../services/pager.service');
 //create new component
 var FileDetailComponent = (function () {
     function FileDetailComponent(pagerService) {

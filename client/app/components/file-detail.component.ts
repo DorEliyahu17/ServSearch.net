@@ -2,10 +2,10 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
 //import the class "Hero" from the file "./hero"
-import { File } from './file';
+import { File } from '../object modules/file';
 
 //import the service "HeroService" from the file "./hero.service"
-import { PagerService } from './pager.service'
+import { PagerService } from '../services/pager.service'
 
 //create new component
 @Component({

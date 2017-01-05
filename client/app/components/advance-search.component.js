@@ -10,11 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 //import the component declare in order to create a new one
 var core_1 = require('@angular/core');
-//import the class "File" from the file "./file"
-var file_1 = require('./file');
-//import the service "FileService" from the file "./file.service"
-var file_service_1 = require('./file.service');
 var http_1 = require("@angular/http");
+//import the class "File" from the file "./file"
+var file_1 = require('../object modules/file');
+//import the service "FileService" from the file "./file.service"
+var file_service_1 = require('../services/file.service');
 //create new component
 var AdvanceSearchComponent = (function () {
     function AdvanceSearchComponent(fileService) {
