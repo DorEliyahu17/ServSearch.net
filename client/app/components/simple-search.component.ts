@@ -43,9 +43,12 @@ export class SimpleSearchComponent implements OnInit
     }
 
     ngOnInit():void{
-        var j;
+        var i;
         this.fileService.getServerNames().then((data: any[]) => {
-            this.serverNames = data;
+            for(i=0;i<data.length;i++) {
+                if(data[i].name != "Admins")
+                    this.serverNames.push(data[i]);
+            }
         });
     }
 
@@ -57,9 +60,6 @@ export class SimpleSearchComponent implements OnInit
         var type = (<HTMLInputElement>document.getElementById("FileType")).value;
         var server = (<HTMLInputElement>document.getElementById("FileServer")).value;
         console.log("server="+server);
-
-        // WORK FILE SERVICE
-        // GETS THE PARAMAS
 
         //Parameters obj
         let params: URLSearchParams = new URLSearchParams();

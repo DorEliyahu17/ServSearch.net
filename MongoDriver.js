@@ -1,6 +1,6 @@
 "use strict";
 var exportMongo=new Object();
-//var resault=[];
+
 //find all arr that change once a week and will be lunch in the beginning of the session
 exportMongo.resultArr=[];
 var objectId = require('mongodb').ObjectID;
@@ -16,6 +16,7 @@ function getServerFromLocation(location){
     return arr[0];
 }
 
+//find all the collections from the db
 exportMongo.findCollectionsNameList = function findCollectionsNameList() {
     var arr=[],i;
     return new Promise(function (resolve, reject) {
@@ -27,6 +28,21 @@ exportMongo.findCollectionsNameList = function findCollectionsNameList() {
                     arr[i] = {"name":collections[i].s.name};
                 db.close();
                 resolve(arr);
+            });
+        });
+    });
+};
+
+//find all the admins from the db
+exportMongo.findAdmin = function findAdmin(adminName, adminPassword) {
+    return new Promise(function (resolve, reject) {
+        mongo.connect(url, function (err, db) {
+            assert.equal(null, err);
+            db.collection("Admins").find({userName:adminName, password:adminPassword}).toArray(function (err, results) {
+                assert.equal(null, err);
+                console.log("All admin found");
+                db.close();
+                resolve(results);
             });
         });
     });
@@ -240,15 +256,6 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server){
     });
 };
 
-
-
-
-
-
-
-
-
-
 //find all the documents in the db
 exportMongo.findAll = function findAll(){
     var resultArray = [];
@@ -269,21 +276,21 @@ exportMongo.findAll = function findAll(){
 };
 
 //insert one document to the db
-exportMongo.insertOne = function insertOne(document){
-    mongo.connect(url, function(err, db) {
-        //check if the the function didn't return error
-        assert.equal(null, err);
-        db.collection('Files').insertOne(document, function(err, result) {
+exportMongo.insertOne = function insertOne(document, collection){
+    return new Promise(function(resolve, reject) {
+        mongo.connect(url, function (err, db) {
             //check if the the function didn't return error
             assert.equal(null, err);
-            console.log('Item inserted');
-            db.close();
+            db.collection(collection).insertOne(document, function (err, result) {
+                //check if the the function didn't return error
+                assert.equal(null, err);
+                console.log('Item inserted');
+                db.close();
+                resolve();
+            });
         });
     });
 };
-
-
-
 
 /*
 exportMongo.testConnection = function(){

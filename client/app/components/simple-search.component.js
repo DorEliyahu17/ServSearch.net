@@ -39,9 +39,12 @@ var SimpleSearchComponent = (function () {
     };
     SimpleSearchComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var j;
+        var i;
         this.fileService.getServerNames().then(function (data) {
-            _this.serverNames = data;
+            for (i = 0; i < data.length; i++) {
+                if (data[i].name != "Admins")
+                    _this.serverNames.push(data[i]);
+            }
         });
     };
     SimpleSearchComponent.prototype.search = function () {
@@ -53,8 +56,6 @@ var SimpleSearchComponent = (function () {
         var type = document.getElementById("FileType").value;
         var server = document.getElementById("FileServer").value;
         console.log("server=" + server);
-        // WORK FILE SERVICE
-        // GETS THE PARAMAS
         //Parameters obj
         var params = new http_1.URLSearchParams();
         params.set('name', name);

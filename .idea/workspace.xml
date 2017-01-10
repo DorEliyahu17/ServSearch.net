@@ -1,48 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2bf6d08-a4b4-47a3-ad70-c7ac9a3a44e4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/components/advance-search.component.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/components/simple-search.component.js.map" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/advance-search.component.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/app.module.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/simple-search.component.js.map" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/advance-search.component.js" afterPath="$PROJECT_DIR$/client/app/components/advance-search.component.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/advance-search.component.ts" afterPath="$PROJECT_DIR$/client/app/components/advance-search.component.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app-routing.module.js" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app-routing.module.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app-routing.module.js.map" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app-routing.module.js.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app-routing.module.ts" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app-routing.module.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app.component.js" afterPath="$PROJECT_DIR$/client/app/components/app.component.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app.component.js.map" afterPath="$PROJECT_DIR$/client/app/components/app.component.js.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app.component.ts" afterPath="$PROJECT_DIR$/client/app/components/app.component.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app.module.js" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/app.module.ts" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file-detail.component.js" afterPath="$PROJECT_DIR$/client/app/components/file-detail.component.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file-detail.component.js.map" afterPath="$PROJECT_DIR$/client/app/components/file-detail.component.js.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file-detail.component.ts" afterPath="$PROJECT_DIR$/client/app/components/file-detail.component.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.js" afterPath="$PROJECT_DIR$/client/app/object modules/file.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.js.map" afterPath="$PROJECT_DIR$/client/app/object modules/file.js.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.service.js" afterPath="$PROJECT_DIR$/client/app/services/file.service.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.service.js.map" afterPath="$PROJECT_DIR$/client/app/services/file.service.js.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.service.ts" afterPath="$PROJECT_DIR$/client/app/services/file.service.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/file.ts" afterPath="$PROJECT_DIR$/client/app/object modules/file.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/pager.service.js" afterPath="$PROJECT_DIR$/client/app/services/pager.service.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/pager.service.js.map" afterPath="$PROJECT_DIR$/client/app/services/pager.service.js.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/pager.service.ts" afterPath="$PROJECT_DIR$/client/app/services/pager.service.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-extensions.js" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-extensions.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-extensions.js.map" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-extensions.js.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-extensions.ts" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-extensions.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-operators.js" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-operators.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-operators.js.map" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-operators.js.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/rxjs-operators.ts" afterPath="$PROJECT_DIR$/client/app/rxjs/rxjs-operators.ts" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/simple-search.component.js" afterPath="$PROJECT_DIR$/client/app/components/simple-search.component.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/app/simple-search.component.ts" afterPath="$PROJECT_DIR$/client/app/components/simple-search.component.ts" />
+    <list default="true" id="c2bf6d08-a4b4-47a3-ad70-c7ac9a3a44e4" name="Default" comment="05/01/17 changes">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AdminsInsert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin.log.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/components/login.component.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/components/login.component.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/components/login.component.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/object modules/user.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/object modules/user.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/object modules/user.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/pages/login.component.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/services/login.service.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/services/login.service.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/services/login.service.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/app/styles/login.component.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ServSearch.net.iml" afterPath="$PROJECT_DIR$/.idea/ServSearch.net.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FirstScan.js" afterPath="$PROJECT_DIR$/FirstScan.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/main.js" afterPath="$PROJECT_DIR$/client/app/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/main.js.map" afterPath="$PROJECT_DIR$/client/app/main.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/main.ts" afterPath="$PROJECT_DIR$/client/app/main.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MongoDriver.js" afterPath="$PROJECT_DIR$/MongoDriver.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.js" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.js.map" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.ts" afterPath="$PROJECT_DIR$/client/app/app modules and oprions/app.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/components/simple-search.component.js" afterPath="$PROJECT_DIR$/client/app/components/simple-search.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/components/simple-search.component.js.map" afterPath="$PROJECT_DIR$/client/app/components/simple-search.component.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/components/simple-search.component.ts" afterPath="$PROJECT_DIR$/client/app/components/simple-search.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/pages/app.component.html" afterPath="$PROJECT_DIR$/client/app/pages/app.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/api.js" afterPath="$PROJECT_DIR$/routes/api.js" />
     </list>
     <ignored path="new test server 5.0.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,15 +49,54 @@
     <favorites_list name="new test server 5.0" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/app/app modules and oprions/app.module.ts">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="login.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/pages/login.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="18" column="35" lean-forward="false" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+            <state relative-caret-position="484">
+              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/app/components/login.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="946">
+              <caret line="44" column="45" lean-forward="false" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simple-search.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/components/simple-search.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/object modules/user.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/services/login.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
               <folding>
-                <element signature="e#92#133#0" expanded="true" />
-                <element signature="e#336#396#0" expanded="true" />
+                <element signature="e#60#106#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -83,8 +107,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -105,13 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/app/main.ts" />
-        <option value="$PROJECT_DIR$/views/index.html" />
-        <option value="$PROJECT_DIR$/client/app/app.routing.ts" />
-        <option value="$PROJECT_DIR$/client/app/styles/advance-search.component.css" />
-        <option value="$PROJECT_DIR$/routes/resault.js" />
-        <option value="$PROJECT_DIR$/routes/result.js" />
-        <option value="$PROJECT_DIR$/client/app/app-routing.module.ts" />
         <option value="$PROJECT_DIR$/client/app/alert-demo.component.ts" />
         <option value="$PROJECT_DIR$/client/app/pages/pagination.component.html" />
         <option value="$PROJECT_DIR$/client/app/pagination.component.ts" />
@@ -120,21 +137,17 @@
         <option value="$PROJECT_DIR$/FirstScanScript.js" />
         <option value="$PROJECT_DIR$/FirstScanScriptV2.js" />
         <option value="$PROJECT_DIR$/client/app/styles/file-detail.component.css" />
-        <option value="$PROJECT_DIR$/client/app/pages/app.component.html" />
         <option value="$PROJECT_DIR$/client/index.html" />
         <option value="$PROJECT_DIR$/FirstScanScriptV1.js" />
         <option value="$PROJECT_DIR$/MongoDB.js" />
         <option value="$PROJECT_DIR$/MongoDriver-GitHub.js" />
         <option value="$PROJECT_DIR$/MongoHandler.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/client/app/file.ts" />
         <option value="$PROJECT_DIR$/client/app/simple-search.component.js" />
         <option value="$PROJECT_DIR$/FirstScan2.js" />
         <option value="$PROJECT_DIR$/routes/files.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/routes/api.js" />
-        <option value="$PROJECT_DIR$/MongoDriver.js" />
         <option value="$PROJECT_DIR$/client/app/pager.service.ts" />
         <option value="$PROJECT_DIR$/client/app/options/app.module.ts" />
         <option value="$PROJECT_DIR$/client/app/services/html.service.ts" />
@@ -151,23 +164,38 @@
         <option value="$PROJECT_DIR$/client/app/advance-search.component.ts" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/client/app/components/advance-search.component.ts" />
-        <option value="$PROJECT_DIR$/client/app/components/simple-search.component.ts" />
         <option value="$PROJECT_DIR$/client/app/components/file-detail.component.ts" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/client/app/object modules/user.ts" />
+        <option value="$PROJECT_DIR$/admin.log.txt" />
+        <option value="$PROJECT_DIR$/AdminInsert.js" />
+        <option value="$PROJECT_DIR$/client/app/services/logIn.service.ts" />
         <option value="$PROJECT_DIR$/client/app/services/file.service.ts" />
+        <option value="$PROJECT_DIR$/MongoDriver.js" />
+        <option value="$PROJECT_DIR$/routes/api.js" />
         <option value="$PROJECT_DIR$/client/app/app modules and oprions/app.module.ts" />
+        <option value="$PROJECT_DIR$/client/app/pages/app.component.html" />
+        <option value="$PROJECT_DIR$/client/app/pages/login.component.html" />
+        <option value="$PROJECT_DIR$/client/app/services/login.service.ts" />
         <option value="$PROJECT_DIR$/FirstScan.js" />
+        <option value="$PROJECT_DIR$/client/app/components/simple-search.component.ts" />
+        <option value="$PROJECT_DIR$/client/app/components/login.component.ts" />
       </list>
     </option>
+  </component>
+  <component name="JsBowerSettings">
+    <exe-path>$USER_HOME$/AppData/Roaming/npm/bower.cmd</exe-path>
+    <config-path />
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
     <package-json value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="JsFlowSettings">
-    <service-enabled>false</service-enabled>
+    <service-enabled>true</service-enabled>
     <exe-path />
     <annotation-enable>false</annotation-enable>
-    <other-services-enabled>false</other-services-enabled>
+    <other-services-enabled>true</other-services-enabled>
   </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
@@ -214,6 +242,170 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServSearch.net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="‏‏SearvSearch V2.0.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServSearch.net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="‏‏SearvSearch V2.0.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServSearch.net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="‏‏SearvSearch V2.0.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="styles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServSearch.net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="‏‏SearvSearch V2.0.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServSearch.net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="‏‏SearvSearch V2.0.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServSearch.net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="‏‏SearvSearch V2.0.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="object modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServSearch.net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="‏‏SearvSearch V2.0.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ServSearch.net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="‏‏SearvSearch V2.0.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app modules and oprions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -226,17 +418,17 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dor\Desktop\‏‏SearvSearch V2.0.0\client\app\styles" />
+      <recent name="C:\Users\Dor\Desktop\‏‏SearvSearch V2.0.0\client\app\pages" />
+      <recent name="C:\Users\Dor\Desktop\‏‏SearvSearch V2.0.0\client\app\components" />
       <recent name="C:\Users\Dor\Desktop\Mamram Project 05.11.16" />
       <recent name="C:\Users\Dor\Desktop\Mamram Project 05.11.16\client\app" />
-      <recent name="C:\Users\Dor\Desktop\Mamram Project 25.10.16\routes" />
-      <recent name="C:\Users\Dor\Desktop\‏‏new test server 5.0 - fixed - 7.10.16\client" />
-      <recent name="C:\Users\Dor\Desktop\‏‏new test server 5.0 - fixed - 7.10.16\client\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Dor\Desktop\‏‏SearvSearch V2.0.0\client\app\app modules and oprions" />
@@ -275,9 +467,6 @@
       </EXTENSION>
       <method />
     </configuration>
-    <configuration default="false" name="FirstScan.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="FirstScan.js" working-dir="$PROJECT_DIR$">
-      <method />
-    </configuration>
     <configuration default="false" name="MongoHandler.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="MongoHandler.js" working-dir="$PROJECT_DIR$">
       <method />
     </configuration>
@@ -312,16 +501,7 @@
     <configuration default="false" name="MongoDriver.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="MongoDriver.js" working-dir="$PROJECT_DIR$">
       <method />
     </configuration>
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-      <method />
-    </configuration>
-    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
+    <configuration default="false" name="AdminInsert.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="$PROJECT_DIR$/AdminsInsert.js" working-dir="$PROJECT_DIR$">
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
@@ -374,18 +554,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Node.js.bin\www" />
       <item index="1" class="java.lang.String" itemvalue="Node.js.First Scan Script.js" />
-      <item index="2" class="java.lang.String" itemvalue="Node.js.FirstScan.js" />
-      <item index="3" class="java.lang.String" itemvalue="Node.js.MongoHandler.js" />
-      <item index="4" class="java.lang.String" itemvalue="Node.js.FirstScan2.js" />
-      <item index="5" class="java.lang.String" itemvalue="Node.js.MongoDriver.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.MongoHandler.js" />
+      <item index="3" class="java.lang.String" itemvalue="Node.js.FirstScan2.js" />
+      <item index="4" class="java.lang.String" itemvalue="Node.js.MongoDriver.js" />
+      <item index="5" class="java.lang.String" itemvalue="Node.js.AdminInsert.js" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Node.js.FirstScan2.js" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.MongoDriver.js" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.MongoHandler.js" />
-        <item index="3" class="java.lang.String" itemvalue="Node.js.First Scan Script.js" />
-        <item index="4" class="java.lang.String" itemvalue="Node.js.FirstScan.js" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.AdminInsert.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.MongoDriver.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.MongoHandler.js" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.First Scan Script.js" />
       </list>
     </recent_temporary>
   </component>
@@ -467,7 +647,11 @@
       <workItem from="1483571252683" duration="424000" />
       <workItem from="1483605386446" duration="350000" />
       <workItem from="1483608620749" duration="26000" />
-      <workItem from="1483608961960" duration="949000" />
+      <workItem from="1483608961960" duration="11780000" />
+      <workItem from="1484032761555" duration="9000" />
+      <workItem from="1484032893897" duration="187000" />
+      <workItem from="1484033227509" duration="1178000" />
+      <workItem from="1484034446896" duration="2975000" />
     </task>
     <task id="LOCAL-00001" summary="First commit im young">
       <created>1478165523454</created>
@@ -770,11 +954,18 @@
       <option name="project" value="LOCAL" />
       <updated>1483608582835</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="05/01/17 changes">
+      <created>1483609963623</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1483609963624</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="349927000" />
+    <option name="totallyTimeSpent" value="365107000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -790,24 +981,24 @@
     <editor active="false" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14119513" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14066632" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5029085" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5050238" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.49814913" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38391846" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.49709147" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295583" sideWeight="0.4949762" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38391846" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997735" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -836,6 +1027,12 @@
         <option value="$PROJECT_DIR$/old client/app/file.js.map" />
         <option value="$PROJECT_DIR$/old client/app/advance-search.component.js" />
         <option value="$PROJECT_DIR$/old client/app/advance-search.component.js.map" />
+        <option value="$PROJECT_DIR$/client/app/services/logIn.service.js" />
+        <option value="$PROJECT_DIR$/client/app/services/logIn.service.js.map" />
+        <option value="$PROJECT_DIR$/client/app/object modules/user.js.map" />
+        <option value="$PROJECT_DIR$/client/app/object modules/user.js" />
+        <option value="$PROJECT_DIR$/client/app/components/login.component.js" />
+        <option value="$PROJECT_DIR$/client/app/components/login.component.js.map" />
       </list>
     </option>
   </component>
@@ -892,49 +1089,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="89" />
+      <option name="time" value="90" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/app/pagination-demo.component.ts" />
-    <entry file="file://$PROJECT_DIR$/client/app/pages/pagination-demo.component.html" />
-    <entry file="file://$PROJECT_DIR$/node_modules/mongoose/lib/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="359" column="0" lean-forward="false" selection-start-line="359" selection-start-column="0" selection-end-line="359" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/kareem/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/6.3.1/core-modules/events.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="95" column="12" lean-forward="false" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FirstScanScriptV2.js" />
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/phrase.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="336" column="27" lean-forward="false" selection-start-line="336" selection-start-column="25" selection-end-line="336" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/styles/file-detail.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MongoDriver-GitHub.js" />
     <entry file="file://$PROJECT_DIR$/MongoHandler.js" />
     <entry file="file://$PROJECT_DIR$/FirstScan.js" />
@@ -1005,20 +1164,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="24" column="2" lean-forward="false" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MongoDriver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/app/rxjs/rxjs-operators.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1062,13 +1207,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/pages/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -1090,20 +1228,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/object modules/file.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/pages/simple-search.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="68" column="71" lean-forward="false" selection-start-line="68" selection-start-column="71" selection-end-line="68" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/app/pages/advance-search.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
@@ -1115,29 +1239,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="58" lean-forward="false" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/components/simple-search.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="13" column="22" lean-forward="false" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1145,17 +1246,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/services/file.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding>
-            <element signature="e#60#106#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1163,7 +1253,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="5" column="79" lean-forward="false" selection-start-line="5" selection-start-column="79" selection-end-line="5" selection-end-column="79" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1171,7 +1260,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1179,30 +1267,164 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#60#107#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FirstScan.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1950">
-          <caret line="89" column="55" lean-forward="false" selection-start-line="89" selection-start-column="55" selection-end-line="89" selection-end-column="55" />
-          <folding />
+        <state relative-caret-position="44">
+          <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/object modules/file.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin.log.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AdminsInsert.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="15" lean-forward="true" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="24" column="2" lean-forward="false" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/styles/login.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MongoDriver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="35" column="7" lean-forward="true" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/services/file.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/app/app modules and oprions/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="18" column="35" lean-forward="false" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+          <caret line="42" column="16" lean-forward="false" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/pages/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/pages/simple-search.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/pages/login.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/services/login.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
           <folding>
-            <element signature="e#92#133#0" expanded="true" />
-            <element signature="e#336#396#0" expanded="true" />
+            <element signature="e#60#106#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/object modules/user.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FirstScan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.WebStorm2016.3/webstorm.exe.vmoptions">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/components/simple-search.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/components/login.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="946">
+          <caret line="44" column="45" lean-forward="false" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

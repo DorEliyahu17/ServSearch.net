@@ -18,7 +18,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
     //do the command is in the shell
     //1024 bytes = 1 KB = 65,436 chars in resault = 1,408 lines = estimated 934 files
     //1024 bytes * 1000 = 1024000 = 1 MB = 1,048,476 chars in resault = 19,979 lines = estimated 15,536 files
-    shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: false, maxBuffer:1000*1024000}, function (err, resault){
+    shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: false, maxBuffer:1000*1024}, function (err, resault){
         console.log("After "+minutes+":"+seconds+" this scan was completed");
         console.log("now just wait to the insert.");
         var i,

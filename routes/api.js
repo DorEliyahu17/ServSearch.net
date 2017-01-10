@@ -6,7 +6,8 @@ var mongo=require('../MongoDriver');
 /* GET files listing. */
 router.get('/', function(req, res, next) {
     res.send("Go to api/files?name=[name of file]&type=[type of the file]&server=[server of the file] to see all the files in the DB or "+
-        "go to api/collections to see all the collection names in the DB.");
+        "go to api/collections to see all the collection names in the DB or "+
+        "go to api/admins to see all the admins login in the DB.");
 });
 
 /* GET files listing. */
@@ -25,6 +26,13 @@ router.get('/files', function(req, res, next) {
 /* GET collections name listing. */
 router.get('/collections', function(req, res, next) {
     mongo.findCollectionsNameList().then(function(result){
+        res.send(result);
+    });
+});
+
+/* GET admins name and password listing. */
+router.get('/admins', function(req, res, next) {
+    mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
         res.send(result);
     });
 });
