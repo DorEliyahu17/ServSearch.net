@@ -5,6 +5,7 @@ import {URLSearchParams } from '@angular/http';
 
 //import the Components
 import { SimpleSearchComponent } from '../components/simple-search.component'
+import { LoginComponent } from '../components/login.component'
 import { AdvanceSearchComponent } from '../components/advance-search.component'
 import { FileDetailComponent } from '../components/file-detail.component';
 
@@ -14,13 +15,18 @@ const routes: Routes = [
     {
         //Home Page
         path: '',
-        redirectTo: '/simpleSearch',
+        redirectTo: '/search',
         pathMatch: 'full'
     },
     {
-        //Simple Search
-        path: 'simpleSearch',
+        //Search
+        path: 'search',
         component: SimpleSearchComponent
+    },
+    {
+        //Admin login
+        path: 'adminLogin',
+        component: LoginComponent
     }/*,
     {
         //advance Search

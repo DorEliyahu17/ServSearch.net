@@ -1,32 +1,19 @@
-<div id="login">
-    <div class="row">
-
-        <div class="col-lg-9"></div>
-
-        <div class="col-lg-2">
-            <div class="input-group">
-                <input type="text" id="userName" class="form-control" placeholder="שם משתמש...">
+<div id="login-modal" class="container">
+    <section id="content">
+        <form action="">
+            <h1>Admin Login</h1>
+            <div>
+                <input type="text" placeholder="שם משתמש..." required="" id="username"/>
             </div>
-        </div>
-
-    </div>
-    <br />
-    <div class="row">
-
-        <div class="col-lg-9"></div>
-
-        <div class="col-lg-2">
-            <div class="input-group">
-                <input type="text" id="password" class="form-control" placeholder="סיסמה...">
+            <div>
+                <input type="password" placeholder="סיסמה..." required="" id="password"/>
             </div>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-lg-9">
-            <button class="btn btn-default" (click)="login()">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-        </div>
-    </div>
+            <div>
+                <input type="submit" value="כניסה" (click)="login()"/>
+            </div>
+            <div class="button">
+                <a href="#">Download source file</a>
+            </div><!-- button -->
+        </form>
+    </section>
 </div>

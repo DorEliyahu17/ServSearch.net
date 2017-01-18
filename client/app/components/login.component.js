@@ -20,7 +20,15 @@ var LoginComponent = (function () {
     function LoginComponent(loginService) {
         this.loginService = loginService;
         this.user = new user_1.User();
+        this.visible = false;
     }
+    LoginComponent.prototype.modelVisible = function () {
+        this.visible = true;
+        //var model = document.getElementById("login-modal");
+    };
+    LoginComponent.prototype.modelHidden = function () {
+        this.visible = false;
+    };
     LoginComponent.prototype.login = function () {
         var userName = document.getElementById("userName").value;
         var password = document.getElementById("password").value;

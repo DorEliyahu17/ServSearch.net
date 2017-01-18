@@ -23,8 +23,18 @@ import { LoginService } from '../services/login.service';
 //the class of this new component
 export class LoginComponent {
 	user = new User();
+	visible=false;
 
 	constructor(private loginService: LoginService) {
+	}
+
+	modelVisible(): void{
+		this.visible=true;
+		//var model = document.getElementById("login-modal");
+	}
+
+	modelHidden(): void{
+		this.visible=false;
 	}
 
 	login(): void {

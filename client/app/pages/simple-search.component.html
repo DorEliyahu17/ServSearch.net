@@ -61,11 +61,20 @@
       </div>
     </div>
   </div>
-</div>
 
-<div id="result" class="hidden">
-  <div *ngIf="isResult==true">
-    <!-- advance search-->
-    <my-file-detail [files]="files" [length]="length"></my-file-detail>
+  <div id="result" class="hidden">
+    <div *ngIf="isResult==true">
+      <!-- advance search-->
+      <my-file-detail [files]="files" [length]="length"></my-file-detail>
+    </div>
+  </div>
+
+
+  <div class="text-center">
+    <!--<a href="/admin/login" >Admin login</a>-->
+    <a href="/adminLogin">Admin zone</a> | <a href="/bugReport">Report a bug</a>
   </div>
 </div>
+
+
+
