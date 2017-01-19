@@ -23,22 +23,12 @@ import { LoginService } from '../services/login.service';
 //the class of this new component
 export class LoginComponent {
 	user = new User();
-	visible=false;
 
 	constructor(private loginService: LoginService) {
 	}
 
-	modelVisible(): void{
-		this.visible=true;
-		//var model = document.getElementById("login-modal");
-	}
-
-	modelHidden(): void{
-		this.visible=false;
-	}
-
 	login(): void {
-		var userName = (<HTMLInputElement>document.getElementById("userName")).value;
+		var userName = (<HTMLInputElement>document.getElementById("username")).value;
 		var password = (<HTMLInputElement>document.getElementById("password")).value;
 
 		//Parameters obj
@@ -47,16 +37,10 @@ export class LoginComponent {
 		params.set('password', password);
 
 		this.loginService.getAdmin(params).then((data: User[]) => {
-			/*var i;
-			for (i = 0; i < data.length; i++) {*/
 			if(data[0]!=undefined)
 				console.log("success login");
 			else
 				console.log("wrong user name or password");
-				/*if ((data[0].userName == userName) && (data[0].password == password)) {
-					console.log("data.userName="+data[0].userName+" data.password="+data[0].password);
-				}*/
-			//}
 		});
 	}
 }

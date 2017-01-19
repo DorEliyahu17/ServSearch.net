@@ -20,33 +20,19 @@ var LoginComponent = (function () {
     function LoginComponent(loginService) {
         this.loginService = loginService;
         this.user = new user_1.User();
-        this.visible = false;
     }
-    LoginComponent.prototype.modelVisible = function () {
-        this.visible = true;
-        //var model = document.getElementById("login-modal");
-    };
-    LoginComponent.prototype.modelHidden = function () {
-        this.visible = false;
-    };
     LoginComponent.prototype.login = function () {
-        var userName = document.getElementById("userName").value;
+        var userName = document.getElementById("username").value;
         var password = document.getElementById("password").value;
         //Parameters obj
         var params = new http_1.URLSearchParams();
         params.set('userName', userName);
         params.set('password', password);
         this.loginService.getAdmin(params).then(function (data) {
-            /*var i;
-            for (i = 0; i < data.length; i++) {*/
             if (data[0] != undefined)
                 console.log("success login");
             else
                 console.log("wrong user name or password");
-            /*if ((data[0].userName == userName) && (data[0].password == password)) {
-                console.log("data.userName="+data[0].userName+" data.password="+data[0].password);
-            }*/
-            //}
         });
     };
     LoginComponent = __decorate([

@@ -2,6 +2,9 @@
   "name": "servsearch.net",
   "version": "2.0.0",
   "main": "./bin/www",
+  "author": "Dor Eliyahu",
+  "license": "ISC",
+  "description": "Search web",
   "scripts": {
     "nodemon": "nodemon",
     "start2": "node FirstScan2.js --max_old_space_size=10240",
@@ -11,21 +14,19 @@
     "lite": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Dor Eliyahu",
-  "license": "ISC",
-  "description": "Search web",
+
   "dependencies": {
-    "body-parser": "*",
+    "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.2",
-    "express": "*",
+    "express": "^4.14.0",
     "mongodb": "^2.2.11",
-    "mongoose": "*",
     "morgan": "^1.7.0",
-    "nodemon": "*",
+    "nodemon": "^1.10.0",
     "promise": "^7.1.1",
     "serve-favicon": "^2.3.0",
-    "shelljs": "*"
+    "shelljs": "^0.7.4",
+    "ssh2shell": "^1.7.0"
   },
   "devDependencies": {
     "concurrently": "^2.2.0",
