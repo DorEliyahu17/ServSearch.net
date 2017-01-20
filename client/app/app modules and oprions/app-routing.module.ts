@@ -6,6 +6,7 @@ import {URLSearchParams } from '@angular/http';
 //import the Components
 import { SimpleSearchComponent } from '../components/simple-search.component'
 import { LoginComponent } from '../components/login.component'
+import { AdminPageComponent } from '../components/admin-page.component'
 import { AdvanceSearchComponent } from '../components/advance-search.component'
 import { FileDetailComponent } from '../components/file-detail.component';
 
@@ -27,18 +28,23 @@ const routes: Routes = [
         //Admin login
         path: 'adminLogin',
         component: LoginComponent
-    }/*,
-    {
-        //advance Search
-        path: 'advanceSearch',
-        component: AdvanceSearchComponent
     },
     {
-        //Search resault of all variables
+        //Admin Page
+        path: 'adminPage',
+        component: AdminPageComponent
+    }/*,
+     {
+     //advance Search
+     path: 'advanceSearch',
+     component: AdvanceSearchComponent
+     },
+     {
+     //Search resault of all variables
 
-        path: 'res',
-        component: FileDetailComponent
-    }*/
+     path: 'res',
+     component: FileDetailComponent
+     }*/
 ];
 
 @NgModule({

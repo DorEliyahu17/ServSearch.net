@@ -11,11 +11,13 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { AppComponent }  from '../components/app.component';
 import { SimpleSearchComponent } from '../components/simple-search.component';
 import { AdvanceSearchComponent } from '../components/advance-search.component';
-import { LoginComponent } from '../components/login.component'
 import { FileDetailComponent } from '../components/file-detail.component';
+import { LoginComponent } from '../components/login.component'
+import { AdminPageComponent } from '../components/admin-page.component';
 import { FileService } from '../services/file.service';
 import { PagerService } from '../services/pager.service';
 import { LoginService } from '../services/login.service';
+import { AdminPageService } from '../services/admin-page.service';
 
 //import the routes
 import { AppRoutingModule } from './app-routing.module';
@@ -35,12 +37,14 @@ import { AppRoutingModule } from './app-routing.module';
     SimpleSearchComponent,
     AdvanceSearchComponent,
     FileDetailComponent,
-    LoginComponent
+    LoginComponent,
+    AdminPageComponent
   ],
   providers: [
     FileService,
     PagerService,
-    LoginService
+    LoginService,
+    AdminPageService
   ],
   //bootstrap the main component
   bootstrap: [ AppComponent ]

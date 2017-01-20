@@ -10,8 +10,7 @@ import { File } from '../object modules/file';
 
 
 @Injectable()
-export class FileService
-{
+export class FileService {
 	//privates
 	Files: File[];
 

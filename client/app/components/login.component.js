@@ -11,17 +11,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //import the component declare in order to create a new one
 var core_1 = require('@angular/core');
 var http_1 = require("@angular/http");
-//import the class "File" from the file "./file"
-var user_1 = require('../object modules/user');
+var router_1 = require('@angular/router');
 //import the service "FileService" from the file "./file.service"
 var login_service_1 = require('../services/login.service');
 //create new component
 var LoginComponent = (function () {
-    function LoginComponent(loginService) {
+    function LoginComponent(router, loginService) {
+        this.router = router;
         this.loginService = loginService;
-        this.user = new user_1.User();
+        this.stam = false;
     }
     LoginComponent.prototype.login = function () {
+        var _this = this;
         var userName = document.getElementById("username").value;
         var password = document.getElementById("password").value;
         //Parameters obj
@@ -29,8 +30,12 @@ var LoginComponent = (function () {
         params.set('userName', userName);
         params.set('password', password);
         this.loginService.getAdmin(params).then(function (data) {
-            if (data[0] != undefined)
+            console.log(data);
+            if (data[0] != "") {
                 console.log("success login");
+                _this.stam = true;
+                window.location.href = '/adminPage';
+            }
             else
                 console.log("wrong user name or password");
         });
@@ -45,7 +50,7 @@ var LoginComponent = (function () {
             styleUrls: ['./app/styles/login.component.css'],
             providers: [login_service_1.LoginService]
         }), 
-        __metadata('design:paramtypes', [login_service_1.LoginService])
+        __metadata('design:paramtypes', [router_1.Router, login_service_1.LoginService])
     ], LoginComponent);
     return LoginComponent;
 }());

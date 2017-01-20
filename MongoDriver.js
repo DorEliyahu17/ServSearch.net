@@ -38,11 +38,11 @@ exportMongo.findAdmin = function findAdmin(adminName, adminPassword) {
     return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
             assert.equal(null, err);
-            db.collection("Admins").find({userName:adminName, password:adminPassword}).toArray(function (err, results) {
-                assert.equal(null, err);
-                console.log("All admin found");
+            db.collection("Admins").find({userName:adminName, password:adminPassword}).toArray(function (err, result) {
+                //assert.equal(null, err);
+                //console.log("All admin found"+ results);
                 db.close();
-                resolve(results);
+                resolve([result, adminName, adminPassword]);
             });
         });
     });

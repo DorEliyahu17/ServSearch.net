@@ -15,6 +15,7 @@ var http_1 = require('@angular/http');
 //import the Components
 var simple_search_component_1 = require('../components/simple-search.component');
 var login_component_1 = require('../components/login.component');
+var admin_page_component_1 = require('../components/admin-page.component');
 var params = new http_1.URLSearchParams();
 var routes = [
     {
@@ -32,18 +33,23 @@ var routes = [
         //Admin login
         path: 'adminLogin',
         component: login_component_1.LoginComponent
-    } /*,
-    {
-        //advance Search
-        path: 'advanceSearch',
-        component: AdvanceSearchComponent
     },
     {
-        //Search resault of all variables
+        //Admin Page
+        path: 'adminPage',
+        component: admin_page_component_1.AdminPageComponent
+    } /*,
+     {
+     //advance Search
+     path: 'advanceSearch',
+     component: AdvanceSearchComponent
+     },
+     {
+     //Search resault of all variables
 
-        path: 'res',
-        component: FileDetailComponent
-    }*/
+     path: 'res',
+     component: FileDetailComponent
+     }*/
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

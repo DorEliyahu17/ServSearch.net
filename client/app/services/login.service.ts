@@ -8,8 +8,7 @@ import 'rxjs/add/operator/toPromise';
 import { User } from '../object modules/user';
 
 @Injectable()
-export class LoginService
-{
+export class LoginService {
 
     constructor(private http: Http) { }
 
