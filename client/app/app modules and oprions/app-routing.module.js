@@ -11,33 +11,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //import the routes declare in order to create the routes of the app
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var http_1 = require('@angular/http');
 //import the Components
 var simple_search_component_1 = require('../components/simple-search.component');
 var login_component_1 = require('../components/login.component');
 var admin_page_component_1 = require('../components/admin-page.component');
-var params = new http_1.URLSearchParams();
+var bug_report_component_1 = require('../components/bug-report.component');
+//let params: URLSearchParams = new URLSearchParams();
 var routes = [
+    //Home page
     {
-        //Home Page
         path: '',
         redirectTo: '/search',
         pathMatch: 'full'
     },
+    //Search page
     {
-        //Search
         path: 'search',
         component: simple_search_component_1.SimpleSearchComponent
     },
+    //Admin login page
     {
-        //Admin login
         path: 'adminLogin',
         component: login_component_1.LoginComponent
     },
+    //Admin page
     {
-        //Admin Page
         path: 'adminPage',
         component: admin_page_component_1.AdminPageComponent
+    },
+    //Bug report Page
+    {
+        path: 'bugReport',
+        component: bug_report_component_1.BugReportComponent
     } /*,
      {
      //advance Search

@@ -15,7 +15,6 @@ var admin_page_service_1 = require("../services/admin-page.service");
 var AdminPageComponent = (function () {
     function AdminPageComponent(adminPageService) {
         this.adminPageService = adminPageService;
-        //window.location.reload(true);
     }
     AdminPageComponent = __decorate([
         core_1.Component({

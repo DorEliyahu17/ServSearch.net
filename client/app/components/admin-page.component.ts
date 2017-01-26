@@ -20,6 +20,5 @@ import {AdminPageService} from "../services/admin-page.service";
 export class AdminPageComponent {
 
     constructor(private adminPageService: AdminPageService) {
-        //window.location.reload(true);
     }
 }

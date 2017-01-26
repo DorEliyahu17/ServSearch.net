@@ -7,32 +7,42 @@ import {URLSearchParams } from '@angular/http';
 import { SimpleSearchComponent } from '../components/simple-search.component'
 import { LoginComponent } from '../components/login.component'
 import { AdminPageComponent } from '../components/admin-page.component'
+import { BugReportComponent } from '../components/bug-report.component';
 import { AdvanceSearchComponent } from '../components/advance-search.component'
 import { FileDetailComponent } from '../components/file-detail.component';
 
-let params: URLSearchParams = new URLSearchParams();
+//let params: URLSearchParams = new URLSearchParams();
 
 const routes: Routes = [
+    //Home page
     {
-        //Home Page
         path: '',
         redirectTo: '/search',
         pathMatch: 'full'
     },
+
+    //Search page
     {
-        //Search
         path: 'search',
         component: SimpleSearchComponent
     },
+
+    //Admin login page
     {
-        //Admin login
         path: 'adminLogin',
         component: LoginComponent
     },
+
+    //Admin page
     {
-        //Admin Page
         path: 'adminPage',
         component: AdminPageComponent
+    },
+
+    //Bug report Page
+    {
+        path: 'bugReport',
+        component: BugReportComponent
     }/*,
      {
      //advance Search

@@ -18,7 +18,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
     //do the command is in the shell
     //1024 bytes = 1 KB = 65,436 chars in resault = 1,408 lines = estimated 934 files
     //1024 bytes * 1000 = 1024000 = 1 MB = 1,048,476 chars in resault = 19,979 lines = estimated 15,536 files
-    shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: false, maxBuffer:1000*1024}, function (err, resault){
+    shell.exec('ls -l -R ' + searchPath + ' | grep -v .lnk | tr -s " "', {silent: true, maxBuffer:100000*1024}, function (err, resault){
         console.log("After "+minutes+":"+seconds+" this scan was completed");
         console.log("now just wait to the insert.");
         var i,
@@ -54,12 +54,8 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
 
                 dirCheck = filesArr[i].split(" ");
                 tempName = dirCheck[8];
-                for (j = 9; j < dirCheck.length; j++) {
-                    if (j == (dirCheck.length - 1))
-                        tempName += " " + dirCheck[j];
-                    else
-                        tempName += dirCheck[j] + " ";
-                }
+                for (j = 9; j < dirCheck.length; j++)
+                        tempName += " "+dirCheck[j];
                 if (dirCheck[0].charAt(0) == 'd') {
                     //if this is a directory create a model and push it to the arr
                     if (dirCheck[0].charAt(0) == "d") {
@@ -182,4 +178,4 @@ mongo.testConnection().then(function(){
 console.log("Scan started please wait.");
 searchTheEntireHardDrive("E:/", mongo.insertArr);
 
-//Users/Dor/Desktop/stam
+//C:/Users/Dor/Desktop/stam

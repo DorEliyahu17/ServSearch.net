@@ -7,7 +7,12 @@ var mongo=require('../MongoDriver');
 router.get('/', function(req, res, next) {
     res.send("Go to api/files?name=[name of file]&type=[type of the file]&server=[server of the file] to see all the files in the DB or "+
         "go to api/collections to see all the collection names in the DB or "+
-        "go to api/admins to see all the admins login in the DB.");
+        "go to api/admins to see all the admins login in the DB."+
+        "go to api/reportedBugs to see all the bugs that reported in the DB."+
+        "api/insertBug?name=[name of the reporter]&subject=[the subject]&description=[the description] insert one bug report to the DB."+
+        "api/deleteBug?name=[name of the reporter]&subject=[the subject]&description=[the description] delete one specified bug report from the DB."+
+        "api/insertToDo?description=[the description] insert one ToDo item to the DB."+
+        "api/deleteToDo?description=[the description] delete one specified ToDo item from the DB.");
 });
 
 /* GET files listing. */
@@ -32,6 +37,45 @@ router.get('/collections', function(req, res, next) {
 
 /* GET admins name and password listing. */
 router.get('/admins', function(req, res, next) {
+    mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
+        res.send(result);
+    });
+});
+
+/* GET admins name and password listing. */
+router.get('/reportedBugs', function(req, res, next) {
+    mongo.findBugs().then(function(result){
+        res.send(result);
+    });
+});
+
+/* GET admins name and password listing. */
+router.get('/insertBug', function(req, res, next) {
+    //ToDo - change that function
+    mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
+        res.send(result);
+    });
+});
+
+/* GET admins name and password listing. */
+router.get('/deleteBug', function(req, res, next) {
+    //ToDo - change that function
+    mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
+        res.send(result);
+    });
+});
+
+/* GET admins name and password listing. */
+router.get('/insertToDo', function(req, res, next) {
+    //ToDo - change that function
+    mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
+        res.send(result);
+    });
+});
+
+/* GET admins name and password listing. */
+router.get('/deleteToDo', function(req, res, next) {
+    //ToDo - change that function
     mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
         res.send(result);
     });

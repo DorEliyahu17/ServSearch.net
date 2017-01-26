@@ -34,6 +34,20 @@ exportMongo.findCollectionsNameList = function findCollectionsNameList() {
 };
 
 //find all the admins from the db
+exportMongo.findBugs = function findBugs(adminName, adminPassword) {
+    return new Promise(function (resolve, reject) {
+        mongo.connect(url, function (err, db) {
+            assert.equal(null, err);
+            db.collection("Bugs").find().toArray(function (err, result) {
+                //assert.equal(null, err);
+                db.close();
+                resolve(result);
+            });
+        });
+    });
+};
+
+//find all the admins from the db
 exportMongo.findAdmin = function findAdmin(adminName, adminPassword) {
     return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
@@ -49,126 +63,140 @@ exportMongo.findAdmin = function findAdmin(adminName, adminPassword) {
 };
 
 /*
-//find specified document in the db
-exportMongo.findSpec = function findSpec(fileName, fileType, server, callback){
-    //exportMongo.resultArr;
-    //var resultArray = [];
-    var arr=[];
+ //find specified document in the db
+ exportMongo.findSpec = function findSpec(fileName, fileType, server, callback){
+ //exportMongo.resultArr;
+ //var resultArray = [];
+ var arr=[];
 
-    console.log("fileName="+fileName+", fileType="+fileType+", server="+server);
+ console.log("fileName="+fileName+", fileType="+fileType+", server="+server);
 
-    mongo.connect(url, function (err, db) {
-        //check if the the function didn't return error
-        assert.equal(null, err);
-        /*
-         var cursor = db.collection('Files').find({"name": "\""+fileName+"\""}/*, {"type": fileType});
+ mongo.connect(url, function (err, db) {
+ //check if the the function didn't return error
+ assert.equal(null, err);
+ /*
+ var cursor = db.collection('Files').find({"name": "\""+fileName+"\""}/*, {"type": fileType});
 
 
-         console.log("cursor="+cursor);
+ console.log("cursor="+cursor);
 
-         cursor.forEach(function (doc, err) {
-         //check if the the function didn't return error
-         console.log("err="+err);
-         assert.equal(null, err);
-         //if((server!="")&&(server.equal(getServerFromLocation(doc.location))))
-         console.log("doc="+doc);
-         exportMongo.resultArr.push(doc);
-         }, function() {
-         db.close();
-         });
-         /
-        if((fileName!="")&&(fileType!="")&&(server!="")) {
-            db.collection('Files').find({name: fileName}, {type: fileType}, {location: server}).toArray(function (err, results) {
-                assert.equal(null, err);
-                exportMongo.resultArr = results;
-                //exportMongo.resultArr.push(results);
-                console.log("All found everything");
-                db.close();
-                console.log(exportMongo.resultArr);
-                callback();
-            });
-        }
-        if ((fileName!="")&&(fileType!="")&&(server=="")) {
-            db.collection('Files').find({name: fileName}, {type: fileType}).toArray(function (err, results) {
-                assert.equal(null, err);
-                exportMongo.resultArr = results;
-                //exportMongo.resultArr.push(results);
-                console.log("All found no server");
-                db.close();
-                console.log(exportMongo.resultArr);
-                callback();
-            });
-        }
-        if((fileName!="")&&(fileType=="")&&(server!="")){
-            db.collection('Files').find({name: fileName}, {location: server}).toArray(function (err, results) {
-                assert.equal(null, err);
-                exportMongo.resultArr = results;
-                //exportMongo.resultArr.push(results);
-                console.log("All found no type");
-                db.close();
-                console.log(exportMongo.resultArr);
-                callback();
-            });
-        }
-        if((fileName=="")&&(fileType!="")&&(server!="")){
-            db.collection('Files').find({type: fileType}, {location: server}).toArray(function (err, results) {
-                assert.equal(null, err);
-                exportMongo.resultArr = results;
-                //exportMongo.resultArr.push(results);
-                console.log("All found no name");
-                db.close();
-                console.log(exportMongo.resultArr);
-                callback();
-            });
-        }
-        if ((fileName!="")&&(fileType=="")&&(server=="")) {
-            db.collection('Files').find({name: fileName}).toArray(function (err, results) {
-                assert.equal(null, err);
-                exportMongo.resultArr = results;
-                //exportMongo.resultArr.push(results);
-                console.log("All found only name");
-                db.close();
-                console.log(exportMongo.resultArr);
-                callback();
-            });
-        }
-        if((fileName=="")&&(fileType!="")&&(server=="")){
-            db.collection('Files').find({type: fileType}).toArray(function (err, results) {
-                assert.equal(null, err);
-                exportMongo.resultArr = results;
-                //exportMongo.resultArr.push(results);
-                console.log("All found only type");
-                db.close();
-                console.log(exportMongo.resultArr);
-                callback();
-            });
-        }
-        if((fileName=="")&&(fileType=="")&&(server!="")){
-            //var cursor=db.collection('Files').find({location: server});
-            //cursor.
-            db.collection('Files').find({location: server}).toArray(function (err, results) {
-                assert.equal(null, err);
-                exportMongo.resultArr = results;
-                //exportMongo.resultArr.push(results);
-                console.log("All found only server");
-                db.close();
-                console.log(exportMongo.resultArr);
-                callback();
-            });
-        }
-        ///console.log("resultArray[0]="+resultArray[0]);
-        //exportMongo.resultArr.push(resultArray);
-    });
-};
-*/
+ cursor.forEach(function (doc, err) {
+ //check if the the function didn't return error
+ console.log("err="+err);
+ assert.equal(null, err);
+ //if((server!="")&&(server.equal(getServerFromLocation(doc.location))))
+ console.log("doc="+doc);
+ exportMongo.resultArr.push(doc);
+ }, function() {
+ db.close();
+ });
+ /
+ if((fileName!="")&&(fileType!="")&&(server!="")) {
+ db.collection('Files').find({name: fileName}, {type: fileType}, {location: server}).toArray(function (err, results) {
+ assert.equal(null, err);
+ exportMongo.resultArr = results;
+ //exportMongo.resultArr.push(results);
+ console.log("All found everything");
+ db.close();
+ console.log(exportMongo.resultArr);
+ callback();
+ });
+ }
+ if ((fileName!="")&&(fileType!="")&&(server=="")) {
+ db.collection('Files').find({name: fileName}, {type: fileType}).toArray(function (err, results) {
+ assert.equal(null, err);
+ exportMongo.resultArr = results;
+ //exportMongo.resultArr.push(results);
+ console.log("All found no server");
+ db.close();
+ console.log(exportMongo.resultArr);
+ callback();
+ });
+ }
+ if((fileName!="")&&(fileType=="")&&(server!="")){
+ db.collection('Files').find({name: fileName}, {location: server}).toArray(function (err, results) {
+ assert.equal(null, err);
+ exportMongo.resultArr = results;
+ //exportMongo.resultArr.push(results);
+ console.log("All found no type");
+ db.close();
+ console.log(exportMongo.resultArr);
+ callback();
+ });
+ }
+ if((fileName=="")&&(fileType!="")&&(server!="")){
+ db.collection('Files').find({type: fileType}, {location: server}).toArray(function (err, results) {
+ assert.equal(null, err);
+ exportMongo.resultArr = results;
+ //exportMongo.resultArr.push(results);
+ console.log("All found no name");
+ db.close();
+ console.log(exportMongo.resultArr);
+ callback();
+ });
+ }
+ if ((fileName!="")&&(fileType=="")&&(server=="")) {
+ db.collection('Files').find({name: fileName}).toArray(function (err, results) {
+ assert.equal(null, err);
+ exportMongo.resultArr = results;
+ //exportMongo.resultArr.push(results);
+ console.log("All found only name");
+ db.close();
+ console.log(exportMongo.resultArr);
+ callback();
+ });
+ }
+ if((fileName=="")&&(fileType!="")&&(server=="")){
+ db.collection('Files').find({type: fileType}).toArray(function (err, results) {
+ assert.equal(null, err);
+ exportMongo.resultArr = results;
+ //exportMongo.resultArr.push(results);
+ console.log("All found only type");
+ db.close();
+ console.log(exportMongo.resultArr);
+ callback();
+ });
+ }
+ if((fileName=="")&&(fileType=="")&&(server!="")){
+ //var cursor=db.collection('Files').find({location: server});
+ //cursor.
+ db.collection('Files').find({location: server}).toArray(function (err, results) {
+ assert.equal(null, err);
+ exportMongo.resultArr = results;
+ //exportMongo.resultArr.push(results);
+ console.log("All found only server");
+ db.close();
+ console.log(exportMongo.resultArr);
+ callback();
+ });
+ }
+ ///console.log("resultArray[0]="+resultArray[0]);
+ //exportMongo.resultArr.push(resultArray);
+ });
+ };
+ */
 
 //find specified document in the db
 exportMongo.findSpec = function findSpec(fileName, fileType, server){
+    var nameArr=[], name="", i;
     return new Promise(function(resolve, reject) {
         if((server!="")||((fileName != "") && (fileType != "") && (server != ""))) {
+            /*
+            if(fileName!=""){
+                nameArr=fileName.split("%20");
+                console.log("nameArr.length="+nameArr.length);
+                if(nameArr.length>1) {
+                    for (i=0;i<nameArr.length;i++)
+                        name += nameArr[i];
+                }
+                else{
+                    name=fileName;
+                }
+
+            }*/
             mongo.connect(url, function (err, db) {
                 assert.equal(null, err);
-                if ((fileName != "") && (fileType != "") && (server != "")) {
+                if ((name != "") && (fileType != "") && (server != "")) {
                     db.collection(server).find({name: fileName, type: fileType}).toArray(function (err, results) {
                         assert.equal(null, err);
                         //exportMongo.resultArr = results;
@@ -191,7 +219,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server){
                  resolve(results);
                  });
                  }*/
-                if ((fileName != "") && (fileType == "") && (server != "")) {
+                if ((name != "") && (fileType == "") && (server != "")) {
                     db.collection(server).find({name: fileName}).toArray(function (err, results) {
                         assert.equal(null, err);
                         //exportMongo.resultArr = results;
@@ -202,7 +230,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server){
                         resolve(results);
                     });
                 }
-                if ((fileName == "") && (fileType != "") && (server != "")) {
+                if ((name == "") && (fileType != "") && (server != "")) {
                     db.collection(server).find({type: fileType}).toArray(function (err, results) {
                         assert.equal(null, err);
                         //exportMongo.resultArr = results;
@@ -237,7 +265,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server){
                  });
                  }*/
                 //must to delete?
-                if ((fileName == "") && (fileType == "") && (server != "")) {
+                if ((name == "") && (fileType == "") && (server != "")) {
                     db.collection(server).find().toArray(function (err, results) {
                         assert.equal(null, err);
                         exportMongo.resultArr = results;
@@ -293,25 +321,25 @@ exportMongo.insertOne = function insertOne(document, collection){
 };
 
 /*
-exportMongo.testConnection = function(){
-    return new Promise(function(resolve, reject) {
-        var connectFlag=false;
-        mongo.connect(url, function (err, db) {
-            //check if the the function didn't return error
-            assert.equal(null, err);
-            db.close();
-            connectFlag=true;
-            //console.log("Connected successfully to the database");
-            if(connectFlag)
-            resolve();
-            //delete after finish
-            else
-            reject();
-        });
+ exportMongo.testConnection = function(){
+ return new Promise(function(resolve, reject) {
+ var connectFlag=false;
+ mongo.connect(url, function (err, db) {
+ //check if the the function didn't return error
+ assert.equal(null, err);
+ db.close();
+ connectFlag=true;
+ //console.log("Connected successfully to the database");
+ if(connectFlag)
+ resolve();
+ //delete after finish
+ else
+ reject();
+ });
 
-    })
-};
-*/
+ })
+ };
+ */
 
 //insert arr of documents to the db
 exportMongo.insertArr = function insertArr(documents, collection){

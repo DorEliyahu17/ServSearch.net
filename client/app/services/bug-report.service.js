@@ -12,22 +12,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var AdminPageService = (function () {
-    function AdminPageService(http) {
+var BugReportService = (function () {
+    function BugReportService(http) {
         this.http = http;
     }
     //get the bugs that reported from the /api/reportedBugs
-    AdminPageService.prototype.getBugs = function () {
+    BugReportService.prototype.getBugs = function () {
         return this.http.get("http://localhost:3000/api/reportedBugs")
             .map(function (response) {
             return response.json();
         }).toPromise();
     };
-    AdminPageService = __decorate([
+    BugReportService.prototype.insertBug = function (bug) {
+    };
+    BugReportService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], AdminPageService);
-    return AdminPageService;
+    ], BugReportService);
+    return BugReportService;
 }());
-exports.AdminPageService = AdminPageService;
-//# sourceMappingURL=admin-page.service.js.map
+exports.BugReportService = BugReportService;
+//# sourceMappingURL=bug-report.service.js.map

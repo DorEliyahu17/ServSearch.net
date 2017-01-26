@@ -46,7 +46,7 @@ export class SimpleSearchComponent implements OnInit
         var i;
         this.fileService.getServerNames().then((data: any[]) => {
             for(i=0;i<data.length;i++) {
-                if(data[i].name != "Admins")
+                if (!((data[i].name == "Admins")||(data[i].name == "Bugs")||(data[i].name == "ToDo")))
                     this.serverNames.push(data[i]);
             }
         });
@@ -59,7 +59,6 @@ export class SimpleSearchComponent implements OnInit
         var name = (<HTMLInputElement>document.getElementById("FileName")).value;
         var type = (<HTMLInputElement>document.getElementById("FileType")).value;
         var server = (<HTMLInputElement>document.getElementById("FileServer")).value;
-        console.log("server="+server);
 
         //Parameters obj
         let params: URLSearchParams = new URLSearchParams();

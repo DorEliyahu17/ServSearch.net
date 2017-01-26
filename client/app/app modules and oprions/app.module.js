@@ -22,10 +22,12 @@ var advance_search_component_1 = require('../components/advance-search.component
 var file_detail_component_1 = require('../components/file-detail.component');
 var login_component_1 = require('../components/login.component');
 var admin_page_component_1 = require('../components/admin-page.component');
+var bug_report_component_1 = require('../components/bug-report.component');
 var file_service_1 = require('../services/file.service');
 var pager_service_1 = require('../services/pager.service');
 var login_service_1 = require('../services/login.service');
 var admin_page_service_1 = require('../services/admin-page.service');
+var bug_report_service_1 = require('../services/bug-report.service');
 //import the routes
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
@@ -48,13 +50,15 @@ var AppModule = (function () {
                 advance_search_component_1.AdvanceSearchComponent,
                 file_detail_component_1.FileDetailComponent,
                 login_component_1.LoginComponent,
-                admin_page_component_1.AdminPageComponent
+                admin_page_component_1.AdminPageComponent,
+                bug_report_component_1.BugReportComponent
             ],
             providers: [
                 file_service_1.FileService,
                 pager_service_1.PagerService,
                 login_service_1.LoginService,
-                admin_page_service_1.AdminPageService
+                admin_page_service_1.AdminPageService,
+                bug_report_service_1.BugReportService
             ],
             //bootstrap the main component
             bootstrap: [app_component_1.AppComponent]

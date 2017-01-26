@@ -4,8 +4,11 @@ import { Http, URLSearchParams} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
+//import the class "BugReport" from the file "../object modules/bug-report"
+import { BugReport } from '../object modules/bug-report';
+
 @Injectable()
-export class AdminPageService {
+export class BugReportService {
 
     constructor(private http: Http) { }
 
@@ -15,5 +18,9 @@ export class AdminPageService {
             .map((response) => {
                 return response.json()
             }).toPromise();
+    }
+
+    insertBug(bug: BugReport): any {
+
     }
 }

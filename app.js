@@ -12,6 +12,7 @@ var search = require('./routes/search');
 var api = require('./routes/api');
 var adminLogin = require('./routes/login');
 var adminPage = require('./routes/adminPage');
+var bugReport = require('./routes/bugReport');
 
 var app = express();
 
@@ -36,9 +37,10 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 app.use('/', index);
 app.use('/search', search);
-app.use('/api', api);
 app.use('/adminLogin', adminLogin);
 app.use('/adminPage', adminPage);
+app.use('/bugReport', bugReport);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

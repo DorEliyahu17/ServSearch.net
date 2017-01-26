@@ -14,10 +14,13 @@ import { AdvanceSearchComponent } from '../components/advance-search.component';
 import { FileDetailComponent } from '../components/file-detail.component';
 import { LoginComponent } from '../components/login.component'
 import { AdminPageComponent } from '../components/admin-page.component';
+import { BugReportComponent } from '../components/bug-report.component';
+
 import { FileService } from '../services/file.service';
 import { PagerService } from '../services/pager.service';
 import { LoginService } from '../services/login.service';
 import { AdminPageService } from '../services/admin-page.service';
+import { BugReportService } from '../services/bug-report.service';
 
 //import the routes
 import { AppRoutingModule } from './app-routing.module';
@@ -38,13 +41,15 @@ import { AppRoutingModule } from './app-routing.module';
     AdvanceSearchComponent,
     FileDetailComponent,
     LoginComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    BugReportComponent
   ],
   providers: [
     FileService,
     PagerService,
     LoginService,
-    AdminPageService
+    AdminPageService,
+    BugReportService
   ],
   //bootstrap the main component
   bootstrap: [ AppComponent ]

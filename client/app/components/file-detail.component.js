@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 //import the component declare in order to create a new one
 var core_1 = require('@angular/core');
-//import the service "HeroService" from the file "./hero.service"
+//import the service "PagerService" from the file "../services/pager.service"
 var pager_service_1 = require('../services/pager.service');
 //create new component
 var FileDetailComponent = (function () {
@@ -19,13 +19,14 @@ var FileDetailComponent = (function () {
         this.indexArr = [];
         //pager vars
         // dummy array of items to be paged
-        this.dummyItems = []; //_.range(1, 151);
+        this.filesArr = [];
         // pager object
         this.pager = {};
     }
     FileDetailComponent.prototype.ngOnChanges = function () {
+        this.filesArr = [];
         for (var i = 0; i < length; i++) {
-            this.dummyItems[i] = this.files[i];
+            this.filesArr[i] = this.files[i];
             this.indexArr[i] = i + 1;
         }
         // initialize to page 1
@@ -36,9 +37,9 @@ var FileDetailComponent = (function () {
             return;
         }
         // get pager object from service
-        this.pager = this.pagerService.getPager(this.dummyItems.length, page);
+        this.pager = this.pagerService.getPager(this.filesArr.length, page);
         // get current page of items
-        this.pagedItems = this.dummyItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        this.pagedItems = this.filesArr.slice(this.pager.startIndex, this.pager.endIndex + 1);
     };
     FileDetailComponent.prototype.goBack = function () {
         //visible and hidden change
