@@ -1,13 +1,15 @@
 //host configuration with connection settings and commands
 var host = {
     server:        {
-        host:         "127.0.0.1",
-        userName:     "test",
-        password:     "1234",
+        host:         "192.168.85.1",
+        userName:     "admin",
+        password:     "root1234",
     },
     commands:      [ "echo $(pwd)", "ls -l" ]
 };
-
+/*127.0.10.1*/
+/*1.1.1.13*/
+/*192.168.85.1*/
 var SSH2Shell = require ('ssh2shell');
 
 //Create a new instance passing in the host object

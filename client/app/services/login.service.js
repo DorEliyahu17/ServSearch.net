@@ -13,12 +13,14 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var LoginService = (function () {
+    //private apiUrl = 'http://192.168.1.15:3000/api';  // URL to web api
     function LoginService(http) {
         this.http = http;
+        this.apiUrl = 'http://localhost:3000/api'; // URL to web api
     }
     //get the admin from the /api/admins
     LoginService.prototype.getAdmin = function (params) {
-        return this.http.get("http://localhost:3000/api/admins", { search: params })
+        return this.http.get(this.apiUrl + "/admins", { search: params })
             .map(function (response) {
             return response.json();
         }).toPromise();

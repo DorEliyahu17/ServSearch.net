@@ -8,6 +8,7 @@ var mongo = require('mongodb').MongoClient;
 var assert = require('assert');
 
 var url = 'mongodb://localhost:27017/Mtest';
+//var url = 'mongodb://192.168.1.15:27017/Mtest';
 
 //get the server name from the location field
 function getServerFromLocation(location){

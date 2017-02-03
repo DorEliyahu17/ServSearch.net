@@ -15,14 +15,16 @@ export class FileService {
 	Files: File[];
 
 	//private headers = new Headers({'Content-Type': 'application/json'});
-	//private filesUrl = 'http://localhost:3000/api/files';  // URL to web api
+
+	private apiUrl = 'http://localhost:3000/api';  // URL to web api
+	//private apiUrl = 'http://192.168.1.15:3000/api';  // URL to web api
 
 	//promise=callback
 	constructor(private http: Http) { }
 
 	//get all the files in the /api/files
 	getFiles(params: URLSearchParams): any {
-		return this.http.get("http://localhost:3000/api/files", {search: params})
+		return this.http.get(this.apiUrl+"/files", {search: params})
             .map((response) => {
 				return response.json()
 			}).toPromise();
@@ -30,7 +32,7 @@ export class FileService {
 
 	getServerNames(): any
 	{
-		return this.http.get("http://localhost:3000/api/collections")
+		return this.http.get(this.apiUrl+"/collections")
             .map((response) => {
 				return response.json()
 			}).toPromise();

@@ -13,21 +13,22 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var FileService = (function () {
-    //private headers = new Headers({'Content-Type': 'application/json'});
-    //private filesUrl = 'http://localhost:3000/api/files';  // URL to web api
+    //private apiUrl = 'http://192.168.1.15:3000/api';  // URL to web api
     //promise=callback
     function FileService(http) {
         this.http = http;
+        //private headers = new Headers({'Content-Type': 'application/json'});
+        this.apiUrl = 'http://localhost:3000/api'; // URL to web api
     }
     //get all the files in the /api/files
     FileService.prototype.getFiles = function (params) {
-        return this.http.get("http://localhost:3000/api/files", { search: params })
+        return this.http.get(this.apiUrl + "/files", { search: params })
             .map(function (response) {
             return response.json();
         }).toPromise();
     };
     FileService.prototype.getServerNames = function () {
-        return this.http.get("http://localhost:3000/api/collections")
+        return this.http.get(this.apiUrl + "/collections")
             .map(function (response) {
             return response.json();
         }).toPromise();

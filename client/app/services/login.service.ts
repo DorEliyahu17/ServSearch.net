@@ -10,11 +10,14 @@ import { User } from '../object modules/user';
 @Injectable()
 export class LoginService {
 
+    private apiUrl = 'http://localhost:3000/api';  // URL to web api
+    //private apiUrl = 'http://192.168.1.15:3000/api';  // URL to web api
+
     constructor(private http: Http) { }
 
     //get the admin from the /api/admins
     getAdmin(params: URLSearchParams): any {
-        return this.http.get("http://localhost:3000/api/admins", {search: params})
+        return this.http.get(this.apiUrl+"/admins", {search: params})
             .map((response) => {
                 return response.json()
             }).toPromise();

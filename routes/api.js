@@ -5,14 +5,15 @@ var mongo=require('../MongoDriver');
 
 /* GET files listing. */
 router.get('/', function(req, res, next) {
-    res.send("Go to api/files?name=[name of file]&type=[type of the file]&server=[server of the file] to see all the files in the DB or "+
-        "go to api/collections to see all the collection names in the DB or "+
-        "go to api/admins to see all the admins login in the DB."+
-        "go to api/reportedBugs to see all the bugs that reported in the DB."+
-        "api/insertBug?name=[name of the reporter]&subject=[the subject]&description=[the description] insert one bug report to the DB."+
-        "api/deleteBug?name=[name of the reporter]&subject=[the subject]&description=[the description] delete one specified bug report from the DB."+
-        "api/insertToDo?description=[the description] insert one ToDo item to the DB."+
-        "api/deleteToDo?description=[the description] delete one specified ToDo item from the DB.");
+    var detail="1. Go to api/files?name=[name of file]&type=[type of the file]&server=[server of the file] to see all the files in the DB. "+
+        "2. Go to api/collections to see all the collection names in the DB. "+
+        "3. Go to api/admins to see all the admins login in the DB. "+
+        "4. Go to api/reportedBugs to see all the bugs that reported in the DB. "+
+        "5. api/insertBug?name=[name of the reporter]&subject=[the subject]&description=[the description] insert one bug report to the DB. "+
+        "6. api/deleteBug?name=[name of the reporter]&subject=[the subject]&description=[the description] delete one specified bug report from the DB. "+
+        "7. api/insertToDo?description=[the description] insert one ToDo item to the DB. "+
+        "8. api/deleteToDo?description=[the description] delete one specified ToDo item from the DB. ";
+    res.send(detail);
 });
 
 /* GET files listing. */

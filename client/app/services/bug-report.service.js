@@ -13,12 +13,14 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var BugReportService = (function () {
+    //private apiUrl = 'http://192.168.1.15:3000/api';  // URL to web api
     function BugReportService(http) {
         this.http = http;
+        this.apiUrl = 'http://localhost:3000/api'; // URL to web api
     }
     //get the bugs that reported from the /api/reportedBugs
     BugReportService.prototype.getBugs = function () {
-        return this.http.get("http://localhost:3000/api/reportedBugs")
+        return this.http.get(this.apiUrl + "/reportedBugs")
             .map(function (response) {
             return response.json();
         }).toPromise();
