@@ -18,6 +18,8 @@ var file_service_1 = require('../services/file.service');
 var SimpleSearchComponent = (function () {
     function SimpleSearchComponent(fileService) {
         this.fileService = fileService;
+        this.advanceFlag = false;
+        this.errorFlag = false;
         this.alerts = [];
         this.serverNames = [];
         this.isResult = false;
@@ -39,19 +41,21 @@ var SimpleSearchComponent = (function () {
     };
     SimpleSearchComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var i;
+        //var i;
         this.fileService.getServerNames().then(function (data) {
-            for (i = 0; i < data.length; i++) {
-                if (!((data[i].name == "Admins") || (data[i].name == "Bugs") || (data[i].name == "ToDo")))
-                    _this.serverNames.push(data[i]);
-            }
+            if (data.name == "MongoError")
+                _this.errorFlag = true;
+            else
+                _this.serverNames = data;
         });
     };
     SimpleSearchComponent.prototype.search = function () {
         var _this = this;
+        this.advanceFlag = false;
+        this.isResult = false;
         var i;
-        var resultSearch = document.getElementById("result");
-        resultSearch.className = "hidden";
+        ///var resultSearch = document.getElementById("result");
+        //resultSearch.className = "hidden";
         var name = document.getElementById("FileName").value;
         var type = document.getElementById("FileType").value;
         var server = document.getElementById("FileServer").value;
@@ -60,33 +64,46 @@ var SimpleSearchComponent = (function () {
         params.set('name', name);
         params.set('type', type);
         params.set('server', server.toUpperCase());
+        params.set('size', "");
+        params.set('date', "");
+        params.set('sizeRangeLow', "");
+        params.set('sizeRangeHigh', "");
+        params.set('dateRangeLow', "");
+        params.set('dateRangeHigh', "");
         //get the files arr from the service
         this.fileService.getFiles(params)
-            .then(function (data) {
-            if (data.length > 0) {
-                _this.files = data;
-                length = _this.files.length;
-                if (_this.alerts.length > 0)
-                    _this.alerts.splice(0, _this.alerts.length);
-                _this.isResult = true;
-                //visible and hidden change
-                var resultSearch = document.getElementById("result");
-                resultSearch.className = "visible";
-            }
+            .then(function (data /*File[]*/) {
+            if (data.name == "MongoError")
+                _this.errorFlag = true;
             else {
-                //warning=1
-                //danger=2
-                //success=3
-                if (_this.alerts.length > 0)
-                    _this.alerts.splice(0, _this.alerts.length);
-                if ((name != "") || (type != "") || (server != "")) {
-                    if (server == "")
-                        _this.alerts.push({ msg: 'אנא בחר את השרת שבו תרצה לחפש.', type: 2 });
-                    else
-                        _this.alerts.push({ msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 1 });
+                if (data.length > 0) {
+                    _this.files = data;
+                    _this.length = _this.files.length;
+                    if (_this.alerts.length > 0)
+                        _this.alerts.splice(0, _this.alerts.length);
+                    _this.isResult = true;
+                    _this.advanceFlag = true;
                 }
-                else
-                    _this.alerts.push({ msg: 'לא הוכנס שום ערך.', type: 2 });
+                else {
+                    //warning=1
+                    //danger=2
+                    //success=3
+                    if (_this.alerts.length > 0)
+                        _this.alerts.splice(0, _this.alerts.length);
+                    if ((name != "") || (type != "") || (server != "")) {
+                        if (server == "")
+                            _this.alerts.push({ msg: 'אנא בחר את השרת שבו תרצה לחפש.', type: 2 });
+                        else {
+                            _this.alerts.push({
+                                msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.',
+                                type: 1
+                            });
+                            _this.advanceFlag = true;
+                        }
+                    }
+                    else
+                        _this.alerts.push({ msg: 'לא הוכנס שום ערך.', type: 2 });
+                }
             }
         });
     };

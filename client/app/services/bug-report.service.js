@@ -25,7 +25,11 @@ var BugReportService = (function () {
             return response.json();
         }).toPromise();
     };
-    BugReportService.prototype.insertBug = function (bug) {
+    BugReportService.prototype.insertBug = function (params) {
+        return this.http.get(this.apiUrl + "/insertBug", { search: params })
+            .map(function (response) {
+            return response.json();
+        }).toPromise();
     };
     BugReportService = __decorate([
         core_1.Injectable(), 

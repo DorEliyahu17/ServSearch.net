@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'client/images/mamram.ico')));
+app.use(favicon(path.join(__dirname, 'client/images/icon.ico')));
 
 app.use(logger('dev'));
 // Body Parser MW

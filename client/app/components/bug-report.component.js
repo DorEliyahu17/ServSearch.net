@@ -21,20 +21,22 @@ var BugReportComponent = (function () {
         this.bugReportService = bugReportService;
     }
     BugReportComponent.prototype.send = function () {
-        var userName = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
+        var sender = document.getElementById("name").value;
+        var subject = document.getElementById("subject").value;
+        var description = document.getElementById("description").value;
+        var successAlert = document.getElementById("successAlert");
+        var abortAlert = document.getElementById("abortAlert");
         //Parameters obj
         var params = new http_1.URLSearchParams();
-        params.set('userName', userName);
-        params.set('password', password);
-        this.bugReportService.getBugs().then(function (data) {
-            console.log(data);
-            if (data[0] != "") {
-                console.log("success login");
-            }
-            else
-                console.log("wrong user name or password");
-        });
+        params.set('name', sender);
+        params.set('subject', subject);
+        params.set('description', description);
+        //change to insertBug
+        this.bugReportService.insertBug(params).then(function (data) {
+            successAlert.className = "visible";
+        }); /*.catch((data: any[]) => {
+            abortAlert.className="visible";
+        });*/
     };
     BugReportComponent = __decorate([
         core_1.Component({

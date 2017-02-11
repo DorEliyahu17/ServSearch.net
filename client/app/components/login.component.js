@@ -11,15 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //import the component declare in order to create a new one
 var core_1 = require('@angular/core');
 var http_1 = require("@angular/http");
-var router_1 = require('@angular/router');
 //import the service "FileService" from the file "./file.service"
 var login_service_1 = require('../services/login.service');
 //create new component
 var LoginComponent = (function () {
-    function LoginComponent(router, loginService) {
-        this.router = router;
+    function LoginComponent(/*private router: Router, */ loginService) {
         this.loginService = loginService;
-        this.stam = false;
+        this.errorFlag = false;
+        this.alerts = [];
     }
     LoginComponent.prototype.login = function () {
         var _this = this;
@@ -30,14 +29,23 @@ var LoginComponent = (function () {
         params.set('userName', userName);
         params.set('password', password);
         this.loginService.getAdmin(params).then(function (data) {
-            console.log(data);
-            if (data[0] != "") {
-                console.log("success login");
-                _this.stam = true;
-                window.location.href = '/adminPage';
+            if (data.name == "MongoError")
+                _this.errorFlag = true;
+            else {
+                if (data[0] != "")
+                    window.location.href = '/adminPage';
+                else {
+                    //warning=1
+                    //danger=2
+                    //success=3
+                    if (_this.alerts.length > 0)
+                        _this.alerts.splice(0, _this.alerts.length);
+                    if ((userName != "") && (password != ""))
+                        _this.alerts.push({ msg: 'שם המשתמש או הסיסמה אינם נכונים.', type: 1 });
+                    else
+                        _this.alerts.push({ msg: 'אנא מלא את כל הפרטים.', type: 2 });
+                }
             }
-            else
-                console.log("wrong user name or password");
         });
     };
     LoginComponent = __decorate([
@@ -50,7 +58,7 @@ var LoginComponent = (function () {
             styleUrls: ['./app/styles/login.component.css'],
             providers: [login_service_1.LoginService]
         }), 
-        __metadata('design:paramtypes', [router_1.Router, login_service_1.LoginService])
+        __metadata('design:paramtypes', [login_service_1.LoginService])
     ], LoginComponent);
     return LoginComponent;
 }());

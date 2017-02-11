@@ -11,7 +11,7 @@
             <div class="form-group">
                 <div class="col-lg-12 inputGroupContainer">
                     <div class="input-group" dir="ltr">
-                        <input  name="first_name" placeholder="שם..." class="form-control"  type="text" dir="rtl">
+                        <input id="name" placeholder="שם..." class="form-control" type="text" dir="rtl">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
                         </span>
@@ -24,7 +24,7 @@
             <div class="form-group">
                 <div class="col-lg-12 inputGroupContainer">
                     <div class="input-group" dir="ltr">
-                        <input name="email" placeholder="נושא..." class="form-control" type="text" dir="rtl">
+                        <input id="subject" placeholder="נושא..." class="form-control" type="text" dir="rtl">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-envelope"></i>
                         </span>
@@ -38,7 +38,7 @@
             <div class="form-group">
                 <div class="col-lg-12 inputGroupContainer">
                     <div class="input-group" dir="ltr">
-                        <textarea class="form-control" name="comment" placeholder="תיאור..." rows="5" dir="rtl"></textarea>
+                        <textarea id="description" class="form-control" placeholder="תיאור..." rows="5" dir="rtl"></textarea>
                         <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                     </div>
                 </div>
@@ -46,7 +46,14 @@
             </div>
 
             <!-- Success message -->
-            <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+            <div id="successAlert" class="hidden">
+                <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+            </div>
+
+            <!-- Abort message -->
+            <div id="abortAlert" class="hidden">
+                <div class="alert alert-danger" role="alert" id="abort_message">Oh no <i class="glyphicon glyphicon-thumbs-down"></i> something went wrong... please try again later.</div>
+            </div>
 
             <!-- Button -->
             <div class="form-group">

@@ -19,67 +19,108 @@ router.get('/', function(req, res, next) {
 /* GET files listing. */
 router.get('/files', function(req, res, next) {
 
-    console.log("name="+req.query.name+", type="+req.query.type+", server="+req.query.server);
+    console.log("name="+req.query.name+", type="+req.query.type+", server="+req.query.server+
+        ", size="+req.query.size+", date="+req.query.date+
+        ", sizeRangeLow="+req.query.sizeRangeLow+", sizeRangeHigh="+req.query.sizeRangeHigh+
+        ", dateRangeLow="+req.query.dateRangeLow+", dateRangeHigh="+req.query.dateRangeHigh);
 
-    mongo.findSpec(req.query.name, req.query.type, req.query.server).then(function(result){
+    mongo.findSpec(req.query.name, req.query.type, req.query.server,
+        req.query.size, req.query.date,
+        req.query.sizeRangeLow, req.query.sizeRangeHigh,
+        req.query.dateRangeLow, req.query.dateRangeHigh
+    ).then(function(result){
         if(result!=undefined)
             res.send(result);
         else
             res.send([]);
-    });
+    })
+        .catch(function(err){
+            res.send(err);
+        });
 });
 
 /* GET collections name listing. */
 router.get('/collections', function(req, res, next) {
     mongo.findCollectionsNameList().then(function(result){
         res.send(result);
-    });
+    })
+        .catch(function(err){
+            res.send(err);
+        });
 });
 
 /* GET admins name and password listing. */
 router.get('/admins', function(req, res, next) {
     mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
         res.send(result);
-    });
+    })
+        .catch(function(err){
+            res.send(err);
+        });
 });
 
-/* GET admins name and password listing. */
+/* GET Bugs listing. */
 router.get('/reportedBugs', function(req, res, next) {
-    mongo.findBugs().then(function(result){
+    mongo.findAll("Bugs").then(function(result){
         res.send(result);
-    });
+    })
+        .catch(function(err){
+            res.send(err);
+        });
 });
 
-/* GET admins name and password listing. */
+/* INSERT bug to the database. */
 router.get('/insertBug', function(req, res, next) {
     //ToDo - change that function
-    mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
+    mongo.insertOne({"name":req.query.name, "subject":req.query.subject, "description":req.query.description}, "Bugs").then(function(result){
         res.send(result);
-    });
+    })
+        .catch(function(err){
+            res.send(err);
+        });
 });
 
-/* GET admins name and password listing. */
+/* DELETE bug from the database. */
 router.get('/deleteBug', function(req, res, next) {
     //ToDo - change that function
-    mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
+    mongo.deleteOne(req.query.id, "Bugs").then(function(result){
         res.send(result);
-    });
+    })
+        .catch(function(err){
+            res.send(err);
+        });
 });
 
-/* GET admins name and password listing. */
+/* GET To-DOs listing. */
+router.get('/ToDoList', function(req, res, next) {
+    mongo.findAll("ToDo").then(function(result){
+        res.send(result);
+    })
+        .catch(function(err){
+            res.send(err);
+        });
+});
+
+/* INSERT To-Do Item to the database. */
 router.get('/insertToDo', function(req, res, next) {
     //ToDo - change that function
-    mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
+    mongo.insertOne({"description":req.query.description}, "ToDo").then(function(result){
         res.send(result);
-    });
+    })
+        .catch(function(err){
+            res.send(err);
+        });
 });
 
-/* GET admins name and password listing. */
+/* DELETE To-Do Item from the database. */
 router.get('/deleteToDo', function(req, res, next) {
     //ToDo - change that function
-    mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
+    mongo.deleteOne(req.query.id, "ToDo").then(function (result) {
         res.send(result);
-    });
+    })
+        .catch(function (err) {
+            res.send(err);
+        });
 });
 
 module.exports = router;

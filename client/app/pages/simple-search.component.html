@@ -4,9 +4,11 @@
     <div class="col-lg-4"></div>
 
     <div class="col-lg-1">
-      <button class="btn btn-default" (click)="search()">
-        <span class="glyphicon glyphicon-search"></span>
-      </button>
+      <div id="simpleSearchBTN">
+        <button class="btn btn-default" (click)="search()">
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+      </div>
     </div>
 
     <div class="col-lg-2">
@@ -18,17 +20,9 @@
       </div>
     </div>
 
-
-    <!-- <div class="col-lg-2">
-           <div class="input-group">
-             <input type="text" id="FileServer" class="form-control" placeholder="שם השרת...">
-           </div>
-         </div>
-     -->
-
     <div class="col-lg-2">
       <div class="input-group">
-          <input type="text" id="FileType" class="form-control" placeholder="סוג הקובץ...">
+        <input type="text" id="FileType" class="form-control" placeholder="סוג הקובץ...">
       </div>
     </div>
 
@@ -40,38 +34,58 @@
 
   </div>
 
+
   <div class="row">
 
     <div class="col-lg-7"></div>
 
     <div class="col-lg-4">
-      <div *ngFor="let alert of alerts;let i = index;">
-        <div *ngIf="alert.type==1">
-          <div class="alert alert-warning alert-dismissible" role="alert">
-            <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert(i)"><span aria-hidden="true">&times;</span></button>-->
-            {{alert.msg}}
-          </div>
-        </div>
-        <div *ngIf="alert.type==2">
-          <div class="alert alert-danger alert-dismissible" role="alert">
-            <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert(i)"><span aria-hidden="true">&times;</span></button>-->
-            {{alert.msg}}
-          </div>
+      <div *ngIf="errorFlag==true">
+        <div class="alert alert-danger" role="alert">
+          <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert(i)"><span aria-hidden="true">&times;</span></button>-->
+          אופס... ישנה בעיה עם השרתים, נסה שוב מאוחר יותר.
         </div>
       </div>
     </div>
   </div>
 
-  <div id="result" class="hidden">
-    <div *ngIf="isResult==true">
-      <!-- advance search-->
-      <my-file-detail [files]="files" [length]="length"></my-file-detail>
+
+  <div *ngIf="advanceFlag==true">
+    <!-- advance search-->
+    <advanceSearch [files]="files" [length]="length" [isResult]="isResult" [alerts]="alerts" [errorFlag]="errorFlag"></advanceSearch>
+  </div>
+
+
+  <!-- file detail search-->
+  <div class="row">
+
+    <div class="col-lg-7"></div>
+
+    <div class="col-lg-4">
+
+      <div *ngIf="errorFlag==false">
+        <div *ngFor="let alert of alerts;let i = index;">
+          <div *ngIf="alert.type==1">
+
+            <div class="alert alert-warning" role="alert">
+              {{alert.msg}}
+            </div>
+
+          </div>
+          <div *ngIf="alert.type==2">
+            <div class="alert alert-danger" role="alert">
+              {{alert.msg}}
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
+
   </div>
 
   <hr />
   <div class="text-center">
-    <!--<a href="/admin/login" >Admin login</a>-->
     <a href="/adminLogin">Admin zone</a> | <a href="/bugReport">Report a bug</a>
   </div>
 </div>

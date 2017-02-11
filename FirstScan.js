@@ -62,7 +62,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
                         var fileAndDirObject = {
                             name: tempName,
                             type: 'Directory',
-                            size: parseInt(dirCheck[4]), //everything will be in bytes and in the code it will be converted to kilo or mega bytes
+                            size: dirCheck[4], //everything will be in bytes and in the code it will be converted to kilo or mega bytes
                             location: path,
                             //permissions: dirCheck[0].slice(1),
                             createdUser: dirCheck[2],
@@ -93,7 +93,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB)
                     var fileAndDirObject = {
                         name: fileNameAndType[0],
                         type: fileNameAndType[1],
-                        size: parseInt(dirCheck[4]), //everything will be in bytes and in the code it will be converted to kilo or mega bytes
+                        size: dirCheck[4], //everything will be in bytes and in the code it will be converted to kilo or mega bytes
                         location: path,
                         //permissions: dirCheck[0].slice(1),
                         createdUser: dirCheck[2],

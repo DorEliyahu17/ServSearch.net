@@ -34,7 +34,7 @@ export class FileDetailComponent implements OnChanges{
 
     ngOnChanges() {
         this.filesArr=[];
-        for(var i=0;i<length;i++) {
+        for(var i=0;i<this.length;i++) {
             this.filesArr[i] = this.files[i];
             this.indexArr[i] = i+1;
         }

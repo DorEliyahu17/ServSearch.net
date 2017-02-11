@@ -5,13 +5,13 @@
         <div class="col-lg-11">
             <small>הקובץ לא נמצא? אולי חיפוש מתקדם יעזור:</small>
             <button class="btn btn-default btn-sm" (click)="advanceSearch()">
-                <span class="fa fa-search"></span> <span class="fa fa-database"></span>
+                <span class="glyphicon glyphicon-tasks"></span>
+                <!--<span class="fa fa-search"></span> <span class="fa fa-database"></span>-->
             </button>
         </div>
 
         <br>
         <br>
-        <hr />
     </div>
 
     <!-- advance search mode -->
@@ -21,69 +21,46 @@
                 <h5><U>חיפוש מתקדם:</U></h5>
             </div>
         </div>
-        <!--First row-->
-        <!--
-        <div class="row">
-                <!--
-                    <div class="col-lg-5"></div>
 
-                    <div class="col-lg-2">
-                        <div class="input-group">
-                            <select class="form-control" style="width: 200px;" dir="rtl" id="server-input">
-                                <option value="">שם השרת...</option>
-                                <option *ngFor="let serverName of serverNames" value="{{serverName.name}}">{{serverName.name}}</option>
-                            </select>
-                        </div>
-                    </div>
-        <!--
-                    <div class="col-lg-2">
-                        <div class="input-group">
-                            <input type="text" id="server-input" class="form-control" placeholder="שם השרת...">
-                        </div>
-                    </div>
-        --
-                    <div class="col-lg-2">
-                        <div class="input-group">
-                            <input type="text" id="type-input" class="form-control" placeholder="סוג הקובץ...">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2">
-                        <div class="input-group">
-                            <input type="text" id="name-input" class="form-control" placeholder="שם הקובץ...">
-                        </div>
-                    </div>
-
-                </div>
-
-        <br />
-        -->
         <!--Choice: dates-->
         <div class="row">
 
-            <div class="col-lg-5"></div>
+            <div class="col-lg-3"></div>
+
+            <div class="col-lg-2">
+
+            </div>
 
             <div class="col-lg-2">
                 <div class="input-group" dir="ltr">
-                    <input id="date-text2" type="text" class="form-control" dir="rtl" placeholder="טווח תאריכים..." disabled="disabled" />
+                    <input id="date-textHigh" type="text" class="form-control" dir="rtl" placeholder="טווח תאריכים..." disabled="disabled" />
                     <span class="input-group-addon">
-                        <input id="date-radio2" type="radio" name="date" (click)="radioCheck('date-text2', 'date-text1')" disabled="disabled">
+                        <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                    </span>
+                </div>
+
+                <input id="date-radio2" type="radio" name="date" (click)="radioCheck('date-text', 'date-textLow', 'date-textHigh')" disabled="disabled">
+
+                <div class="input-group" dir="ltr">
+                    <input id="date-textLow" type="text" class="form-control" dir="rtl" placeholder="טווח תאריכים..." disabled="disabled" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-circle-arrow-down"></span>
                     </span>
                 </div>
             </div>
 
             <div class="col-lg-2">
                 <div class="input-group" dir="ltr">
-                    <input id="date-text1" type="text" class="form-control" dir="rtl" placeholder="תאריך יצירה..." disabled="disabled" />
+                    <input id="date-text" type="text" class="form-control" dir="rtl" placeholder="תאריך יצירה..." disabled="disabled" />
                     <span class="input-group-addon">
-                        <input id="date-radio1" type="radio" name="date" (click)="radioCheck('date-text1', 'date-text2')" disabled="disabled">
+                        <input id="date-radio1" type="radio" name="date" (click)="radioCheck('date-text', 'date-textLow', 'date-textHigh')" disabled="disabled">
                     </span>
                 </div>
             </div>
 
             <div class="col-lg-2">
                 <h5><span>
-                        <input id="date-check" type="checkbox" (click)="clickCheck('date-radio1', 'date-radio2', 'date-text1', 'date-text2')">
+                        <input id="date-check" type="checkbox" (click)="clickCheck('date-radio1', 'date-radio2', 'date-text', 'date-textLow')">
                         </span>בחר תאריך יצירה או טווח תאריכים:</h5>
             </div>
 
@@ -92,47 +69,62 @@
         <!--Choice: file size-->
         <div class="row">
 
-            <div class="col-lg-5"></div>
+            <div class="col-lg-3"></div>
 
             <div class="col-lg-2">
                 <div class="input-group" dir="ltr">
-                    <input id="size-text2" type="text" class="form-control" dir="rtl" placeholder="טווח גדלים..." disabled="disabled" />
+                    <input id="size-textLow" type="text" class="form-control" dir="rtl" placeholder="טווח גדלים..." disabled="disabled" />
                     <span class="input-group-addon">
-                        <input id="size-radio2" type="radio" name="size" (click)="radioCheck('size-text2', 'size-text1')" disabled="disabled">
+                        <span class="glyphicon glyphicon-circle-arrow-down"></span>
                     </span>
                 </div>
             </div>
 
             <div class="col-lg-2">
                 <div class="input-group" dir="ltr">
-                    <input id="size-text1" type="text" class="form-control" dir="rtl" placeholder="גודל הקובץ..." disabled="disabled" />
+                    <input id="size-textHigh" type="text" class="form-control" dir="rtl" placeholder="טווח גדלים..." disabled="disabled" />
                     <span class="input-group-addon">
-                        <input id="size-radio1" type="radio" name="size" (click)="radioCheck('size-text1', 'size-text2')" disabled="disabled">
+                        <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                    </span>
+                </div>
+                <br>
+                <input id="size-radio2" type="radio" name="size" (click)="radioCheck('size-text', 'size-textLow', 'size-textHigh')" disabled="disabled">
+            </div>
+
+            <div class="col-lg-2">
+                <div class="input-group" dir="ltr">
+                    <input id="size-text" type="text" class="form-control" dir="rtl" placeholder="גודל הקובץ..." disabled="disabled" />
+                    <span class="input-group-addon">
+                        <input id="size-radio1" type="radio" name="size" (click)="radioCheck('size-text', 'size-textLow', 'size-textHigh')" disabled="disabled">
                     </span>
                 </div>
             </div>
 
             <div class="col-lg-2">
                 <h5><span>
-                        <input id="size-check" type="checkbox" (click)="clickCheck('size-radio1', 'size-radio2', 'size-text1', 'size-text2')">
+                        <input id="size-check" type="checkbox" (click)="clickCheck('size-radio1', 'size-radio2', 'size-text', 'size-textLow')">
                     </span>בחר גודל או טווח גדלים:</h5>
             </div>
 
             <div class="row">
                 <div class="col-lg-6">
                     <button class="btn btn-default" (click)="search()">
-                        <span class="fa fa-search"></span>
+                        <span class="glyphicon glyphicon-search"></span>
+                        <!--<span class="fa fa-search"></span>-->
                     </button>
 
                     <button class="btn btn-default" (click)="simpleSearch()">
-                        <span class="fa fa-arrow-left"></span>
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        <!--<span class="fa fa-arrow-left"></span>-->
                     </button>
                 </div>
             </div>
         </div>
-
-
-        <hr />
     </div>
 
+</div>
+
+
+<div *ngIf="isResult==true">
+    <my-file-detail [files]="files" [length]="length"></my-file-detail>
 </div>

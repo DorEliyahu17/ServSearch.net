@@ -23,7 +23,10 @@ export class BugReportService {
             }).toPromise();
     }
 
-    insertBug(bug: BugReport): any {
-
+    insertBug(params: URLSearchParams): any {
+        return this.http.get(this.apiUrl+"/insertBug", {search: params})
+            .map((response) => {
+                return response.json()
+            }).toPromise();
     }
 }

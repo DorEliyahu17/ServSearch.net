@@ -1,7 +1,7 @@
 //import the component declare in order to create a new one
-import {Component, Input} from '@angular/core';
+import { Component } from '@angular/core';
 import { URLSearchParams } from "@angular/http";
-import { Router } from '@angular/router';
+//import { Router } from '@angular/router';
 
 //import the class "File" from the file "./file"
 import { User } from '../object modules/user';
@@ -23,10 +23,9 @@ import { LoginService } from '../services/login.service';
 
 //the class of this new component
 export class LoginComponent {
-	stam=false;
-
-	constructor(private router: Router, private loginService: LoginService) {
-	}
+	public errorFlag: boolean=false;
+	public alerts: Array<Object>=[];
+	constructor(/*private router: Router, */private loginService: LoginService) {}
 
 	login(): void {
 		var userName = (<HTMLInputElement>document.getElementById("username")).value;
@@ -37,17 +36,24 @@ export class LoginComponent {
 		params.set('userName', userName);
 		params.set('password', password);
 
-		this.loginService.getAdmin(params).then((data: any[]) => {
-			console.log(data);
-			if(data[0]!="") {
-				console.log("success login");
-				this.stam=true;
-				window.location.href='/adminPage';
-				//window.location.reload(true);
-				//this.router.navigate(['/adminPage']);
+		this.loginService.getAdmin(params).then((data: any) => {
+			if(data.name=="MongoError")
+				this.errorFlag=true;
+			else {
+				if (data[0] != "")
+					window.location.href = '/adminPage';
+				else {
+					//warning=1
+					//danger=2
+					//success=3
+					if (this.alerts.length > 0)
+						this.alerts.splice(0, this.alerts.length);
+					if ((userName != "") && (password != ""))
+						this.alerts.push({msg: 'שם המשתמש או הסיסמה אינם נכונים.', type: 1});
+					else
+						this.alerts.push({msg: 'אנא מלא את כל הפרטים.', type: 2});
+				}
 			}
-			else
-				console.log("wrong user name or password");
 		});
 	}
 }

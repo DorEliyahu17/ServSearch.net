@@ -19,40 +19,45 @@ var file_service_1 = require('../services/file.service');
 var AdvanceSearchComponent = (function () {
     function AdvanceSearchComponent(fileService) {
         this.fileService = fileService;
-        this.serverNames = [];
-        this.isResult = false;
-        this.alerts = [];
         this.file = new file_1.File();
     }
     AdvanceSearchComponent.prototype.search = function () {
         var _this = this;
+        this.isResult = false;
+        this.files = [];
         var i;
-        var resultSearch = document.getElementById("result");
-        resultSearch.className = "hidden";
+        //var resultSearch = document.getElementById("result");
+        //resultSearch.className = "hidden";
         var name = document.getElementById("FileName").value;
         var type = document.getElementById("FileType").value;
         var server = document.getElementById("FileServer").value;
         var dateCheck = document.getElementById("date-check").checked;
         var dateRadio1 = document.getElementById("date-radio1").checked;
         var dateRadio2 = document.getElementById("date-radio2").checked;
-        var date1Field = document.getElementById("date-text1").value;
-        var date2Field = document.getElementById("date-text2").value;
+        var dateField = document.getElementById("date-text").value;
+        var dateFieldLow = document.getElementById("date-textLow").value;
+        var dateFieldHigh = document.getElementById("date-textHigh").value;
         var sizeCheck = document.getElementById("size-check").checked;
         var sizeRadio1 = document.getElementById("size-radio1").checked;
         var sizeRadio2 = document.getElementById("size-radio2").checked;
-        var size1Field = document.getElementById("size-text1").value;
-        var size2Field = document.getElementById("size-text2").value;
+        var sizeField = document.getElementById("size-text").value;
+        var sizeFieldLow = document.getElementById("size-textLow").value;
+        var sizeFieldHigh = document.getElementById("size-textHigh").value;
         if (dateCheck) {
-            if (dateRadio1)
-                date2Field = "";
+            if (dateRadio1) {
+                dateFieldLow = "";
+                dateFieldHigh = "";
+            }
             if (dateRadio2)
-                date1Field = "";
+                dateField = "";
         }
         if (sizeCheck) {
-            if (sizeRadio1)
-                size2Field = "";
+            if (sizeRadio1) {
+                sizeFieldLow = "";
+                sizeFieldHigh = "";
+            }
             if (sizeRadio2)
-                size1Field = "";
+                sizeField = "";
         }
         // WORK FILE SERVICE
         // GETS THE PARAMAS
@@ -61,45 +66,63 @@ var AdvanceSearchComponent = (function () {
         params.set('name', name);
         params.set('type', type);
         params.set('server', server.toUpperCase());
+        params.set('size', sizeField);
+        params.set('date', dateField);
+        params.set('sizeRangeLow', sizeFieldLow);
+        params.set('sizeRangeHigh', sizeFieldHigh);
+        params.set('dateRangeLow', dateFieldLow);
+        params.set('dateRangeHigh', dateFieldHigh);
         //get the files arr from the service
         this.fileService.getFiles(params)
-            .then(function (data) {
-            if (data.length > 0) {
-                _this.files = data;
-                length = _this.files.length;
-                if (_this.alerts.length > 0)
-                    _this.alerts.splice(0, _this.alerts.length);
-                _this.isResult = true;
-                //visible and hidden change
-                var resultSearch = document.getElementById("result");
-                resultSearch.className = "visible";
-            }
+            .then(function (data /*File[]*/) {
+            if (data.name == "MongoError")
+                _this.errorFlag = true;
             else {
-                //warning=1
-                //danger=2
-                //success=3
-                if (_this.alerts.length > 0)
-                    _this.alerts.splice(0, _this.alerts.length);
-                if ((name != "") || (type != "") || (server != "")) {
-                    if (server == "")
-                        _this.alerts.push({ msg: 'אנא בחר את השרת שבו תרצה לחפש.', type: 2 });
-                    else
-                        _this.alerts.push({ msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.', type: 1 });
+                if (data.length > 0) {
+                    _this.files = data;
+                    _this.length = _this.files.length;
+                    if (_this.alerts.length > 0)
+                        _this.alerts.splice(0, _this.alerts.length);
+                    _this.isResult = true;
+                    //visible and hidden change
+                    //var resultSearch = document.getElementById("result");
+                    //resultSearch.className = "visible";
+                    _this.isResult = true;
                 }
-                else
-                    _this.alerts.push({ msg: 'לא הוכנס שום ערך.', type: 2 });
+                else {
+                    //warning=1
+                    //danger=2
+                    //success=3
+                    if (_this.alerts.length > 0)
+                        _this.alerts.splice(0, _this.alerts.length);
+                    if ((name != "") || (type != "") || (server != "")) {
+                        if (server == "")
+                            _this.alerts.push({ msg: 'אנא בחר את השרת שבו תרצה לחפש.', type: 2 });
+                        else
+                            _this.alerts.push({
+                                msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.',
+                                type: 1
+                            });
+                    }
+                    else
+                        _this.alerts.push({ msg: 'לא הוכנס שום ערך.', type: 2 });
+                }
             }
         });
     };
     AdvanceSearchComponent.prototype.advanceSearch = function () {
         var regularSearch = document.getElementById("regular");
+        var regularSearchBTN = document.getElementById("simpleSearchBTN");
         regularSearch.className = "hidden";
+        regularSearchBTN.className = "hidden";
         var advanceSearch = document.getElementById("advance");
         advanceSearch.className = "visible";
     };
     AdvanceSearchComponent.prototype.simpleSearch = function () {
         var regularSearch = document.getElementById("regular");
+        var regularSearchBTN = document.getElementById("simpleSearchBTN");
         regularSearch.className = "visible";
+        regularSearchBTN.className = "visible";
         var advanceSearch = document.getElementById("advance");
         advanceSearch.className = "hidden";
     };
@@ -131,19 +154,21 @@ var AdvanceSearchComponent = (function () {
         }
     };
     //function enable/disable the input field
-    AdvanceSearchComponent.prototype.radioCheck = function (enableInputID, disableInputID) {
-        var input1Field = document.getElementById(enableInputID);
-        var input2Field = document.getElementById(disableInputID);
-        if (input1Field.hasAttribute("disabled")) {
-            input1Field.removeAttribute("disabled");
-            if (!(input2Field.hasAttribute("disabled")))
-                input2Field.setAttribute("disabled", "disabled");
+    AdvanceSearchComponent.prototype.radioCheck = function (regularInputID, advanceInputID, rangeInputID) {
+        var regularField = document.getElementById(regularInputID);
+        var advanceField = document.getElementById(advanceInputID);
+        var rangeInputField = document.getElementById(rangeInputID);
+        if (regularField.hasAttribute("disabled")) {
+            regularField.removeAttribute("disabled");
+            advanceField.setAttribute("disabled", "disabled");
+            rangeInputField.setAttribute("disabled", "disabled");
+        }
+        else {
+            regularField.setAttribute("disabled", "disabled");
+            advanceField.removeAttribute("disabled");
+            rangeInputField.removeAttribute("disabled");
         }
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Array)
-    ], AdvanceSearchComponent.prototype, "serverNames", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
@@ -156,6 +181,14 @@ var AdvanceSearchComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Boolean)
     ], AdvanceSearchComponent.prototype, "isResult", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], AdvanceSearchComponent.prototype, "alerts", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], AdvanceSearchComponent.prototype, "errorFlag", void 0);
     AdvanceSearchComponent = __decorate([
         core_1.Component({
             //his label in the HTML code

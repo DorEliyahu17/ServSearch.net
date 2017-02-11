@@ -27,21 +27,23 @@ export class BugReportComponent {
     }
 
     send(): void {
-        var userName = (<HTMLInputElement>document.getElementById("username")).value;
-        var password = (<HTMLInputElement>document.getElementById("password")).value;
+        var sender = (<HTMLInputElement>document.getElementById("name")).value;
+        var subject = (<HTMLInputElement>document.getElementById("subject")).value;
+        var description = (<HTMLInputElement>document.getElementById("description")).value;
+        var successAlert = (<HTMLInputElement>document.getElementById("successAlert"));
+        var abortAlert = (<HTMLInputElement>document.getElementById("abortAlert"));
 
         //Parameters obj
         let params: URLSearchParams = new URLSearchParams();
-        params.set('userName', userName);
-        params.set('password', password);
+        params.set('name', sender);
+        params.set('subject', subject);
+        params.set('description', description);
 
-        this.bugReportService.getBugs().then((data: any[]) => {
-            console.log(data);
-            if(data[0]!="") {
-                console.log("success login");
-            }
-            else
-                console.log("wrong user name or password");
-        });
+        //change to insertBug
+        this.bugReportService.insertBug(params).then((data: any[]) => {
+            successAlert.className="visible";
+        });/*.catch((data: any[]) => {
+            abortAlert.className="visible";
+        });*/
     }
 }
