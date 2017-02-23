@@ -16,6 +16,8 @@ import { LoginComponent } from '../components/login.component'
 import { AdminPageComponent } from '../components/admin-page.component';
 import { BugReportComponent } from '../components/bug-report.component';
 
+import { SideNavComponent } from '../components/sideNav.component';
+
 import { FileService } from '../services/file.service';
 import { PagerService } from '../services/pager.service';
 import { LoginService } from '../services/login.service';
@@ -43,6 +45,10 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     AdminPageComponent,
     BugReportComponent
+
+
+    ,
+    SideNavComponent
   ],
   providers: [
     FileService,

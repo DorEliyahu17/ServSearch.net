@@ -19,6 +19,5 @@ import {AdminPageService} from "../services/admin-page.service";
 //the class of this new component
 export class AdminPageComponent {
 
-    constructor(private adminPageService: AdminPageService) {
-    }
+    constructor(private adminPageService: AdminPageService) {}
 }
