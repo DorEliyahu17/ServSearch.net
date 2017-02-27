@@ -30,7 +30,6 @@ export class AdvanceSearchComponent {
 	@Input() public errorFlag: boolean;
 	file = new File();
 
-
 	constructor(private fileService: FileService) {}
 
 	search(): void {
@@ -90,7 +89,6 @@ export class AdvanceSearchComponent {
 		params.set('sizeRangeHigh', sizeFieldHigh);
 		params.set('dateRangeLow', dateFieldLow);
 		params.set('dateRangeHigh', dateFieldHigh);
-
 
 		//get the files arr from the service
 		this.fileService.getFiles(params)

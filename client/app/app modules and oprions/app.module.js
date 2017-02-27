@@ -20,10 +20,13 @@ var app_component_1 = require('../components/app.component');
 var simple_search_component_1 = require('../components/simple-search.component');
 var advance_search_component_1 = require('../components/advance-search.component');
 var file_detail_component_1 = require('../components/file-detail.component');
-var login_component_1 = require('../components/login.component');
-var admin_page_component_1 = require('../components/admin-page.component');
 var bug_report_component_1 = require('../components/bug-report.component');
+var login_component_1 = require('../components/login.component');
+var admin_page_home_component_1 = require('../components/admin-page-home.component');
 var sideNav_component_1 = require('../components/sideNav.component');
+var admin_page_bugs_component_1 = require('../components/admin-page-bugs.component');
+var admin_page_todo_component_1 = require('../components/admin-page-todo.component');
+var admin_page_status_component_1 = require('../components/admin-page-status.component');
 var file_service_1 = require('../services/file.service');
 var pager_service_1 = require('../services/pager.service');
 var login_service_1 = require('../services/login.service');
@@ -50,10 +53,13 @@ var AppModule = (function () {
                 simple_search_component_1.SimpleSearchComponent,
                 advance_search_component_1.AdvanceSearchComponent,
                 file_detail_component_1.FileDetailComponent,
-                login_component_1.LoginComponent,
-                admin_page_component_1.AdminPageComponent,
                 bug_report_component_1.BugReportComponent,
-                sideNav_component_1.SideNavComponent
+                login_component_1.LoginComponent,
+                admin_page_home_component_1.AdminPageComponent,
+                sideNav_component_1.SideNavComponent,
+                admin_page_bugs_component_1.AdminPageBugs,
+                admin_page_todo_component_1.AdminPageTodo,
+                admin_page_status_component_1.AdminPageStatus
             ],
             providers: [
                 file_service_1.FileService,

@@ -6,10 +6,11 @@ import {URLSearchParams } from '@angular/http';
 //import the Components
 import { SimpleSearchComponent } from '../components/simple-search.component'
 import { LoginComponent } from '../components/login.component'
-import { AdminPageComponent } from '../components/admin-page.component'
+import { AdminPageComponent } from '../components/admin-page-home.component'
 import { BugReportComponent } from '../components/bug-report.component';
-import { AdvanceSearchComponent } from '../components/advance-search.component'
-import { FileDetailComponent } from '../components/file-detail.component';
+import { AdminPageBugs } from '../components/admin-page-bugs.component';
+import { AdminPageTodo } from '../components/admin-page-todo.component';
+import { AdminPageStatus } from '../components/admin-page-status.component';
 
 //let params: URLSearchParams = new URLSearchParams();
 
@@ -27,6 +28,12 @@ const routes: Routes = [
         component: SimpleSearchComponent
     },
 
+    //Bug report Page
+    {
+        path: 'bugReport',
+        component: BugReportComponent
+    },
+
     //Admin login page
     {
         path: 'adminLogin',
@@ -35,26 +42,27 @@ const routes: Routes = [
 
     //Admin page
     {
-        path: 'adminPage',
+        path: 'adminPage/home',
         component: AdminPageComponent
     },
 
-    //Bug report Page
+    //Admin page - bugs
     {
-        path: 'bugReport',
-        component: BugReportComponent
-    }/*,
-     {
-     //advance Search
-     path: 'advanceSearch',
-     component: AdvanceSearchComponent
-     },
-     {
-     //Search resault of all variables
+        path: 'adminPage/bugs',
+        component: AdminPageBugs
+    },
 
-     path: 'res',
-     component: FileDetailComponent
-     }*/
+    //Admin page - to-do
+    {
+        path: 'adminPage/todo',
+        component: AdminPageTodo
+    },
+
+    //Admin page - DBs status
+    {
+        path: 'adminPage/status',
+        component: AdminPageStatus
+    }
 ];
 
 @NgModule({

@@ -12,11 +12,13 @@ import { AppComponent }  from '../components/app.component';
 import { SimpleSearchComponent } from '../components/simple-search.component';
 import { AdvanceSearchComponent } from '../components/advance-search.component';
 import { FileDetailComponent } from '../components/file-detail.component';
-import { LoginComponent } from '../components/login.component'
-import { AdminPageComponent } from '../components/admin-page.component';
 import { BugReportComponent } from '../components/bug-report.component';
-
+import { LoginComponent } from '../components/login.component'
+import { AdminPageComponent } from '../components/admin-page-home.component';
 import { SideNavComponent } from '../components/sideNav.component';
+import { AdminPageBugs } from '../components/admin-page-bugs.component';
+import { AdminPageTodo } from '../components/admin-page-todo.component';
+import { AdminPageStatus } from '../components/admin-page-status.component';
 
 import { FileService } from '../services/file.service';
 import { PagerService } from '../services/pager.service';
@@ -42,13 +44,13 @@ import { AppRoutingModule } from './app-routing.module';
     SimpleSearchComponent,
     AdvanceSearchComponent,
     FileDetailComponent,
+    BugReportComponent,
     LoginComponent,
     AdminPageComponent,
-    BugReportComponent
-
-
-    ,
-    SideNavComponent
+    SideNavComponent,
+    AdminPageBugs,
+    AdminPageTodo,
+    AdminPageStatus
   ],
   providers: [
     FileService,

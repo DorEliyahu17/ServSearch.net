@@ -2,10 +2,10 @@
     <!-- regular search mode -->
     <div id="regular" class="row visible">
 
-        <div class="col-lg-11">
+        <div class="col-lg-offset-9 col-lg-2">
             <small>הקובץ לא נמצא? אולי חיפוש מתקדם יעזור:</small>
             <button class="btn btn-default btn-sm" (click)="advanceSearch()">
-                <span class="glyphicon glyphicon-tasks"></span>
+                <i class="glyphicon glyphicon-tasks"></i>
                 <!--<span class="fa fa-search"></span> <span class="fa fa-database"></span>-->
             </button>
         </div>
@@ -17,34 +17,29 @@
     <!-- advance search mode -->
     <div id="advance" class="hidden">
         <div class="row">
-            <div class="col-lg-11">
+            <div class="col-lg-offset-10 col-lg-1">
                 <h5><U>חיפוש מתקדם:</U></h5>
             </div>
         </div>
 
         <!--Choice: dates-->
         <div class="row">
-
-            <div class="col-lg-3"></div>
-
-            <div class="col-lg-2">
-
-            </div>
-
-            <div class="col-lg-2">
+            <div class="col-lg-offset-5 col-lg-2">
                 <div class="input-group" dir="ltr">
-                    <input id="date-textHigh" type="text" class="form-control" dir="rtl" placeholder="טווח תאריכים..." disabled="disabled" />
+                    <div class="input-group" dir="ltr">
+                        <input id="date-textHigh" type="text" class="form-control" dir="rtl" placeholder="מתאריך..." disabled="disabled" />
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                        </span>
+                    </div>
+                    <div class="input-group" dir="ltr">
+                        <input id="date-textLow" type="text" class="form-control" dir="rtl" placeholder="עד לתאריך..." disabled="disabled" />
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-circle-arrow-down"></i>
+                        </span>
+                    </div>
                     <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-circle-arrow-up"></span>
-                    </span>
-                </div>
-
-                <input id="date-radio2" type="radio" name="date" (click)="radioCheck('date-text', 'date-textLow', 'date-textHigh')" disabled="disabled">
-
-                <div class="input-group" dir="ltr">
-                    <input id="date-textLow" type="text" class="form-control" dir="rtl" placeholder="טווח תאריכים..." disabled="disabled" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                        <input id="date-radio2" type="radio" name="date" (click)="radioCheck('date-text', 'date-textLow', 'date-textHigh')" disabled="disabled">
                     </span>
                 </div>
             </div>
@@ -61,34 +56,30 @@
             <div class="col-lg-2">
                 <h5><span>
                         <input id="date-check" type="checkbox" (click)="clickCheck('date-radio1', 'date-radio2', 'date-text', 'date-textLow')">
-                        </span>בחר תאריך יצירה או טווח תאריכים:</h5>
+                    </span>בחר תאריך יצירה או טווח תאריכים:</h5>
             </div>
-
         </div>
-        <br />
+
         <!--Choice: file size-->
         <div class="row">
-
-            <div class="col-lg-3"></div>
-
-            <div class="col-lg-2">
+            <div class="col-lg-offset-5 col-lg-2">
                 <div class="input-group" dir="ltr">
-                    <input id="size-textLow" type="text" class="form-control" dir="rtl" placeholder="טווח גדלים..." disabled="disabled" />
+                    <div class="input-group" dir="ltr">
+                        <input id="size-textHigh" type="text" class="form-control" dir="rtl" placeholder="טווח גדלים..." disabled="disabled" />
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                        </span>
+                    </div>
+                    <div class="input-group" dir="ltr">
+                        <input id="size-textLow" type="text" class="form-control" dir="rtl" placeholder="טווח גדלים..." disabled="disabled" />
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-circle-arrow-down"></i>
+                        </span>
+                    </div>
                     <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                        <input id="size-radio2" type="radio" name="size" (click)="radioCheck('size-text', 'size-textLow', 'size-textHigh')" disabled="disabled">
                     </span>
                 </div>
-            </div>
-
-            <div class="col-lg-2">
-                <div class="input-group" dir="ltr">
-                    <input id="size-textHigh" type="text" class="form-control" dir="rtl" placeholder="טווח גדלים..." disabled="disabled" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-circle-arrow-up"></span>
-                    </span>
-                </div>
-                <br>
-                <input id="size-radio2" type="radio" name="size" (click)="radioCheck('size-text', 'size-textLow', 'size-textHigh')" disabled="disabled">
             </div>
 
             <div class="col-lg-2">
@@ -109,19 +100,16 @@
             <div class="row">
                 <div class="col-lg-6">
                     <button class="btn btn-default" (click)="search()">
-                        <span class="glyphicon glyphicon-search"></span>
-                        <!--<span class="fa fa-search"></span>-->
+                        <i class="glyphicon glyphicon-search"></i>
                     </button>
 
                     <button class="btn btn-default" (click)="simpleSearch()">
-                        <span class="glyphicon glyphicon-arrow-left"></span>
-                        <!--<span class="fa fa-arrow-left"></span>-->
+                        <i class="glyphicon glyphicon-arrow-left"></i>
                     </button>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 

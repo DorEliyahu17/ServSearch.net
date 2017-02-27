@@ -1,9 +1,6 @@
-<div class="container-fluid" dir="rtl" id="simple">
+<div id="simple">
   <div class="row">
-
-    <div class="col-lg-4"></div>
-
-    <div class="col-lg-1">
+    <div class="col-lg-offset-4 col-lg-1">
       <div id="simpleSearchBTN">
         <button class="btn btn-default" (click)="search()">
           <span class="glyphicon glyphicon-search"></span>
@@ -31,15 +28,11 @@
         <input type="text" id="FileName" class="form-control" placeholder="שם הקובץ...">
       </div>
     </div>
-
   </div>
 
 
   <div class="row">
-
-    <div class="col-lg-7"></div>
-
-    <div class="col-lg-4">
+    <div class="col-lg-offset-7 col-lg-4">
       <div *ngIf="errorFlag==true">
         <div class="alert alert-danger" role="alert">
           <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert(i)"><span aria-hidden="true">&times;</span></button>-->
@@ -58,19 +51,13 @@
 
   <!-- file detail search-->
   <div class="row">
-
-    <div class="col-lg-7"></div>
-
-    <div class="col-lg-4">
-
+    <div class="col-lg-offset-7 col-lg-4">
       <div *ngIf="errorFlag==false">
         <div *ngFor="let alert of alerts;let i = index;">
           <div *ngIf="alert.type==1">
-
             <div class="alert alert-warning" role="alert">
               {{alert.msg}}
             </div>
-
           </div>
           <div *ngIf="alert.type==2">
             <div class="alert alert-danger" role="alert">
@@ -78,10 +65,8 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
-
   </div>
 
   <hr />

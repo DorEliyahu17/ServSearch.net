@@ -15,8 +15,17 @@ require('../rxjs/rxjs-operators');
 //create new component
 var AppComponent = (function () {
     function AppComponent() {
+        this.draw = false;
         this.title = 'ServSearch.net';
     }
+    AppComponent.prototype.ngOnInit = function () {
+        var location, temp;
+        temp = window.location.href.split("/");
+        location = temp[3];
+        if (location == "adminPage") {
+            this.draw = true;
+        }
+    };
     AppComponent = __decorate([
         core_1.Component({
             //his label in the HTML code

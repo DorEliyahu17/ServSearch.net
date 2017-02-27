@@ -1,32 +1,41 @@
 <!-- Display the search resault -->
 <div id="search-resault">
-
     <hr />
-
     <div class="row">
-
         <div *ngFor="let file of pagedItems" class="search-result">
-<!--media-->
+            <!--media-->
             <div class="row">
-                <div class="col-lg-1"></div>
-                <div class="media col-lg-10">
+                <div class="media col-lg-11">
+
                     <div class="media-body">
-                        <h4 class="media-heading"><span><B><U>שם: {{file.name}}</U></B></span></h4>
+                        <!--file image-->
+                        <span class="media-right">
+                            <img class="img-thumbnail" src="../../images/file.ico" alt="{{file.type}}" title="{{file.type}}" style="width:50px;height:50px;"/>
+                        </span>
 
+                        <!-- {{file.imageSRC}} -->
+                        <!--  ../../images/[name of the file].ico -->
 
-                        <!--<span style="width: 20%;"><U>תאריך שינוי אחרון:</U> {{file.modifidedDate}}</span> | -->
-                        <span style="width: 50px;"><U>סוג:</U> {{file.type}}</span> |
-                        <span style="width: 50px;"><U>גודל:</U> {{file.size}}</span> |
-                        <span style="width: 50px;"><U>נוצר על ידי:</U> {{file.createdUser}}</span>
-                        <!--<br />
-                        <span><U>הרשאות הקובץ:</U> {{file.permissions}}</span> -->
-                        <br />
-                        <span><U>מיקום הקובץ:</U> <B dir="ltr">{{file.location}}</B></span>
+                        <!--file details-->
+                        <span class="media-left">
+                            <h4 class="media-heading"><span><B><U>שם: {{file.name}}</U></B></span></h4>
+                            <!--<span style="width: 20%;"><U>תאריך שינוי אחרון:</U> {{file.modifidedDate}}</span> | -->
+                            <span style="width: 50px;"><U>סוג:</U> {{file.type}}</span> |
+                            <span style="width: 50px;"><U>גודל:</U> {{file.size}}</span> |
+                            <span style="width: 50px;"><U>נוצר על ידי:</U> {{file.createdUser}}</span>
+                            <!--<br />
+                            <span><U>הרשאות הקובץ:</U> {{file.permissions}}</span> -->
+                            <br />
+                            <span><U>מיקום הקובץ:</U> <B dir="ltr">{{file.location}}</B></span>
+                        </span>
                     </div>
+
+
+
                 </div>
+
             </div>
             <br/>
-
         </div>
     </div>
 
@@ -56,70 +65,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-<!--
-
-    <ul>
-        <li>
-            <B><U>תוצאות החיפוש:</U></B>
-        </li>
-        <!-- For loop for the resault->
-
-        <div *ngFor="let file of files" class="search-result" >
-            <li>
-                <B><U>{{file.name}}</U></B>
-                <table>
-
-                    <tr>
-                        <td>
-                            {{file.type}}
-                        </td>
-                        <td><pre>     </pre></td>
-                        <td>
-                            {{file.modifidedDate}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            {{file.size}}
-                        </td>
-                        <td><pre>     </pre></td>
-                        <td>
-                            {{file.createdUser}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            {{file.premissions}}
-                        </td>
-                        <td><pre>     </pre></td>
-                        <td>
-                            {{file.location}}
-                        </td>
-                    </tr>
-                </table>
-            </li>
-        </div>
-    </ul>
-</div>
--->
-<!--
-<div *ngIf="file">
-    <h2>{{file.name}} details!</h2>
-    <div>
-        <label>id: </label>{{file.id}}
-    </div>
-    <div>
-        <label>name: </label>
-        <input [(ngModel)]="file.name" placeholder="Enter new name"/>
-    </div>
-    <button (click)="save()">Save</button>
-    <button (click)="goBack()">Back</button>
-</div>
--->

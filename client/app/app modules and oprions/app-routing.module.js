@@ -14,8 +14,11 @@ var router_1 = require('@angular/router');
 //import the Components
 var simple_search_component_1 = require('../components/simple-search.component');
 var login_component_1 = require('../components/login.component');
-var admin_page_component_1 = require('../components/admin-page.component');
+var admin_page_home_component_1 = require('../components/admin-page-home.component');
 var bug_report_component_1 = require('../components/bug-report.component');
+var admin_page_bugs_component_1 = require('../components/admin-page-bugs.component');
+var admin_page_todo_component_1 = require('../components/admin-page-todo.component');
+var admin_page_status_component_1 = require('../components/admin-page-status.component');
 //let params: URLSearchParams = new URLSearchParams();
 var routes = [
     //Home page
@@ -29,6 +32,11 @@ var routes = [
         path: 'search',
         component: simple_search_component_1.SimpleSearchComponent
     },
+    //Bug report Page
+    {
+        path: 'bugReport',
+        component: bug_report_component_1.BugReportComponent
+    },
     //Admin login page
     {
         path: 'adminLogin',
@@ -36,25 +44,24 @@ var routes = [
     },
     //Admin page
     {
-        path: 'adminPage',
-        component: admin_page_component_1.AdminPageComponent
+        path: 'adminPage/home',
+        component: admin_page_home_component_1.AdminPageComponent
     },
-    //Bug report Page
+    //Admin page - bugs
     {
-        path: 'bugReport',
-        component: bug_report_component_1.BugReportComponent
-    } /*,
-     {
-     //advance Search
-     path: 'advanceSearch',
-     component: AdvanceSearchComponent
-     },
-     {
-     //Search resault of all variables
-
-     path: 'res',
-     component: FileDetailComponent
-     }*/
+        path: 'adminPage/bugs',
+        component: admin_page_bugs_component_1.AdminPageBugs
+    },
+    //Admin page - to-do
+    {
+        path: 'adminPage/todo',
+        component: admin_page_todo_component_1.AdminPageTodo
+    },
+    //Admin page - DBs status
+    {
+        path: 'adminPage/status',
+        component: admin_page_status_component_1.AdminPageStatus
+    }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

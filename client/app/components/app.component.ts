@@ -1,5 +1,5 @@
 //import the component declare in order to create a new one
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Add the RxJS Observable operators.
 import '../rxjs/rxjs-operators';
@@ -12,6 +12,16 @@ import '../rxjs/rxjs-operators';
 	templateUrl: './app/pages/app.component.html',
   	styleUrls: ['./app/styles/app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+	public draw=false;
 	title = 'ServSearch.net';
+
+	ngOnInit() {
+		var location, temp;
+		temp = window.location.href.split("/");
+		location = temp[3];
+		if (location == "adminPage") {
+			this.draw = true;
+		}
+	}
 }

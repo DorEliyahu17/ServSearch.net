@@ -1,21 +1,21 @@
-<div class="container-fluid" dir="rtl"></div>
-
+<div class="container-fluid" dir="rtl">
 	<nav class="navbar navbar-fixed-top" style="background-color: white">
 		<br/>
 		<div class="row">
-			<div class="col-lg-5 col-md-5"></div>
-			<div class="col-lg-2 col-md-2" style="text-align: center;">
+			<div class="col-lg-offset-5 col-lg-2" style="text-align: center;">
 				<a href="/"><font size="4">{{title}}</font></a>
 			</div>
 		</div>
 		<hr />
-
 	</nav>
-<sideNav class="navbar-fixed-top"></sideNav>
 	<br/>
 	<br/>
 	<br/>
 	<br/>
 	<br/>
 	<router-outlet></router-outlet>
+</div>
 
+<div *ngIf="draw==true">
+	<sideNav></sideNav>
+</div>

@@ -12,8 +12,4 @@ import '../rxjs/rxjs-operators';
 	templateUrl: './app/pages/sideNav.component.html',
   	styleUrls: ['./app/styles/sideNav.component.css']
 })
-export class SideNavComponent {
-
-	constructor() {}
-
-}
+export class SideNavComponent {}

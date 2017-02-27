@@ -41,7 +41,7 @@ export class LoginComponent {
 				this.errorFlag=true;
 			else {
 				if (data[0] != "")
-					window.location.href = '/adminPage';
+					window.location.href = '/adminPage/home';
 				else {
 					//warning=1
 					//danger=2
