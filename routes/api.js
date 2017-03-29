@@ -16,6 +16,14 @@ router.get('/', function(req, res, next) {
     res.send(detail);
 });
 
+router.get('/AH', function(req, res, next) {
+    mongo.adminHomeStatus().then(function(result){
+        res.send(result);
+    }).catch(function(err){
+        res.send(err);
+    });
+});
+
 /* GET files listing. */
 router.get('/files', function(req, res, next) {
 
@@ -33,51 +41,45 @@ router.get('/files', function(req, res, next) {
             res.send(result);
         else
             res.send([]);
-    })
-        .catch(function(err){
-            res.send(err);
-        });
+    }).catch(function(err){
+        res.send(err);
+    });
 });
 
 /* GET collections name listing. */
 router.get('/collections', function(req, res, next) {
     mongo.findCollectionsNameList().then(function(result){
         res.send(result);
-    })
-        .catch(function(err){
-            res.send(err);
-        });
+    }).catch(function(err){
+        res.send(err);
+    });
 });
 
 /* GET admins name and password listing. */
 router.get('/admins', function(req, res, next) {
     mongo.findAdmin(req.query.userName, req.query.password).then(function(result){
         res.send(result);
-    })
-        .catch(function(err){
-            res.send(err);
-        });
+    }).catch(function(err){
+        res.send(err);
+    });
 });
 
 /* GET Bugs listing. */
 router.get('/reportedBugs', function(req, res, next) {
     mongo.findAll("Bugs").then(function(result){
         res.send(result);
-    })
-        .catch(function(err){
-            res.send(err);
-        });
+    }).catch(function(err){
+        res.send(err);
+    });
 });
 
 /* INSERT bug to the database. */
 router.get('/insertBug', function(req, res, next) {
-    //ToDo - change that function
-    mongo.insertOne({"name":req.query.name, "subject":req.query.subject, "description":req.query.description}, "Bugs").then(function(result){
+    mongo.insertOne({"name":req.query.name, "subject":req.query.subject, "description":req.query.description, "insertDate":req.query.insertDate}, "Bugs").then(function(result){
         res.send(result);
-    })
-        .catch(function(err){
-            res.send(err);
-        });
+    }).catch(function(err){
+        res.send(err);
+    });
 });
 
 /* DELETE bug from the database. */
@@ -91,25 +93,52 @@ router.get('/deleteBug', function(req, res, next) {
         });
 });
 
+
+
+
+
+
+
+//ToDo
+/* DELETE bug from the database. */
+router.get('/deleteBugs', function(req, res, next) {
+    //ToDo - change that function
+    mongo.deleteArr(req.query._id, "Bugs").then(function(){
+        mongo.findAll("Bugs").then(function(result){
+            res.send(result);
+        }).catch(function(err){
+            res.send(err);
+        });
+    }).catch(function(err){
+        res.send(err);
+    });
+});
+
+
+
+
+
+
+
+
+
+
 /* GET To-DOs listing. */
 router.get('/ToDoList', function(req, res, next) {
     mongo.findAll("ToDo").then(function(result){
         res.send(result);
-    })
-        .catch(function(err){
-            res.send(err);
-        });
+    }).catch(function(err){
+        res.send(err);
+    });
 });
 
 /* INSERT To-Do Item to the database. */
 router.get('/insertToDo', function(req, res, next) {
-    //ToDo - change that function
     mongo.insertOne({"description":req.query.description}, "ToDo").then(function(result){
         res.send(result);
-    })
-        .catch(function(err){
-            res.send(err);
-        });
+    }).catch(function(err){
+        res.send(err);
+    });
 });
 
 /* DELETE To-Do Item from the database. */

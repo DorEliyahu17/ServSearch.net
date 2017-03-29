@@ -11,65 +11,83 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 //import the component declare in order to create a new one
 var core_1 = require("@angular/core");
-//import the service "PagerService" from the file "../services/pager.service"
+//import the service "PagerService" from the bug "../services/pager.service"
 var pager_service_1 = require("../services/pager.service");
 //create new component
-var FileDetailComponent = (function () {
-    function FileDetailComponent(pagerService) {
+var BugDetailComponent = (function () {
+    function BugDetailComponent(pagerService) {
         this.pagerService = pagerService;
         this.indexArr = [];
         //pager vars
         // dummy array of items to be paged
-        this.filesArr = [];
+        this.bugsArr = [];
         // pager object
         this.pager = {};
     }
-    FileDetailComponent.prototype.ngOnChanges = function () {
-        this.filesArr = [];
+    BugDetailComponent.prototype.ngOnChanges = function () {
+        this.bugsArr = [];
         for (var i = 0; i < this.length; i++) {
-            this.filesArr[i] = this.files[i];
+            this.bugsArr[i] = this.bugs[i];
             this.indexArr[i] = i + 1;
         }
         // initialize to page 1
         this.setPage(1);
     };
-    FileDetailComponent.prototype.setPage = function (page) {
+    BugDetailComponent.prototype.setPage = function (page) {
         if (page < 1 || page > this.pager.totalPages) {
             return;
         }
         // get pager object from service
-        this.pager = this.pagerService.getPager(this.filesArr.length, page);
+        this.pager = this.pagerService.getPager(this.bugsArr.length, page);
         // get current page of items
-        this.pagedItems = this.filesArr.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        this.pagedItems = this.bugsArr.slice(this.pager.startIndex, this.pager.endIndex + 1);
     };
-    FileDetailComponent.prototype.goBack = function () {
-        //visible and hidden change
-        var regularSearch = document.getElementById("regular");
-        regularSearch.className = "hidden";
-        var advanceSearch = document.getElementById("advance");
-        advanceSearch.className = "visible";
+    BugDetailComponent.prototype.check = function (index1) {
+        var j = 0, flag = false, bugIndex = 0;
+        for (j = 0; j < this.bugsToDeleteArr.length; j++) {
+            if (this.bugsToDeleteArr[j] == this.bugsArr[index1]._id) {
+                flag = true;
+                bugIndex = j;
+            }
+        }
+        if (flag == false)
+            this.bugsToDeleteArr.push(this.bugsArr[index1]._id);
+        else
+            this.bugsToDeleteArr.splice(bugIndex, 1);
     };
-    return FileDetailComponent;
+    /*ask about that*/
+    BugDetailComponent.prototype.isChecked = function (id) {
+        var toCheck = document.getElementById(id);
+        if (toCheck.hasAttribute("checked"))
+            toCheck.removeAttribute("checked");
+        else
+            toCheck.setAttribute("checked", "checked");
+    };
+    return BugDetailComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", Array)
-], FileDetailComponent.prototype, "files", void 0);
+], BugDetailComponent.prototype, "bugs", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Number)
-], FileDetailComponent.prototype, "length", void 0);
-FileDetailComponent = __decorate([
+], BugDetailComponent.prototype, "length", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Array)
+], BugDetailComponent.prototype, "bugsToDeleteArr", void 0);
+BugDetailComponent = __decorate([
     core_1.Component({
         //his label in the HTML code
-        selector: 'file-detail',
+        selector: 'bug-detail',
         //the code that will be read when the component will be called
-        templateUrl: './app/pages/file-detail.component.html',
-        styleUrls: ['./app/styles/file-detail.component.css'],
+        templateUrl: './app/pages/bug-detail.component.html',
+        styleUrls: ['./app/styles/bug-detail.component.css'],
     })
     //the class of this new component
     ,
     __metadata("design:paramtypes", [pager_service_1.PagerService])
-], FileDetailComponent);
-exports.FileDetailComponent = FileDetailComponent;
-//# sourceMappingURL=file-detail.component.js.map
+], BugDetailComponent);
+exports.BugDetailComponent = BugDetailComponent;
+//# sourceMappingURL=bug-detail.component.js.map

@@ -8,13 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 //import the component declare in order to create a new one
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 //import the class "File" from the file "./file"
-var file_1 = require('../object modules/file');
+var file_1 = require("../object modules/file");
 //import the service "FileService" from the file "./file.service"
-var file_service_1 = require('../services/file.service');
+var file_service_1 = require("../services/file.service");
 var SimpleSearchComponent = (function () {
     function SimpleSearchComponent(fileService) {
         this.fileService = fileService;
@@ -41,7 +42,6 @@ var SimpleSearchComponent = (function () {
     };
     SimpleSearchComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //var i;
         this.fileService.getServerNames().then(function (data) {
             if (data.name == "MongoError")
                 _this.errorFlag = true;
@@ -83,6 +83,10 @@ var SimpleSearchComponent = (function () {
                         _this.alerts.splice(0, _this.alerts.length);
                     _this.isResult = true;
                     _this.advanceFlag = true;
+                    //visible and hidden change
+                    //var resultSearch = document.getElementById("result");
+                    //resultSearch.className = "visible";
+                    //this.isResult=true;
                 }
                 else {
                     //warning=1
@@ -107,16 +111,16 @@ var SimpleSearchComponent = (function () {
             }
         });
     };
-    SimpleSearchComponent = __decorate([
-        core_1.Component({
-            selector: 'simple-search',
-            templateUrl: './app/pages/simple-search.component.html',
-            styleUrls: ['./app/styles/simple-search.component.css'],
-            providers: [file_service_1.FileService]
-        }), 
-        __metadata('design:paramtypes', [file_service_1.FileService])
-    ], SimpleSearchComponent);
     return SimpleSearchComponent;
 }());
+SimpleSearchComponent = __decorate([
+    core_1.Component({
+        selector: 'simple-search',
+        templateUrl: './app/pages/simple-search.component.html',
+        styleUrls: ['./app/styles/simple-search.component.css'],
+        providers: [file_service_1.FileService]
+    }),
+    __metadata("design:paramtypes", [file_service_1.FileService])
+], SimpleSearchComponent);
 exports.SimpleSearchComponent = SimpleSearchComponent;
 //# sourceMappingURL=simple-search.component.js.map

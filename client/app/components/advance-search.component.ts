@@ -66,6 +66,11 @@ export class AdvanceSearchComponent {
 			if (dateRadio2)
 				dateField = "";
 		}
+		else {
+			dateFieldLow = "";
+			dateFieldHigh = "";
+			dateField = "";
+		}
 		if (sizeCheck) {
 			if (sizeRadio1) {
 				sizeFieldLow = "";
@@ -73,6 +78,11 @@ export class AdvanceSearchComponent {
 			}
 			if (sizeRadio2)
 				sizeField = "";
+		}
+		else {
+			sizeFieldLow = "";
+			sizeFieldHigh = "";
+			sizeField = "";
 		}
 
 		// WORK FILE SERVICE

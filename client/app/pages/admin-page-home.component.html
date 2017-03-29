@@ -1,1 +1,51 @@
-<h1>admin page</h1>
+<!-- Title-->
+<div class="row">
+    <div class="col-lg-offset-5 col-lg-2" style="text-align: center">
+        <h1><U><B>מבט על</B></U></h1>
+    </div>
+</div>
+
+<!-- DB Status -->
+<hr/>
+<div class="row">
+    <div class="col-lg-offset-7 col-lg-4">
+        <div *ngIf="color==2">
+            <h1><B><U><span>מצב ה-<span>DataBase</span>:</span></U><span style="color: #D90022"> {{msg}} <img class="img-thumbnail" src="../../images/red%20light.png" alt="{{msg}}" title="{{msg}}" style="width:50px;height:50px;"/></span></B></h1>
+        </div>
+        <div *ngIf="color==3">
+            <h1><B><U><span>מצב ה-<span>DataBase</span>:</span></U><span style="color: #39FF14"> {{msg}} <img class="img-thumbnail" src="../../images/green%20light.png" alt="{{msg}}" title="{{msg}}" style="width:50px;height:50px;"/></span></B></h1>
+        </div>
+    </div>
+</div>
+
+<!-- Counter of remaining bugs -->
+<hr/>
+<div class="row">
+    <div class="col-lg-offset-6 col-lg-5">
+        <div *ngIf="bugsNum>0">
+            <h1><B><U><span>נותרו עוד {{bugsNum}} באגים לתיקון</span></U></B></h1>
+        </div>
+        <div *ngIf="bugsNum==0">
+            <h1><B><U><span>לא נותרו עוד באגים לתיקון</span></U></B></h1>
+        </div>
+        <div *ngIf="bugsNum==-1">
+            <h1><B><U><span>ישנה בעיה עם השרת, אנא סדר אותה ורענן את הדף מחדש</span></U></B></h1>
+        </div>
+    </div>
+</div>
+
+<!-- Counter of remaining ToDos -->
+<hr/>
+<div class="row">
+    <div class="col-lg-offset-6 col-lg-5">
+        <div *ngIf="TodoNum>0">
+            <h1><B><U><span>נותרו עוד {{TodoNum}} משימות לביצוע</span></U></B></h1>
+        </div>
+        <div *ngIf="TodoNum==0">
+            <h1><B><U><span>לא נותרו עוד משימות לביצוע</span></U></B></h1>
+        </div>
+        <div *ngIf="TodoNum==-1">
+            <h1><B><U><span>ישנה בעיה עם השרת, אנא סדר אותה ורענן את הדף מחדש</span></U></B></h1>
+        </div>
+    </div>
+</div>

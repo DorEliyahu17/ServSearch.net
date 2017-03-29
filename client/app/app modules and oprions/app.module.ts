@@ -14,11 +14,12 @@ import { AdvanceSearchComponent } from '../components/advance-search.component';
 import { FileDetailComponent } from '../components/file-detail.component';
 import { BugReportComponent } from '../components/bug-report.component';
 import { LoginComponent } from '../components/login.component'
-import { AdminPageComponent } from '../components/admin-page-home.component';
+import { AdminPageHomeComponent } from '../components/admin-page-home.component';
 import { SideNavComponent } from '../components/sideNav.component';
-import { AdminPageBugs } from '../components/admin-page-bugs.component';
-import { AdminPageTodo } from '../components/admin-page-todo.component';
-import { AdminPageStatus } from '../components/admin-page-status.component';
+import { AdminPageBugsComponent } from '../components/admin-page-bugs.component';
+import { BugDetailComponent } from '../components/bug-detail.component';
+import { AdminPageTodoComponent } from '../components/admin-page-todo.component';
+import { AdminPageStatusComponent } from '../components/admin-page-status.component';
 
 import { FileService } from '../services/file.service';
 import { PagerService } from '../services/pager.service';
@@ -46,11 +47,12 @@ import { AppRoutingModule } from './app-routing.module';
     FileDetailComponent,
     BugReportComponent,
     LoginComponent,
-    AdminPageComponent,
     SideNavComponent,
-    AdminPageBugs,
-    AdminPageTodo,
-    AdminPageStatus
+    AdminPageHomeComponent,
+    AdminPageBugsComponent,
+    BugDetailComponent,
+    AdminPageTodoComponent,
+    AdminPageStatusComponent
   ],
   providers: [
     FileService,

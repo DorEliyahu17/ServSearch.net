@@ -1,7 +1,7 @@
 <div id="login-modal">
     <section id="content">
         <form action="">
-            <h1>Admin Login</h1>
+            <h1>כניסת מנהל</h1>
             <div>
                 <input type="text" placeholder="שם משתמש..." id="username"/>
             </div>
@@ -11,11 +11,14 @@
             <div>
                 <input type="submit" value="כניסה" (click)="login()" />
             </div>
+
+            <!--
             <div *ngIf="errorFlag==true">
                 <div class="alert alert-danger" role="alert">
                     אופס... ישנה בעיה עם השרתים, נסה שוב מאוחר יותר.
                 </div>
             </div>
+            -->
 
             <div *ngIf="errorFlag==false">
                 <div *ngFor="let alert of alerts;let i = index;">

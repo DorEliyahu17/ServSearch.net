@@ -6,11 +6,11 @@ import {URLSearchParams } from '@angular/http';
 //import the Components
 import { SimpleSearchComponent } from '../components/simple-search.component'
 import { LoginComponent } from '../components/login.component'
-import { AdminPageComponent } from '../components/admin-page-home.component'
+import { AdminPageHomeComponent } from '../components/admin-page-home.component'
 import { BugReportComponent } from '../components/bug-report.component';
-import { AdminPageBugs } from '../components/admin-page-bugs.component';
-import { AdminPageTodo } from '../components/admin-page-todo.component';
-import { AdminPageStatus } from '../components/admin-page-status.component';
+import { AdminPageBugsComponent } from '../components/admin-page-bugs.component';
+import { AdminPageTodoComponent } from '../components/admin-page-todo.component';
+import { AdminPageStatusComponent } from '../components/admin-page-status.component';
 
 //let params: URLSearchParams = new URLSearchParams();
 
@@ -43,25 +43,25 @@ const routes: Routes = [
     //Admin page
     {
         path: 'adminPage/home',
-        component: AdminPageComponent
+        component: AdminPageHomeComponent
     },
 
     //Admin page - bugs
     {
         path: 'adminPage/bugs',
-        component: AdminPageBugs
+        component: AdminPageBugsComponent
     },
 
     //Admin page - to-do
     {
         path: 'adminPage/todo',
-        component: AdminPageTodo
+        component: AdminPageTodoComponent
     },
 
     //Admin page - DBs status
     {
         path: 'adminPage/status',
-        component: AdminPageStatus
+        component: AdminPageStatusComponent
     }
 ];
 

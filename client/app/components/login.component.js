@@ -8,11 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 //import the component declare in order to create a new one
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 //import the service "FileService" from the file "./file.service"
-var login_service_1 = require('../services/login.service');
+var login_service_1 = require("../services/login.service");
 //create new component
 var LoginComponent = (function () {
     function LoginComponent(/*private router: Router, */ loginService) {
@@ -48,19 +49,21 @@ var LoginComponent = (function () {
             }
         });
     };
-    LoginComponent = __decorate([
-        core_1.Component({
-            //his label in the HTML code
-            selector: 'login',
-            //the code that will be read when the component will be called
-            templateUrl: './app/pages/login.component.html',
-            //the style of the code
-            styleUrls: ['./app/styles/login.component.css'],
-            providers: [login_service_1.LoginService]
-        }), 
-        __metadata('design:paramtypes', [login_service_1.LoginService])
-    ], LoginComponent);
     return LoginComponent;
 }());
+LoginComponent = __decorate([
+    core_1.Component({
+        //his label in the HTML code
+        selector: 'login',
+        //the code that will be read when the component will be called
+        templateUrl: './app/pages/login.component.html',
+        //the style of the code
+        styleUrls: ['./app/styles/login.component.css'],
+        providers: [login_service_1.LoginService]
+    })
+    //the class of this new component
+    ,
+    __metadata("design:paramtypes", [login_service_1.LoginService])
+], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

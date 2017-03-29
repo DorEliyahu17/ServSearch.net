@@ -8,13 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 //import the component declare in order to create a new one
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 //import the class "File" from the file "./file"
-var file_1 = require('../object modules/file');
+var file_1 = require("../object modules/file");
 //import the service "FileService" from the file "./file.service"
-var file_service_1 = require('../services/file.service');
+var file_service_1 = require("../services/file.service");
 //create new component
 var AdvanceSearchComponent = (function () {
     function AdvanceSearchComponent(fileService) {
@@ -51,6 +52,11 @@ var AdvanceSearchComponent = (function () {
             if (dateRadio2)
                 dateField = "";
         }
+        else {
+            dateFieldLow = "";
+            dateFieldHigh = "";
+            dateField = "";
+        }
         if (sizeCheck) {
             if (sizeRadio1) {
                 sizeFieldLow = "";
@@ -58,6 +64,11 @@ var AdvanceSearchComponent = (function () {
             }
             if (sizeRadio2)
                 sizeField = "";
+        }
+        else {
+            sizeFieldLow = "";
+            sizeFieldHigh = "";
+            sizeField = "";
         }
         // WORK FILE SERVICE
         // GETS THE PARAMAS
@@ -169,39 +180,41 @@ var AdvanceSearchComponent = (function () {
             rangeInputField.removeAttribute("disabled");
         }
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Array)
-    ], AdvanceSearchComponent.prototype, "files", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], AdvanceSearchComponent.prototype, "length", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Boolean)
-    ], AdvanceSearchComponent.prototype, "isResult", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Array)
-    ], AdvanceSearchComponent.prototype, "alerts", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Boolean)
-    ], AdvanceSearchComponent.prototype, "errorFlag", void 0);
-    AdvanceSearchComponent = __decorate([
-        core_1.Component({
-            //his label in the HTML code
-            selector: 'advanceSearch',
-            //the code that will be read when the component will be called
-            templateUrl: './app/pages/advance-search.component.html',
-            //the style of the code
-            styleUrls: ['./app/styles/advance-search.component.css'],
-            providers: [file_service_1.FileService]
-        }), 
-        __metadata('design:paramtypes', [file_service_1.FileService])
-    ], AdvanceSearchComponent);
     return AdvanceSearchComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Array)
+], AdvanceSearchComponent.prototype, "files", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], AdvanceSearchComponent.prototype, "length", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], AdvanceSearchComponent.prototype, "isResult", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Array)
+], AdvanceSearchComponent.prototype, "alerts", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], AdvanceSearchComponent.prototype, "errorFlag", void 0);
+AdvanceSearchComponent = __decorate([
+    core_1.Component({
+        //his label in the HTML code
+        selector: 'advanceSearch',
+        //the code that will be read when the component will be called
+        templateUrl: './app/pages/advance-search.component.html',
+        //the style of the code
+        styleUrls: ['./app/styles/advance-search.component.css'],
+        providers: [file_service_1.FileService]
+    })
+    //the class of this new component
+    ,
+    __metadata("design:paramtypes", [file_service_1.FileService])
+], AdvanceSearchComponent);
 exports.AdvanceSearchComponent = AdvanceSearchComponent;
 //# sourceMappingURL=advance-search.component.js.map

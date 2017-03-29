@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 //the "file" class
 var File = (function () {
     //modifiedDate: string;

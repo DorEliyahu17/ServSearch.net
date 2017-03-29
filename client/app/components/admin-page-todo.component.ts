@@ -12,4 +12,4 @@ import '../rxjs/rxjs-operators';
 	templateUrl: './app/pages/admin-page-todo.component.html',
   	styleUrls: ['./app/styles/admin-page-todo.component.css']
 })
-export class AdminPageTodo {}
+export class AdminPageTodoComponent {}

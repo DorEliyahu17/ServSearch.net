@@ -45,7 +45,6 @@ export class SimpleSearchComponent implements OnInit
     }
 
     ngOnInit():void{
-        //var i;
         this.fileService.getServerNames().then((data: any) => {
             if(data.name=="MongoError")
                 this.errorFlag=true;

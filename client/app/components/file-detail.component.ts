@@ -10,17 +10,16 @@ import { PagerService } from '../services/pager.service'
 //create new component
 @Component({
     //his label in the HTML code
-    selector: 'my-file-detail',
+    selector: 'file-detail',
     //the code that will be read when the component will be called
     templateUrl: './app/pages/file-detail.component.html',
     styleUrls: ['./app/styles/file-detail.component.css'],
 })
 
 //the class of this new component
-export class FileDetailComponent implements OnChanges{
+export class FileDetailComponent implements OnChanges {
     @Input() files: File[];
     @Input() length: number;
-    @Input() attributeName: string;
     indexArr:Array<any>=[];
     //pager vars
     // dummy array of items to be paged

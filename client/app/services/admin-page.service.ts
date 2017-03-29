@@ -12,9 +12,24 @@ export class AdminPageService {
 
     constructor(private http: Http) { }
 
+    getAH(): any {
+        return this.http.get(this.apiUrl+"/AH")
+            .map((response) => {
+                return response.json()
+            }).toPromise();
+    }
+
     //get the bugs that reported from the /api/reportedBugs
     getBugs(): any {
         return this.http.get(this.apiUrl+"/reportedBugs")
+            .map((response) => {
+                return response.json()
+            }).toPromise();
+    }
+
+    //delete array of bugs
+    deleteBugs(params: URLSearchParams): any {
+        return this.http.get(this.apiUrl+"/deleteBugs",  {search: params})
             .map((response) => {
                 return response.json()
             }).toPromise();
