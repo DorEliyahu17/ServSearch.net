@@ -15,47 +15,49 @@ import { FileService } from '../services/file.service';
     providers: [FileService]
 })
 
-export class SimpleSearchComponent implements OnInit
-{
-    public advanceFlag=false;
-    public errorFlag=false;
-    public alerts: Array<Object>=[];
-    serverNames: Array<any>=[];
-    files:File[];
-    isResult:boolean =false;
-    file=new File();
-    length=0;
+export class SimpleSearchComponent implements OnInit {
+    public advanceFlag = false;
+    public errorFlag = false;
+    public alerts: Array<Object> = [];
+    serverNames: Array<any> = [];
+    files: File[];
+    isResult: boolean = false;
+    loadingFlag: boolean = false;
+    file = new File();
+    length = 0;
 
-    constructor(private fileService: FileService) { }
+    constructor(private fileService: FileService) {
+    }
 
     //visible the advance search
-    simpleToAdvance(): void{
+    simpleToAdvance(): void {
         var simpleSearch = document.getElementById("simple");
         simpleSearch.className = "hidden";
     }
 
     //visible the simple search
-    advanceToSimple(): void{
+    advanceToSimple(): void {
         var simpleSearch = document.getElementById("simple");
         simpleSearch.className = "visible";
     }
 
-    public closeAlert(i:number):void {
+    public closeAlert(i: number): void {
         this.alerts.splice(i, 1);
     }
 
-    ngOnInit():void{
+    ngOnInit(): void {
         this.fileService.getServerNames().then((data: any) => {
-            if(data.name=="MongoError")
-                this.errorFlag=true;
+            if (data.name == "MongoError")
+                this.errorFlag = true;
             else
-                this.serverNames=data;
+                this.serverNames = data;
         });
     }
 
-    search():void {
-        this.advanceFlag=false;
-        this.isResult=false;
+    search(): void {
+        this.advanceFlag = false;
+        this.isResult = false;
+        this.loadingFlag = true;
         var i;
         ///var resultSearch = document.getElementById("result");
         //resultSearch.className = "hidden";
@@ -77,9 +79,9 @@ export class SimpleSearchComponent implements OnInit
 
         //get the files arr from the service
         this.fileService.getFiles(params)
-            .then((data:any/*File[]*/) => {
-                if(data.name=="MongoError")
-                    this.errorFlag=true;
+            .then((data: any/*File[]*/) => {
+                if (data.name == "MongoError")
+                    this.errorFlag = true;
                 else {
                     if (data.length > 0) {
                         this.files = data;
@@ -88,6 +90,7 @@ export class SimpleSearchComponent implements OnInit
                             this.alerts.splice(0, this.alerts.length);
                         this.isResult = true;
                         this.advanceFlag = true;
+                        this.loadingFlag = false;
                         //visible and hidden change
                         //var resultSearch = document.getElementById("result");
                         //resultSearch.className = "visible";
@@ -113,6 +116,7 @@ export class SimpleSearchComponent implements OnInit
                         }
                         else
                             this.alerts.push({msg: 'לא הוכנס שום ערך.', type: 2});
+                        this.loadingFlag = false;
                     }
                 }
             });

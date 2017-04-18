@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 //the "file" class
 var File = (function () {
-    //modifiedDate: string;
     function File() {
         this.name = "";
         this.type = "";
@@ -11,7 +10,7 @@ var File = (function () {
         //this.permissions="";
         this.createdUser = "";
         this.group = "";
-        //this.modifiedDate="";
+        this.modifiedDate = "";
     }
     return File;
 }());

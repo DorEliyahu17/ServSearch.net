@@ -26,15 +26,18 @@ export class AdvanceSearchComponent {
 	@Input() files: File[];
 	@Input() length;
 	@Input() isResult: boolean;
+	@Input() loadingFlag: boolean;
 	@Input() public alerts: Array<Object>;
 	@Input() public errorFlag: boolean;
 	file = new File();
 
-	constructor(private fileService: FileService) {}
+	constructor(private fileService: FileService) {
+	}
 
 	search(): void {
-		this.isResult=false;
-		this.files=[];
+		this.isResult = false;
+		this.loadingFlag = true;
+		this.files = [];
 		var i;
 		//var resultSearch = document.getElementById("result");
 		//resultSearch.className = "hidden";
@@ -103,8 +106,8 @@ export class AdvanceSearchComponent {
 		//get the files arr from the service
 		this.fileService.getFiles(params)
             .then((data: any/*File[]*/) => {
-				if(data.name=="MongoError")
-					this.errorFlag=true;
+				if (data.name == "MongoError")
+					this.errorFlag = true;
 				else {
 					if (data.length > 0) {
 						this.files = data;
@@ -112,10 +115,11 @@ export class AdvanceSearchComponent {
 						if (this.alerts.length > 0)
 							this.alerts.splice(0, this.alerts.length);
 						this.isResult = true;
+						this.loadingFlag = false;
 						//visible and hidden change
 						//var resultSearch = document.getElementById("result");
 						//resultSearch.className = "visible";
-						this.isResult = true;
+						//this.isResult = true;
 					}
 					else {
 						//warning=1
@@ -134,6 +138,7 @@ export class AdvanceSearchComponent {
 						}
 						else
 							this.alerts.push({msg: 'לא הוכנס שום ערך.', type: 2});
+						this.loadingFlag = false;
 					}
 				}
 			});

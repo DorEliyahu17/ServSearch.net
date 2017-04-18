@@ -45,7 +45,22 @@
 
   <div *ngIf="advanceFlag==true">
     <!-- advance search-->
-    <advanceSearch [files]="files" [length]="length" [isResult]="isResult" [alerts]="alerts" [errorFlag]="errorFlag"></advanceSearch>
+    <advanceSearch [files]="files" [length]="length" [loadingFlag]="loadingFlag" [isResult]="isResult" [alerts]="alerts" [errorFlag]="errorFlag"></advanceSearch>
+  </div>
+
+
+  <div *ngIf="loadingFlag==true">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="search-cssload-container">
+      <div class="search-cssload-whirlpool"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
 
 

@@ -24,6 +24,7 @@ var SimpleSearchComponent = (function () {
         this.alerts = [];
         this.serverNames = [];
         this.isResult = false;
+        this.loadingFlag = false;
         this.file = new file_1.File();
         this.length = 0;
     }
@@ -53,6 +54,7 @@ var SimpleSearchComponent = (function () {
         var _this = this;
         this.advanceFlag = false;
         this.isResult = false;
+        this.loadingFlag = true;
         var i;
         ///var resultSearch = document.getElementById("result");
         //resultSearch.className = "hidden";
@@ -83,6 +85,7 @@ var SimpleSearchComponent = (function () {
                         _this.alerts.splice(0, _this.alerts.length);
                     _this.isResult = true;
                     _this.advanceFlag = true;
+                    _this.loadingFlag = false;
                     //visible and hidden change
                     //var resultSearch = document.getElementById("result");
                     //resultSearch.className = "visible";
@@ -107,6 +110,7 @@ var SimpleSearchComponent = (function () {
                     }
                     else
                         _this.alerts.push({ msg: 'לא הוכנס שום ערך.', type: 2 });
+                    _this.loadingFlag = false;
                 }
             }
         });

@@ -1,8 +1,7 @@
 //import the component declare in order to create a new one
 import {Component, OnInit} from '@angular/core';
-import { URLSearchParams } from "@angular/http";
+import {ScanDetail} from "../object modules/scanDetail";
 import {AdminPageService} from "../services/admin-page.service";
-
 
 
 //create new component
@@ -18,19 +17,22 @@ import {AdminPageService} from "../services/admin-page.service";
 
 //the class of this new component
 export class AdminPageHomeComponent implements OnInit {
-    msg: string="";
+    msg: string = "";
     color: number;
     bugsNum: number;
     TodoNum: number;
+    scanReport: ScanDetail;
 
-    constructor(private adminPageService: AdminPageService) {}
+    constructor(private adminPageService: AdminPageService) {
+    }
 
-    ngOnInit():void{
+    ngOnInit(): void {
         this.adminPageService.getAH().then((data: any) => {
-            this.msg=data.msg;
-            this.color=data.color;
-            this.bugsNum=data.bugsNum;
-            this.TodoNum=data.TodoNum;
+            this.msg = data.msg;
+            this.color = data.color;
+            this.bugsNum = data.bugsNum;
+            this.TodoNum = data.TodoNum;
+            this.scanReport = data.scanReport;
         });
     }
 }

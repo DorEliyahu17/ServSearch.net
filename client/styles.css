@@ -25,8 +25,7 @@ button {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* loading gif*/
-
+/*Main loading gif*/
 .cssload-container{
   position:inherit;
 }
@@ -108,6 +107,93 @@ button {
 }
 
 @-moz-keyframes cssload-rotate {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+/*search loading gif*/
+.search-cssload-container{
+  position:relative;
+}
+
+.search-cssload-whirlpool,
+.search-cssload-whirlpool::before,
+.search-cssload-whirlpool::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 3px solid rgb(204,204,204);
+  border-left-color: rgb(51,102,153);
+  border-radius: 2872px;
+  -o-border-radius: 2872px;
+  -ms-border-radius: 2872px;
+  -webkit-border-radius: 2872px;
+  -moz-border-radius: 2872px;
+}
+
+.search-cssload-whirlpool {
+  margin: -72px 0 0 -72px;
+  height: 144px;
+  width: 144px;
+  animation: cssload-rotate 1450ms linear infinite;
+  -o-animation: cssload-rotate 1450ms linear infinite;
+  -ms-animation: cssload-rotate 1450ms linear infinite;
+  -webkit-animation: cssload-rotate 1450ms linear infinite;
+  -moz-animation: cssload-rotate 1450ms linear infinite;
+}
+
+.search-cssload-whirlpool::before {
+  content: "";
+  margin: -66px 0 0 -66px;
+  height: 127px;
+  width: 127px;
+  animation: cssload-rotate 1450ms linear infinite;
+  -o-animation: cssload-rotate 1450ms linear infinite;
+  -ms-animation: cssload-rotate 1450ms linear infinite;
+  -webkit-animation: cssload-rotate 1450ms linear infinite;
+  -moz-animation: cssload-rotate 1450ms linear infinite;
+}
+
+.search-cssload-whirlpool::after {
+  content: "";
+  margin: -83px 0 0 -83px;
+  height: 161px;
+  width: 161px;
+  animation: cssload-rotate 2900ms linear infinite;
+  -o-animation: cssload-rotate 2900ms linear infinite;
+  -ms-animation: cssload-rotate 2900ms linear infinite;
+  -webkit-animation: cssload-rotate 2900ms linear infinite;
+  -moz-animation: cssload-rotate 2900ms linear infinite;
+}
+
+
+
+@keyframes search-cssload-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes search-cssload-rotate {
+  100% {
+    -o-transform: rotate(360deg);
+  }
+}
+
+@-ms-keyframes search-cssload-rotate {
+  100% {
+    -ms-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes search-cssload-rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes search-cssload-rotate {
   100% {
     -moz-transform: rotate(360deg);
   }

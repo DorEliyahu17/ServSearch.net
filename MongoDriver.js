@@ -2,25 +2,48 @@
 var exportMongo=new Object();
 
 //find all arr that change once a week and will be lunch in the beginning of the session
-exportMongo.resultArr=[];
+//exportMongo.resultArr=[];
 var objectId = require('mongodb').ObjectID;
 var mongo = require('mongodb').MongoClient;
 
 var url = 'mongodb://localhost:27017/Mtest';
 //var url = 'mongodb://192.168.1.15:27017/Mtest';
 
-//check DB status
-exportMongo.adminHomeStatus = function adminHomeStatus(){
-    var bugsNum=-1;
+//get the server name from the location field
+function getServerFromLocation(location){
+    var arr=[];
+    arr=location.split(":");
+    return arr[0];
+}
+
+//drop collection
+exportMongo.dropCollection = function dropCollection(collection){
     return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
             if(err!=null)
-                reject({"msg":"כבוי","color":"2", "bugsNum":bugsNum, "TodoNum":"-1"});
+                reject(err);
             else {
+                db.collection(collection).drop(function (err) {
+                    db.close();
+                    if(err!=null)
+                        reject(err);
+                    console.log("Collection dropped");
+                    resolve();
+                });
+            }
+        });
+    });
+};
 
-                console.log("connection open");
-
-                var p=new Promise(function (resolve, reject) {
+//check DB status
+exportMongo.adminHomeStatus = function adminHomeStatus(){
+    var bugsNum=-1, TodoNum=-1;
+    return new Promise(function (resolve, reject) {
+        mongo.connect(url, function (err, db) {
+            if(err!=null)
+                reject({"msg":"כבוי","color":"2", "bugsNum":bugsNum, "TodoNum":"-1", "scanReport":{}});
+            else {
+                new Promise(function (resolve, reject) {
                     db.collection("Bugs").count({}, function (err, result) {
                         if (err != null)
                             reject();
@@ -30,34 +53,35 @@ exportMongo.adminHomeStatus = function adminHomeStatus(){
                         }
                     });
                 }).then(function(){
+                    new Promise(function (resolve, reject) {
+                        db.collection("ToDo").count({}, function (err, result) {
+                            if(err!=null)
+                                reject();
+                            else{
+                                TodoNum=result;
+                                resolve();
+                            }
+                        })
+                    }).then(function(){
+                        db.collection("ToDo").count({}, function (err, result) {
+                            if(err!=null)
+                                reject();
+                            else{
+                                TodoNum=result;
+                                resolve({"msg":"פעיל","color":"3", "bugsNum":bugsNum, "TodoNum":TodoNum, "scanReport":result});
+                            }
+                        })
+                    })
+                        .catch(function(){
 
-                    console.log("result successfully="+bugsNum);
-
-                    db.collection("ToDo").count({}, function (err, result) {
-                        if(err!=null)
-                            reject();
-                        else{
-
-                            console.log("TODO successfully="+result);
-
-                            db.close();
-                            resolve({"msg":"פעיל","color":"3", "bugsNum":bugsNum, "TodoNum":result})
-                        }
-                    });
+                        });
                 }).catch(function(){
-                    reject({"msg": "כבוי", "color": "2", "bugsNum": bugsNum, "TodoNum": "-1"});
+                    reject({"msg": "כבוי", "color": "2", "bugsNum": bugsNum, "TodoNum": TodoNum, "scanReport":{}});
                 });
             }
         });
     });
 };
-
-//get the server name from the location field
-function getServerFromLocation(location){
-    var arr=[];
-    arr=location.split(":");
-    return arr[0];
-}
 
 //find all the collections from the db
 exportMongo.findCollectionsNameList = function findCollectionsNameList() {
@@ -70,7 +94,7 @@ exportMongo.findCollectionsNameList = function findCollectionsNameList() {
             else {
                 db.collections().then(function (collections) {
                     for (i = 0; i < collections.length; i++) {
-                        if (!((collections[i].s.name == "Admins") || (collections[i].s.name == "Bugs") || (collections[i].s.name == "ToDo"))) {
+                        if (!((collections[i].s.name == "Admins") || (collections[i].s.name == "Bugs") || (collections[i].s.name == "ToDo") || (collections[i].s.name == "ScanReports"))) {
                             arr[count] = {"name": collections[i].s.name};
                             count++;
                         }
@@ -92,6 +116,8 @@ exportMongo.findAll = function findAll(collection) {
             else {
                 db.collection(collection).find().toArray(function (err, result) {
                     db.close();
+                    if(err!=null)
+                        reject(err);
                     resolve(result);
                 });
             }
@@ -105,7 +131,7 @@ exportMongo.findBugs = function findBugs() {
         mongo.connect(url, function (err, db) {
             if(err!=null)
                 reject(err);
-            
+
             else {
                 db.collection("Bugs").find().toArray(function (err, result) {
                     db.close();
@@ -122,13 +148,13 @@ exportMongo.findAdmin = function findAdmin(adminName, adminPassword) {
         mongo.connect(url, function (err, db) {
             if(err!=null)
                 reject(err);
-            
+
             else {
                 db.collection("Admins").find({
                     userName: adminName,
                     password: adminPassword
                 }).toArray(function (err, result) {
-                    
+
                     //console.log("All admin found"+ results);
                     db.close();
                     resolve([result, adminName, adminPassword]);
@@ -153,7 +179,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
             mongo.connect(url, function (err, db) {
                 if(err!=null)
                     reject(err);
-                
+
                 else {
                     //1
                     if ((fileName != "") && (fileType != "") && (server != "")) {
@@ -166,7 +192,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 size: size,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -183,7 +209,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 type: fileType,
                                 size: size
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -200,7 +226,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 type: fileType,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -226,7 +252,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -246,7 +272,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -266,7 +292,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: sizeRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -283,7 +309,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                     name: fileName,
                                     type: fileType,
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -305,7 +331,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 size: size,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -321,7 +347,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 name: fileName,
                                 size: size
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -337,7 +363,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 name: fileName,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -362,7 +388,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -381,7 +407,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -400,7 +426,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lte: sizeRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -416,7 +442,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 db.collection(server).find({
                                     name: fileName
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -437,7 +463,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 size: size,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -451,7 +477,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 type: fileType,
                                 size: size
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -465,7 +491,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 type: fileType,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -488,7 +514,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -505,7 +531,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -523,7 +549,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: sizeRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -537,7 +563,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 db.collection(server).find({
                                     type: fileType
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -557,7 +583,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 size: size,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -570,7 +596,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             db.collection(server).find({
                                 size: size
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -583,7 +609,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             db.collection(server).find({
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-                                
+
                                 //exportMongo.resultArr = results;
                                 //exportMongo.resultArr.push(results);
                                 //console.log(results);
@@ -605,7 +631,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -621,7 +647,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -637,7 +663,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: sizeRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -649,7 +675,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             //simple search
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find().toArray(function (err, results) {
-                                    
+
                                     //exportMongo.resultArr = results;
                                     //exportMongo.resultArr.push(results);
                                     //console.log(results);
@@ -692,17 +718,16 @@ exportMongo.insertOne = function insertOne(document, collection){
             //check if the the function didn't return error
             if(err!=null)
                 reject(err);
-            
+
             else {
-                db.collection(collection).insertOne(document, function (err, result) {
+                db.collection(collection).insertOne(document, function (err) {
                     //check if the the function didn't return error
                     if(err!=null)
                         reject(err);
-                    
+
                     else {
-                        console.log('Item inserted');
                         db.close();
-                        resolve(result);
+                        resolve();
                     }
                 });
             }
@@ -722,9 +747,8 @@ exportMongo.insertArr = function insertArr(documents, collection){
                     //check if the the function didn't return error
                     if(err!=null)
                         reject(err);
-                    
+
                     else {
-                        console.log('Arr inserted');
                         db.close();
                         resolve();
                     }
@@ -743,13 +767,13 @@ exportMongo.updateOne = function updateOne(document, collection){
         //check if the the function didn't return error
         if(err!=null)
             reject(err);
-        
+
         else {
             db.collection(collection).updateOne({"_id": objectId(id)}, {$set: document}, function (err, result) {
                 //check if the the function didn't return error
                 if(err!=null)
                     reject(err);
-                
+
                 else {
                     console.log('Item updated');
                     db.close();
@@ -794,28 +818,28 @@ exportMongo.deleteArr = function deleteArr(documentIDArr, collection){
     });
 };
 /*
-//Todo - check if works
-//update one document
-exportMongo.deleteArr = function deleteArr(documents, collection){
-    return new Promise(function(resolve, reject) {
-        mongo.connect(url, function(err, db) {
-            //check if the the function didn't return error
-            if(err!=null)
-                reject(err);
-            else {
-                db.collection(collection).deleteMany(documents, function (err, result) {
-                    //check if the the function didn't return error
-                    if(err!=null)
-                        reject(err);
-                    else {
-                        console.log('Item deleted');
-                        db.close();
-                        resolve();
-                    }
-                });
-            }
-        });
-    });
-};
-*/
+ //Todo - check if works
+ //update one document
+ exportMongo.deleteArr = function deleteArr(documents, collection){
+ return new Promise(function(resolve, reject) {
+ mongo.connect(url, function(err, db) {
+ //check if the the function didn't return error
+ if(err!=null)
+ reject(err);
+ else {
+ db.collection(collection).deleteMany(documents, function (err, result) {
+ //check if the the function didn't return error
+ if(err!=null)
+ reject(err);
+ else {
+ console.log('Item deleted');
+ db.close();
+ resolve();
+ }
+ });
+ }
+ });
+ });
+ };
+ */
 module.exports = exportMongo;

@@ -7,7 +7,7 @@ export class File {
 	//permissions: string;
 	createdUser: string;
 	group: string;
-	//modifiedDate: string;
+	modifiedDate: string;
 
 	constructor(){
 		this.name="";
@@ -17,6 +17,6 @@ export class File {
 		//this.permissions="";
 		this.createdUser="";
 		this.group="";
-		//this.modifiedDate="";
+		this.modifiedDate="";
 	}
 }

@@ -25,6 +25,7 @@ var AdvanceSearchComponent = (function () {
     AdvanceSearchComponent.prototype.search = function () {
         var _this = this;
         this.isResult = false;
+        this.loadingFlag = true;
         this.files = [];
         var i;
         //var resultSearch = document.getElementById("result");
@@ -95,10 +96,11 @@ var AdvanceSearchComponent = (function () {
                     if (_this.alerts.length > 0)
                         _this.alerts.splice(0, _this.alerts.length);
                     _this.isResult = true;
+                    _this.loadingFlag = false;
                     //visible and hidden change
                     //var resultSearch = document.getElementById("result");
                     //resultSearch.className = "visible";
-                    _this.isResult = true;
+                    //this.isResult = true;
                 }
                 else {
                     //warning=1
@@ -117,6 +119,7 @@ var AdvanceSearchComponent = (function () {
                     }
                     else
                         _this.alerts.push({ msg: 'לא הוכנס שום ערך.', type: 2 });
+                    _this.loadingFlag = false;
                 }
             }
         });
@@ -194,6 +197,10 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", Boolean)
 ], AdvanceSearchComponent.prototype, "isResult", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Boolean)
+], AdvanceSearchComponent.prototype, "loadingFlag", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Array)

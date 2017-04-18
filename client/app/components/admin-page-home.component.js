@@ -25,6 +25,7 @@ var AdminPageHomeComponent = (function () {
             _this.color = data.color;
             _this.bugsNum = data.bugsNum;
             _this.TodoNum = data.TodoNum;
+            _this.scanReport = data.scanReport;
         });
     };
     return AdminPageHomeComponent;

@@ -49,3 +49,19 @@
         </div>
     </div>
 </div>
+
+<!-- Last scan report -->
+<hr/>
+<div class="row">
+    <div class="col-lg-offset-6 col-lg-5">
+        <div *ngIf="TodoNum>0">
+            <h1><B><U><span>נותרו עוד {{TodoNum}} משימות לביצוע</span></U></B></h1>
+        </div>
+        <div *ngIf="TodoNum==0">
+            <h1><B><U><span>לא נותרו עוד משימות לביצוע</span></U></B></h1>
+        </div>
+        <div *ngIf="TodoNum==-1">
+            <h1><B><U><span>ישנה בעיה עם השרת, אנא סדר אותה ורענן את הדף מחדש</span></U></B></h1>
+        </div>
+    </div>
+</div>

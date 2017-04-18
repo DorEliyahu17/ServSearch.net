@@ -2,8 +2,8 @@
     <!-- regular search mode -->
     <div id="regular" class="row visible">
 
-        <div class="col-lg-offset-9 col-lg-2">
-            <small>הקובץ לא נמצא? אולי חיפוש מתקדם יעזור:</small>
+        <div class="col-lg-offset-8 col-lg-3">
+            <span>הקובץ לא נמצא? אולי חיפוש מתקדם יעזור:</span>
             <button class="btn btn-default btn-sm" (click)="advanceSearch()">
                 <i class="glyphicon glyphicon-tasks"></i>
                 <!--<span class="fa fa-search"></span> <span class="fa fa-database"></span>-->
@@ -65,13 +65,13 @@
             <div class="col-lg-offset-5 col-lg-2">
                 <div class="input-group" dir="ltr">
                     <div class="input-group" dir="ltr">
-                        <input id="size-textHigh" type="text" class="form-control" dir="rtl" placeholder="טווח גדלים..." disabled="disabled" />
+                        <input id="size-textHigh" type="text" class="form-control" dir="rtl" placeholder="מגודל..." disabled="disabled" />
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-circle-arrow-up"></i>
                         </span>
                     </div>
                     <div class="input-group" dir="ltr">
-                        <input id="size-textLow" type="text" class="form-control" dir="rtl" placeholder="טווח גדלים..." disabled="disabled" />
+                        <input id="size-textLow" type="text" class="form-control" dir="rtl" placeholder="עד גודל..." disabled="disabled" />
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-circle-arrow-down"></i>
                         </span>
@@ -112,6 +112,19 @@
     </div>
 </div>
 
+<div *ngIf="loadingFlag==true">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="search-cssload-container">
+        <div class="search-cssload-whirlpool"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
 
 <div *ngIf="isResult==true">
     <file-detail [files]="files" [length]="length"></file-detail>
