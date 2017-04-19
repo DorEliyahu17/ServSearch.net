@@ -22,8 +22,11 @@
 <hr/>
 <div class="row">
     <div class="col-lg-offset-6 col-lg-5">
-        <div *ngIf="bugsNum>0">
+        <div *ngIf="bugsNum>1">
             <h1><B><U><span>נותרו עוד {{bugsNum}} באגים לתיקון</span></U></B></h1>
+        </div>
+        <div *ngIf="bugsNum==1">
+            <h1><B><U><span>נותר עוד באג אחד לתיקון</span></U></B></h1>
         </div>
         <div *ngIf="bugsNum==0">
             <h1><B><U><span>לא נותרו עוד באגים לתיקון</span></U></B></h1>
@@ -38,8 +41,11 @@
 <hr/>
 <div class="row">
     <div class="col-lg-offset-6 col-lg-5">
-        <div *ngIf="TodoNum>0">
+        <div *ngIf="TodoNum>1">
             <h1><B><U><span>נותרו עוד {{TodoNum}} משימות לביצוע</span></U></B></h1>
+        </div>
+        <div *ngIf="TodoNum==1">
+            <h1><B><U><span>נותרה עוד משימה אחת לביצוע</span></U></B></h1>
         </div>
         <div *ngIf="TodoNum==0">
             <h1><B><U><span>לא נותרו עוד משימות לביצוע</span></U></B></h1>
@@ -54,13 +60,16 @@
 <hr/>
 <div class="row">
     <div class="col-lg-offset-6 col-lg-5">
-        <div *ngIf="TodoNum>0">
-            <h1><B><U><span>נותרו עוד {{TodoNum}} משימות לביצוע</span></U></B></h1>
+        <div *ngIf="scanReportNum>1">
+            <h1><B><U><span>ישנם {{scanReportNum}} דוחות סריקה שמדווחים למערכת</span></U></B></h1>
         </div>
-        <div *ngIf="TodoNum==0">
-            <h1><B><U><span>לא נותרו עוד משימות לביצוע</span></U></B></h1>
+        <div *ngIf="scanReportNum==1">
+            <h1><B><U><span>ישנו דוח סריקה אחד שמדווח למערכת</span></U></B></h1>
         </div>
-        <div *ngIf="TodoNum==-1">
+        <div *ngIf="scanReportNum==0">
+            <h1><B><U><span>לא דווחו למערכת עדיין שום דוחות סריקה</span></U></B></h1>
+        </div>
+        <div *ngIf="scanReportNum==-1">
             <h1><B><U><span>ישנה בעיה עם השרת, אנא סדר אותה ורענן את הדף מחדש</span></U></B></h1>
         </div>
     </div>

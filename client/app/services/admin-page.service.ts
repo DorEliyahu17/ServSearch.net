@@ -34,4 +34,28 @@ export class AdminPageService {
                 return response.json()
             }).toPromise();
     }
+
+    //get the ToDos that reported from the /api/ToDoList
+    getToDos(): any {
+        return this.http.get(this.apiUrl+"/ToDoList")
+            .map((response) => {
+                return response.json()
+            }).toPromise();
+    }
+
+    //delete array of ToDos
+    deleteToDos(params: URLSearchParams): any {
+        return this.http.get(this.apiUrl+"/deleteToDos",  {search: params})
+            .map((response) => {
+                return response.json()
+            }).toPromise();
+    }
+
+    //get the Scan Results that reported from the /api/scanResults
+    getScanResults(): any {
+        return this.http.get(this.apiUrl+"/scanResults")
+            .map((response) => {
+                return response.json()
+            }).toPromise();
+    }
 }

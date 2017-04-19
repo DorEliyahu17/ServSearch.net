@@ -19,6 +19,7 @@ import { SideNavComponent } from '../components/sideNav.component';
 import { AdminPageBugsComponent } from '../components/admin-page-bugs.component';
 import { BugDetailComponent } from '../components/bug-detail.component';
 import { AdminPageTodoComponent } from '../components/admin-page-todo.component';
+import { ToDoDetailComponent } from '../components/ToDo-detail.component';
 import { AdminPageStatusComponent } from '../components/admin-page-status.component';
 
 import { FileService } from '../services/file.service';
@@ -52,6 +53,7 @@ import { AppRoutingModule } from './app-routing.module';
     AdminPageBugsComponent,
     BugDetailComponent,
     AdminPageTodoComponent,
+    ToDoDetailComponent,
     AdminPageStatusComponent
   ],
   providers: [

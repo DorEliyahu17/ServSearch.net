@@ -1,6 +1,5 @@
 //import the component declare in order to create a new one
 import {Component, OnInit} from '@angular/core';
-import {ScanDetail} from "../object modules/scanDetail";
 import {AdminPageService} from "../services/admin-page.service";
 
 
@@ -21,7 +20,7 @@ export class AdminPageHomeComponent implements OnInit {
     color: number;
     bugsNum: number;
     TodoNum: number;
-    scanReport: ScanDetail;
+    scanReportNum: number;
 
     constructor(private adminPageService: AdminPageService) {
     }
@@ -32,7 +31,7 @@ export class AdminPageHomeComponent implements OnInit {
             this.color = data.color;
             this.bugsNum = data.bugsNum;
             this.TodoNum = data.TodoNum;
-            this.scanReport = data.scanReport;
+            this.scanReportNum = data.scanReport;
         });
     }
 }

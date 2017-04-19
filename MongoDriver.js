@@ -1,20 +1,10 @@
 "use strict";
 var exportMongo=new Object();
-
-//find all arr that change once a week and will be lunch in the beginning of the session
-//exportMongo.resultArr=[];
 var objectId = require('mongodb').ObjectID;
 var mongo = require('mongodb').MongoClient;
 
 var url = 'mongodb://localhost:27017/Mtest';
 //var url = 'mongodb://192.168.1.15:27017/Mtest';
-
-//get the server name from the location field
-function getServerFromLocation(location){
-    var arr=[];
-    arr=location.split(":");
-    return arr[0];
-}
 
 //drop collection
 exportMongo.dropCollection = function dropCollection(collection){
@@ -37,11 +27,11 @@ exportMongo.dropCollection = function dropCollection(collection){
 
 //check DB status
 exportMongo.adminHomeStatus = function adminHomeStatus(){
-    var bugsNum=-1, TodoNum=-1;
+    var bugsNum=-1, TodoNum=-1, scanReportNum=-1;
     return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
             if(err!=null)
-                reject({"msg":"כבוי","color":"2", "bugsNum":bugsNum, "TodoNum":"-1", "scanReport":{}});
+                reject({"msg":"כבוי","color":"2", "bugsNum":bugsNum, "TodoNum":"-1", "scanReport":scanReportNum});
             else {
                 new Promise(function (resolve, reject) {
                     db.collection("Bugs").count({}, function (err, result) {
@@ -63,20 +53,20 @@ exportMongo.adminHomeStatus = function adminHomeStatus(){
                             }
                         })
                     }).then(function(){
-                        db.collection("ToDo").count({}, function (err, result) {
+                        db.collection("ScanReports").count({}, function (err, result) {
                             if(err!=null)
                                 reject();
                             else{
-                                TodoNum=result;
-                                resolve({"msg":"פעיל","color":"3", "bugsNum":bugsNum, "TodoNum":TodoNum, "scanReport":result});
+                                scanReportNum=result;
+                                resolve({"msg":"פעיל","color":"3", "bugsNum":bugsNum, "TodoNum":TodoNum, "scanReport":scanReportNum});
                             }
                         })
                     })
                         .catch(function(){
-
+                            reject();
                         });
                 }).catch(function(){
-                    reject({"msg": "כבוי", "color": "2", "bugsNum": bugsNum, "TodoNum": TodoNum, "scanReport":{}});
+                    reject({"msg": "כבוי", "color": "2", "bugsNum": bugsNum, "TodoNum": TodoNum, "scanReport":scanReportNum});
                 });
             }
         });
@@ -107,7 +97,7 @@ exportMongo.findCollectionsNameList = function findCollectionsNameList() {
     });
 };
 
-//find all the admins from the db
+//find all the docs from a specified collection from the db
 exportMongo.findAll = function findAll(collection) {
     return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
@@ -118,23 +108,6 @@ exportMongo.findAll = function findAll(collection) {
                     db.close();
                     if(err!=null)
                         reject(err);
-                    resolve(result);
-                });
-            }
-        });
-    });
-};
-
-//find all the bugs from the db
-exportMongo.findBugs = function findBugs() {
-    return new Promise(function (resolve, reject) {
-        mongo.connect(url, function (err, db) {
-            if(err!=null)
-                reject(err);
-
-            else {
-                db.collection("Bugs").find().toArray(function (err, result) {
-                    db.close();
                     resolve(result);
                 });
             }
@@ -154,8 +127,6 @@ exportMongo.findAdmin = function findAdmin(adminName, adminPassword) {
                     userName: adminName,
                     password: adminPassword
                 }).toArray(function (err, result) {
-
-                    //console.log("All admin found"+ results);
                     db.close();
                     resolve([result, adminName, adminPassword]);
                 });
@@ -166,9 +137,7 @@ exportMongo.findAdmin = function findAdmin(adminName, adminPassword) {
 
 //find specified document in the db include advance search - find by size range or date range
 exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date, sizeRangeLow, sizeRangeHigh, dateRangeLow, dateRangeHigh) {
-    //var nameArr = [], name = "", i;
     return new Promise(function (resolve, reject) {
-        //if((server!="")||((fileName != "") && (fileType != "") && (server != ""))) {
         if ((server != "") ||
             ((fileName != "") ||
             (fileType != "") ||
@@ -179,12 +148,10 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
             mongo.connect(url, function (err, db) {
                 if(err!=null)
                     reject(err);
-
                 else {
-                    //1
+                    //in case all of the simple search filters were filled
                     if ((fileName != "") && (fileType != "") && (server != "")) {
                         //advance search without range
-                        //1.1.1
                         if ((size != "") && (date != "")) {
                             db.collection(server).find({
                                 name: fileName,
@@ -192,53 +159,32 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 size: size,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("1.1.1");
-                                console.log("All found everything");
                                 db.close();
                                 resolve(results);
                             });
                         }
-                        //1.1.2
                         if ((size != "") && (date == "")) {
                             db.collection(server).find({
                                 name: fileName,
                                 type: fileType,
                                 size: size
                             }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("1.1.2");
-                                console.log("All found everything");
                                 db.close();
                                 resolve(results);
                             });
                         }
-                        //1.1.3
                         if ((size == "") && (date != "")) {
                             db.collection(server).find({
                                 name: fileName,
                                 type: fileType,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("1.1.3");
-                                console.log("All found everything");
                                 db.close();
                                 resolve(results);
                             });
                         }
                         //advance search with range
                         if ((size == "") && (date == "")) {
-                            //1.2.1
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
                                     name: fileName,
@@ -252,17 +198,10 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("1.2.1");
-                                    console.log("All found everything");
                                     db.close();
                                     resolve(results);
                                 });
                             }
-                            //1.2.2
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
                                     name: fileName,
@@ -272,17 +211,10 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("1.2.2");
-                                    console.log("All found everything");
                                     db.close();
                                     resolve(results);
                                 });
                             }
-                            //1.2.3
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
                                     name: fileName,
@@ -292,90 +224,55 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: sizeRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("1.2.3");
-                                    console.log("All found everything");
                                     db.close();
                                     resolve(results);
                                 });
                             }
                             //simple search
-                            //1.3
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
                                     name: fileName,
                                     type: fileType,
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("1.3");
-                                    console.log("All found everything");
                                     db.close();
                                     resolve(results);
                                 });
                             }
                         }
                     }
-                    //2
+                    //in case only the file type filter weren't filled
                     if ((fileName != "") && (fileType == "") && (server != "")) {
                         //advance search without range
-                        //2.1.1
                         if ((size != "") && (date != "")) {
                             db.collection(server).find({
                                 name: fileName,
                                 size: size,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("2.1.1");
-                                console.log("All found everything");
                                 db.close();
                                 resolve(results);
                             });
                         }
-                        //2.1.2
                         if ((size != "") && (date == "")) {
                             db.collection(server).find({
                                 name: fileName,
                                 size: size
                             }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("2.1.2");
-                                console.log("All found everything");
                                 db.close();
                                 resolve(results);
                             });
                         }
-                        //2.1.3
                         if ((size == "") && (date != "")) {
                             db.collection(server).find({
                                 name: fileName,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("2.1.3");
-                                console.log("All found everything");
                                 db.close();
                                 resolve(results);
                             });
                         }
                         //advance search with range
                         if ((size == "") && (date == "")) {
-                            //2.2.1
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
                                     name: fileName,
@@ -388,17 +285,10 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("2.2.1");
-                                    console.log("All found everything");
                                     db.close();
                                     resolve(results);
                                 });
                             }
-                            //2.2.2
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
                                     name: fileName,
@@ -407,17 +297,10 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("2.2.2");
-                                    console.log("All found everything");
                                     db.close();
                                     resolve(results);
                                 });
                             }
-                            //2.2.3
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
                                     name: fileName,
@@ -426,35 +309,22 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lte: sizeRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("All found everything");
-                                    console.log("2.2.3");
                                     db.close();
                                     resolve(results);
                                 });
                             }
                             //simple search
-                            //2.3
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
                                     name: fileName
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("2.3");
-                                    console.log("All found everything");
                                     db.close();
                                     resolve(results);
                                 });
                             }
                         }
                     }
-                    //3
+                    //in case only the file name filter weren't filled
                     if ((fileName == "") && (fileType != "") && (server != "")) {
                         //advance search without range
                         if ((size != "") && (date != "")) {
@@ -463,11 +333,6 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 size: size,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("All found everything");
                                 db.close();
                                 resolve(results);
                             });
@@ -477,11 +342,6 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 type: fileType,
                                 size: size
                             }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("All found everything");
                                 db.close();
                                 resolve(results);
                             });
@@ -491,11 +351,6 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 type: fileType,
                                 modifidedDate: date
                             }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("All found everything");
                                 db.close();
                                 resolve(results);
                             });
@@ -514,11 +369,6 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("All found everything");
                                     db.close();
                                     resolve(results);
                                 });
@@ -531,11 +381,6 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("All found everything");
                                     db.close();
                                     resolve(results);
                                 });
@@ -549,11 +394,6 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $lt: sizeRangeHigh
                                     }
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("All found everything");
                                     db.close();
                                     resolve(results);
                                 });
@@ -563,123 +403,6 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 db.collection(server).find({
                                     type: fileType
                                 }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("All found everything");
-                                    db.close();
-                                    resolve(results);
-                                });
-                            }
-                        }
-                    }
-                    //must to delete?
-                    //4
-                    if ((fileName == "") && (fileType == "") && (server != "")) {
-                        //advance search without range
-                        if ((size != "") && (date != "")) {
-                            db.collection(server).find({
-                                size: size,
-                                modifidedDate: date
-                            }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("All found everything");
-                                db.close();
-                                resolve(results);
-                            });
-                        }
-                        if ((size != "") && (date == "")) {
-                            db.collection(server).find({
-                                size: size
-                            }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("All found everything");
-                                db.close();
-                                resolve(results);
-                            });
-                        }
-                        if ((size == "") && (date != "")) {
-                            db.collection(server).find({
-                                modifidedDate: date
-                            }).toArray(function (err, results) {
-
-                                //exportMongo.resultArr = results;
-                                //exportMongo.resultArr.push(results);
-                                //console.log(results);
-                                console.log("All found everything");
-                                db.close();
-                                resolve(results);
-                            });
-                        }
-                        //advance search with range
-                        if ((size == "") && (date == "")) {
-                            if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
-                                db.collection(server).find({
-                                    size: {
-                                        $gte: sizeRangeLow,
-                                        $lt: sizeRangeHigh
-                                    },
-                                    modifidedDate: {
-                                        $gte: dateRangeLow,
-                                        $lt: dateRangeHigh
-                                    }
-                                }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("All found everything");
-                                    db.close();
-                                    resolve(results);
-                                });
-                            }
-                            if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
-                                db.collection(server).find({
-                                    modifidedDate: {
-                                        $gte: dateRangeLow,
-                                        $lt: dateRangeHigh
-                                    }
-                                }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("All found everything");
-                                    db.close();
-                                    resolve(results);
-                                });
-                            }
-                            if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
-                                db.collection(server).find({
-                                    size: {
-                                        $gte: sizeRangeLow,
-                                        $lt: sizeRangeHigh
-                                    }
-                                }).toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("All found everything");
-                                    db.close();
-                                    resolve(results);
-                                });
-                            }
-                            //simple search
-                            if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
-                                db.collection(server).find().toArray(function (err, results) {
-
-                                    //exportMongo.resultArr = results;
-                                    //exportMongo.resultArr.push(results);
-                                    //console.log(results);
-                                    console.log("All found everything");
                                     db.close();
                                     resolve(results);
                                 });
@@ -694,23 +417,6 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
     });
 };
 
-//find all the documents in the db
-/*exportMongo.findAll = function findAll(){
- var resultArray = [];
- mongo.connect(url, function (err, db) {
- //check if the the function didn't return error
- var cursor = db.collection('Files').find();
- cursor.forEach(function (doc, err) {
- //check if the the function didn't return error
- resultArray.push(doc);
- }, function() {
- db.close();
- });
- exportMongo.resultArr.push(resultArray);
- console.log("All found");
- });
- };*/
-
 //insert one document to the db
 exportMongo.insertOne = function insertOne(document, collection){
     return new Promise(function(resolve, reject) {
@@ -718,13 +424,11 @@ exportMongo.insertOne = function insertOne(document, collection){
             //check if the the function didn't return error
             if(err!=null)
                 reject(err);
-
             else {
                 db.collection(collection).insertOne(document, function (err) {
                     //check if the the function didn't return error
                     if(err!=null)
                         reject(err);
-
                     else {
                         db.close();
                         resolve();
@@ -747,7 +451,6 @@ exportMongo.insertArr = function insertArr(documents, collection){
                     //check if the the function didn't return error
                     if(err!=null)
                         reject(err);
-
                     else {
                         db.close();
                         resolve();
@@ -755,31 +458,6 @@ exportMongo.insertArr = function insertArr(documents, collection){
                 });
             }
         });
-    });
-};
-
-//Todo - check if works
-//update one document
-exportMongo.updateOne = function updateOne(document, collection){
-    var id = document.id;
-
-    mongo.connect(url, function(err, db) {
-        //check if the the function didn't return error
-        if(err!=null)
-            reject(err);
-
-        else {
-            db.collection(collection).updateOne({"_id": objectId(id)}, {$set: document}, function (err, result) {
-                //check if the the function didn't return error
-                if(err!=null)
-                    reject(err);
-
-                else {
-                    console.log('Item updated');
-                    db.close();
-                }
-            });
-        }
     });
 };
 
@@ -793,7 +471,6 @@ exportMongo.deleteArr = function deleteArr(documentIDArr, collection){
                 reject(err);
             else {
                 for(i=0;i<(documentIDArr.length-1);i++) {
-                    console.log(documentIDArr[i]);
                     db.collection(collection).deleteOne({"_id": objectId.createFromHexString(documentIDArr[i])}, function (err, result) {
                         //check if the the function didn't return error
                         if (err != null) {
@@ -806,10 +483,8 @@ exportMongo.deleteArr = function deleteArr(documentIDArr, collection){
                                 reject(err);
                             }
                         }
-                        else {
-                            console.log('Item number '+i+' deleted');
+                        else
                             db.close();
-                        }
                     });
                 }
                 resolve();
@@ -817,29 +492,5 @@ exportMongo.deleteArr = function deleteArr(documentIDArr, collection){
         });
     });
 };
-/*
- //Todo - check if works
- //update one document
- exportMongo.deleteArr = function deleteArr(documents, collection){
- return new Promise(function(resolve, reject) {
- mongo.connect(url, function(err, db) {
- //check if the the function didn't return error
- if(err!=null)
- reject(err);
- else {
- db.collection(collection).deleteMany(documents, function (err, result) {
- //check if the the function didn't return error
- if(err!=null)
- reject(err);
- else {
- console.log('Item deleted');
- db.close();
- resolve();
- }
- });
- }
- });
- });
- };
- */
+
 module.exports = exportMongo;

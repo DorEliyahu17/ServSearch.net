@@ -25,6 +25,7 @@ var sideNav_component_1 = require("../components/sideNav.component");
 var admin_page_bugs_component_1 = require("../components/admin-page-bugs.component");
 var bug_detail_component_1 = require("../components/bug-detail.component");
 var admin_page_todo_component_1 = require("../components/admin-page-todo.component");
+var ToDo_detail_component_1 = require("../components/ToDo-detail.component");
 var admin_page_status_component_1 = require("../components/admin-page-status.component");
 var file_service_1 = require("../services/file.service");
 var pager_service_1 = require("../services/pager.service");
@@ -61,6 +62,7 @@ AppModule = __decorate([
             admin_page_bugs_component_1.AdminPageBugsComponent,
             bug_detail_component_1.BugDetailComponent,
             admin_page_todo_component_1.AdminPageTodoComponent,
+            ToDo_detail_component_1.ToDoDetailComponent,
             admin_page_status_component_1.AdminPageStatusComponent
         ],
         providers: [

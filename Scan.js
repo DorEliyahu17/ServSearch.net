@@ -46,7 +46,6 @@ function searchTheEntireHardDrive(searchPath, writeToDB) {
         console.log("After " + stopTime + " this scan was completed");
         console.log("now just wait to the insert.");
 
-        //res = resault;
         filesArr = result.split("\n");
         console.log("Total number of scanned docs=" + filesArr.length);
         path = searchPath;

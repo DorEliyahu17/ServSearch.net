@@ -12,4 +12,6 @@ import '../rxjs/rxjs-operators';
 	templateUrl: './app/pages/admin-page-status.component.html',
   	styleUrls: ['./app/styles/admin-page-status.component.css']
 })
-export class AdminPageStatusComponent {}
+export class AdminPageStatusComponent {
+
+}

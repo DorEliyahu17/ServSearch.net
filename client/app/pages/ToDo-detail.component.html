@@ -1,0 +1,60 @@
+<div class="row">
+    <hr/>
+    <div class="col-lg-offset-7 col-lg-4">
+        <h4>נמצאו {{ToDos.length}} באגים שדורשים תיקון</h4>
+    </div>
+</div>
+
+<!-- details -->
+<div *ngFor="let ToDo of pagedItems;let i = index;">
+    <!--media-->
+    <div id="ToDo-detail" class="row">
+        <hr/>
+        <div class="well media col-lg-offset-1 col-lg-10">
+            <span class="media-right">
+                <input id="ToDo-check" type="checkbox" (click)="check(i)">
+            </span>
+            <span class="media-right">
+                <h2>{{(i+1)+(10*(pager.currentPage-1))}})</h2>
+            </span>
+            <span class="media-left">
+                <!--To-Do details-->
+                <h3 class="media-heading">
+                    <span><U>תאריך דיווח: {{ToDo.insertDate}}</U></span>
+                    <br>
+                    <span><U>שם המדווח: {{ToDo.name}}</U></span>
+                    <br>
+                    <span><U>נושא הבאג: {{ToDo.subject}}</U></span>
+                    <span class="media-body"><U>תיאור הבאג:</U></span>
+                </h3>
+                <h4 style="white-space: pre-line">{{ToDo.description}}</h4>
+            </span>
+        </div>
+    </div>
+</div>
+
+<hr>
+<!-- pager -->
+<div *ngIf="ToDos">
+    <div class="row">
+        <div class="col-lg-8" style="padding-right: 130px">
+            <ul *ngIf="pager.pages.length" class="pagination">
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(1)">First</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                </li>
+                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                    <a (click)="setPage(page)">{{page}}</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.totalPages)">Last</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

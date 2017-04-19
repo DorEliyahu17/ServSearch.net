@@ -1,24 +1,53 @@
 <div id="todo">
     <div class="row">
-        <div class="col-lg-offset-8 col-lg-3">
-            <h1><u><b>משימות שנותרו לביצוע:</b></u></h1>
+        <div class="col-lg-offset-5 col-lg-3" style="text-align: center">
+            <h1><U><B>משימות שנותרו לביצוע:</B></U></h1>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-offset-7 col-lg-4">
-            <ul class="list-group" dir="rtl">
-                <li class="list-group-item">
 
-                    <span class="show-menu">
-						<span class="glyphicon glyphicon-chevron-left" onclick="showSubmenu()"></span>
-					</span>
-                    <ul class="list-group-submenu">
-                        <li class="list-group-submenu-item danger" onclick="addToRemoveList()"><span class="glyphicon glyphicon-remove"></span></li>
-                        <li class="list-group-submenu-item success" onclick="erase()"><span class="glyphicon glyphicon-ok"></span></li>
-                    </ul>
-                    <span>ךלשלדחיגךשדחגישדךדחגישדחגנשדדלחגישדלךחגישדלךגדח</span>
-                </li>
-            </ul>
+    <div class="row">
+        <hr>
+
+        <div class="col-lg-offset-5 col-lg-4">
+            <div *ngFor="let alert of alerts;let i = index;">
+                <div *ngIf="alert.type==1">
+                    <div class="alert alert-warning" role="alert">
+                        {{alert.msg}}
+                    </div>
+                </div>
+                <div *ngIf="alert.type==2">
+                    <div class="alert alert-danger" role="alert">
+                        {{alert.msg}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <button class="btn btn-default" title="מחק באגים שנבחרו" (click)="deleteToDos()">
+                <i class="glyphicon glyphicon-trash"></i>
+            </button>
+
+            <button class="btn btn-default" title="הסר בחירה" (click)="uncheck()">
+                <i class="glyphicon glyphicon-minus-sign"></i>
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="isToDos==true">
+        <ToDo-detail [ToDos]="ToDos" [length]="length" [ToDosToDeleteArr]="ToDosToDeleteArr"></ToDo-detail>
+    </div>
+
+    <!-- alert -->
+    <div class="row">
+        <hr/>
+        <div class="col-lg-offset-7 col-lg-4">
+            <div *ngFor="let alert of alerts;let i = index;">
+                <div *ngIf="alert.type==3">
+                    <div class="alert alert-success" role="alert">
+                        {{alert.msg}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

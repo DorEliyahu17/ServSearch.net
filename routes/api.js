@@ -83,26 +83,7 @@ router.get('/insertBug', function(req, res, next) {
 });
 
 /* DELETE bug from the database. */
-router.get('/deleteBug', function(req, res, next) {
-    //ToDo - change that function
-    mongo.deleteOne(req.query.id, "Bugs").then(function(result){
-        res.send(result);
-    })
-        .catch(function(err){
-            res.send(err);
-        });
-});
-
-
-
-
-
-
-
-//ToDo
-/* DELETE bug from the database. */
 router.get('/deleteBugs', function(req, res, next) {
-    //ToDo - change that function
     mongo.deleteArr(req.query._id, "Bugs").then(function(){
         mongo.findAll("Bugs").then(function(result){
             res.send(result);
@@ -113,15 +94,6 @@ router.get('/deleteBugs', function(req, res, next) {
         res.send(err);
     });
 });
-
-
-
-
-
-
-
-
-
 
 /* GET To-DOs listing. */
 router.get('/ToDoList', function(req, res, next) {
@@ -141,15 +113,25 @@ router.get('/insertToDo', function(req, res, next) {
     });
 });
 
-/* DELETE To-Do Item from the database. */
-router.get('/deleteToDo', function(req, res, next) {
-    //ToDo - change that function
-    mongo.deleteOne(req.query.id, "ToDo").then(function (result) {
-        res.send(result);
-    })
-        .catch(function (err) {
+/* DELETE bug from the database. */
+router.get('/deleteToDos', function(req, res, next) {
+    mongo.deleteArr(req.query._id, "ToDo").then(function(){
+        mongo.findAll("ToDo").then(function(result){
+            res.send(result);
+        }).catch(function(err){
             res.send(err);
         });
+    }).catch(function(err){
+        res.send(err);
+    });
 });
 
+/* GET Scan Results listing. */
+router.get('/scanResults', function(req, res, next) {
+    mongo.findAll("ScanResults").then(function(result){
+        res.send(result);
+    }).catch(function(err){
+        res.send(err);
+    });
+});
 module.exports = router;
