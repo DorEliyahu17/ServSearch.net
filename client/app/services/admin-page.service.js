@@ -53,6 +53,12 @@ var AdminPageService = (function () {
             return response.json();
         }).toPromise();
     };
+    AdminPageService.prototype.insertToDo = function (params) {
+        return this.http.get(this.apiUrl + "/insertToDo", { search: params })
+            .map(function (response) {
+            return response.json();
+        }).toPromise();
+    };
     //get the Scan Results that reported from the /api/scanResults
     AdminPageService.prototype.getScanResults = function () {
         return this.http.get(this.apiUrl + "/scanResults")

@@ -51,6 +51,13 @@ export class AdminPageService {
             }).toPromise();
     }
 
+    insertToDo(params: URLSearchParams): any {
+        return this.http.get(this.apiUrl+"/insertToDo", {search: params})
+            .map((response) => {
+                return response.json()
+            }).toPromise();
+    }
+
     //get the Scan Results that reported from the /api/scanResults
     getScanResults(): any {
         return this.http.get(this.apiUrl+"/scanResults")

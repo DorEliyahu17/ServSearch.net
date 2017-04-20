@@ -68,7 +68,7 @@ var AdminPageTodoComponent = (function () {
                 var params = new http_1.URLSearchParams();
                 //params.set('ToDos', this.ToDos);
                 for (var i = 0; i <= this.ToDosToDeleteArr.length; i++) {
-                    //in case of only one bug its create an arr
+                    //in case of only one To-Do its create an arr
                     if (i == this.ToDosToDeleteArr.length)
                         params.append('_id', '0');
                     else
@@ -103,6 +103,48 @@ var AdminPageTodoComponent = (function () {
                 type: 3
             });
         }
+    };
+    AdminPageTodoComponent.prototype.addToDo = function () {
+        var _this = this;
+        this.alerts = [];
+        var description = document.getElementById("description").value;
+        //date[0]=year, date[1]=month, date[2]=day
+        var date = new Date().toJSON().slice(0, 10).replace(/-/g, '/').split('/');
+        if (description != "") {
+            //Parameters obj
+            var params = new http_1.URLSearchParams();
+            params.set('description', description);
+            params.set('insertDate', date[2] + "." + date[1] + "." + date[0]);
+            description = "";
+            //warning=1
+            //danger=2
+            //change to insertToDo
+            this.adminPageService.insertToDo(params).then(function (data) {
+                if (data.name == "MongoError")
+                    _this.alerts.push({
+                        msg: 'אופס... ישנה בעיה עם ה-DataBase, אנא בדוק אותו ולאחר התיקון תרפרש את הדף.',
+                        type: 2
+                    });
+                else {
+                    _this.ToDos = data;
+                    if (data.length > 0) {
+                        _this.ToDos = data;
+                        _this.length = _this.ToDos.length;
+                        _this.isToDos = true;
+                    }
+                    else
+                        _this.alerts.push({
+                            msg: 'לא דווחו משימות לביצע למערכת.',
+                            type: 3
+                        });
+                }
+            });
+        }
+        else
+            this.alerts.push({
+                msg: 'אנא מלא את כל ההקריטריונים!',
+                type: 2
+            });
     };
     return AdminPageTodoComponent;
 }());

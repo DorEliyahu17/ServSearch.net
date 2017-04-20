@@ -1,5 +1,5 @@
 //import the component declare in order to create a new one
-import {Component, Input} from '@angular/core';
+import { Component } from '@angular/core';
 import { URLSearchParams } from "@angular/http";
 import { Router } from '@angular/router';
 

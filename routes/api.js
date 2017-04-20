@@ -106,8 +106,12 @@ router.get('/ToDoList', function(req, res, next) {
 
 /* INSERT To-Do Item to the database. */
 router.get('/insertToDo', function(req, res, next) {
-    mongo.insertOne({"description":req.query.description}, "ToDo").then(function(result){
-        res.send(result);
+    mongo.insertOne({"description":req.query.description, "insertDate":req.query.insertDate}, "ToDo").then(function(result){
+        mongo.findAll("ToDo").then(function(result){
+            res.send(result);
+        }).catch(function(err){
+            res.send(err);
+        });
     }).catch(function(err){
         res.send(err);
     });

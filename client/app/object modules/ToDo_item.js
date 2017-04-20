@@ -5,6 +5,7 @@ var ToDo = (function () {
     function ToDo() {
         this._id = "";
         this.description = "";
+        this.insertDate = "";
     }
     return ToDo;
 }());

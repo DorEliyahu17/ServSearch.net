@@ -34,6 +34,9 @@ var admin_page_service_1 = require("../services/admin-page.service");
 var bug_report_service_1 = require("../services/bug-report.service");
 //import the routes
 var app_routing_module_1 = require("./app-routing.module");
+//import the charts
+var BarChart_detail_component_1 = require("../components/BarChart-detail.component");
+var DoughnutChart_detail_component_1 = require("../components/DoughnutChart-detail.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -63,7 +66,9 @@ AppModule = __decorate([
             bug_detail_component_1.BugDetailComponent,
             admin_page_todo_component_1.AdminPageTodoComponent,
             ToDo_detail_component_1.ToDoDetailComponent,
-            admin_page_status_component_1.AdminPageStatusComponent
+            admin_page_status_component_1.AdminPageStatusComponent,
+            BarChart_detail_component_1.BarChartDetailComponent,
+            DoughnutChart_detail_component_1.DoughnutChartDetailComponent
         ],
         providers: [
             file_service_1.FileService,

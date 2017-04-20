@@ -31,6 +31,10 @@ import { BugReportService } from '../services/bug-report.service';
 //import the routes
 import { AppRoutingModule } from './app-routing.module';
 
+//import the charts
+import { BarChartDetailComponent } from '../components/BarChart-detail.component';
+import { DoughnutChartDetailComponent } from '../components/DoughnutChart-detail.component';
+
 @NgModule({
   //import the object modules to the project
   imports: [
@@ -54,7 +58,13 @@ import { AppRoutingModule } from './app-routing.module';
     BugDetailComponent,
     AdminPageTodoComponent,
     ToDoDetailComponent,
-    AdminPageStatusComponent
+    AdminPageStatusComponent,
+
+
+
+
+    BarChartDetailComponent,
+    DoughnutChartDetailComponent
   ],
   providers: [
     FileService,

@@ -1,7 +1,7 @@
 <div class="row">
     <hr/>
     <div class="col-lg-offset-7 col-lg-4">
-        <h4>נמצאו {{ToDos.length}} באגים שדורשים תיקון</h4>
+        <h4>נמצאו {{ToDos.length}} משימות שנותרו לביצוע</h4>
     </div>
 </div>
 
@@ -20,12 +20,9 @@
             <span class="media-left">
                 <!--To-Do details-->
                 <h3 class="media-heading">
-                    <span><U>תאריך דיווח: {{ToDo.insertDate}}</U></span>
+                    <span><U>תאריך הכנסה למערכת: {{ToDo.insertDate}}</U></span>
                     <br>
-                    <span><U>שם המדווח: {{ToDo.name}}</U></span>
-                    <br>
-                    <span><U>נושא הבאג: {{ToDo.subject}}</U></span>
-                    <span class="media-body"><U>תיאור הבאג:</U></span>
+                    <span class="media-body"><U>תיאור המשימה:</U></span>
                 </h3>
                 <h4 style="white-space: pre-line">{{ToDo.description}}</h4>
             </span>

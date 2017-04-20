@@ -431,7 +431,7 @@ exportMongo.insertOne = function insertOne(document, collection){
                         reject(err);
                     else {
                         db.close();
-                        resolve();
+                        resolve({msg: "OK"});
                     }
                 });
             }

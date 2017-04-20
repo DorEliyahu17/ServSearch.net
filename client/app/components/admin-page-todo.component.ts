@@ -1,6 +1,6 @@
 //import the component declare in order to create a new one
 import { Component, OnInit } from '@angular/core';
-import {URLSearchParams} from '@angular/http';
+import { URLSearchParams } from "@angular/http";
 
 //import the class "File" from the file "../object modules/file"
 import { ToDo } from '../object modules/ToDo_item';
@@ -19,7 +19,7 @@ import '../rxjs/rxjs-operators';
 	templateUrl: './app/pages/admin-page-todo.component.html',
   	styleUrls: ['./app/styles/admin-page-todo.component.css']
 })
-export class AdminPageTodoComponent {
+export class AdminPageTodoComponent implements OnInit {
 	public ToDos: ToDo[];
 	public length: number;
 	isToDos:boolean =false;
@@ -71,7 +71,7 @@ export class AdminPageTodoComponent {
 				let params: URLSearchParams = new URLSearchParams();
 				//params.set('ToDos', this.ToDos);
 				for (var i = 0; i <= this.ToDosToDeleteArr.length; i++) {
-					//in case of only one bug its create an arr
+					//in case of only one To-Do its create an arr
 					if (i == this.ToDosToDeleteArr.length)
 						params.append('_id', '0');
 					else
@@ -106,5 +106,49 @@ export class AdminPageTodoComponent {
 				type: 3
 			});
 		}
+	}
+
+	addToDo(): void {
+		this.alerts=[];
+		var description = (<HTMLInputElement>document.getElementById("description")).value;
+
+		//date[0]=year, date[1]=month, date[2]=day
+		var date = new Date().toJSON().slice(0,10).replace(/-/g,'/').split('/');
+
+		if(description!="") {
+			//Parameters obj
+			let params: URLSearchParams = new URLSearchParams();
+			params.set('description', description);
+			params.set('insertDate', date[2]+"."+date[1]+"."+date[0]);
+			description="";
+			//warning=1
+			//danger=2
+			//change to insertToDo
+			this.adminPageService.insertToDo(params).then((data: any) => {
+				if (data.name == "MongoError")
+					this.alerts.push({
+						msg: 'אופס... ישנה בעיה עם ה-DataBase, אנא בדוק אותו ולאחר התיקון תרפרש את הדף.',
+						type: 2
+					});
+				else {
+					this.ToDos = data;
+					if (data.length > 0) {
+						this.ToDos = data;
+						this.length = this.ToDos.length;
+						this.isToDos = true;
+					}
+					else
+						this.alerts.push({
+							msg: 'לא דווחו משימות לביצע למערכת.',
+							type: 3
+						});
+				}
+			});
+		}
+		else
+			this.alerts.push({
+				msg: 'אנא מלא את כל ההקריטריונים!',
+				type: 2
+			});
 	}
 }

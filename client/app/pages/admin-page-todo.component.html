@@ -1,14 +1,34 @@
 <div id="todo">
     <div class="row">
-        <div class="col-lg-offset-5 col-lg-3" style="text-align: center">
+        <div class="col-lg-offset-4 col-lg-4" style="text-align: center">
             <h1><U><B>משימות שנותרו לביצוע:</B></U></h1>
         </div>
     </div>
 
     <div class="row">
         <hr>
+        <!-- Text area -->
+        <div class="form-group">
+            <div class="col-lg-1">
+            <button class="btn btn-default" (click)="addToDo()">
+                <span class="glyphicon glyphicon-ok"></span>
+            </button>
+            </div>
+            <div class="col-lg-10 inputGroupContainer">
+                <div class="input-group" dir="ltr">
 
-        <div class="col-lg-offset-5 col-lg-4">
+                    <textarea id="description" class="form-control" placeholder="תיאור המשימה..." rows="2" dir="rtl"></textarea>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <hr>
+        <div class="col-lg-offset-4 col-lg-5">
             <div *ngFor="let alert of alerts;let i = index;">
                 <div *ngIf="alert.type==1">
                     <div class="alert alert-warning" role="alert">
