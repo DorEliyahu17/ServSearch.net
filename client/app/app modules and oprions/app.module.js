@@ -26,17 +26,17 @@ var admin_page_bugs_component_1 = require("../components/admin-page-bugs.compone
 var bug_detail_component_1 = require("../components/bug-detail.component");
 var admin_page_todo_component_1 = require("../components/admin-page-todo.component");
 var ToDo_detail_component_1 = require("../components/ToDo-detail.component");
-var admin_page_status_component_1 = require("../components/admin-page-status.component");
+var admin_page_compare_component_1 = require("../components/admin-page-compare.component");
+var compare_detail1_component_1 = require("../components/compare-detail1.component");
+var compare_detail2_component_1 = require("../components/compare-detail2.component");
 var file_service_1 = require("../services/file.service");
 var pager_service_1 = require("../services/pager.service");
 var login_service_1 = require("../services/login.service");
 var admin_page_service_1 = require("../services/admin-page.service");
 var bug_report_service_1 = require("../services/bug-report.service");
+var compare_service_1 = require("../services/compare.service");
 //import the routes
 var app_routing_module_1 = require("./app-routing.module");
-//import the charts
-var BarChart_detail_component_1 = require("../components/BarChart-detail.component");
-var DoughnutChart_detail_component_1 = require("../components/DoughnutChart-detail.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -66,16 +66,17 @@ AppModule = __decorate([
             bug_detail_component_1.BugDetailComponent,
             admin_page_todo_component_1.AdminPageTodoComponent,
             ToDo_detail_component_1.ToDoDetailComponent,
-            admin_page_status_component_1.AdminPageStatusComponent,
-            BarChart_detail_component_1.BarChartDetailComponent,
-            DoughnutChart_detail_component_1.DoughnutChartDetailComponent
+            admin_page_compare_component_1.AdminPageCompareComponent,
+            compare_detail1_component_1.CompareDetailComponent1,
+            compare_detail2_component_1.CompareDetailComponent2
         ],
         providers: [
             file_service_1.FileService,
             pager_service_1.PagerService,
             login_service_1.LoginService,
             admin_page_service_1.AdminPageService,
-            bug_report_service_1.BugReportService
+            bug_report_service_1.BugReportService,
+            compare_service_1.CompareService
         ],
         //bootstrap the main component
         bootstrap: [app_component_1.AppComponent]

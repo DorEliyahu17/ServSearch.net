@@ -157,7 +157,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 name: fileName,
                                 type: fileType,
                                 size: size,
-                                modifidedDate: date
+                                modifiedDate: date
                             }).toArray(function (err, results) {
                                 db.close();
                                 resolve(results);
@@ -177,7 +177,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             db.collection(server).find({
                                 name: fileName,
                                 type: fileType,
-                                modifidedDate: date
+                                modifiedDate: date
                             }).toArray(function (err, results) {
                                 db.close();
                                 resolve(results);
@@ -191,11 +191,11 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                     type: fileType,
                                     size: {
                                         $gte: sizeRangeLow,
-                                        $lt: sizeRangeHigh
+                                        $lte: sizeRangeHigh
                                     },
-                                    modifidedDate: {
+                                    modifiedDate: {
                                         $gte: dateRangeLow,
-                                        $lt: dateRangeHigh
+                                        $lte: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
                                     db.close();
@@ -206,9 +206,9 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 db.collection(server).find({
                                     name: fileName,
                                     type: fileType,
-                                    modifidedDate: {
+                                    modifiedDate: {
                                         $gte: dateRangeLow,
-                                        $lt: dateRangeHigh
+                                        $lte: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
                                     db.close();
@@ -221,7 +221,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                     type: fileType,
                                     size: {
                                         $gte: sizeRangeLow,
-                                        $lt: sizeRangeHigh
+                                        $lte: sizeRangeHigh
                                     }
                                 }).toArray(function (err, results) {
                                     db.close();
@@ -247,7 +247,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             db.collection(server).find({
                                 name: fileName,
                                 size: size,
-                                modifidedDate: date
+                                modifiedDate: date
                             }).toArray(function (err, results) {
                                 db.close();
                                 resolve(results);
@@ -265,7 +265,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                         if ((size == "") && (date != "")) {
                             db.collection(server).find({
                                 name: fileName,
-                                modifidedDate: date
+                                modifiedDate: date
                             }).toArray(function (err, results) {
                                 db.close();
                                 resolve(results);
@@ -278,11 +278,11 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                     name: fileName,
                                     size: {
                                         $gte: sizeRangeLow,
-                                        $lt: sizeRangeHigh
+                                        $lte: sizeRangeHigh
                                     },
-                                    modifidedDate: {
+                                    modifiedDate: {
                                         $gte: dateRangeLow,
-                                        $lt: dateRangeHigh
+                                        $lte: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
                                     db.close();
@@ -292,9 +292,9 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
                                     name: fileName,
-                                    modifidedDate: {
+                                    modifiedDate: {
                                         $gte: dateRangeLow,
-                                        $lt: dateRangeHigh
+                                        $lte: dateRangeHigh
                                     }
                                 }).toArray(function (err, results) {
                                     db.close();
@@ -331,7 +331,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             db.collection(server).find({
                                 type: fileType,
                                 size: size,
-                                modifidedDate: date
+                                modifiedDate: date
                             }).toArray(function (err, results) {
                                 db.close();
                                 resolve(results);
@@ -349,7 +349,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                         if ((size == "") && (date != "")) {
                             db.collection(server).find({
                                 type: fileType,
-                                modifidedDate: date
+                                modifiedDate: date
                             }).toArray(function (err, results) {
                                 db.close();
                                 resolve(results);
@@ -364,7 +364,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                         $gte: sizeRangeLow,
                                         $lt: sizeRangeHigh
                                     },
-                                    modifidedDate: {
+                                    modifiedDate: {
                                         $gte: dateRangeLow,
                                         $lt: dateRangeHigh
                                     }
@@ -376,7 +376,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
                                     type: fileType,
-                                    modifidedDate: {
+                                    modifiedDate: {
                                         $gte: dateRangeLow,
                                         $lt: dateRangeHigh
                                     }
@@ -488,6 +488,27 @@ exportMongo.deleteArr = function deleteArr(documentIDArr, collection){
                     });
                 }
                 resolve();
+            }
+        });
+    });
+};
+
+//scan result year group by
+exportMongo.scanReportsSortByYear = function scanReportsSortByYear(){
+    return new Promise(function (resolve, reject) {
+        mongo.connect(url, function (err, db) {
+            if(err!=null)
+                reject(err);
+            else {
+                db.collection("ScanReports").aggregate(
+                    [
+                        { '$sort': { year:1} },
+                    ],function(err, result) {
+                        db.close();
+                        if(err!=null)
+                            reject(err);
+                        resolve(result);
+                    });
             }
         });
     });

@@ -37,10 +37,10 @@ router.get('/files', function(req, res, next) {
         req.query.sizeRangeLow, req.query.sizeRangeHigh,
         req.query.dateRangeLow, req.query.dateRangeHigh
     ).then(function(result){
-        if(result!=undefined)
+        //if(result!=undefined)
             res.send(result);
-        else
-            res.send([]);
+       // else
+            //res.send([]);
     }).catch(function(err){
         res.send(err);
     });
@@ -132,10 +132,11 @@ router.get('/deleteToDos', function(req, res, next) {
 
 /* GET Scan Results listing. */
 router.get('/scanResults', function(req, res, next) {
-    mongo.findAll("ScanResults").then(function(result){
+    mongo.scanReportsSortByYear().then(function(result){
         res.send(result);
     }).catch(function(err){
         res.send(err);
     });
 });
+
 module.exports = router;

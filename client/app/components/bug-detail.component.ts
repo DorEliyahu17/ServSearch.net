@@ -4,7 +4,6 @@ import { Component, Input, OnChanges } from '@angular/core';
 //import the class "bug" from the bug "../object modules/bug"
 import { BugReport } from '../object modules/bug-report';
 
-
 //import the service "PagerService" from the bug "../services/pager.service"
 import { PagerService } from '../services/pager.service'
 

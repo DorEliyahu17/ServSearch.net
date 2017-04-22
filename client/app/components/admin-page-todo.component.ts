@@ -60,7 +60,7 @@ export class AdminPageTodoComponent implements OnInit {
 			if (this.ToDosToDeleteArr.length == 0) {
 				this.alerts = [];
 				this.alerts.push({
-					msg: 'לא סומנו אף באגים למחיקה!',
+					msg: 'לא סומנו אף משימות למחיקה!',
 					type: 2
 				});
 			}
@@ -92,7 +92,7 @@ export class AdminPageTodoComponent implements OnInit {
 						}
 						else
 							this.alerts.push({
-								msg: 'לא דווחו באגים למערכת.',
+								msg: 'לא נשארו משימות לביצוע מדווחות במערכת.',
 								type: 3
 							});
 					}

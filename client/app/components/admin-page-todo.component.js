@@ -57,7 +57,7 @@ var AdminPageTodoComponent = (function () {
             if (this.ToDosToDeleteArr.length == 0) {
                 this.alerts = [];
                 this.alerts.push({
-                    msg: 'לא סומנו אף באגים למחיקה!',
+                    msg: 'לא סומנו אף משימות למחיקה!',
                     type: 2
                 });
             }
@@ -89,7 +89,7 @@ var AdminPageTodoComponent = (function () {
                         }
                         else
                             _this.alerts.push({
-                                msg: 'לא דווחו באגים למערכת.',
+                                msg: 'לא נשארו משימות לביצוע מדווחות במערכת.',
                                 type: 3
                             });
                     }

@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-lg-offset-4 col-lg-2">
+        <div id="ResultSearchBTN" style="align-content: center">
+            <button class="btn btn-default" (click)="search()">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </div>
+    </div>
+    <div class="col-lg-offset-2 col-lg-4">
+        <div class="input-group">
+            <select class="form-control" style="width: 200px;" dir="rtl" id="SearchName2">
+                <option value="">מספר. תאריך - שם השרת...</option>
+                <option *ngFor="let scanResult of scanResults;let i = index;" value="{{i}} {{scanResult.date}} {{scanResult.collection}}">{{i+1}}. {{scanResult.date}} - {{scanResult.collection}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<hr/>
+<!-- details -->
+<!--media-->
+<div id="result-detail" class="row" *ngIf="isComplete==true">
+    <div class="well">
+        <span class="media-right">
+            <!--bug details-->
+            <h4 class="media-heading">
+                <span><U>תאריך הסריקה: {{resultChecked.date}}</U></span>
+                <br>
+                <span><U>תוצאת הסריקה: {{resultChecked.status}}</U></span>
+                <br>
+                <span><U>משך זמן הסריקה: {{resultChecked.scanTime}}</U></span>
+                <br>
+                <span><U>נתיב הסריקה: {{resultChecked.scanPath}}</U></span>
+                <br>
+                <span><U>שם השרת שנסרק: {{resultChecked.collection}}</U></span>
+                <br>
+                <span><U>המספר הכולל של קבצים וערכי זבל שנסרקו: {{resultChecked.totalScannedNumber}}</U></span>
+                <br>
+                <span><U>המספר הכולל של קבצים ללא ערכי זבל שנסרקו: {{resultChecked.documentsNumber}}</U></span>
+                <br>
+                <span><U>מספר התיקיות שנסרקו: {{resultChecked.directoriesNumber}}</U></span>
+                <br>
+                <span><U>מספר הקבצים שנסרקו: {{resultChecked.filesNumber}}</U></span>
+            </h4>
+        </span>
+    </div>
+</div>

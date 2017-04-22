@@ -18,6 +18,25 @@
     </div>
 </div>
 
+<!-- scan reports -->
+<hr/>
+<div class="row">
+    <div class="col-lg-offset-6 col-lg-5">
+        <div *ngIf="scanReportNum>1">
+            <h1><B><U><span>ישנם {{scanReportNum}} דוחות סריקה שמדווחים למערכת</span></U></B></h1>
+        </div>
+        <div *ngIf="scanReportNum==1">
+            <h1><B><U><span>ישנו דוח סריקה אחד שמדווח למערכת</span></U></B></h1>
+        </div>
+        <div *ngIf="scanReportNum==0">
+            <h1><B><U><span>לא דווחו למערכת עדיין שום דוחות סריקה</span></U></B></h1>
+        </div>
+        <div *ngIf="scanReportNum==-1">
+            <h1><B><U><span>ישנה בעיה עם השרת, אנא סדר אותה ורענן את הדף מחדש</span></U></B></h1>
+        </div>
+    </div>
+</div>
+
 <!-- Counter of remaining bugs -->
 <hr/>
 <div class="row">
@@ -51,25 +70,6 @@
             <h1><B><U><span>לא נותרו עוד משימות לביצוע</span></U></B></h1>
         </div>
         <div *ngIf="TodoNum==-1">
-            <h1><B><U><span>ישנה בעיה עם השרת, אנא סדר אותה ורענן את הדף מחדש</span></U></B></h1>
-        </div>
-    </div>
-</div>
-
-<!-- Last scan report -->
-<hr/>
-<div class="row">
-    <div class="col-lg-offset-6 col-lg-5">
-        <div *ngIf="scanReportNum>1">
-            <h1><B><U><span>ישנם {{scanReportNum}} דוחות סריקה שמדווחים למערכת</span></U></B></h1>
-        </div>
-        <div *ngIf="scanReportNum==1">
-            <h1><B><U><span>ישנו דוח סריקה אחד שמדווח למערכת</span></U></B></h1>
-        </div>
-        <div *ngIf="scanReportNum==0">
-            <h1><B><U><span>לא דווחו למערכת עדיין שום דוחות סריקה</span></U></B></h1>
-        </div>
-        <div *ngIf="scanReportNum==-1">
             <h1><B><U><span>ישנה בעיה עם השרת, אנא סדר אותה ורענן את הדף מחדש</span></U></B></h1>
         </div>
     </div>

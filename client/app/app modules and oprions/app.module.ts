@@ -20,20 +20,19 @@ import { AdminPageBugsComponent } from '../components/admin-page-bugs.component'
 import { BugDetailComponent } from '../components/bug-detail.component';
 import { AdminPageTodoComponent } from '../components/admin-page-todo.component';
 import { ToDoDetailComponent } from '../components/ToDo-detail.component';
-import { AdminPageStatusComponent } from '../components/admin-page-status.component';
+import { AdminPageCompareComponent } from '../components/admin-page-compare.component';
+import { CompareDetailComponent1 } from '../components/compare-detail1.component';
+import { CompareDetailComponent2 } from '../components/compare-detail2.component';
 
 import { FileService } from '../services/file.service';
 import { PagerService } from '../services/pager.service';
 import { LoginService } from '../services/login.service';
 import { AdminPageService } from '../services/admin-page.service';
 import { BugReportService } from '../services/bug-report.service';
+import { CompareService } from '../services/compare.service';
 
 //import the routes
 import { AppRoutingModule } from './app-routing.module';
-
-//import the charts
-import { BarChartDetailComponent } from '../components/BarChart-detail.component';
-import { DoughnutChartDetailComponent } from '../components/DoughnutChart-detail.component';
 
 @NgModule({
   //import the object modules to the project
@@ -58,20 +57,17 @@ import { DoughnutChartDetailComponent } from '../components/DoughnutChart-detail
     BugDetailComponent,
     AdminPageTodoComponent,
     ToDoDetailComponent,
-    AdminPageStatusComponent,
-
-
-
-
-    BarChartDetailComponent,
-    DoughnutChartDetailComponent
+    AdminPageCompareComponent,
+    CompareDetailComponent1,
+    CompareDetailComponent2
   ],
   providers: [
     FileService,
     PagerService,
     LoginService,
     AdminPageService,
-    BugReportService
+    BugReportService,
+    CompareService
   ],
   //bootstrap the main component
   bootstrap: [ AppComponent ]

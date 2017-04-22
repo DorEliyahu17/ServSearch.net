@@ -38,7 +38,7 @@ export class AdvanceSearchComponent {
 		this.isResult = false;
 		this.loadingFlag = true;
 		this.files = [];
-		var i;
+		var temp;
 		//var resultSearch = document.getElementById("result");
 		//resultSearch.className = "hidden";
 		var name = (<HTMLInputElement>document.getElementById("FileName")).value;
@@ -65,9 +65,17 @@ export class AdvanceSearchComponent {
 			if (dateRadio1) {
 				dateFieldLow = "";
 				dateFieldHigh = "";
+				temp=dateField.split("/");
+				dateField=temp[2]+temp[1]+temp[0];
 			}
-			if (dateRadio2)
+			if (dateRadio2){
 				dateField = "";
+				temp=dateFieldLow.split("/");
+				dateFieldLow=temp[2]+temp[1]+temp[0];
+				temp=dateFieldHigh.split("/");
+				dateFieldHigh=temp[2]+temp[1]+temp[0];
+			}
+
 		}
 		else {
 			dateFieldLow = "";
@@ -79,8 +87,9 @@ export class AdvanceSearchComponent {
 				sizeFieldLow = "";
 				sizeFieldHigh = "";
 			}
-			if (sizeRadio2)
+			if (sizeRadio2){
 				sizeField = "";
+			}
 		}
 		else {
 			sizeFieldLow = "";
@@ -164,11 +173,12 @@ export class AdvanceSearchComponent {
 	}
 
 	//function enable/disable the radio input
-	clickCheck(radio1ID, radio2ID, input1ID, input2ID): void {
+	clickCheck(radio1ID, radio2ID, input1ID, input2ID, input3ID): void {
 		var radio1Field = <HTMLInputElement>document.getElementById(radio1ID);
 		var radio2Field = <HTMLInputElement>document.getElementById(radio2ID);
 		var input1Field = <HTMLInputElement>document.getElementById(input1ID);
 		var input2Field = <HTMLInputElement>document.getElementById(input2ID);
+		var input3Field = <HTMLInputElement>document.getElementById(input3ID);
 
 		if ((radio1Field.hasAttribute("disabled")) && (radio2Field.hasAttribute("disabled"))) {
 			//enable the radio fields
@@ -178,8 +188,10 @@ export class AdvanceSearchComponent {
 			//enable the input field
 			if (radio1Field.checked)
 				input1Field.removeAttribute("disabled");
-			if (radio2Field.checked)
+			if (radio2Field.checked) {
 				input2Field.removeAttribute("disabled");
+				input3Field.removeAttribute("disabled");
+			}
 		}
 		else {
 			//disable the radio fields
@@ -189,18 +201,20 @@ export class AdvanceSearchComponent {
 			//disable the input field
 			if (!(input1Field.checked))
 				input1Field.setAttribute("disabled", "disabled");
-			if (!(input2Field.checked))
+			if (!(input2Field.checked)) {
 				input2Field.setAttribute("disabled", "disabled");
+				input3Field.setAttribute("disabled", "disabled");
+			}
 		}
 	}
 
 	//function enable/disable the input field
-	radioCheck(regularInputID, advanceInputID, rangeInputID): void {
+	radioCheck(click, regularInputID, advanceInputID, rangeInputID): void {
 		var regularField = document.getElementById(regularInputID);
 		var advanceField = document.getElementById(advanceInputID);
 		var rangeInputField = document.getElementById(rangeInputID);
 
-		if (regularField.hasAttribute("disabled")) {
+		if (click==1) {
 			regularField.removeAttribute("disabled");
 			advanceField.setAttribute("disabled", "disabled");
 			rangeInputField.setAttribute("disabled", "disabled");
@@ -210,16 +224,4 @@ export class AdvanceSearchComponent {
 			rangeInputField.removeAttribute("disabled");
 		}
 	}
-
-	/*
-	 enableRangeRadio(enableInputID, disableInputID, rangeInputID): void {
-	 var regularField = document.getElementById(enableInputID);
-	 var rangeField = document.getElementById(disableInputID);
-	 var rangeInputField = document.getElementById(rangeInputID);
-
-	 regularField.setAttribute("disabled", "disabled");
-	 rangeField.removeAttribute("disabled");
-	 rangeInputField.removeAttribute("disabled");
-	 }
-	 */
 }

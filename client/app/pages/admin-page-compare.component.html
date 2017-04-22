@@ -1,0 +1,38 @@
+<div id="compareScanResults">
+    <div class="row">
+        <div class="col-lg-offset-4 col-lg-4" style="text-align: center">
+            <h1><U><B>השוואת דוחות סריקה</B></U></h1>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+            <div *ngFor="let alert of alerts;let i = index;">
+                <div *ngIf="alert.type==3">
+                    <div class="alert alert-success col-lg-offset-6 col-lg-5" role="alert">
+                        {{alert.msg}}
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <hr>
+                </div>
+                <div *ngIf="alert.type==2">
+                    <div class="alert alert-danger col-lg-offset-6 col-lg-5" role="alert">
+                        {{alert.msg}}
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <hr>
+                </div>
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-4">
+            <compare-detail1 [scanResults]="scanResults"></compare-detail1>
+        </div>
+        <div class="col-lg-offset-2 col-lg-4">
+            <compare-detail2 [scanResults]="scanResults"></compare-detail2>
+        </div>
+    </div>
+</div>

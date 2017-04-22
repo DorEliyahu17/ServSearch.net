@@ -55,65 +55,82 @@ var SimpleSearchComponent = (function () {
         this.advanceFlag = false;
         this.isResult = false;
         this.loadingFlag = true;
+        if (this.alerts.length > 0)
+            this.alerts.splice(0, this.alerts.length);
         var i;
         ///var resultSearch = document.getElementById("result");
         //resultSearch.className = "hidden";
         var name = document.getElementById("FileName").value;
         var type = document.getElementById("FileType").value;
         var server = document.getElementById("FileServer").value;
-        //Parameters obj
-        var params = new http_1.URLSearchParams();
-        params.set('name', name);
-        params.set('type', type);
-        params.set('server', server.toUpperCase());
-        params.set('size', "");
-        params.set('date', "");
-        params.set('sizeRangeLow', "");
-        params.set('sizeRangeHigh', "");
-        params.set('dateRangeLow', "");
-        params.set('dateRangeHigh', "");
-        //get the files arr from the service
-        this.fileService.getFiles(params)
-            .then(function (data /*File[]*/) {
-            if (data.name == "MongoError")
-                _this.errorFlag = true;
+        if (server == "") {
+            this.loadingFlag = false;
+            if ((name == "") && (type == ""))
+                this.alerts.push({ msg: 'אנא מלא את אחד מהמסננים ואת השרת שבו תרצה לחפש.', type: 2 });
+            else
+                this.alerts.push({ msg: 'אנא בחר את השרת שבו תרצה לחפש.', type: 2 });
+        }
+        else {
+            if ((name == "") && (type == "")) {
+                this.loadingFlag = false;
+                this.alerts.push({ msg: 'אנא מלא את אחד מהמסננים ואת השרת שבו תרצה לחפש.', type: 2 });
+            }
             else {
-                if (data.length > 0) {
-                    _this.files = data;
-                    _this.length = _this.files.length;
-                    if (_this.alerts.length > 0)
-                        _this.alerts.splice(0, _this.alerts.length);
-                    _this.isResult = true;
-                    _this.advanceFlag = true;
-                    _this.loadingFlag = false;
-                    //visible and hidden change
-                    //var resultSearch = document.getElementById("result");
-                    //resultSearch.className = "visible";
-                    //this.isResult=true;
-                }
-                else {
-                    //warning=1
-                    //danger=2
-                    //success=3
-                    if (_this.alerts.length > 0)
-                        _this.alerts.splice(0, _this.alerts.length);
-                    if ((name != "") || (type != "") || (server != "")) {
-                        if (server == "")
-                            _this.alerts.push({ msg: 'אנא בחר את השרת שבו תרצה לחפש.', type: 2 });
-                        else {
-                            _this.alerts.push({
-                                msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.',
-                                type: 1
-                            });
+                //Parameters obj
+                var params = new http_1.URLSearchParams();
+                params.set('name', name);
+                params.set('type', type);
+                params.set('server', server.toUpperCase());
+                params.set('size', "");
+                params.set('date', "");
+                params.set('sizeRangeLow', "");
+                params.set('sizeRangeHigh', "");
+                params.set('dateRangeLow', "");
+                params.set('dateRangeHigh', "");
+                //get the files arr from the service
+                this.fileService.getFiles(params)
+                    .then(function (data /*File[]*/) {
+                    if (data.name == "MongoError") {
+                        _this.errorFlag = true;
+                        _this.loadingFlag = false;
+                    }
+                    else {
+                        if (data.length > 0) {
+                            _this.files = data;
+                            _this.length = _this.files.length;
+                            if (_this.alerts.length > 0)
+                                _this.alerts.splice(0, _this.alerts.length);
+                            _this.isResult = true;
                             _this.advanceFlag = true;
+                            _this.loadingFlag = false;
+                            //visible and hidden change
+                            //var resultSearch = document.getElementById("result");
+                            //resultSearch.className = "visible";
+                            //this.isResult=true;
+                        }
+                        else {
+                            //warning=1
+                            //danger=2
+                            //success=3
+                            _this.loadingFlag = false;
+                            if ((name != "") || (type != "") || (server != "")) {
+                                if (server == "")
+                                    _this.alerts.push({ msg: 'אנא בחר את השרת שבו תרצה לחפש.', type: 2 });
+                                else {
+                                    _this.alerts.push({
+                                        msg: 'לא נמצאה אף תוצאה, נסה לחפש שוב או לחפש בעזרת חיפוש מתקדם.',
+                                        type: 1
+                                    });
+                                    _this.advanceFlag = true;
+                                }
+                            }
+                            else
+                                _this.alerts.push({ msg: 'לא הוכנס שום ערך.', type: 2 });
                         }
                     }
-                    else
-                        _this.alerts.push({ msg: 'לא הוכנס שום ערך.', type: 2 });
-                    _this.loadingFlag = false;
-                }
+                });
             }
-        });
+        }
     };
     return SimpleSearchComponent;
 }());

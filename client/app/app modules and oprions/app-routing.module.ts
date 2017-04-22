@@ -10,7 +10,7 @@ import { AdminPageHomeComponent } from '../components/admin-page-home.component'
 import { BugReportComponent } from '../components/bug-report.component';
 import { AdminPageBugsComponent } from '../components/admin-page-bugs.component';
 import { AdminPageTodoComponent } from '../components/admin-page-todo.component';
-import { AdminPageStatusComponent } from '../components/admin-page-status.component';
+import { AdminPageCompareComponent } from '../components/admin-page-compare.component';
 
 //let params: URLSearchParams = new URLSearchParams();
 
@@ -60,8 +60,8 @@ const routes: Routes = [
 
     //Admin page - DBs status
     {
-        path: 'adminPage/status',
-        component: AdminPageStatusComponent
+        path: 'adminPage/compare',
+        component: AdminPageCompareComponent
     }
 ];
 

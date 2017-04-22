@@ -22,7 +22,7 @@ router.get('/todo', function(req, res, next) {
 });
 
 /* GET DBs status admin page. */
-router.get('/status', function(req, res, next) {
+router.get('/compare', function(req, res, next) {
     res.render("index.html");
 });
 

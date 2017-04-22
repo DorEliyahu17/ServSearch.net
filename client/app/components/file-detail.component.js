@@ -25,6 +25,7 @@ var FileDetailComponent = (function () {
         this.pager = {};
     }
     FileDetailComponent.prototype.ngOnChanges = function () {
+        var date;
         this.filesArr = [];
         for (var i = 0; i < this.length; i++) {
             this.imgFlag = false;
@@ -175,6 +176,10 @@ var FileDetailComponent = (function () {
                         this.filesArr[i].showSize = (this.filesArr[i].size / 1073741824).toFixed(3) + " GB";
                 }
             }
+            //date changer
+            this.filesArr[i].modifiedDate = this.filesArr[i].modifiedDate[6] + this.filesArr[i].modifiedDate[7] + "/" +
+                this.filesArr[i].modifiedDate[4] + this.filesArr[i].modifiedDate[5] + "/" +
+                this.filesArr[i].modifiedDate[0] + this.filesArr[i].modifiedDate[1] + this.filesArr[i].modifiedDate[2] + this.filesArr[i].modifiedDate[3];
         }
         // initialize to page 1
         this.setPage(1);

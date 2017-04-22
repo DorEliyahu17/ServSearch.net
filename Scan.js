@@ -97,45 +97,45 @@ function searchTheEntireHardDrive(searchPath, writeToDB) {
                 if (dirCheck[7].indexOf(":") == -1) {
                     if (dirCheck[6] < 10) {
                         if (date < 10)
-                            date = "0" + dirCheck[6] + "/0" + date + "/" + dirCheck[7];
+                            date = dirCheck[7] + "0" + date + "0" + dirCheck[6];
                         else
-                            date = "0" + dirCheck[6] + "/" + date + "/" + dirCheck[7];
+                            date = dirCheck[7] + "" + date + "0" + dirCheck[6];
                     }
                     else {
                         if (date < 10)
-                            date = dirCheck[6] + "/0" + date + "/" + dirCheck[7];
+                            date = dirCheck[7] + "0" + date + dirCheck[6];
                         else
-                            date = dirCheck[6] + "/" + date + "/" + dirCheck[7];
+                            date = dirCheck[7] + "" + date + dirCheck[6];
                     }
                 }
                 else {
                     if ((currentDate[1] >= 7) && (currentDate[1] <= 12)) {
                         if (dirCheck[6] < 10)
-                            date = "0" + dirCheck[6] + "/" + date + "/" + currentDate[0];
+                            date = currentDate[0] + "" + date + "0" + dirCheck[6];
                         else
-                            date = dirCheck[6] + "/" + date + "/" + currentDate[0];
+                            date = currentDate[0] + "" + date + dirCheck[6];
                     }
                     else {
                         if ((currentDate[1] <= date) && (date >= 7)) {
                             if (dirCheck[6] < 10) {
                                 if (date < 10)
-                                    date = "0" + dirCheck[6] + "/0" + date + "/" + (currentDate[0] - 1);
+                                    date = (currentDate[0] - 1) + "0" + date + "0" + dirCheck[6];
                                 else
-                                    date = "0" + dirCheck[6] + "/" + date + "/" + (currentDate[0] - 1);
+                                    date = (currentDate[0] - 1) + "" + date + "0" + dirCheck[6];
                             }
                             else {
                                 if (date < 10)
-                                    date = dirCheck[6] + "/0" + date + "/" + (currentDate[0] - 1);
+                                    date = (currentDate[0] - 1) + "0" + date + dirCheck[6];
                                 else
-                                    date = dirCheck[6] + "/" + date + "/" + (currentDate[0] - 1);
+                                    date = (currentDate[0] - 1) + "" + date + dirCheck[6];
                             }
                         }
                         else {
                             if ((currentDate[1] >= date) && (date <= 7)) {
                                 if (dirCheck[6] < 10)
-                                    date = "0" + dirCheck[6] + "/0" + date + "/" + currentDate[0];
+                                    date = currentDate[0] + "0" + date + "0" + dirCheck[6];
                                 else
-                                    date = dirCheck[6] + "/0" + date + "/" + currentDate[0];
+                                    date = currentDate[0] + "0" + date + dirCheck[6];
                             }
                         }
                     }
@@ -217,6 +217,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB) {
             console.log("After " + stopTime + " this scan was inserted to the DB to the collection: " + collection + ".");
             new Promise(function (resolve, reject) {
                 ScanDetail = {
+                    "year": currentDate[0],
                     "date": currentDate[2] + "." + currentDate[1] + "." + currentDate[0],
                     "status": "Successful",
                     "scanTime": stopTime,
@@ -233,7 +234,7 @@ function searchTheEntireHardDrive(searchPath, writeToDB) {
                     reject();
                 })
             })
-                //in case everything was good
+            //in case everything was good
                 .then(() => {
                     if ((seconds == 0) && (minutes == 0))
                         stopTime = "0" + minutes + ":" + "0" + seconds;
@@ -255,67 +256,66 @@ function searchTheEntireHardDrive(searchPath, writeToDB) {
                     process.exit(-1);
                 })
         })
-            //in case the scan couldn't inserted to the database
+        //in case the scan couldn't inserted to the database
             .catch((err) => {
-            if ((seconds == 0) && (minutes == 0))
-                stopTime = "0" + minutes + ":" + "0" + seconds;
-            else
-                stopTime = minutes + ":" + seconds;
-            console.log("After " + stopTime + " this scan returned with an error:\n" + err);
-            console.log("please fix it and start again the scan!");
-            new Promise(function (resolve, reject) {
-                ScanDetail = {
-                    "date": currentDate[2] + "." + currentDate[1] + "." + currentDate[0],
-                    "status": "Abort\n" + err,
-                    "scanTime": stopTime,
-                    "scanPath": searchPath,
-                    "collection": collection,
-                    "totalScannedNumber": scanCount,
-                    "documentsNumber": documentCount,
-                    "directoriesNumber": dirCount,
-                    "filesNumber": fileCount
-                };
-                mongo.insertOne(ScanDetail, "ScanReports").then(() => {
-                    resolve();
-                }).catch(() => {
-                    reject();
+                if ((seconds == 0) && (minutes == 0))
+                    stopTime = "0" + minutes + ":" + "0" + seconds;
+                else
+                    stopTime = minutes + ":" + seconds;
+                console.log("After " + stopTime + " this scan returned with an error:\n" + err);
+                console.log("please fix it and start again the scan!");
+                new Promise(function (resolve, reject) {
+                    ScanDetail = {
+                        "year": currentDate[0],
+                        "date": currentDate[2] + "." + currentDate[1] + "." + currentDate[0],
+                        "status": "Abort\n" + err,
+                        "scanTime": stopTime,
+                        "scanPath": searchPath,
+                        "collection": collection,
+                        "totalScannedNumber": scanCount,
+                        "documentsNumber": documentCount,
+                        "directoriesNumber": dirCount,
+                        "filesNumber": fileCount
+                    };
+                    mongo.insertOne(ScanDetail, "ScanReports").then(() => {
+                        resolve();
+                    }).catch(() => {
+                        reject();
+                    })
                 })
-            })
-                .then(() => {
-                    if ((seconds == 0) && (minutes == 0))
-                        stopTime = "0" + minutes + ":" + "0" + seconds;
-                    else
-                        stopTime = minutes + ":" + seconds;
-                    clearInterval(setTime);
-                    console.log("After " + stopTime + " the scan detail was inserted to the DB.");
-                    process.exit(-1);
-                })
-                .catch((err) => {
-                    if ((seconds == 0) && (minutes == 0))
-                        stopTime = "0" + minutes + ":" + "0" + seconds;
-                    else
-                        stopTime = minutes + ":" + seconds;
-                    clearInterval(setTime);
-                    console.log("After " + stopTime + " the scan detail wasn't inserted and returned with an error:\n" + err);
-                    console.log("please fix it and start again the scan!");
-                    process.exit(-1);
-                })
-        });
+                    .then(() => {
+                        if ((seconds == 0) && (minutes == 0))
+                            stopTime = "0" + minutes + ":" + "0" + seconds;
+                        else
+                            stopTime = minutes + ":" + seconds;
+                        clearInterval(setTime);
+                        console.log("After " + stopTime + " the scan detail was inserted to the DB.");
+                        process.exit(-1);
+                    })
+                    .catch((err) => {
+                        if ((seconds == 0) && (minutes == 0))
+                            stopTime = "0" + minutes + ":" + "0" + seconds;
+                        else
+                            stopTime = minutes + ":" + seconds;
+                        clearInterval(setTime);
+                        console.log("After " + stopTime + " the scan detail wasn't inserted and returned with an error:\n" + err);
+                        console.log("please fix it and start again the scan!");
+                        process.exit(-1);
+                    })
+            });
     });
 }
 
 //Timer class
-function setTime()
-{
+function setTime() {
     ++totalSeconds;
-    seconds = pad(totalSeconds%60);
-    minutes = pad(parseInt(totalSeconds/60));
+    seconds = pad(totalSeconds % 60);
+    minutes = pad(parseInt(totalSeconds / 60));
 }
 
-function pad(val)
-{
+function pad(val) {
     var valString = val + "";
-    if(valString.length < 2) {
+    if (valString.length < 2) {
         return "0" + valString;
     }
     else {
@@ -326,20 +326,19 @@ function pad(val)
 //Timer set
 setInterval(setTime, 1000);
 
-var location="C:/Users/Dor/Desktop", dropFlag=false, time;
+var location="C:/Users/Dor/Desktop/test/stam2", dropFlag=false, time;
 
 //C:/Users/Dor/Desktop
 
 
 mongo.findCollectionsNameList()
     .then((collections)=> {
-        for(var i=0;i<collections.length;i++)
-        {
-            if(collections[i].name==location[0])
-                dropFlag=true;
+        for (var i = 0; i < collections.length; i++) {
+            if (collections[i].name == location[0])
+                dropFlag = true;
         }
         //tries to drop the older collection first
-        if(dropFlag) {
+        if (dropFlag) {
             mongo.dropCollection(location[0])
                 .then(() => {
                     console.log("Scan started please wait.");
@@ -348,15 +347,15 @@ mongo.findCollectionsNameList()
                 })
                 .catch((err) => {
                     clearInterval(setTime);
-                    if((seconds==0)&&(minutes==0))
-                        time="0"+minutes+":"+"0"+seconds;
+                    if ((seconds == 0) && (minutes == 0))
+                        time = "0" + minutes + ":" + "0" + seconds;
                     else
-                        time=minutes+":"+seconds;
+                        time = minutes + ":" + seconds;
                     console.log("After " + time + " Scan couldn't start because the drop collection function returned with an error:\n" + err);
                     process.exit(-1);
                 });
         }
-        else{
+        else {
             console.log("Scan started please wait.");
             //Call to the scan function
             searchTheEntireHardDrive(location, mongo.insertArr);
@@ -365,10 +364,10 @@ mongo.findCollectionsNameList()
     //if there is a problem with the database
     .catch((err)=> {
         clearInterval(setTime);
-        if((seconds==0)&&(minutes==0))
-            time="0"+minutes+":"+"0"+seconds;
+        if ((seconds == 0) && (minutes == 0))
+            time = "0" + minutes + ":" + "0" + seconds;
         else
-            time=minutes+":"+seconds;
+            time = minutes + ":" + seconds;
         console.log("After " + time + " Scan couldn't start because the drop collection function returned with an error:\n" + err);
         process.exit(-1);
     });
