@@ -55,11 +55,11 @@ var SimpleSearchComponent = (function () {
         this.advanceFlag = false;
         this.isResult = false;
         this.loadingFlag = true;
+        this.files = [];
+        this.length = 0;
         if (this.alerts.length > 0)
             this.alerts.splice(0, this.alerts.length);
         var i;
-        ///var resultSearch = document.getElementById("result");
-        //resultSearch.className = "hidden";
         var name = document.getElementById("FileName").value;
         var type = document.getElementById("FileType").value;
         var server = document.getElementById("FileServer").value;

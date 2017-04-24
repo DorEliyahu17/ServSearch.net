@@ -19,7 +19,9 @@ var CompareDetailComponent1 = (function () {
         this.isComplete = false;
     }
     CompareDetailComponent1.prototype.search = function () {
-        var name = document.getElementById("SearchName1").value;
+        var name = document.getElementById("SearchName1").value.split(".");
+        name = name[0].split(" ");
+        console.log(name);
         this.resultChecked = this.scanResults[name[0]];
         this.isComplete = true;
     };

@@ -1,15 +1,12 @@
 <div id="advance-search">
     <!-- regular search mode -->
     <div id="regular" class="row visible">
-
         <div class="col-lg-offset-8 col-lg-3">
             <span>הקובץ לא נמצא? אולי חיפוש מתקדם יעזור:</span>
             <button class="btn btn-default btn-sm" (click)="advanceSearch()">
                 <i class="glyphicon glyphicon-tasks"></i>
-                <!--<span class="fa fa-search"></span> <span class="fa fa-database"></span>-->
             </button>
         </div>
-
         <br>
         <br>
     </div>
@@ -24,7 +21,7 @@
 
         <!--Choice: dates-->
         <div class="row">
-            <div class="col-lg-offset-5 col-lg-2">
+            <div class="col-lg-offset-4 col-lg-2">
                 <div class="input-group" dir="ltr">
                     <div class="input-group" dir="ltr">
                         <input id="date-textLow" type="text" class="form-control" dir="rtl" placeholder="מתאריך..." disabled="disabled" />
@@ -39,37 +36,65 @@
                         </span>
                     </div>
                     <span class="input-group-addon">
-                        <input id="date-radio2" type="radio" name="date" (click)="radioCheck(2, 'date-text', 'date-textLow', 'date-textHigh')" disabled="disabled">
+                        <input id="date-radio2" type="radio" name="date" (click)="dateRadioCheck(2, 'date-text', 'date-textLow', 'date-textHigh')" disabled="disabled">
                     </span>
                 </div>
             </div>
 
-            <div class="col-lg-2">
+            <div class="col-lg-offset-1 col-lg-2">
                 <div class="input-group" dir="ltr">
                     <input id="date-text" type="text" class="form-control" dir="rtl" placeholder="תאריך יצירה..." disabled="disabled" />
                     <span class="input-group-addon">
-                        <input id="date-radio1" type="radio" name="date" (click)="radioCheck(1, 'date-text', 'date-textLow', 'date-textHigh')" disabled="disabled">
+                        <input id="date-radio1" type="radio" name="date" (click)="dateRadioCheck(1, 'date-text', 'date-textLow', 'date-textHigh')" disabled="disabled">
                     </span>
                 </div>
             </div>
 
             <div class="col-lg-2">
                 <h5><span>
-                        <input id="date-check" type="checkbox" (click)="clickCheck('date-radio1', 'date-radio2', 'date-text', 'date-textLow', 'date-textHigh')">
-                    </span>בחר תאריך יצירה או טווח תאריכים: בפורמט של DD/MM/YYYY</h5>
+                        <input id="date-check" type="checkbox" (click)="dateClickCheck('date-radio1', 'date-radio2', 'date-text', 'date-textLow', 'date-textHigh')">
+                    </span>בחר תאריך שינוי אחרון או טווח תאריכים: בפורמט של DD/MM/YYYY</h5>
             </div>
         </div>
 
         <!--Choice: file size-->
         <div class="row">
-            <div class="col-lg-offset-5 col-lg-2">
+            <div class="col-lg-offset-2 col-lg-1">
+                <button class="btn btn-default" (click)="search()">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+
+                <button class="btn btn-default" (click)="simpleSearch()">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </button>
+            </div>
+
+            <div class="col-lg-3">
                 <div class="input-group" dir="ltr">
+                    <select class="form-control" style="width: 125px;" dir="rtl" id="size-typeLow" disabled="disabled" >
+                        <option value="">סוג גודל...</option>
+                        <option value="Byte">Byte</option>
+                        <option value="KB">KB</option>
+                        <option value="MB">MB</option>
+                        <option value="GB">GB</option>
+                        <option value="TB">TB</option>
+                        <option value="PB">PB</option>
+                    </select>
                     <div class="input-group" dir="ltr">
                         <input id="size-textLow" type="text" class="form-control" dir="rtl" placeholder="מגודל..." disabled="disabled" />
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-circle-arrow-up"></i>
                         </span>
                     </div>
+                    <select class="form-control" style="width: 125px;" dir="rtl" id="size-typeHigh" disabled="disabled" >
+                        <option value="">סוג גודל...</option>
+                        <option value="Byte">Byte</option>
+                        <option value="KB">KB</option>
+                        <option value="MB">MB</option>
+                        <option value="GB">GB</option>
+                        <option value="TB">TB</option>
+                        <option value="PB">PB</option>
+                    </select>
                     <div class="input-group" dir="ltr">
                         <input id="size-textHigh" type="text" class="form-control" dir="rtl" placeholder="עד גודל..." disabled="disabled" />
                         <span class="input-group-addon">
@@ -77,36 +102,35 @@
                         </span>
                     </div>
                     <span class="input-group-addon">
-                        <input id="size-radio2" type="radio" name="size" (click)="radioCheck(2, 'size-text', 'size-textLow', 'size-textHigh')" disabled="disabled">
+                        <input id="size-radio2" type="radio" name="size" (click)="sizeRadioCheck(2, 'size-text', 'size-type', 'size-textLow', 'size-typeLow', 'size-textHigh', 'size-typeHigh')" disabled="disabled">
                     </span>
                 </div>
             </div>
 
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <div class="input-group" dir="ltr">
-                    <input id="size-text" type="text" class="form-control" dir="rtl" placeholder="גודל הקובץ..." disabled="disabled" />
-                    <span class="input-group-addon">
-                        <input id="size-radio1" type="radio" name="size" (click)="radioCheck(1, 'size-text', 'size-textLow', 'size-textHigh')" disabled="disabled">
+                    <select class="form-control" style="width: 125px;" dir="rtl" id="size-type" disabled="disabled" >
+                        <option value="">סוג גודל...</option>
+                        <option value="Byte">Byte</option>
+                        <option value="KB">KB</option>
+                        <option value="MB">MB</option>
+                        <option value="GB">GB</option>
+                        <option value="TB">TB</option>
+                        <option value="PB">PB</option>
+                    </select>
+                    <div class="input-group" dir="ltr">
+                        <input id="size-text" type="text" class="form-control" dir="rtl" placeholder="גודל הקובץ..." disabled="disabled" />
+                        <span class="input-group-addon">
+                        <input id="size-radio1" type="radio" name="size" (click)="sizeRadioCheck(1, 'size-text', 'size-type', 'size-textLow', 'size-typeLow', 'size-textHigh', 'size-typeHigh')" disabled="disabled">
                     </span>
+                    </div>
                 </div>
             </div>
 
             <div class="col-lg-2">
                 <h5><span>
-                        <input id="size-check" type="checkbox" (click)="clickCheck('size-radio1', 'size-radio2', 'size-text', 'size-textLow', 'size-textHigh')">
+                        <input id="size-check" type="checkbox" (click)="sizeClickCheck('size-radio1', 'size-radio2', 'size-text', 'size-type', 'size-textLow', 'size-typeLow', 'size-textHigh', 'size-typeHigh')">
                     </span>בחר גודל או טווח גדלים:</h5>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <button class="btn btn-default" (click)="search()">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </button>
-
-                    <button class="btn btn-default" (click)="simpleSearch()">
-                        <i class="glyphicon glyphicon-arrow-left"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </div>

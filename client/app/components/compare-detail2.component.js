@@ -19,16 +19,14 @@ var CompareDetailComponent2 = (function () {
         this.isComplete = false;
     }
     CompareDetailComponent2.prototype.search = function () {
-        var name = document.getElementById("SearchName2").value;
+        var name = document.getElementById("SearchName2").value.split(".");
+        name = name[0].split(" ");
+        console.log(name);
         this.resultChecked = this.scanResults[name[0]];
         this.isComplete = true;
     };
     return CompareDetailComponent2;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Array)
-], CompareDetailComponent2.prototype, "scanYear", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Array)

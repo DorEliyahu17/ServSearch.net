@@ -7,15 +7,15 @@ var url = 'mongodb://localhost:27017/Mtest';
 //var url = 'mongodb://192.168.1.15:27017/Mtest';
 
 //drop collection
-exportMongo.dropCollection = function dropCollection(collection){
+exportMongo.dropCollection = function dropCollection(collection) {
     return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
-            if(err!=null)
+            if (err != null)
                 reject(err);
             else {
                 db.collection(collection).drop(function (err) {
                     db.close();
-                    if(err!=null)
+                    if (err != null)
                         reject(err);
                     console.log("Collection dropped");
                     resolve();
@@ -26,12 +26,12 @@ exportMongo.dropCollection = function dropCollection(collection){
 };
 
 //check DB status
-exportMongo.adminHomeStatus = function adminHomeStatus(){
-    var bugsNum=-1, TodoNum=-1, scanReportNum=-1;
+exportMongo.adminHomeStatus = function adminHomeStatus() {
+    var bugsNum = -1, TodoNum = -1, scanReportNum = -1;
     return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
-            if(err!=null)
-                reject({"msg":"כבוי","color":"2", "bugsNum":bugsNum, "TodoNum":"-1", "scanReport":scanReportNum});
+            if (err != null)
+                reject({"msg": "כבוי", "color": "2", "bugsNum": bugsNum, "TodoNum": "-1", "scanReport": scanReportNum});
             else {
                 new Promise(function (resolve, reject) {
                     db.collection("Bugs").count({}, function (err, result) {
@@ -42,31 +42,43 @@ exportMongo.adminHomeStatus = function adminHomeStatus(){
                             resolve();
                         }
                     });
-                }).then(function(){
+                }).then(function () {
                     new Promise(function (resolve, reject) {
                         db.collection("ToDo").count({}, function (err, result) {
-                            if(err!=null)
+                            if (err != null)
                                 reject();
-                            else{
-                                TodoNum=result;
+                            else {
+                                TodoNum = result;
                                 resolve();
                             }
                         })
-                    }).then(function(){
+                    }).then(function () {
                         db.collection("ScanReports").count({}, function (err, result) {
-                            if(err!=null)
+                            if (err != null)
                                 reject();
-                            else{
-                                scanReportNum=result;
-                                resolve({"msg":"פעיל","color":"3", "bugsNum":bugsNum, "TodoNum":TodoNum, "scanReport":scanReportNum});
+                            else {
+                                scanReportNum = result;
+                                resolve({
+                                    "msg": "פעיל",
+                                    "color": "3",
+                                    "bugsNum": bugsNum,
+                                    "TodoNum": TodoNum,
+                                    "scanReport": scanReportNum
+                                });
                             }
                         })
                     })
-                        .catch(function(){
+                        .catch(function () {
                             reject();
                         });
-                }).catch(function(){
-                    reject({"msg": "כבוי", "color": "2", "bugsNum": bugsNum, "TodoNum": TodoNum, "scanReport":scanReportNum});
+                }).catch(function () {
+                    reject({
+                        "msg": "כבוי",
+                        "color": "2",
+                        "bugsNum": bugsNum,
+                        "TodoNum": TodoNum,
+                        "scanReport": scanReportNum
+                    });
                 });
             }
         });
@@ -75,11 +87,11 @@ exportMongo.adminHomeStatus = function adminHomeStatus(){
 
 //find all the collections from the db
 exportMongo.findCollectionsNameList = function findCollectionsNameList() {
-    var arr=[],i;
+    var arr = [], i;
     return new Promise(function (resolve, reject) {
-        var count=0;
+        var count = 0;
         mongo.connect(url, function (err, db) {
-            if(err!=null)
+            if (err != null)
                 reject(err);
             else {
                 db.collections().then(function (collections) {
@@ -90,6 +102,8 @@ exportMongo.findCollectionsNameList = function findCollectionsNameList() {
                         }
                     }
                     db.close();
+                    if (err != null)
+                        reject(err);
                     resolve(arr);
                 });
             }
@@ -101,12 +115,12 @@ exportMongo.findCollectionsNameList = function findCollectionsNameList() {
 exportMongo.findAll = function findAll(collection) {
     return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
-            if(err!=null)
+            if (err != null)
                 reject(err);
             else {
                 db.collection(collection).find().toArray(function (err, result) {
                     db.close();
-                    if(err!=null)
+                    if (err != null)
                         reject(err);
                     resolve(result);
                 });
@@ -119,15 +133,16 @@ exportMongo.findAll = function findAll(collection) {
 exportMongo.findAdmin = function findAdmin(adminName, adminPassword) {
     return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
-            if(err!=null)
+            if (err != null)
                 reject(err);
-
             else {
                 db.collection("Admins").find({
                     userName: adminName,
                     password: adminPassword
                 }).toArray(function (err, result) {
                     db.close();
+                    if (err != null)
+                        reject(err);
                     resolve([result, adminName, adminPassword]);
                 });
             }
@@ -141,64 +156,106 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
         if ((server != "") ||
             ((fileName != "") ||
             (fileType != "") ||
-            (size!="") ||
-            (date!="") ||
-            ((sizeRangeLow != "") && (sizeRangeHigh = "")) ||
-            ((dateRangeLow != "") && (dateRangeHigh = "")))) {
+            (size != "") ||
+            (date != "") ||
+            ((sizeRangeLow != "") && (sizeRangeHigh != "")) ||
+            ((dateRangeLow != "") && (dateRangeHigh != "")))) {
             mongo.connect(url, function (err, db) {
-                if(err!=null)
+                if (err != null)
                     reject(err);
                 else {
                     //in case all of the simple search filters were filled
                     if ((fileName != "") && (fileType != "") && (server != "")) {
-                        //advance search without range
+                        //advance search
                         if ((size != "") && (date != "")) {
                             db.collection(server).find({
                                 name: fileName,
                                 type: fileType,
-                                size: size,
-                                modifiedDate: date
+                                size: parseInt(size),
+                                modifiedDate: parseInt(date)
                             }).toArray(function (err, results) {
                                 db.close();
+                                if (err != null)
+                                    reject(err);
                                 resolve(results);
                             });
                         }
                         if ((size != "") && (date == "")) {
-                            db.collection(server).find({
-                                name: fileName,
-                                type: fileType,
-                                size: size
-                            }).toArray(function (err, results) {
-                                db.close();
-                                resolve(results);
-                            });
+                            if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
+                                db.collection(server).find({
+                                    name: fileName,
+                                    type: fileType,
+                                    size: parseInt(size),
+                                    $and: [
+                                        {modifiedDate: {$gte: parseInt(dateRangeLow)}},
+                                        {modifiedDate: {$lte: parseInt(dateRangeHigh)}}
+                                    ]
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
+                            else {
+                                db.collection(server).find({
+                                    name: fileName,
+                                    type: fileType,
+                                    size: parseInt(size)
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
                         }
                         if ((size == "") && (date != "")) {
-                            db.collection(server).find({
-                                name: fileName,
-                                type: fileType,
-                                modifiedDate: date
-                            }).toArray(function (err, results) {
-                                db.close();
-                                resolve(results);
-                            });
+                            if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
+                                db.collection(server).find({
+                                    name: fileName,
+                                    type: fileType,
+                                    modifiedDate: parseInt(date),
+                                    $and: [
+                                        {size: {$gte: parseInt(sizeRangeLow)}},
+                                        {size: {$lte: parseInt(sizeRangeHigh)}}
+                                    ]
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
+                            else {
+                                db.collection(server).find({
+                                    name: fileName,
+                                    type: fileType,
+                                    modifiedDate: parseInt(date)
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
                         }
-                        //advance search with range
-                        if ((size == "") && (date == "")) {
+                        //advance search only range
+                        else {
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
                                     name: fileName,
                                     type: fileType,
-                                    size: {
-                                        $gte: sizeRangeLow,
-                                        $lte: sizeRangeHigh
-                                    },
-                                    modifiedDate: {
-                                        $gte: dateRangeLow,
-                                        $lte: dateRangeHigh
-                                    }
+                                    $and: [
+                                        {size: {$gte: parseInt(sizeRangeLow)}},
+                                        {size: {$lte: parseInt(sizeRangeHigh)}},
+                                        {modifiedDate: {$gte: parseInt(dateRangeLow)}},
+                                        {modifiedDate: {$lte: parseInt(dateRangeHigh)}}
+                                    ]
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
@@ -206,12 +263,14 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 db.collection(server).find({
                                     name: fileName,
                                     type: fileType,
-                                    modifiedDate: {
-                                        $gte: dateRangeLow,
-                                        $lte: dateRangeHigh
-                                    }
+                                    $and: [
+                                        {modifiedDate: {$gte: parseInt(dateRangeLow)}},
+                                        {modifiedDate: {$lte: parseInt(dateRangeHigh)}}
+                                    ]
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
@@ -219,12 +278,14 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                 db.collection(server).find({
                                     name: fileName,
                                     type: fileType,
-                                    size: {
-                                        $gte: sizeRangeLow,
-                                        $lte: sizeRangeHigh
-                                    }
+                                    $and: [
+                                        {size: {$gte: parseInt(sizeRangeLow)}},
+                                        {size: {$lte: parseInt(sizeRangeHigh)}}
+                                    ]
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
@@ -235,6 +296,8 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                                     type: fileType,
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
@@ -242,83 +305,129 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                     }
                     //in case only the file type filter weren't filled
                     if ((fileName != "") && (fileType == "") && (server != "")) {
-                        //advance search without range
+                        //advance search
                         if ((size != "") && (date != "")) {
                             db.collection(server).find({
                                 name: fileName,
-                                size: size,
-                                modifiedDate: date
+                                size: parseInt(size),
+                                modifiedDate: parseInt(date)
                             }).toArray(function (err, results) {
                                 db.close();
+                                if (err != null)
+                                    reject(err);
                                 resolve(results);
                             });
                         }
                         if ((size != "") && (date == "")) {
-                            db.collection(server).find({
-                                name: fileName,
-                                size: size
-                            }).toArray(function (err, results) {
-                                db.close();
-                                resolve(results);
-                            });
+                            if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
+                                db.collection(server).find({
+                                    name: fileName,
+                                    size: parseInt(size),
+                                    $and: [
+                                        {modifiedDate: {$gte: parseInt(dateRangeLow)}},
+                                        {modifiedDate: {$lte: parseInt(dateRangeHigh)}}
+                                    ]
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
+                            else {
+                                db.collection(server).find({
+                                    name: fileName,
+                                    size: parseInt(size)
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
                         }
                         if ((size == "") && (date != "")) {
-                            db.collection(server).find({
-                                name: fileName,
-                                modifiedDate: date
-                            }).toArray(function (err, results) {
-                                db.close();
-                                resolve(results);
-                            });
+                            if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
+                                db.collection(server).find({
+                                    name: fileName,
+                                    modifiedDate: parseInt(date),
+                                    $and: [
+                                        {size: {$gte: parseInt(sizeRangeLow)}},
+                                        {size: {$lte: parseInt(sizeRangeHigh)}}
+                                    ]
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
+                            else {
+                                db.collection(server).find({
+                                    name: fileName,
+                                    modifiedDate: parseInt(date)
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
                         }
-                        //advance search with range
-                        if ((size == "") && (date == "")) {
+                        //advance search only range
+                        else {
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
                                     name: fileName,
-                                    size: {
-                                        $gte: sizeRangeLow,
-                                        $lte: sizeRangeHigh
-                                    },
-                                    modifiedDate: {
-                                        $gte: dateRangeLow,
-                                        $lte: dateRangeHigh
-                                    }
+                                    $and: [
+                                        {size: {$gte: parseInt(sizeRangeLow)}},
+                                        {size: {$lte: parseInt(sizeRangeHigh)}},
+                                        {modifiedDate: {$gte: parseInt(dateRangeLow)}},
+                                        {modifiedDate: {$lte: parseInt(dateRangeHigh)}}
+                                    ]
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
                                     name: fileName,
-                                    modifiedDate: {
-                                        $gte: dateRangeLow,
-                                        $lte: dateRangeHigh
-                                    }
+                                    $and: [
+                                        {modifiedDate: {$gte: parseInt(dateRangeLow)}},
+                                        {modifiedDate: {$lte: parseInt(dateRangeHigh)}}
+                                    ]
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
                                     name: fileName,
-                                    size: {
-                                        $gte: sizeRangeLow,
-                                        $lte: sizeRangeHigh
-                                    }
+                                    $and: [
+                                        {size: {$gte: parseInt(sizeRangeLow)}},
+                                        {size: {$lte: parseInt(sizeRangeHigh)}}
+                                    ]
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
                             //simple search
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
-                                    name: fileName
+                                    name: fileName,
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
@@ -326,84 +435,129 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                     }
                     //in case only the file name filter weren't filled
                     if ((fileName == "") && (fileType != "") && (server != "")) {
-                        //advance search without range
+                        //advance search
                         if ((size != "") && (date != "")) {
                             db.collection(server).find({
                                 type: fileType,
-                                size: size,
-                                modifiedDate: date
+                                size: parseInt(size),
+                                modifiedDate: parseInt(date)
                             }).toArray(function (err, results) {
                                 db.close();
+                                if (err != null)
+                                    reject(err);
                                 resolve(results);
                             });
                         }
                         if ((size != "") && (date == "")) {
-                            db.collection(server).find({
-                                type: fileType,
-                                size: size
-                            }).toArray(function (err, results) {
-                                db.close();
-                                resolve(results);
-                            });
+                            if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
+                                db.collection(server).find({
+                                    type: fileType,
+                                    size: parseInt(size),
+                                    $and: [
+                                        {modifiedDate: {$gte: parseInt(dateRangeLow)}},
+                                        {modifiedDate: {$lte: parseInt(dateRangeHigh)}}
+                                    ]
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
+                            else {
+                                db.collection(server).find({
+                                    type: fileType,
+                                    size: parseInt(size)
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
                         }
                         if ((size == "") && (date != "")) {
-                            db.collection(server).find({
-                                type: fileType,
-                                modifiedDate: date
-                            }).toArray(function (err, results) {
-                                db.close();
-                                resolve(results);
-                            });
+                            if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
+                                db.collection(server).find({
+                                    type: fileType,
+                                    modifiedDate: parseInt(date),
+                                    $and: [
+                                        {size: {$gte: parseInt(sizeRangeLow)}},
+                                        {size: {$lte: parseInt(sizeRangeHigh)}}
+                                    ]
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
+                            else {
+                                db.collection(server).find({
+                                    type: fileType,
+                                    modifiedDate: parseInt(date)
+                                }).toArray(function (err, results) {
+                                    db.close();
+                                    if (err != null)
+                                        reject(err);
+                                    resolve(results);
+                                });
+                            }
                         }
-                        if ((size == "") && (date == "")) {
-                            //advance search with range
+                        //advance search only range
+                        else {
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
                                     type: fileType,
-                                    size: {
-                                        $gte: sizeRangeLow,
-                                        $lt: sizeRangeHigh
-                                    },
-                                    modifiedDate: {
-                                        $gte: dateRangeLow,
-                                        $lt: dateRangeHigh
-                                    }
+                                    $and: [
+                                        {size: {$gte: parseInt(sizeRangeLow)}},
+                                        {size: {$lte: parseInt(sizeRangeHigh)}},
+                                        {modifiedDate: {$gte: parseInt(dateRangeLow)}},
+                                        {modifiedDate: {$lte: parseInt(dateRangeHigh)}}
+                                    ]
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
                                     type: fileType,
-                                    modifiedDate: {
-                                        $gte: dateRangeLow,
-                                        $lt: dateRangeHigh
-                                    }
+                                    $and: [
+                                        {modifiedDate: {$gte: parseInt(dateRangeLow)}},
+                                        {modifiedDate: {$lte: parseInt(dateRangeHigh)}}
+                                    ]
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
-
                                     type: fileType,
-                                    size: {
-                                        $gte: sizeRangeLow,
-                                        $lt: sizeRangeHigh
-                                    }
+                                    $and: [
+                                        {size: {$gte: parseInt(sizeRangeLow)}},
+                                        {size: {$lte: parseInt(sizeRangeHigh)}}
+                                    ]
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
                             //simple search
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
-                                    type: fileType
+                                    type: fileType,
                                 }).toArray(function (err, results) {
                                     db.close();
+                                    if (err != null)
+                                        reject(err);
                                     resolve(results);
                                 });
                             }
@@ -418,19 +572,21 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
 };
 
 //insert one document to the db
-exportMongo.insertOne = function insertOne(document, collection){
-    return new Promise(function(resolve, reject) {
+exportMongo.insertOne = function insertOne(document, collection) {
+    return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
             //check if the the function didn't return error
-            if(err!=null)
+            if (err != null)
                 reject(err);
             else {
                 db.collection(collection).insertOne(document, function (err) {
                     //check if the the function didn't return error
-                    if(err!=null)
+                    if (err != null)
                         reject(err);
                     else {
                         db.close();
+                        if (err != null)
+                            reject(err);
                         resolve({msg: "OK"});
                     }
                 });
@@ -440,19 +596,21 @@ exportMongo.insertOne = function insertOne(document, collection){
 };
 
 //insert arr of documents to the db
-exportMongo.insertArr = function insertArr(documents, collection){
-    return new Promise(function(resolve, reject) {
-        mongo.connect(url, function(err, db) {
+exportMongo.insertArr = function insertArr(documents, collection) {
+    return new Promise(function (resolve, reject) {
+        mongo.connect(url, function (err, db) {
             //check if the the function didn't return error
-            if(err!=null)
+            if (err != null)
                 reject(err);
             else {
                 db.collection(collection).insertMany(documents, function (err, result) {
                     //check if the the function didn't return error
-                    if(err!=null)
+                    if (err != null)
                         reject(err);
                     else {
                         db.close();
+                        if (err != null)
+                            reject(err);
                         resolve();
                     }
                 });
@@ -462,29 +620,28 @@ exportMongo.insertArr = function insertArr(documents, collection){
 };
 
 //delete arr
-exportMongo.deleteArr = function deleteArr(documentIDArr, collection){
-    return new Promise(function(resolve, reject) {
+exportMongo.deleteArr = function deleteArr(documentIDArr, collection) {
+    return new Promise(function (resolve, reject) {
         var i;
-        mongo.connect(url, function(err, db) {
+        mongo.connect(url, function (err, db) {
             //check if the the function didn't return error
-            if(err!=null)
+            if (err != null)
                 reject(err);
             else {
-                for(i=0;i<(documentIDArr.length-1);i++) {
+                for (i = 0; i < (documentIDArr.length - 1); i++) {
                     db.collection(collection).deleteOne({"_id": objectId.createFromHexString(documentIDArr[i])}, function (err, result) {
+                        db.close();
                         //check if the the function didn't return error
                         if (err != null) {
                             if (i > 0) {
-                                err.clientMessage="אופס... לא כל הקבצים נמחקו, אנא בדוק את מצב ה DB";
+                                err.clientMessage = "אופס... לא כל הקבצים נמחקו, אנא בדוק את מצב ה DB";
                                 reject(err);
                             }
                             else {
-                                err.clientMessage="אופס... אף קובץ לא נמחק, אנא בדוק את מצב ה DB";
+                                err.clientMessage = "אופס... אף קובץ לא נמחק, אנא בדוק את מצב ה DB";
                                 reject(err);
                             }
                         }
-                        else
-                            db.close();
                     });
                 }
                 resolve();
@@ -494,18 +651,18 @@ exportMongo.deleteArr = function deleteArr(documentIDArr, collection){
 };
 
 //scan result year group by
-exportMongo.scanReportsSortByYear = function scanReportsSortByYear(){
+exportMongo.scanReportsSortByYear = function scanReportsSortByYear() {
     return new Promise(function (resolve, reject) {
         mongo.connect(url, function (err, db) {
-            if(err!=null)
+            if (err != null)
                 reject(err);
             else {
                 db.collection("ScanReports").aggregate(
                     [
-                        { '$sort': { year:1} },
-                    ],function(err, result) {
+                        {'$sort': {year: 1}},
+                    ], function (err, result) {
                         db.close();
-                        if(err!=null)
+                        if (err != null)
                             reject(err);
                         resolve(result);
                     });

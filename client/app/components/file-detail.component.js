@@ -177,6 +177,7 @@ var FileDetailComponent = (function () {
                 }
             }
             //date changer
+            this.filesArr[i].modifiedDate = this.filesArr[i].modifiedDate + "";
             this.filesArr[i].modifiedDate = this.filesArr[i].modifiedDate[6] + this.filesArr[i].modifiedDate[7] + "/" +
                 this.filesArr[i].modifiedDate[4] + this.filesArr[i].modifiedDate[5] + "/" +
                 this.filesArr[i].modifiedDate[0] + this.filesArr[i].modifiedDate[1] + this.filesArr[i].modifiedDate[2] + this.filesArr[i].modifiedDate[3];

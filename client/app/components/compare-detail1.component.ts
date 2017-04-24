@@ -20,7 +20,9 @@ export class CompareDetailComponent1 {
 	public isComplete=false;
 
 	search() {
-		var name = (<HTMLInputElement>document.getElementById("SearchName1")).value;
+		var name = (<HTMLInputElement>document.getElementById("SearchName1")).value.split(".");
+		name=name[0].split(" ");
+		console.log(name);
 		this.resultChecked=this.scanResults[name[0]];
 		this.isComplete=true;
 	}

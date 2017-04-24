@@ -15,14 +15,14 @@ import '../rxjs/rxjs-operators';
 	templateUrl: './app/pages/compare-detail2.component.html'
 })
 export class CompareDetailComponent2 {
-	@Input() scanYear: {"_id":string,"scanCount": number}[];
 	@Input() scanResults: ScanDetail[];
-	public optionalResults: ScanDetail[];
 	resultChecked: ScanDetail;
 	public isComplete=false;
 
 	search() {
-		var name = (<HTMLInputElement>document.getElementById("SearchName2")).value;
+		var name = (<HTMLInputElement>document.getElementById("SearchName2")).value.split(".");
+		name=name[0].split(" ");
+		console.log(name);
 		this.resultChecked=this.scanResults[name[0]];
 		this.isComplete=true;
 	}

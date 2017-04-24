@@ -150,12 +150,11 @@ function searchTheEntireHardDrive(searchPath, writeToDB) {
                         fileAndDirObject = {
                             name: tempName,
                             type: 'Directory',
-                            size: dirCheck[4], //everything will be in bytes and in the code it will be converted to kilo or mega bytes
+                            size: parseInt(dirCheck[4]), //everything will be in bytes and in the code it will be converted to kilo or mega bytes
                             location: path,
-                            //permissions: dirCheck[0].slice(1),
                             createdUser: dirCheck[2],
                             group: dirCheck[3],
-                            modifiedDate: date
+                            modifiedDate: parseInt(date)
                         };
                         ArrOfDirs.push(fileAndDirObject);
                         //if the arr is more than 16MB insert it to the DB and clean it
@@ -179,12 +178,11 @@ function searchTheEntireHardDrive(searchPath, writeToDB) {
                     fileAndDirObject = {
                         name: fileNameAndType[0],
                         type: fileNameAndType[1],
-                        size: dirCheck[4], //everything will be in bytes and in the code it will be converted to kilo or mega bytes
+                        size: parseInt(dirCheck[4]), //everything will be in bytes and in the code it will be converted to kilo or mega bytes
                         location: path,
-                        //permissions: dirCheck[0].slice(1),
                         createdUser: dirCheck[2],
                         group: dirCheck[3],
-                        modifiedDate: date
+                        modifiedDate: parseInt(date)
                     };
                     //if the arr is more than 16MB insert it to the DB and clean it
                     if (filesAndDirsObjectArr.length == 297726) {
@@ -326,7 +324,7 @@ function pad(val) {
 //Timer set
 setInterval(setTime, 1000);
 
-var location="C:/Users/Dor/Desktop/test/stam2", dropFlag=false, time;
+var location="D:/", dropFlag=false, time;
 
 //C:/Users/Dor/Desktop
 
