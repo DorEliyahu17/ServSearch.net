@@ -16,14 +16,12 @@ import '../rxjs/rxjs-operators';
 })
 export class CompareDetailComponent2 {
 	@Input() scanResults: ScanDetail[];
-	resultChecked: ScanDetail;
+	public resultChecked: ScanDetail;
 	public isComplete=false;
 
 	search() {
-		var name = (<HTMLInputElement>document.getElementById("SearchName2")).value.split(".");
-		name=name[0].split(" ");
-		console.log(name);
-		this.resultChecked=this.scanResults[name[0]];
+		var name = (<HTMLInputElement>document.getElementById("SearchName2")).value;
+		this.resultChecked=this.scanResults[name];
 		this.isComplete=true;
 	}
 }

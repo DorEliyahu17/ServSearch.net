@@ -18,7 +18,6 @@ var FileService = (function () {
     //promise=callback
     function FileService(http) {
         this.http = http;
-        //private headers = new Headers({'Content-Type': 'application/json'});
         this.apiUrl = 'http://localhost:3000/api'; // URL to web api
     }
     //get all the files in the /api/files
@@ -35,17 +34,6 @@ var FileService = (function () {
         }).toPromise();
     };
     ;
-    //function that split the name of the server from the hole path
-    FileService.prototype.getServerFromLocation = function (location) {
-        var arr = [];
-        arr = location.split(":");
-        return arr[0];
-    };
-    //error handler
-    FileService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    };
     return FileService;
 }());
 FileService = __decorate([
@@ -53,52 +41,4 @@ FileService = __decorate([
     __metadata("design:paramtypes", [http_1.Http])
 ], FileService);
 exports.FileService = FileService;
-/*
- //get all the files in the /api/files
- getFiles(): Promise<File[]> {
- return this.http.get("http://localhost:3000/api/files")
- .toPromise()
- .then(response => response.json().data as File[]/* && console.log(response)/)
- .catch(this.handleError);
- }
-
- //get specified file from the /api/files
- getFile(name, type, server): Promise<File>{
- console.log("getFile: name:"+name+" type:"+type+" server:"+server);
- if((name!=null)&&(type!=null)&&(server!=null)){
- return this.getFiles()
- .then(Files => Files.find(file => ((file.name === name) && (file.type === type) && (this.getServerFromLocation(file.location)===server))));
- }
- else if((name!=null)&&(type!=null)){
- return this.getFiles()
- .then(Files => Files
- .find(file => ((file.name === name) && (file.type === type))));
- }
- else if((type!=null)&&(server!==null)){
- return this.getFiles()
- .then(Files => Files
- .find(file => ((file.type === type) && (this.getServerFromLocation(file.location)===server))));
- }
- else if((name!=null)&&(server!=null)){
- return this.getFiles()
- .then(Files => Files
- .find(file => ((file.name === name) && (this.getServerFromLocation(file.location)===server))));
- }
- else if(name!=null){
- return this.getFiles()
- .then(Files => Files
- .find(file => (file.name === name)));
- }
- else if(type!=null){
- return this.getFiles()
- .then(Files => Files
- .find(file => (file.type === type)));
- }
- else{
- return this.getFiles()
- .then(Files => Files
- .find(file => (this.getServerFromLocation(file.location)===server)));
- }
- }
- */ 
 //# sourceMappingURL=file.service.js.map

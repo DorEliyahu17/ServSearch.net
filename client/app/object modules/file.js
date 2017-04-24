@@ -7,7 +7,6 @@ var File = (function () {
         this.type = "";
         this.size = 0; //everything will be in bytes and in the code it will be converted to kilo or mega bytes
         this.location = "";
-        //this.permissions="";
         this.createdUser = "";
         this.group = "";
         this.modifiedDate = "";

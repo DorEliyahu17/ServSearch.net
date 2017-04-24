@@ -28,19 +28,6 @@ var SimpleSearchComponent = (function () {
         this.file = new file_1.File();
         this.length = 0;
     }
-    //visible the advance search
-    SimpleSearchComponent.prototype.simpleToAdvance = function () {
-        var simpleSearch = document.getElementById("simple");
-        simpleSearch.className = "hidden";
-    };
-    //visible the simple search
-    SimpleSearchComponent.prototype.advanceToSimple = function () {
-        var simpleSearch = document.getElementById("simple");
-        simpleSearch.className = "visible";
-    };
-    SimpleSearchComponent.prototype.closeAlert = function (i) {
-        this.alerts.splice(i, 1);
-    };
     SimpleSearchComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.fileService.getServerNames().then(function (data) {
@@ -103,10 +90,6 @@ var SimpleSearchComponent = (function () {
                             _this.isResult = true;
                             _this.advanceFlag = true;
                             _this.loadingFlag = false;
-                            //visible and hidden change
-                            //var resultSearch = document.getElementById("result");
-                            //resultSearch.className = "visible";
-                            //this.isResult=true;
                         }
                         else {
                             //warning=1

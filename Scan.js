@@ -324,7 +324,7 @@ function pad(val) {
 //Timer set
 setInterval(setTime, 1000);
 
-var location="D:/", dropFlag=false, time;
+var location="E:/", dropFlag=false, time;
 
 //C:/Users/Dor/Desktop
 

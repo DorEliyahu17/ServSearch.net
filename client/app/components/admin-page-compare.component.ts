@@ -6,6 +6,7 @@ import '../rxjs/rxjs-operators';
 
 import { CompareService } from '../services/compare.service';
 import { ScanDetail } from '../object modules/scanDetail';
+import { CompareDetailComponent1 } from '../components/compare-detail1.component';
 
 //create new component
 @Component({
@@ -17,6 +18,8 @@ import { ScanDetail } from '../object modules/scanDetail';
 })
 export class AdminPageCompareComponent implements OnInit {
 	public scanResults: ScanDetail[];
+	public resultChecked1: ScanDetail;
+	public resultChecked2: ScanDetail;
 	public alerts: Array<Object>=[];
 
 	constructor(private compareService: CompareService){}

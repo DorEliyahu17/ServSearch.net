@@ -1,7 +1,6 @@
 //import the routes declare in order to create the routes of the app
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {URLSearchParams } from '@angular/http';
 
 //import the Components
 import { SimpleSearchComponent } from '../components/simple-search.component'
@@ -11,8 +10,6 @@ import { BugReportComponent } from '../components/bug-report.component';
 import { AdminPageBugsComponent } from '../components/admin-page-bugs.component';
 import { AdminPageTodoComponent } from '../components/admin-page-todo.component';
 import { AdminPageCompareComponent } from '../components/admin-page-compare.component';
-
-//let params: URLSearchParams = new URLSearchParams();
 
 const routes: Routes = [
     //Home page

@@ -10,7 +10,7 @@
         <div class="input-group">
             <select class="form-control" style="width: 200px;" dir="rtl" id="SearchName1">
                 <option value="">מספר. תאריך - שם השרת...</option>
-                <option *ngFor="let scanResult of scanResults;let i = index;" value="{{i}} {{scanResult.date}} {{scanResult.collection}}">{{i+1}}. {{scanResult.date}} - {{scanResult.collection}}</option>
+                <option *ngFor="let scanResult of scanResults;let i = index;" value="{{i}}">{{i+1}}. {{scanResult.date}} - {{scanResult.collection}}</option>
             </select>
         </div>
     </div>

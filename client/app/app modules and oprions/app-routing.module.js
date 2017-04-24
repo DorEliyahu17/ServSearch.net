@@ -17,7 +17,6 @@ var bug_report_component_1 = require("../components/bug-report.component");
 var admin_page_bugs_component_1 = require("../components/admin-page-bugs.component");
 var admin_page_todo_component_1 = require("../components/admin-page-todo.component");
 var admin_page_compare_component_1 = require("../components/admin-page-compare.component");
-//let params: URLSearchParams = new URLSearchParams();
 var routes = [
     //Home page
     {

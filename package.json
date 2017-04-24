@@ -1,14 +1,12 @@
 {
   "name": "servsearch.net",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "main": "./bin/www",
   "author": "Dor Eliyahu",
   "license": "ISC",
   "description": "Search web",
   "scripts": {
     "nodemon": "nodemon",
-    "start2": "node FirstScan2.js --max_old_space_size=10240",
-    "start1": "concurrently \"npm run nodemon\"",
     "start": "nodemon",
     "tsc": "npm run client/start",
     "lite": "lite-server",
@@ -26,10 +24,6 @@
     "promise": "^7.1.1",
     "serve-favicon": "^2.3.0",
     "shelljs": "^0.7.4"
-  },
-  "devDependencies": {
-    "concurrently": "^2.2.0",
-    "lite-server": "^2.2.2"
   },
   "repository": {
     "type": "git",

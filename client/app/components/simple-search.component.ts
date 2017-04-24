@@ -1,6 +1,6 @@
 //import the component declare in order to create a new one
-import {Component, OnInit} from '@angular/core';
-import {URLSearchParams} from '@angular/http';
+import { Component, OnInit } from '@angular/core';
+import { URLSearchParams } from '@angular/http';
 
 //import the class "File" from the file "./file"
 import { File } from '../object modules/file';
@@ -26,24 +26,7 @@ export class SimpleSearchComponent implements OnInit {
     file = new File();
     length = 0;
 
-    constructor(private fileService: FileService) {
-    }
-
-    //visible the advance search
-    simpleToAdvance(): void {
-        var simpleSearch = document.getElementById("simple");
-        simpleSearch.className = "hidden";
-    }
-
-    //visible the simple search
-    advanceToSimple(): void {
-        var simpleSearch = document.getElementById("simple");
-        simpleSearch.className = "visible";
-    }
-
-    public closeAlert(i: number): void {
-        this.alerts.splice(i, 1);
-    }
+    constructor(private fileService: FileService) {}
 
     ngOnInit(): void {
         this.fileService.getServerNames().then((data: any) => {
@@ -108,11 +91,6 @@ export class SimpleSearchComponent implements OnInit {
                                 this.isResult = true;
                                 this.advanceFlag = true;
                                 this.loadingFlag = false;
-                                //visible and hidden change
-                                //var resultSearch = document.getElementById("result");
-                                //resultSearch.className = "visible";
-
-                                //this.isResult=true;
                             }
                             else {
                                 //warning=1

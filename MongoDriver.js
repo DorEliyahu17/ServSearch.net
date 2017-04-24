@@ -169,7 +169,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                         //advance search
                         if ((size != "") && (date != "")) {
                             db.collection(server).find({
-                                name: fileName,
+                                name: { $regex: fileName, $options: "m" },
                                 type: fileType,
                                 size: parseInt(size),
                                 modifiedDate: parseInt(date)
@@ -183,7 +183,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                         if ((size != "") && (date == "")) {
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     type: fileType,
                                     size: parseInt(size),
                                     $and: [
@@ -199,7 +199,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             }
                             else {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     type: fileType,
                                     size: parseInt(size)
                                 }).toArray(function (err, results) {
@@ -213,7 +213,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                         if ((size == "") && (date != "")) {
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     type: fileType,
                                     modifiedDate: parseInt(date),
                                     $and: [
@@ -229,7 +229,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             }
                             else {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     type: fileType,
                                     modifiedDate: parseInt(date)
                                 }).toArray(function (err, results) {
@@ -244,7 +244,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                         else {
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     type: fileType,
                                     $and: [
                                         {size: {$gte: parseInt(sizeRangeLow)}},
@@ -261,7 +261,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             }
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     type: fileType,
                                     $and: [
                                         {modifiedDate: {$gte: parseInt(dateRangeLow)}},
@@ -276,7 +276,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             }
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     type: fileType,
                                     $and: [
                                         {size: {$gte: parseInt(sizeRangeLow)}},
@@ -292,7 +292,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             //simple search
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     type: fileType,
                                 }).toArray(function (err, results) {
                                     db.close();
@@ -308,7 +308,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                         //advance search
                         if ((size != "") && (date != "")) {
                             db.collection(server).find({
-                                name: fileName,
+                                name: { $regex: fileName, $options: "m" },
                                 size: parseInt(size),
                                 modifiedDate: parseInt(date)
                             }).toArray(function (err, results) {
@@ -321,7 +321,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                         if ((size != "") && (date == "")) {
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     size: parseInt(size),
                                     $and: [
                                         {modifiedDate: {$gte: parseInt(dateRangeLow)}},
@@ -336,7 +336,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             }
                             else {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     size: parseInt(size)
                                 }).toArray(function (err, results) {
                                     db.close();
@@ -349,7 +349,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                         if ((size == "") && (date != "")) {
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     modifiedDate: parseInt(date),
                                     $and: [
                                         {size: {$gte: parseInt(sizeRangeLow)}},
@@ -364,7 +364,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             }
                             else {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     modifiedDate: parseInt(date)
                                 }).toArray(function (err, results) {
                                     db.close();
@@ -378,7 +378,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                         else {
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     $and: [
                                         {size: {$gte: parseInt(sizeRangeLow)}},
                                         {size: {$lte: parseInt(sizeRangeHigh)}},
@@ -394,7 +394,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             }
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow != "") && (dateRangeHigh != ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     $and: [
                                         {modifiedDate: {$gte: parseInt(dateRangeLow)}},
                                         {modifiedDate: {$lte: parseInt(dateRangeHigh)}}
@@ -408,7 +408,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             }
                             if (((sizeRangeLow != "") && (sizeRangeHigh != "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" },
                                     $and: [
                                         {size: {$gte: parseInt(sizeRangeLow)}},
                                         {size: {$lte: parseInt(sizeRangeHigh)}}
@@ -423,7 +423,7 @@ exportMongo.findSpec = function findSpec(fileName, fileType, server, size, date,
                             //simple search
                             if (((sizeRangeLow == "") && (sizeRangeHigh == "")) && ((dateRangeLow == "") && (dateRangeHigh == ""))) {
                                 db.collection(server).find({
-                                    name: fileName,
+                                    name: { $regex: fileName, $options: "m" }
                                 }).toArray(function (err, results) {
                                     db.close();
                                     if (err != null)
