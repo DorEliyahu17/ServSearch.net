@@ -1,12 +1,10 @@
-//including shelljs and my MongoDB client to the script
+//including shelljs and my MongoDriver to the script
 var shell = require('./node_modules/shelljs');
 var mongo = require('./MongoDriver');
 
-var i;
+var i, adminfile=[], adminsToInsert=[];
 var fileLog= shell.cat('admin.log.txt');
 var admins=fileLog.split("\r\n");
-var adminfile=[];
-var adminsToInsert=[];
 
 mongo.findAdminCollection()
     .then(() => {
