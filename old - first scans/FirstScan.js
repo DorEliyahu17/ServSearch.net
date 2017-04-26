@@ -1,6 +1,6 @@
 //including shelljs and my MongoDB client to the script
-var shell = require('./node_modules/shelljs');
-var mongo = require('./MongoDB');
+var shell = require('../node_modules/shelljs');
+var mongo = require('../MongoDriveron');
 
 //Timer parameters
 var minutes = 0;

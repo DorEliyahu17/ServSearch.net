@@ -1,6 +1,7 @@
 //including shelljs and my MongoDB client to the script
 var shell = require('./node_modules/shelljs');
 var mongo = require('./MongoDriver');
+var readline = require('readline');
 
 //Timer parameters
 var minutes = 0;
@@ -324,48 +325,53 @@ function pad(val) {
 //Timer set
 setInterval(setTime, 1000);
 
-var location="E:/", dropFlag=false, time;
+var location, dropFlag=false, time, rl;
 
-//C:/Users/Dor/Desktop
+rl=readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-
-mongo.findCollectionsNameList()
-    .then((collections)=> {
-        for (var i = 0; i < collections.length; i++) {
-            if (collections[i].name == location[0])
-                dropFlag = true;
-        }
-        //tries to drop the older collection first
-        if (dropFlag) {
-            mongo.dropCollection(location[0])
-                .then(() => {
-                    console.log("Scan started please wait.");
-                    //Call to the scan function
-                    searchTheEntireHardDrive(location, mongo.insertArr);
-                })
-                .catch((err) => {
-                    clearInterval(setTime);
-                    if ((seconds == 0) && (minutes == 0))
-                        time = "0" + minutes + ":" + "0" + seconds;
-                    else
-                        time = minutes + ":" + seconds;
-                    console.log("After " + time + " Scan couldn't start because the drop collection function returned with an error:\n" + err);
-                    process.exit(-1);
-                });
-        }
-        else {
-            console.log("Scan started please wait.");
-            //Call to the scan function
-            searchTheEntireHardDrive(location, mongo.insertArr);
-        }
-    })
-    //if there is a problem with the database
-    .catch((err)=> {
-        clearInterval(setTime);
-        if ((seconds == 0) && (minutes == 0))
-            time = "0" + minutes + ":" + "0" + seconds;
-        else
-            time = minutes + ":" + seconds;
-        console.log("After " + time + " Scan couldn't start because the drop collection function returned with an error:\n" + err);
-        process.exit(-1);
-    });
+rl.question("Please insert the location that you want to scan. the format is: [name of the server]:/[location(optional)]\n", (answer) =>{
+    location=answer;
+    mongo.findCollectionsNameList()
+        .then((collections)=> {
+            for (var i = 0; i < collections.length; i++) {
+                if (collections[i].name == location[0])
+                    dropFlag = true;
+            }
+            //tries to drop the older collection first
+            if (dropFlag) {
+                mongo.dropCollection(location[0])
+                    .then(() => {
+                        console.log("Scan started please wait.");
+                        //Call to the scan function
+                        searchTheEntireHardDrive(location, mongo.insertArr);
+                    })
+                    .catch((err) => {
+                        clearInterval(setTime);
+                        if ((seconds == 0) && (minutes == 0))
+                            time = "0" + minutes + ":" + "0" + seconds;
+                        else
+                            time = minutes + ":" + seconds;
+                        console.log("After " + time + " Scan couldn't start because the drop collection function returned with an error:\n" + err);
+                        process.exit(-1);
+                    });
+            }
+            else {
+                console.log("Scan started please wait.");
+                //Call to the scan function
+                searchTheEntireHardDrive(location, mongo.insertArr);
+            }
+        })
+        //if there is a problem with the database
+        .catch((err)=> {
+            clearInterval(setTime);
+            if ((seconds == 0) && (minutes == 0))
+                time = "0" + minutes + ":" + "0" + seconds;
+            else
+                time = minutes + ":" + seconds;
+            console.log("After " + time + " Scan couldn't start because the drop collection function returned with an error:\n" + err);
+            process.exit(-1);
+        });
+});
