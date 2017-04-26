@@ -325,7 +325,7 @@ function pad(val) {
 //Timer set
 setInterval(setTime, 1000);
 
-var location, dropFlag=false, time, rl;
+var locationOld="", location="", dropFlag=false, time, rl;
 
 rl=readline.createInterface({
     input: process.stdin,
@@ -333,7 +333,10 @@ rl=readline.createInterface({
 });
 
 rl.question("Please insert the location that you want to scan. the format is: [name of the server]:/[location(optional)]\n", (answer) =>{
-    location=answer;
+    locationOld=answer;
+    location=locationOld[0].toUpperCase();
+    locationOld=locationOld.slice(1);
+    location+=locationOld;
     mongo.findCollectionsNameList()
         .then((collections)=> {
             for (var i = 0; i < collections.length; i++) {

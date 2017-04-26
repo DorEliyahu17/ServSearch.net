@@ -111,6 +111,29 @@ exportMongo.findCollectionsNameList = function findCollectionsNameList() {
     });
 };
 
+//find only the Admin collection from the db if exist
+exportMongo.findAdminCollection = function findAdminCollection() {
+    var collection="", i;
+    return new Promise(function (resolve, reject) {
+        mongo.connect(url, function (err, db) {
+            if (err != null)
+                reject(err);
+            else {
+                db.collections().then(function (collections) {
+                    for (i = 0; i < collections.length; i++) {
+                        if (collections[i].s.name == "Admins")
+                            collection = {"name": collections[i].s.name};
+                    }
+                    db.close();
+                    if (err != null)
+                        reject(err);
+                    resolve(collection);
+                });
+            }
+        });
+    });
+};
+
 //find all the docs from a specified collection from the db
 exportMongo.findAll = function findAll(collection) {
     return new Promise(function (resolve, reject) {
